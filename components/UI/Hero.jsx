@@ -193,7 +193,7 @@ export default function HeroSection() {
               >
                 <Link
                   href="#kaip-tai-veikia"
-                  className="rounded-xl border-2 border-bblue bg-transparent px-8 py-4 text-lg font-medium text-bred transition-all duration-300 hover:bg-bred hover:text-white hover:shadow-[0_0_30px_rgba(235,37,99,0.7)] w-full sm:w-auto flex items-center justify-center"
+                  className="rounded-xl border-2 text-secondary border-secondary bg-transparent px-8 py-4 text-lg font-medium text- transition-all duration-300 hover:bg-bred hover:shadow-[0_0_30px_rgba(235,37,99,0.7)] w-full sm:w-auto flex items-center justify-center"
                 >
                   Sužinoti daugiau
                 </Link>
