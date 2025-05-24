@@ -12,6 +12,7 @@ import {
   Sparkles,
   CheckCircle,
 } from "lucide-react";
+import DashboardMockup from "./DashboardMockup";
 
 export default function HeroSection() {
   const [scrollY, setScrollY] = useState(0);
@@ -137,10 +138,10 @@ export default function HeroSection() {
               </span>
               <div className="relative inline-block mt-1">
                 {/* Animated gradient background */}
-                <span className="absolute -inset-1 bg-gradient-to-r from-[#2563EB] via-[#EB2563] to-[#63EB25] opacity-50 blur-xl rounded-lg animate-pulse"></span>
+                <span className="absolute -inset-1 bg-gradient-to-r from-[#2563EB] to-[#EB2563] opacity-50 blur-xl rounded-lg animate-pulse"></span>
 
                 {/* Animated gradient text */}
-                <span className="relative bg-gradient-to-r from-[#2563EB] via-[#EB2563] to-[#63EB25] bg-clip-text text-transparent animate-gradient">
+                <span className="relative bg-gradient-to-r from-[#2563EB] to-[#EB2563] bg-clip-text text-transparent animate-gradient">
                   finansus išmaniai
                 </span>
               </div>
@@ -168,7 +169,7 @@ export default function HeroSection() {
             </div>
 
             {/* CTA buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
+            <div className="flex flex-wrap gap-4 justify-center items-start lg:justify-start mb-8">
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -176,7 +177,7 @@ export default function HeroSection() {
               >
                 <Link
                   href="/registruotis"
-                  className="group relative overflow-hidden rounded-xl px-8 py-4 text-lg font-medium text-white shadow-lg transition-all duration-300 hover:shadow-[0_0_30px_rgba(99,235,37,0.7)] border border-white/10 w-full sm:w-auto flex items-center justify-center"
+                  className="group relative overflow-hidden rounded-xl px-8 py-4 text-sm font-medium text-white shadow-lg transition-all duration-300 hover:shadow-[0_0_30px_rgba(99,235,37,0.7)] border border-white/10 w-full sm:w-auto flex items-center justify-center"
                 >
                   <span className="relative z-10 flex items-center">
                     Pradėti nemokamai
@@ -193,7 +194,7 @@ export default function HeroSection() {
               >
                 <Link
                   href="#kaip-tai-veikia"
-                  className="rounded-xl border-2 text-secondary border-secondary bg-transparent px-8 py-4 text-lg font-medium text- transition-all duration-300 hover:bg-bred hover:shadow-[0_0_30px_rgba(235,37,99,0.7)] w-full sm:w-auto flex items-center justify-center"
+                  className="rounded-xl border-2 text-secondary border-secondary bg-transparent px-8 py-4 text-sm font-medium text- transition-all duration-300 hover:bg-bred hover:shadow-[0_0_30px_rgba(235,37,99,0.7)] w-full sm:w-auto flex items-center justify-center"
                 >
                   Sužinoti daugiau
                 </Link>
@@ -213,150 +214,7 @@ export default function HeroSection() {
               <div className="absolute inset-0 bg-gradient-to-r from-[#2563EB] via-[#EB2563] to-[#63EB25] rounded-2xl blur-xl opacity-50 animate-pulse"></div>
 
               {/* Dashboard mockup */}
-              <div className="relative rounded-2xl bg-[#0A0A20]/80 backdrop-blur-xl border border-white/10 p-1 shadow-[0_0_25px_rgba(37,99,235,0.3)]">
-                <div className="rounded-xl overflow-hidden">
-                  {/* Dashboard header */}
-                  <div className="bg-gradient-to-r from-[#2563EB] to-[#EB2563] p-4 rounded-t-xl">
-                    <div className="flex items-center justify-between">
-                      <h3 className="text-lg font-medium text-white">
-                        Finansų skydelis
-                      </h3>
-                      <div className="flex space-x-2">
-                        <div className="h-3 w-3 rounded-full bg-[#EB2563]" />
-                        <div className="h-3 w-3 rounded-full bg-[#63EB25]" />
-                        <div className="h-3 w-3 rounded-full bg-white" />
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Dashboard content */}
-                  <div className="p-6 bg-[#0A0A20]/95">
-                    {/* Balance overview */}
-                    <div className="mb-8 space-y-6">
-                      <div className="flex items-center justify-between">
-                        <span className="text-sm font-medium text-white/70">
-                          Bendra suma
-                        </span>
-                        <span className="text-2xl font-bold text-white">
-                          24,562.00 €
-                        </span>
-                      </div>
-                      <div className="h-3 w-full rounded-full bg-[#1A1A40] p-[1px]">
-                        <div className="h-full w-3/4 rounded-full bg-gradient-to-r from-[#2563EB] to-[#63EB25] animate-pulse" />
-                      </div>
-                    </div>
-
-                    {/* Stats cards */}
-                    <div className="mb-6 grid grid-cols-3 gap-4">
-                      <motion.div
-                        className="rounded-lg bg-[#1A1A40]/50 p-4 backdrop-blur-sm border border-white/5 hover:border-[#2563EB]/30 transition-all hover:shadow-[0_0_15px_rgba(37,99,235,0.2)] group"
-                        whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                      >
-                        <BarChart2 className="mb-2 h-6 w-6 text-[#2563EB] group-hover:text-[#63EB25] transition-colors" />
-                        <p className="text-xs text-white/70">Pajamos</p>
-                        <p className="text-lg font-bold text-white">8,350 €</p>
-                        <p className="text-xs text-[#63EB25]">+12.5%</p>
-                      </motion.div>
-                      <motion.div
-                        className="rounded-lg bg-[#1A1A40]/50 p-4 backdrop-blur-sm border border-white/5 hover:border-[#EB2563]/30 transition-all hover:shadow-[0_0_15px_rgba(235,37,99,0.2)] group"
-                        whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                      >
-                        <PieChart className="mb-2 h-6 w-6 text-[#EB2563] group-hover:text-[#2563EB] transition-colors" />
-                        <p className="text-xs text-white/70">Išlaidos</p>
-                        <p className="text-lg font-bold text-white">3,450 €</p>
-                        <p className="text-xs text-[#EB2563]">-4.3%</p>
-                      </motion.div>
-                      <motion.div
-                        className="rounded-lg bg-[#1A1A40]/50 p-4 backdrop-blur-sm border border-white/5 hover:border-[#63EB25]/30 transition-all hover:shadow-[0_0_15px_rgba(99,235,37,0.2)] group"
-                        whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                      >
-                        <TrendingUp className="mb-2 h-6 w-6 text-[#63EB25] group-hover:text-[#EB2563] transition-colors" />
-                        <p className="text-xs text-white/70">Santaupos</p>
-                        <p className="text-lg font-bold text-white">4,900 €</p>
-                        <p className="text-xs text-[#63EB25]">+18.2%</p>
-                      </motion.div>
-                    </div>
-
-                    {/* Recent transactions */}
-                    <div className="space-y-4">
-                      <motion.div
-                        className="rounded-lg bg-[#1A1A40]/50 p-4 backdrop-blur-sm border border-white/5 hover:border-[#2563EB]/30 transition-all hover:shadow-[0_0_15px_rgba(37,99,235,0.2)]"
-                        whileHover={{ x: 5, transition: { duration: 0.2 } }}
-                      >
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center">
-                            <div className="mr-3 flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[#2563EB] to-[#63EB25] shadow-[0_0_10px_rgba(99,235,37,0.3)]">
-                              <svg
-                                className="h-5 w-5 text-white"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  strokeWidth={2}
-                                  d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                                />
-                              </svg>
-                            </div>
-                            <div>
-                              <p className="font-medium text-white">
-                                Atlyginimas
-                              </p>
-                              <p className="text-xs text-white/70">
-                                Šiandien, 10:45
-                              </p>
-                            </div>
-                          </div>
-                          <div className="text-right">
-                            <p className="font-medium text-[#63EB25]">
-                              +5,400 €
-                            </p>
-                          </div>
-                        </div>
-                      </motion.div>
-                      <motion.div
-                        className="rounded-lg bg-[#1A1A40]/50 p-4 backdrop-blur-sm border border-white/5 hover:border-[#EB2563]/30 transition-all hover:shadow-[0_0_15px_rgba(235,37,99,0.2)]"
-                        whileHover={{ x: 5, transition: { duration: 0.2 } }}
-                      >
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center">
-                            <div className="mr-3 flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[#EB2563] to-[#2563EB] shadow-[0_0_10px_rgba(235,37,99,0.3)]">
-                              <svg
-                                className="h-5 w-5 text-white"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  strokeWidth={2}
-                                  d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                                />
-                              </svg>
-                            </div>
-                            <div>
-                              <p className="font-medium text-white">
-                                Pirkiniai
-                              </p>
-                              <p className="text-xs text-white/70">
-                                Vakar, 14:25
-                              </p>
-                            </div>
-                          </div>
-                          <div className="text-right">
-                            <p className="font-medium text-[#EB2563]">-240 €</p>
-                          </div>
-                        </div>
-                      </motion.div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <DashboardMockup/>
 
               {/* Floating elements for visual interest */}
               <motion.div
