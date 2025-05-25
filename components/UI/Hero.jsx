@@ -134,7 +134,7 @@ export default function HeroSection() {
 
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6">
               <span className="block text-white drop-shadow-[0_0_10px_rgba(37,99,235,0.3)]">
-                Valdykite savo
+                Valdyk savo
               </span>
               <div className="relative inline-block mt-1">
                 {/* Animated gradient background */}
@@ -175,16 +175,7 @@ export default function HeroSection() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.8 }}
               >
-                <Link
-                  href="/registruotis"
-                  className="group relative overflow-hidden rounded-xl px-8 py-4 text-sm font-medium text-white shadow-lg transition-all duration-300 hover:shadow-[0_0_30px_rgba(99,235,37,0.7)] border border-white/10 w-full sm:w-auto flex items-center justify-center"
-                >
-                  <span className="relative z-10 flex items-center">
-                    Pradėti nemokamai
-                    <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
-                  </span>
-                  <span className="absolute inset-0 z-0 bg-gradient-to-r bg-rred from-bgreen to-bblue opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
-                </Link>
+                
               </motion.div>
 
               <motion.div
@@ -211,17 +202,16 @@ export default function HeroSection() {
           >
             <div className="relative">
               {/* Glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-[#2563EB] via-[#EB2563] to-[#63EB25] rounded-2xl blur-xl opacity-50 animate-pulse"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-2xl blur-xl opacity-50 animate-pulse"></div>
 
               {/* Dashboard mockup */}
               <DashboardMockup/>
 
-              {/* Floating elements for visual interest */}
+              {/* Floating elements*/}
               <motion.div
                 className="absolute -top-6 -right-6 h-12 w-12 rounded-full bg-gradient-to-r from-[#2563EB] to-[#63EB25] p-[2px] hidden md:block"
                 animate={{
                   y: [0, -10, 0],
-                  rotate: [0, 5, 0],
                 }}
                 transition={{
                   duration: 4,
@@ -238,7 +228,6 @@ export default function HeroSection() {
                 className="absolute -bottom-4 -left-4 h-16 w-16 rounded-full bg-gradient-to-r from-[#EB2563] to-[#2563EB] p-[2px] hidden md:block"
                 animate={{
                   y: [0, 10, 0],
-                  rotate: [0, -5, 0],
                 }}
                 transition={{
                   duration: 5,
