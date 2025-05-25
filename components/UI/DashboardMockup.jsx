@@ -17,7 +17,7 @@ export default function DashboardMockup() {
     >
       <div className="rounded-xl overflow-hidden">
         {/* Dashboard header */}
-        <div className="bg-gradient-to-r from-[#2563EB] to-[#EB2563] p-4 rounded-t-xl">
+        <div className="bg-gradient-to-r from-secondary to-accent p-4 rounded-t-xl">
           <div className="flex items-center justify-between">
             <h3 className="text-lg font-medium text-white">Analitika</h3>
             <button

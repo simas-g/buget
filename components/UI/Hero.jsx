@@ -1,31 +1,13 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
+import { useEffect, useRef } from "react";
+
 import { motion } from "framer-motion";
-import {
-  ArrowRight,
-  BarChart2,
-  PieChart,
-  TrendingUp,
-  Sparkles,
-  CheckCircle,
-} from "lucide-react";
+import { ArrowRight, TrendingUp, Sparkles } from "lucide-react";
 import DashboardMockup from "./DashboardMockup";
 import Button from "./Button";
 export default function Hero() {
-  const [scrollY, setScrollY] = useState(0);
   const canvasRef = useRef(null);
-
-  // Handle scroll for parallax effects
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   // Animated particles background
   useEffect(() => {
@@ -46,7 +28,7 @@ export default function Hero() {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: Math.random() * 5 + 1,
+        size: Math.random() * 5 + 5,
         speedX: (Math.random() - 0.5) * 0.5,
         speedY: (Math.random() - 0.5) * 0.5,
         color: colors[Math.floor(Math.random() * colors.length)],
@@ -88,37 +70,13 @@ export default function Hero() {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
-  const features = [
-    "Automatinis išlaidų sekimas",
-    "Išmanus biudžeto planavimas",
-    "Finansinės įžvalgos",
-    "Saugus duomenų šifravimas",
-  ];
-
   return (
     <section className="relative min-h-screen pt-24 pb-16 overflow-hidden">
       {/* Animated background */}
       <canvas ref={canvasRef} className="absolute inset-0 z-0 opacity-30" />
 
-      {/* Background gradient blobs */}
-      <div className="absolute inset-0 z-0">
-        <div
-          className="absolute top-[5%] left-[10%] w-[40vw] h-[40vw] rounded-full bg-[#2563EB] opacity-30 blur-[150px] animate-[pulse_15s_ease-in-out_infinite]"
-          style={{ transform: `translateY(${scrollY * 0.05}px)` }}
-        />
-        <div
-          className="absolute top-[30%] right-[5%] w-[35vw] h-[35vw] rounded-full bg-[#EB2563] opacity-30 blur-[150px] animate-[pulse_20s_ease-in-out_infinite_2s]"
-          style={{ transform: `translateY(${scrollY * -0.05}px)` }}
-        />
-        <div
-          className="absolute bottom-[10%] left-[20%] w-[30vw] h-[30vw] rounded-full bg-[#63EB25] opacity-30 blur-[150px] animate-[pulse_18s_ease-in-out_infinite_1s]"
-          style={{ transform: `translateY(${scrollY * 0.03}px)` }}
-        />
-      </div>
-
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-12 pt-10 md:pt-20">
+        <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-12 pt-10 md:pt-20">
           {/* Left column - Text content */}
           <motion.div
             className="w-full lg:w-1/2 text-center lg:text-left"
@@ -138,7 +96,7 @@ export default function Hero() {
               </span>
               <div className="relative inline-block mt-1">
                 {/* Animated gradient background */}
-                <span className="absolute -inset-1 bg-gradient-to-r from-[#2563EB] to-[#EB2563] opacity-50 blur-xl rounded-lg animate-pulse"></span>
+                <span className="absolute -inset-[1px] bg-gradient-to-r from-[#2563EB] to-[#EB2563] opacity-40 blur-3xl rounded-lg"></span>
 
                 {/* Animated gradient text */}
                 <span className="relative bg-gradient-to-r from-[#2563EB] to-[#EB2563] bg-clip-text text-transparent animate-gradient">
@@ -149,23 +107,9 @@ export default function Hero() {
 
             {/* Description */}
             <p className="text-lg md:text-xl text-white/80 mb-8 max-w-2xl mx-auto lg:mx-0">
-              Lengvai sekite savo išlaidas, planuokite biudžetą, gaukite mėnesines ataskaitas ir pasiekite savo finansinius tikslus.
+              Lengvai sek savo išlaidas, planuok biudžetą ir gauk
+              mėnesines ataskaitas. Užsiregistruok dabar ir pasiek savo finansinius tikslus.
             </p>
-            {/* Feature list */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8 max-w-2xl mx-auto lg:mx-0">
-              {features.map((feature, index) => (
-                <motion.div
-                  key={index}
-                  className="flex items-center"
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
-                >
-                  <CheckCircle className="h-5 w-5 text-primary mr-2 flex-shrink-0" />
-                  <span className="text-white/90">{feature}</span>
-                </motion.div>
-              ))}
-            </div>
 
             {/* CTA buttons */}
             <div className="flex flex-wrap gap-4 justify-center items-start lg:justify-start mb-8">
@@ -174,22 +118,31 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.8 }}
               >
-                <Button variant="ctaPrimary" className="flex items-center px-4 py-3 hover:shadow-[0_0_20px_var(--color-secondary)]">Išbandyti nemokamai
-                <ArrowRight className="ml-2 h-4 w-4" />
+                <Button
+                  variant="ctaPrimary"
+                  className="flex items-center px-4 py-3 hover:shadow-[0_0_20px_var(--color-secondary)]"
+                >
+                  Išbandyti nemokamai
+                  <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </motion.div>
-            
+
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.9 }}
               >
-                <Button variant="accent" className="px-4 py-3 hover:shadow-[0_0_20px_var(--color-accent)]">Sužinoti daugiau</Button>
+                <Button
+                  variant="accent"
+                  className="px-4 py-3 hover:shadow-[0_0_20px_var(--color-accent)]"
+                >
+                  Sužinoti daugiau
+                </Button>
               </motion.div>
             </div>
           </motion.div>
 
-          {/* Right column - Dashboard preview */}
+          {/* Dashboard preview */}
           <motion.div
             className="w-full lg:w-1/2"
             initial={{ opacity: 0, scale: 0.9 }}
@@ -198,10 +151,10 @@ export default function Hero() {
           >
             <div className="relative">
               {/* Glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-2xl blur-xl opacity-50 animate-pulse"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-secondary to-accent rounded-2xl blur-sm opacity-50"></div>
 
               {/* Dashboard mockup */}
-              <DashboardMockup/>
+              <DashboardMockup />
 
               {/* Floating elements*/}
               <motion.div
