@@ -1,0 +1,337 @@
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import {
+  Eye,
+  EyeOff,
+  Mail,
+  Lock,
+  User,
+  ArrowRight,
+  Sparkles,
+} from "lucide-react";
+import Button from "../UI/Button";
+import Label from "../UI/Label";
+import Input from "../UI/Input";
+
+function Checkbox({ id, checked, onCheckedChange, className = "" }) {
+  return (
+    <div className="relative">
+      <input
+        type="checkbox"
+        id={id}
+        checked={checked}
+        onChange={(e) => onCheckedChange(e.target.checked)}
+        className="sr-only"
+      />
+      <label
+        htmlFor={id}
+        className={`flex items-center justify-center w-5 h-5 border-2 rounded cursor-pointer transition-all duration-200 ${
+          checked
+            ? "bg-gradient-to-r from-[#2563EB] to-[#63EB25] border-transparent"
+            : "border-white/30 hover:border-white/50"
+        } ${className}`}
+      >
+        {checked && (
+          <svg
+            className="w-3 h-3 text-white"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M5 13l4 4L19 7"
+            />
+          </svg>
+        )}
+      </label>
+    </div>
+  );
+}
+
+export default function SignUpForm() {
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    agreeToTerms: false,
+  });
+  const [isLoading, setIsLoading] = useState(false);
+  const [errors, setErrors] = useState({});
+
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!formData.name.trim()) {
+      newErrors.name = "Vardas yra privalomas";
+    }
+
+    if (!formData.email) {
+      newErrors.email = "El. paštas yra privalomas";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = "Neteisingas el. pašto formatas";
+    }
+
+    if (!formData.password) {
+      newErrors.password = "Slaptažodis yra privalomas";
+    } else if (formData.password.length < 8) {
+      newErrors.password = "Slaptažodis turi būti bent 8 simbolių";
+    }
+
+    if (formData.password !== formData.confirmPassword) {
+      newErrors.confirmPassword = "Slaptažodžiai nesutampa";
+    }
+
+    if (!formData.agreeToTerms) {
+      newErrors.agreeToTerms = "Turite sutikti su naudojimo sąlygomis";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!validateForm()) return;
+
+    setIsLoading(true);
+
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+      console.log("Signing up with:", formData);
+      // Handle successful sign up
+    } catch (error) {
+      console.error("Sign up error:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleGoogleSignUp = async () => {
+    setIsLoading(true);
+
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+      console.log("Signing up with Google");
+      // Handle Google sign up
+    } catch (error) {
+      console.error("Google sign up error:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const updateFormData = (field, value) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+    if (errors[field]) {
+      setErrors((prev) => ({ ...prev, [field]: "" }));
+    }
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="relative"
+    >
+      {/* Gradient border effect */}
+      <div className="absolute -inset-0.5 bg-gradient-to-r from-[#2563EB] via-[#EB2563] to-[#63EB25] rounded-2xl blur opacity-30 animate-pulse"></div>
+
+      <div className="relative bg-[#0A0A20]/95 backdrop-blur-xl border border-white/10 rounded-2xl p-8 shadow-[0_0_30px_rgba(37,99,235,0.2)]">
+        <p className="text-white/70 mb-8">Susikurkite paskyrą</p>
+
+        {/* Registration Form */}
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="flex gap-4 flex-col sm:flex-row">
+            <div className="space-y-2">
+              <Label htmlFor="name">Vardas</Label>
+              <div className="relative">
+                <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-white/50" />
+                <Input
+                  id="name"
+                  type="text"
+                  value={formData.name}
+                  onChange={(e) => updateFormData("name", e.target.value)}
+                  placeholder="Jūsų vardas"
+                  className="pl-10 h-12"
+                  error={!!errors.name}
+                />
+              </div>
+
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="email">El. paštas</Label>
+              <div className="relative">
+                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-white/50" />
+                <Input
+                  id="email"
+                  value={formData.email}
+                  onChange={(e) => updateFormData("email", e.target.value)}
+                  placeholder="jusu@email.com"
+                  className="pl-10 h-12"
+                  error={!!errors.email}
+                />
+              </div>
+      
+            </div>
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="password">Slaptažodis</Label>
+            <div className="relative">
+              <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-white/50" />
+              <Input
+                id="password"
+                type={showPassword ? "text" : "password"}
+                value={formData.password}
+                onChange={(e) => updateFormData("password", e.target.value)}
+                placeholder="••••••••"
+                className="pl-10 pr-10 h-12"
+                error={!!errors.password}
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-white/50 hover:text-white/80 transition-colors"
+              >
+                {showPassword ? (
+                  <EyeOff className="h-5 w-5" />
+                ) : (
+                  <Eye className="h-5 w-5" />
+                )}
+              </button>
+            </div>
+            
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="confirmPassword">Pakartokite slaptažodį</Label>
+            <div className="relative">
+              <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-white/50" />
+              <Input
+                id="confirmPassword"
+                type={showConfirmPassword ? "text" : "password"}
+                value={formData.confirmPassword}
+                onChange={(e) =>
+                  updateFormData("confirmPassword", e.target.value)
+                }
+                placeholder="••••••••"
+                className="pl-10 pr-10 h-12"
+                error={!!errors.confirmPassword}
+              />
+              <button
+                type="button"
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-white/50 hover:text-white/80 transition-colors"
+              >
+                {showConfirmPassword ? (
+                  <EyeOff className="h-5 w-5" />
+                ) : (
+                  <Eye className="h-5 w-5" />
+                )}
+              </button>
+            </div>
+            
+          </div>
+
+          {/* Terms and Conditions */}
+          <div className="space-y-2">
+            <div className="flex items-start space-x-3">
+              <Checkbox
+                id="agreeToTerms"
+                checked={formData.agreeToTerms}
+                onCheckedChange={(checked) =>
+                  updateFormData("agreeToTerms", checked)
+                }
+                className="mt-1"
+              />
+              <Label
+                htmlFor="agreeToTerms"
+                className="text-sm text-white/80 leading-relaxed cursor-pointer"
+              >
+                Sutinku su{" "}
+                <Link
+                  href="/terms"
+                  className="text-[#2563EB] hover:text-[#63EB25] transition-colors"
+                >
+                  naudojimo sąlygomis
+                </Link>{" "}
+                ir{" "}
+                <Link
+                  href="/privacy"
+                  className="text-[#2563EB] hover:text-[#63EB25] transition-colors"
+                >
+                  privatumo politika
+                </Link>
+              </Label>
+            </div>
+            
+          </div>
+
+          {/* Submit Button */}
+          <Button
+            type="submit"
+            variant="primary"
+            disabled={isLoading}
+            className="w-full flex justify-center h-12 group"
+          >
+            <span className="flex items-center">
+              {isLoading ? (
+                <>
+                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                  Registruojamasi...
+                </>
+              ) : (
+                <>
+                  <Sparkles className="mr-2 h-5 w-5" />
+                  Sukurti paskyrą
+                  <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+                </>
+              )}
+            </span>
+          </Button>
+        </form>
+
+        {/* Sign In Link */}
+        <div className="mt-8 text-center">
+          <p className="text-white/70">
+            Jau turite paskyrą?{" "}
+            <Link
+              href="/prisijungti"
+              className="text-primary hover:text-primary font-medium transition-colors duration-300 relative "
+            >
+              Prisijungti čia
+            </Link>
+          </p>
+        </div>
+
+        {/* Additional Links */}
+        <div className="mt-6 flex justify-center space-x-6 text-sm">
+          <Link
+            href="/privacy"
+            className="text-white/50 hover:text-white/80 transition-colors duration-300"
+          >
+            Privatumo politika
+          </Link>
+          <Link
+            href="/terms"
+            className="text-white/50 hover:text-white/80 transition-colors duration-300"
+          >
+            Naudojimo sąlygos
+          </Link>
+        </div>
+      </div>
+    </motion.div>
+  );
+}

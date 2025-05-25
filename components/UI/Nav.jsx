@@ -64,7 +64,7 @@ export default function Navigation() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="text-white/80 hover:text-white transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gradient-to-r after:from-[#2563EB] after:to-[#EB2563] after:transition-all hover:after:w-full"
+                  className="text-white/80 hover:text-white transition-colors relative"
                 >
                   {link.label}
                 </Link>
@@ -72,9 +72,17 @@ export default function Navigation() {
             ))}
           </ul>
 
-          <div className="flex items-center space-x-4">
-            <Button variant="basic">Prisijungti</Button>
-            <Button variant="primaryGradient">Registruotis</Button>
+          <div className="flex items-center justify-center space-x-4">
+            <Link href="/prisijungti">
+              <Button variant="basic" className="px-4 py-2 w-full">
+                Prisijungti
+              </Button>
+            </Link>
+            <Link href="/registracija">
+              <Button variant="primaryGradient" className="px-4 py-2 w-full">
+                Registruotis
+              </Button>
+            </Link>
           </div>
         </div>
 
@@ -137,15 +145,24 @@ export default function Navigation() {
                 transition={{ duration: 0.3, delay: 0.3 }}
                 className="flex flex-col space-y-4 mt-12"
               >
-                <Button variant="basic" onClick={() => setIsOpen(false)}>
-                  Prisijungti
-                </Button>
-                <Button
-                  variant="primaryGradient"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Registruotis
-                </Button>
+                <Link href="/prisijungti">
+                  <Button
+                    variant="basic"
+                    onClick={() => setIsOpen(false)}
+                    className="px-4 py-2 w-full"
+                  >
+                    Prisijungti
+                  </Button>
+                </Link>
+                <Link href="/registracija">
+                  <Button
+                    variant="primaryGradient"
+                    onClick={() => setIsOpen(false)}
+                    className="px-4 py-2"
+                  >
+                    Registruotis
+                  </Button>
+                </Link>
               </motion.div>
             </motion.div>
           )}

@@ -13,8 +13,8 @@ import {
   CheckCircle,
 } from "lucide-react";
 import DashboardMockup from "./DashboardMockup";
-
-export default function HeroSection() {
+import Button from "./Button";
+export default function Hero() {
   const [scrollY, setScrollY] = useState(0);
   const canvasRef = useRef(null);
 
@@ -151,7 +151,6 @@ export default function HeroSection() {
             <p className="text-lg md:text-xl text-white/80 mb-8 max-w-2xl mx-auto lg:mx-0">
               Lengvai sekite savo išlaidas, planuokite biudžetą, gaukite mėnesines ataskaitas ir pasiekite savo finansinius tikslus.
             </p>
-
             {/* Feature list */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8 max-w-2xl mx-auto lg:mx-0">
               {features.map((feature, index) => (
@@ -162,7 +161,7 @@ export default function HeroSection() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
                 >
-                  <CheckCircle className="h-5 w-5 text-[#63EB25] mr-2 flex-shrink-0" />
+                  <CheckCircle className="h-5 w-5 text-primary mr-2 flex-shrink-0" />
                   <span className="text-white/90">{feature}</span>
                 </motion.div>
               ))}
@@ -175,20 +174,17 @@ export default function HeroSection() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.8 }}
               >
-                
+                <Button variant="ctaPrimary" className="flex items-center px-4 py-3 hover:shadow-[0_0_20px_var(--color-secondary)]">Išbandyti nemokamai
+                <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
               </motion.div>
-
+            
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.9 }}
               >
-                <Link
-                  href="#kaip-tai-veikia"
-                  className="rounded-xl border-2 text-secondary border-secondary bg-transparent px-8 py-4 text-sm font-medium text- transition-all duration-300 hover:bg-bred hover:shadow-[0_0_30px_rgba(235,37,99,0.7)] w-full sm:w-auto flex items-center justify-center"
-                >
-                  Sužinoti daugiau
-                </Link>
+                <Button variant="accent" className="px-4 py-3 hover:shadow-[0_0_20px_var(--color-accent)]">Sužinoti daugiau</Button>
               </motion.div>
             </div>
           </motion.div>
