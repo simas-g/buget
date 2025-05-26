@@ -3,7 +3,7 @@ export default function Button({ children, variant, className, ...props }) {
     accent: "border-accent border text-accent hover:bg-accent hover:text-white transition-colors duration-300",
     ctaPrimary: "bg-[#2563EB] text-white rounded-lg",
     primaryGradient:
-      "bg-gradient-to-r from-primary to-secondary text-white hover:shadow-[0_0_20px_rgba(99,235,37,0.5)] transition-all duration-300",
+      "bg-gradient-to-r from-secondary to-accent text-white hover:shadow-[0_0_20px_var(--color-secondary)] transition-all duration-300",
     basic:
       "text-white border hover:bg-white hover:text-gray-700 transition-all duration-300",
     primary:

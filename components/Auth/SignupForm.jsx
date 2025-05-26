@@ -12,10 +12,29 @@ import {
   ArrowRight,
   Sparkles,
 } from "lucide-react";
-import Button from "../UI/Button";
 import Label from "../UI/Label";
 import Input from "../UI/Input";
+import GlowingCard from "../UI/GlowingCard";
+function Button({ variant = "primary", className = "", children, ...props }) {
+  const baseClasses =
+    "inline-flex cursor-pointer items-center justify-center rounded-xl font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#0A0A20] disabled:opacity-50 disabled:cursor-not-allowed";
 
+  const variantClasses = {
+    primary:
+      "bg-gradient-to-r from-secondary to-accent text-white hover:shadow-[0_0_20px_var(--color-secondary)] focus:ring-[#2563EB]",
+    outline:
+      "border border-white/20 bg-white/5 text-white hover:bg-white/10 hover:border-white/30 focus:ring-white/20",
+  };
+
+  return (
+    <button
+      className={`${baseClasses} ${variantClasses[variant]} ${className}`}
+      {...props}
+    >
+      {children}
+    </button>
+  );
+}
 function Checkbox({ id, checked, onCheckedChange, className = "" }) {
   return (
     <div className="relative">
@@ -30,7 +49,7 @@ function Checkbox({ id, checked, onCheckedChange, className = "" }) {
         htmlFor={id}
         className={`flex items-center justify-center w-5 h-5 border-2 rounded cursor-pointer transition-all duration-200 ${
           checked
-            ? "bg-gradient-to-r from-[#2563EB] to-[#63EB25] border-transparent"
+            ? "bg-primary border-transparent"
             : "border-white/30 hover:border-white/50"
         } ${className}`}
       >
@@ -138,18 +157,8 @@ export default function SignUpForm() {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="relative"
-    >
-      {/* Gradient border effect */}
-      <div className="absolute -inset-0.5 bg-gradient-to-r from-[#2563EB] via-[#EB2563] to-[#63EB25] rounded-2xl blur opacity-30 animate-pulse"></div>
-
-      <div className="relative bg-[#0A0A20]/95 backdrop-blur-xl border border-white/10 rounded-2xl p-8 shadow-[0_0_30px_rgba(37,99,235,0.2)]">
+    <GlowingCard>
         <p className="text-white/70 mb-8">Susikurkite paskyrą</p>
-
         {/* Registration Form */}
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="flex gap-4 flex-col sm:flex-row">
@@ -247,34 +256,32 @@ export default function SignUpForm() {
 
           {/* Terms and Conditions */}
           <div className="space-y-2">
-            <div className="flex items-start space-x-3">
+            <div className="flex items-center justify-center space-x-3">
               <Checkbox
                 id="agreeToTerms"
                 checked={formData.agreeToTerms}
                 onCheckedChange={(checked) =>
                   updateFormData("agreeToTerms", checked)
                 }
-                className="mt-1"
               />
-              <Label
-                htmlFor="agreeToTerms"
-                className="text-sm text-white/80 leading-relaxed cursor-pointer"
+              <span
+                className="text-sm text-white/80 leading-relaxed "
               >
                 Sutinku su{" "}
                 <Link
-                  href="/terms"
-                  className="text-[#2563EB] hover:text-[#63EB25] transition-colors"
-                >
-                  naudojimo sąlygomis
-                </Link>{" "}
-                ir{" "}
-                <Link
                   href="/privacy"
-                  className="text-[#2563EB] hover:text-[#63EB25] transition-colors"
+                  className="text-secondary cursor-pointer"
                 >
                   privatumo politika
                 </Link>
-              </Label>
+                {" ir "}
+                <Link
+                  href="/terms"
+                  className="text-secondary cursor-pointer"
+                >
+                  naudojimo sąlygomis
+                </Link>{" "}
+              </span>
             </div>
             
           </div>
@@ -309,7 +316,7 @@ export default function SignUpForm() {
             Jau turite paskyrą?{" "}
             <Link
               href="/prisijungti"
-              className="text-primary hover:text-primary font-medium transition-colors duration-300 relative "
+              className="text-secondary font-medium relative "
             >
               Prisijungti čia
             </Link>
@@ -331,7 +338,6 @@ export default function SignUpForm() {
             Naudojimo sąlygos
           </Link>
         </div>
-      </div>
-    </motion.div>
+    </GlowingCard>
   );
 }

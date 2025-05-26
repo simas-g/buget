@@ -13,7 +13,7 @@ export default function Hero() {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-
+    console.log('we are rendering the canvas')
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
@@ -116,7 +116,7 @@ export default function Hero() {
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.8 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
               >
                 <Button
                   variant="ctaPrimary"
@@ -130,7 +130,7 @@ export default function Hero() {
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.9 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
               >
                 <Button
                   variant="accent"
@@ -147,7 +147,7 @@ export default function Hero() {
             className="w-full lg:w-1/2"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
           >
             <div className="relative">
               {/* Glow effect */}
