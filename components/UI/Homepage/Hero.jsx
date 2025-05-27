@@ -4,8 +4,8 @@ import { useEffect, useRef } from "react";
 
 import { motion } from "framer-motion";
 import { ArrowRight, TrendingUp, Sparkles } from "lucide-react";
-import DashboardMockup from "./DashboardMockup";
-import Button from "./Button";
+import DashboardMockup from "../DashboardMockup";
+import Button from "../Button";
 export default function Hero() {
   const canvasRef = useRef(null);
 
@@ -76,10 +76,10 @@ export default function Hero() {
       <canvas ref={canvasRef} className="absolute inset-0 z-0 opacity-30" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-12 pt-10 md:pt-20">
+        <div className="flex flex-col items-center justify-between gap-12 pt-10 md:pt-20">
           {/* Left column - Text content */}
           <motion.div
-            className="w-full lg:w-1/2 text-center lg:text-left"
+            className="w-full text-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -106,13 +106,13 @@ export default function Hero() {
             </h1>
 
             {/* Description */}
-            <p className="text-lg md:text-xl text-white/80 mb-8 max-w-2xl mx-auto lg:mx-0">
+            <p className="text-lg md:text-xl text-white/80 mb-8 max-w-2xl mx-auto">
               Lengvai sek savo išlaidas, planuok biudžetą ir gauk
               mėnesines ataskaitas. Užsiregistruok dabar ir pasiek savo finansinius tikslus.
             </p>
 
             {/* CTA buttons */}
-            <div className="flex flex-wrap gap-4 justify-center items-start lg:justify-start mb-8">
+            <div className="flex flex-wrap gap-4 justify-center items-start mb-8">
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -144,7 +144,7 @@ export default function Hero() {
 
           {/* Dashboard preview */}
           <motion.div
-            className="w-full lg:w-1/2"
+            className="w-full max-w-3xl"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.5 }}
