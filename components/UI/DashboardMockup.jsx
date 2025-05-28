@@ -53,7 +53,7 @@ export default function DashboardMockup() {
               <span className={`text-sm font-medium transition-colors duration-500 ${currentTheme.text.secondary}`}>
                 Mėnesio balansas
               </span>
-              <span className={`text-2xl font-bold transition-colors duration-500 ${currentTheme.text.primary}`}>
+              <span className={`sm:text-2xl text-lg font-bold transition-colors duration-500 ${currentTheme.text.primary}`}>
                 +24,562.00 €
               </span>
             </div>
@@ -65,7 +65,7 @@ export default function DashboardMockup() {
           </div>
 
           {/* Stats cards */}
-          <div className="mb-6 grid grid-cols-3 gap-4">
+          <div className="mb-6 grid sm:grid-cols-3 grid-cols-2 gap-4">
             <motion.div
               className={`rounded-lg p-4 backdrop-blur-sm border transition-all duration-500 group ${currentTheme.card} ${currentTheme.cardHover.blue}`}
               whileHover={{ y: -5, transition: { duration: 0.2 } }}
@@ -85,7 +85,7 @@ export default function DashboardMockup() {
               <p className="text-xs text-[#EB2563]">-4.3%</p>
             </motion.div>
             <motion.div
-              className={`rounded-lg p-4 backdrop-blur-sm border transition-all duration-500 group ${currentTheme.card} ${currentTheme.cardHover.green}`}
+              className={`rounded-lg p-4 col-span-2 sm:col-span-1 backdrop-blur-sm border transition-all duration-500 group ${currentTheme.card} ${currentTheme.cardHover.green}`}
               whileHover={{ y: -5, transition: { duration: 0.2 } }}
             >
               <TrendingUp className="mb-2 h-6 w-6 text-[#63EB25] group-hover:text-[#EB2563] transition-colors" />

@@ -1,11 +1,13 @@
 import Hero from "@/components/UI/Homepage/Hero";
+import HowItWorks from "@/components/UI/Homepage/HowItWorks";
 import Nav from "@/components/UI/Nav";
 
 export default function Home() {
   return (
-    <div className=" bg-black">
+    <div className="bg-black h-fit pb-50 px-2">
       <Nav/>
       <Hero/>
+      <HowItWorks/>
     </div>
   );
 }
