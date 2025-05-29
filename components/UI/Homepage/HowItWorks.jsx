@@ -7,7 +7,6 @@ import {
   Shield,
   Tag,
 } from "lucide-react";
-import { motion } from "framer-motion";
 import InfoCard from "./InfoCard";
 const steps = [
   {
