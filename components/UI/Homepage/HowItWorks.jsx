@@ -1,4 +1,3 @@
-"use client";
 import {
   Check,
   CircleCheck,
@@ -52,10 +51,8 @@ const steps = [
 ];
 export default function HowItWorks() {
   return (
-    <motion.section
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+    <section
+      
       className="w-full text-white flex-col flex h-auto items-center justify-center"
     >
       <h2 className=" text-center font-bold sm:text-4xl text-2xl">
@@ -87,6 +84,6 @@ export default function HowItWorks() {
           <InfoCard {...step} id={index} key={step.title} />
         ))}
       </div>
-    </motion.section>
+    </section>
   );
 }

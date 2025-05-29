@@ -23,10 +23,10 @@ export default function InfoCard({ title, description, icon, list, id }) {
       ? "from-primary to-secondary "
       : "from-accent to-primary";
   return (
-    <div className="relative hover:-translate-y-2 shadow-xl w-full duration-300 rounded-lg text-white border border-gray-600 after:backdrop-blur-2xl after:absolute after:-inset-1 after:bg-secondary/60 after:z-0 after:blur-sm after:rounded-lg">
+    <div className="relative hover:-translate-y-2 shadow-xl w-full duration-300 rounded-lg text-white border border-gray-600 after:backdrop-blur-2xl after:absolute after:-inset-1 after:bg-gradient-to-b after:from-secondary/40 after:to-accent/20 after:z-0 after:blur-sm after:rounded-lg">
       {/* Content wrapper with higher z-index */}
-      <div className="relative z-10 bg-[#1A1A40] p-4 rounded-md  space-y-3 h-full">
-        <span className="w-6 h-6 rounded-full bg-gray-700 flex items-center justify-center text-xs font-bold">
+      <div className="relative z-10 bg-[#1A1A40]/90 p-4 rounded-md  space-y-3 h-full">
+        <span className="w-6 h-6 rounded-full border border-gray-400 bg-gray-700 flex items-center justify-center text-xs font-bold">
           {id + 1}
         </span>
         <div
