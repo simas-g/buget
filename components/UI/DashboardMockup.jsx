@@ -13,7 +13,7 @@ export default function DashboardMockup() {
 
   return (
     <div
-      className={`relative rounded-2xl backdrop-blur-xl border p-1 transition-all duration-500 ${currentTheme.container}`}
+      className={`relative rounded-2xl border p-1 transition-all duration-500 ${currentTheme.container}`}
     >
       <div className="rounded-xl overflow-hidden">
         {/* Dashboard header */}

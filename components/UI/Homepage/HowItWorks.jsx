@@ -1,46 +1,55 @@
 "use client";
-import { Check, CircleCheck, Download, GitGraph, Info, Shield, Tag } from "lucide-react";
+import {
+  Check,
+  CircleCheck,
+  Download,
+  GitGraph,
+  Info,
+  Shield,
+  Tag,
+} from "lucide-react";
 import { motion } from "framer-motion";
 import InfoCard from "./InfoCard";
 const steps = [
   {
     title: "Prisijunk prie savo banko",
-    description: "Susiek savo banko sąskaitą su GoCardless - Europos lyderio mokėjimų srityje.",
+    description:
+      "Susiek savo banko sąskaitą su GoCardless - Europos lyderio mokėjimų srityje.",
     icon: "Shield",
     list: [
       "Saugus ir patikimas prisijungimas",
       "PSD2 sertifikuotas",
       "Greitas ir paprastas procesas",
     ],
-  }, 
+  },
   {
     title: "Automatinis operacijų importas",
-    description: "Visi tavo mokėjimai bus automatiškai importuojami į mūsų sistemą.",
+    description:
+      "Visi tavo mokėjimai bus automatiškai importuojami į mūsų sistemą.",
     icon: "Download",
     list: [
       "Duomenų sinchronizavimas realiu laiku",
-    ]
+      "Automatinis duomenų atnaujinimas",
+    ],
   },
   {
     title: "Išmanus kategorizavimas",
-    description: "Susikurk kategorijas ir priskirk prie jų visas savo banko operacijas.",
+    description:
+      "Susikurk kategorijas ir priskirk prie jų visas savo banko operacijas.",
     icon: "Tag",
     list: [
       "Individualios kategorijos",
-      "Galimybė išskaidyti operacijas į kelias kategorijas"
-    ]
+      "Galimybė išskaidyti operacijas į kelias kategorijas",
+    ],
   },
   {
     title: "Mėnesio analizė",
-    description: "Mėnesio pabaigoje gauk išsamią skaitinę ir grafinę pinigų srauto analizę su DI įžvalgomis.",
+    description:
+      "Mėnesio pabaigoje gauk išsamią skaitinę ir grafinę pinigų srauto analizę su DI įžvalgomis.",
     icon: "GitGraph",
-    list: [
-      "Grafinė analizė",
-      "Išlaidų tendencijos",
-      "DI įžvalgos"
-    ]
-  }
-]
+    list: ["Grafinė analizė", "Išlaidų tendencijos", "DI įžvalgos"],
+  },
+];
 export default function HowItWorks() {
   return (
     <motion.section
@@ -57,7 +66,7 @@ export default function HowItWorks() {
           Štai kaip automatizuojam visus tavo finansus.
         </p>
         {/**GOCARDLESS integration*/}
-        <div className="w-full border-[0.5px] border-gray-400 relative p-4 gap-x-4 bg-[#1A1A40]/70 flex flex-wrap items-center justify-center gap-1 backdrop:blur-xl rounded-xl">
+        <div className="w-fit hidden sm:flex border-gray-400 relative p-4 gap-x-4 flex-wrap items-center justify-center gap-1 backdrop:blur-xl rounded-xl">
           <div className="px-3 py-2 rounded-md bg-white text-black font-bold w-fit">
             <span>GoCardless</span>
           </div>
@@ -73,9 +82,9 @@ export default function HowItWorks() {
       </div>
 
       {/** Steps */}
-      <div>
+      <div className="container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 px-8 sm:px-10 sm:gap-6 mt-10 pb-10 relative">
         {steps.map((step, index) => (
-          <InfoCard {...step} id={index} key={step.title}/>
+          <InfoCard {...step} id={index} key={step.title} />
         ))}
       </div>
     </motion.section>

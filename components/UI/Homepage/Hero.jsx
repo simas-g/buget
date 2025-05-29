@@ -13,7 +13,6 @@ export default function Hero() {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    console.log('we are rendering the canvas')
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
