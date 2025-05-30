@@ -34,7 +34,7 @@ export default function InfoCard({ title, description, icon, list, id }) {
       <div className={`absolute -inset-px bg-gradient-to-r ${gradientColor} rounded-xl opacity-50 animate-pulse`}></div>
       
       {/* Main card */}
-      <div className={`relative h-full bg-[#0A0A20]/90 backdrop-blur-xl rounded-xl border border-primary/20 overflow-hidden transform transition-all duration-500 hover:scale-[1.02] hover:-translate-y-2 ${glowColor} hover:shadow-2xl`}>
+      <div className={`relative h-full bg-[#0A0A20]/100 backdrop-blur-xl rounded-xl border border-primary/20 overflow-hidden transform transition-all duration-500 hover:scale-[1.02] hover:-translate-y-2 ${glowColor} hover:shadow-2xl`}>
         
         {/* Animated background pattern */}
         <div className="absolute inset-0 opacity-10">

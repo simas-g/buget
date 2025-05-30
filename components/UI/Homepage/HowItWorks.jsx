@@ -62,7 +62,7 @@ export default function HowItWorks() {
           Štai kaip automatizuojam visus tavo finansus.
         </p>
         {/**GOCARDLESS integration*/}
-        <div className="w-fit hidden sm:flex border-gray-400 relative p-4 gap-x-4 flex-wrap items-center justify-center gap-1 backdrop:blur-xl rounded-xl">
+        <div className="w-fit flex border-gray-400 relative p-4 gap-x-4 flex-wrap items-center justify-center gap-1 gap-y-4 backdrop:blur-xl rounded-xl">
           <div className="px-3 py-2 rounded-md bg-white text-black font-bold w-fit">
             <span>GoCardless</span>
           </div>
