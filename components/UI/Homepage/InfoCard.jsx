@@ -2,11 +2,9 @@
 import { motion } from "framer-motion";
 import React from "react";
 import {
-  Check,
   CheckCircle,
   Download,
   GitGraph,
-  Info,
   Shield,
   Tag,
 } from "lucide-react";
@@ -17,7 +15,6 @@ const Icons = {
   GitGraph: GitGraph,
   Tag: Tag,
 };
-
 export default function InfoCard({ title, description, icon, list, id }) {
   const IconComponent = Icons[icon];
 
@@ -35,6 +32,7 @@ export default function InfoCard({ title, description, icon, list, id }) {
       transition={{ delay: id * 0.1 + id * 0.05 }}
       className="group relative w-full"
     >
+
       {/* Outer glow effect */}
       <div
         className={`absolute -inset-0.5 bg-gradient-to-r ${gradientColor} rounded-xl blur opacity-30 group-hover:opacity-60 transition duration-500`}

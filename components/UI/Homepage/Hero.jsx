@@ -1,11 +1,11 @@
 "use client";
-
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, TrendingUp, Sparkles } from "lucide-react";
 import DashboardMockup from "../DashboardMockup";
 import Button from "../Button";
 import Image from "next/image";
+import Link from "next/link";
 export default function Hero() {
   const canvasRef = useRef(null);
 
@@ -132,12 +132,14 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
               >
-                <Button
-                  variant="accent"
-                  className="px-4 py-3 hover:shadow-[0_0_20px_var(--color-accent)]"
-                >
-                  Sužinoti daugiau
-                </Button>
+                <Link href="#kaip-tai-veikia">
+                  <Button
+                    variant="accent"
+                    className="px-4 py-3 hover:shadow-[0_0_20px_var(--color-accent)]"
+                  >
+                    Sužinoti daugiau
+                  </Button>
+                </Link>
               </motion.div>
             </div>
           </motion.div>

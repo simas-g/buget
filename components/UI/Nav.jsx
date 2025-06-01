@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Button from "./Button";
-export default function Navigation() {
+export default function Navigation({ navLinks = [], loginButtons = false }) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
@@ -16,6 +16,8 @@ export default function Navigation() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
+    handleScroll();
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -36,12 +38,6 @@ export default function Navigation() {
       document.body.style.overflow = "unset";
     };
   }, [isOpen]);
-
-  const navLinks = [
-    { href: "#kaip-tai-veikia", label: "Kaip tai veikia?" },
-    { href: "#kainos", label: "Kainos" },
-    { href: "/registracija", label: "Skydelis" },
-  ];
 
   return (
     <header
@@ -71,19 +67,20 @@ export default function Navigation() {
               </li>
             ))}
           </ul>
-
-          <div className="flex items-center justify-center space-x-4">
-            <Link href="/prisijungti">
-              <Button variant="basic" className="px-4 py-2 w-full">
-                Prisijungti
-              </Button>
-            </Link>
-            <Link href="/registracija">
-              <Button variant="primaryGradient" className="px-4 py-2 w-full">
-                Registruotis
-              </Button>
-            </Link>
-          </div>
+          {loginButtons === true && (
+            <div className="flex items-center justify-center space-x-4">
+              <Link href="/prisijungti">
+                <Button variant="basic" className="px-4 py-2 w-full">
+                  Prisijungti
+                </Button>
+              </Link>
+              <Link href="/registracija">
+                <Button variant="primaryGradient" className="px-4 py-2 w-full">
+                  Registruotis
+                </Button>
+              </Link>
+            </div>
+          )}
         </div>
 
         {/* Mobile Menu Button */}
