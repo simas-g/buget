@@ -2,21 +2,22 @@ import { motion } from "framer-motion";
 import { BarChart2, PieChart, TrendingUp } from "lucide-react";
 import { useState } from "react";
 import { Sun, Moon } from "lucide-react";
-import {themes} from "@/lib/themes"
+import { themes } from "@/lib/themes";
+
 export default function DashboardMockup() {
-  const [theme, setTheme] = useState("dark")
-  const currentTheme = themes[theme]
+  const [theme, setTheme] = useState("dark");
+  const currentTheme = themes[theme];
 
   const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"))
-  }
+    setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"));
+  };
 
   return (
     <div
       className={`relative rounded-2xl border p-1 transition-all duration-500 ${currentTheme.container}`}
     >
       <div className="rounded-xl overflow-hidden">
-        {/* Dashboard header */}
+        {/* Header */}
         <div className="bg-gradient-to-r from-secondary to-accent p-4 rounded-t-xl">
           <div className="flex items-center justify-between">
             <h3 className="text-lg font-medium text-white">Analitika</h3>
@@ -33,7 +34,7 @@ export default function DashboardMockup() {
                   stiffness: 700,
                   damping: 30,
                 }}
-                className="h-6 w-6  bg-white rounded-full flex items-center justify-center shadow-sm"
+                className="h-6 w-6 bg-white rounded-full flex items-center justify-center shadow-sm"
               >
                 {theme === "dark" ? (
                   <Moon className="h-3 w-3 text-gray-700" />
@@ -45,61 +46,89 @@ export default function DashboardMockup() {
           </div>
         </div>
 
-        {/* Dashboard content */}
-        <div className={`p-6 transition-all duration-500 ${currentTheme.content}`}>
+        {/* Content */}
+        <div
+          className={`p-6 transition-all duration-500 ${currentTheme.content}`}
+        >
           {/* Balance overview */}
           <div className="mb-8 space-y-6">
             <div className="flex items-center justify-between">
-              <span className={`text-sm font-medium transition-colors duration-500 ${currentTheme.text.secondary}`}>
+              <span
+                className={`text-sm font-medium transition-colors duration-500 ${currentTheme.text.secondary}`}
+              >
                 Mėnesio balansas
               </span>
-              <span className={`sm:text-2xl text-lg font-bold transition-colors duration-500 ${currentTheme.text.primary}`}>
+              <span
+                className={`sm:text-2xl text-lg font-bold transition-colors duration-500 ${currentTheme.text.primary}`}
+              >
                 +24,562.00 €
               </span>
             </div>
             <div
               className={`h-3 w-full rounded-full p-[1px] transition-colors duration-500 ${currentTheme.progressBg}`}
             >
-              <div className="h-full w-3/4 rounded-full bg-gradient-to-r from-[#2563EB] to-[#63EB25] animate-pulse" />
+              <div className="h-full w-3/4 rounded-full bg-gradient-to-r from-[#2563EB] to-[#63EB25]" />
             </div>
           </div>
 
-          {/* Stats cards */}
+          {/* Stat cards */}
           <div className="mb-6 grid sm:grid-cols-3 grid-cols-2 gap-4">
-            <motion.div
-              className={`rounded-lg p-4 backdrop-blur-sm border transition-all duration-500 group ${currentTheme.card} ${currentTheme.cardHover.blue}`}
-              whileHover={{ y: -5, transition: { duration: 0.2 } }}
+            <div
+              className={`rounded-lg p-4 backdrop-blur-sm border transition-all duration-500 ${currentTheme.card}`}
             >
-              <BarChart2 className="mb-2 h-6 w-6 text-[#2563EB] group-hover:text-[#63EB25] transition-colors" />
-              <p className={`text-xs transition-colors duration-500 ${currentTheme.text.secondary}`}>Pajamos</p>
-              <p className={`text-lg font-bold transition-colors duration-500 ${currentTheme.text.primary}`}>8,350 €</p>
+              <BarChart2 className="mb-2 h-6 w-6 text-[#2563EB]" />
+              <p
+                className={`text-xs transition-colors duration-500 ${currentTheme.text.secondary}`}
+              >
+                Pajamos
+              </p>
+              <p
+                className={`text-lg font-bold transition-colors duration-500 ${currentTheme.text.primary}`}
+              >
+                8,350 €
+              </p>
               <p className="text-xs text-[#63EB25]">+12.5%</p>
-            </motion.div>
-            <motion.div
-              className={`rounded-lg p-4 backdrop-blur-sm border transition-all duration-500 group ${currentTheme.card} ${currentTheme.cardHover.red}`}
-              whileHover={{ y: -5, transition: { duration: 0.2 } }}
+            </div>
+
+            <div
+              className={`rounded-lg p-4 backdrop-blur-sm border transition-all duration-500 ${currentTheme.card}`}
             >
-              <PieChart className="mb-2 h-6 w-6 text-[#EB2563] group-hover:text-[#2563EB] transition-colors" />
-              <p className={`text-xs transition-colors duration-500 ${currentTheme.text.secondary}`}>Išlaidos</p>
-              <p className={`text-lg font-bold transition-colors duration-500 ${currentTheme.text.primary}`}>3,450 €</p>
+              <PieChart className="mb-2 h-6 w-6 text-[#EB2563]" />
+              <p
+                className={`text-xs transition-colors duration-500 ${currentTheme.text.secondary}`}
+              >
+                Išlaidos
+              </p>
+              <p
+                className={`text-lg font-bold transition-colors duration-500 ${currentTheme.text.primary}`}
+              >
+                3,450 €
+              </p>
               <p className="text-xs text-[#EB2563]">-4.3%</p>
-            </motion.div>
-            <motion.div
-              className={`rounded-lg p-4 col-span-2 sm:col-span-1 backdrop-blur-sm border transition-all duration-500 group ${currentTheme.card} ${currentTheme.cardHover.green}`}
-              whileHover={{ y: -5, transition: { duration: 0.2 } }}
+            </div>
+
+            <div
+              className={`rounded-lg p-4 col-span-2 sm:col-span-1 backdrop-blur-sm border transition-all duration-500 ${currentTheme.card}`}
             >
-              <TrendingUp className="mb-2 h-6 w-6 text-[#63EB25] group-hover:text-[#EB2563] transition-colors" />
-              <p className={`text-xs transition-colors duration-500 ${currentTheme.text.secondary}`}>Santaupos</p>
-              <p className={`text-lg font-bold transition-colors duration-500 ${currentTheme.text.primary}`}>4,900 €</p>
+              <TrendingUp className="mb-2 h-6 w-6 text-[#63EB25]" />
+              <p
+                className={`text-xs transition-colors duration-500 ${currentTheme.text.secondary}`}
+              >
+                Santaupos
+              </p>
+              <p
+                className={`text-lg font-bold transition-colors duration-500 ${currentTheme.text.primary}`}
+              >
+                4,900 €
+              </p>
               <p className="text-xs text-[#63EB25]">+18.2%</p>
-            </motion.div>
+            </div>
           </div>
 
           {/* Recent transactions */}
           <div className="space-y-4">
-            <motion.div
-              className={`rounded-lg p-4 backdrop-blur-sm border transition-all duration-500 ${currentTheme.card} ${currentTheme.cardHover.blue}`}
-              whileHover={{ x: 5, transition: { duration: 0.2 } }}
+            <div
+              className={`rounded-lg p-4 backdrop-blur-sm border transition-all duration-500 ${currentTheme.card}`}
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
@@ -120,10 +149,14 @@ export default function DashboardMockup() {
                     </svg>
                   </div>
                   <div>
-                    <p className={`font-medium transition-colors duration-500 ${currentTheme.text.primary}`}>
+                    <p
+                      className={`font-medium transition-colors duration-500 ${currentTheme.text.primary}`}
+                    >
                       Atlyginimas
                     </p>
-                    <p className={`text-xs transition-colors duration-500 ${currentTheme.text.secondary}`}>
+                    <p
+                      className={`text-xs transition-colors duration-500 ${currentTheme.text.secondary}`}
+                    >
                       Šiandien, 10:45
                     </p>
                   </div>
@@ -132,10 +165,10 @@ export default function DashboardMockup() {
                   <p className="font-medium text-[#63EB25]">+5,400 €</p>
                 </div>
               </div>
-            </motion.div>
-            <motion.div
-              className={`rounded-lg p-4 backdrop-blur-sm border transition-all duration-500 ${currentTheme.card} ${currentTheme.cardHover.red}`}
-              whileHover={{ x: 5, transition: { duration: 0.2 } }}
+            </div>
+
+            <div
+              className={`rounded-lg p-4 backdrop-blur-sm border transition-all duration-500 ${currentTheme.card}`}
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
@@ -156,10 +189,14 @@ export default function DashboardMockup() {
                     </svg>
                   </div>
                   <div>
-                    <p className={`font-medium transition-colors duration-500 ${currentTheme.text.primary}`}>
+                    <p
+                      className={`font-medium transition-colors duration-500 ${currentTheme.text.primary}`}
+                    >
                       Pirkiniai
                     </p>
-                    <p className={`text-xs transition-colors duration-500 ${currentTheme.text.secondary}`}>
+                    <p
+                      className={`text-xs transition-colors duration-500 ${currentTheme.text.secondary}`}
+                    >
                       Vakar, 14:25
                     </p>
                   </div>
@@ -168,10 +205,10 @@ export default function DashboardMockup() {
                   <p className="font-medium text-[#EB2563]">-240 €</p>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }

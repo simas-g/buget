@@ -21,7 +21,7 @@ export default function Pricing() {
     },
     {
       name: "Profesionalus",
-      price: "6",
+      price: "3",
       period: "mėn",
       description: "Daugiau funkcijų išsamiai finansų analizei",
       features: [

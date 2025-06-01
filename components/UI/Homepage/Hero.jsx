@@ -1,11 +1,11 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-
 import { motion } from "framer-motion";
 import { ArrowRight, TrendingUp, Sparkles } from "lucide-react";
 import DashboardMockup from "../DashboardMockup";
 import Button from "../Button";
+import Image from "next/image";
 export default function Hero() {
   const canvasRef = useRef(null);
 
@@ -106,12 +106,13 @@ export default function Hero() {
 
             {/* Description */}
             <p className="text-lg md:text-xl text-white/80 mb-8 max-w-2xl mx-auto">
-              Lengvai sek savo išlaidas, planuok biudžetą ir gauk
-              mėnesines ataskaitas. Užsiregistruok dabar ir pasiek savo finansinius tikslus.
+              Lengvai sek savo išlaidas, planuok biudžetą ir gauk mėnesines
+              ataskaitas. Užsiregistruok dabar ir pasiek savo finansinius
+              tikslus.
             </p>
 
             {/* CTA buttons */}
-            <div className="flex flex-wrap gap-4 justify-center items-start mb-8">
+            <div className="flex flex-wrap relative gap-4 justify-center items-start mb-8">
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -140,15 +141,23 @@ export default function Hero() {
               </motion.div>
             </div>
           </motion.div>
-
           {/* Dashboard preview */}
           <motion.div
-            className="w-full max-w-3xl"
+            className="w-full max-w-3xl mt-4"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
             <div className="relative">
+              <div className="absolute text-white font-bold -top-20 lg:-left-20 left-0 z-10">
+                <span>DEMO</span>
+                <div
+                  style={{ transform: "rotateX(180deg)", rotate: "90deg" }}
+                  className=" w-12 lg:w-20 h-12 lg:h-20  left-0 top-10"
+                >
+                  <Image alt="buget.lt" src={"/arrow.svg"} fill />
+                </div>
+              </div>
               {/* Glow effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-secondary to-accent rounded-2xl blur-sm opacity-50"></div>
 
