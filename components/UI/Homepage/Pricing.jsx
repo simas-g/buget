@@ -37,8 +37,8 @@ export default function Pricing() {
   ];
 
   return (
-    <section className="text-white container flex flex-col items-center justify-center py-16">
-      <div className="flex flex-col items-center gap-y-4 mb-12">
+    <section id="kainos" className="text-white scroll-mt-24 flex flex-col items-center justify-center py-16">
+      <div className="flex flex-col items-center justify-center gap-y-4 mb-12">
         <Label className="bg-secondary px-4 py-1 rounded-full text-sm">
           30 dienų nemokamai
         </Label>
@@ -50,7 +50,7 @@ export default function Pricing() {
         </p>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-12 w-full max-w-6xl px-7">
+      <div className="flex gap-12 w-full max-w-6xl px-7 justify-center">
         {plans.map((plan, index) => (
           <motion.div
             key={plan.name}

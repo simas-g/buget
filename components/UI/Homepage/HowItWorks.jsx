@@ -51,8 +51,9 @@ const steps = [
 export default function HowItWorks() {
   return (
     <section
+      id="kaip-tai-veikia"
       
-      className="w-full text-white flex-col flex h-auto items-center justify-center"
+      className="w-full scroll-mt-32 text-white flex-col flex h-auto items-center justify-center"
     >
       <h2 className=" text-center font-bold sm:text-4xl text-2xl">
         Kaip viskas veikia?

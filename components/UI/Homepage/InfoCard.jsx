@@ -47,7 +47,7 @@ export default function InfoCard({ title, description, icon, list, id }) {
 
       {/* Main card */}
       <div
-        className={`relative h-full bg-[#0A0A20]/100 backdrop-blur-xl rounded-xl border border-primary/20 overflow-hidden transform transition-all duration-500 hover:scale-[1.02] hover:-translate-y-2 ${glowColor} hover:shadow-2xl`}
+        className={`relative h-full bg-[#0A0A20]/100 backdrop-blur-xl rounded-xl border border-primary/20 transform transition-all duration-500 hover:scale-[1.02] ${glowColor} hover:shadow-2xl`}
       >
         {/* Animated background pattern */}
         <div className="absolute inset-0 opacity-10">
@@ -68,7 +68,7 @@ export default function InfoCard({ title, description, icon, list, id }) {
           {/* ID Badge */}
           <div className="flex justify-between items-start">
             <span
-              className={`inline-flex items-center justify-center w-8 h-8 rounded-full bg-black border-gray-400 border text-white text-sm font-bold shadow-lg`}
+              className={`inline-flex items-center justify-center w-16 h-16 absolute right-10 -top-5 rounded-full bg-black border-gray-400 border text-white text-lg font-bold shadow-lg`}
             >
               {id + 1}
             </span>
@@ -109,11 +109,6 @@ export default function InfoCard({ title, description, icon, list, id }) {
             ))}
           </ul>
         </div>
-
-        {/* Bottom highlight */}
-        <div
-          className={`absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r ${gradientColor} opacity-60`}
-        ></div>
       </div>
     </motion.div>
   );

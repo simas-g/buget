@@ -5,7 +5,7 @@ import Nav from "@/components/UI/Nav";
 
 export default function Home() {
   return (
-    <div className="bg-black h-fit pb-50 px-2">
+    <div className="bg-black h-fit pb-50">
       <Nav/>
       <Hero/>
       <HowItWorks/>

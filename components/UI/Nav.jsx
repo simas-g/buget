@@ -40,7 +40,7 @@ export default function Navigation() {
   const navLinks = [
     { href: "#kaip-tai-veikia", label: "Kaip tai veikia?" },
     { href: "#kainos", label: "Kainos" },
-    { href: "/skydelis", label: "Skydelis" },
+    { href: "/registracija", label: "Skydelis" },
   ];
 
   return (
