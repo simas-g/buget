@@ -42,12 +42,12 @@ useEffect(() => {
           className="select-none scrolling-banks justify-between flex gap-30 w-full items-center"
         >
           {banks.map((bank) => (
-            <li key={bank.alt} className="shrink-0">
+            <li key={bank.alt} className="shrink-0 pointer-events-none select-none">
               <Image {...bank} {...size}></Image>
             </li>
           ))}
           {banks.map((bank) => (
-            <li key={bank.alt + "-2"} className="shrink-0">
+            <li key={bank.alt + "-2"} className="shrink-0 pointer-events-none select-none">
               <Image {...bank} {...size}></Image>
             </li>
           ))}
