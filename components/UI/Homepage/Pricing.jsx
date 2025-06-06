@@ -38,16 +38,18 @@ export default function Pricing() {
   ];
 
   return (
-    <section id="kainos" className="text-white scroll-mt-24 flex flex-col items-center justify-center py-16">
+    <section
+      id="kainos"
+      className="text-white scroll-mt-24 flex flex-col items-center justify-center py-16"
+    >
       <div className="flex flex-col items-center justify-center gap-y-4 mb-12 px-4">
         <Label className="bg-secondary px-4 py-1 rounded-full text-sm">
           30 dienų nemokamai
         </Label>
         <h3 className="text-4xl font-bold mb-2">Įkainiai</h3>
         <p className="text-gray-400 text-center max-w-2xl">
-          Du planai – neribotos galimybės. Išbandykite
-          profesionalų planą 30 dienų nemokamai ir atraskite, kaip analizuoti
-          savo finansus.
+          Du planai – neribotos galimybės. Išbandykite profesionalų planą 30
+          dienų nemokamai ir atraskite, kaip analizuoti savo finansus.
         </p>
       </div>
 
@@ -112,24 +114,23 @@ export default function Pricing() {
                 </motion.li>
               ))}
             </ul>
-              <Link href="/registracija">
-            <motion.button
-              className={`w-full cursor-pointer py-4 px-6 rounded-xl font-medium transition-all duration-300 ${
-                plan.popular
-                  ? `bg-gradient-to-r ${plan.color} text-white shadow-lg hover:shadow-xl`
-                  : "bg-white/10 text-white border border-white/20 hover:bg-white/20"
-              }`}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <div className="flex items-center justify-center gap-2 ">
-                <Zap className="h-4 w-4" />
-                Pradėti {plan.name === "Pradedantis" ? "dabar" : "nemokamai"}
-              </div>
-            </motion.button>
+            <Link href="/registracija">
+              <motion.button
+                className={`w-full cursor-pointer py-4 px-6 rounded-xl font-medium transition-all duration-300 ${
+                  plan.popular
+                    ? `bg-gradient-to-r ${plan.color} text-white shadow-lg hover:shadow-xl`
+                    : "bg-white/10 text-white border border-white/20 hover:bg-white/20"
+                }`}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <div className="flex items-center justify-center gap-2 ">
+                  <Zap className="h-4 w-4" />
+                  Pradėti {plan.name === "Pradedantis" ? "dabar" : "nemokamai"}
+                </div>
+              </motion.button>
             </Link>
           </motion.div>
-          
         ))}
       </div>
     </section>

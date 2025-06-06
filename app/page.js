@@ -10,7 +10,7 @@ export default function Home() {
     { href: "/#kainos", label: "Kainos" },
   ];
   return (
-    <div className="bg-black h-fit pb-50">
+    <div className="bg-black h-fit">
       <Nav navLinks={navLinks} loginButtons/>
       <Hero/>
       <HowItWorks/>
