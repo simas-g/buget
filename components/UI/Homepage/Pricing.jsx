@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { Check, Star, Zap } from "lucide-react";
 import Label from "../Label";
+import Link from "next/link";
 
 export default function Pricing() {
   const plans = [
@@ -111,7 +112,7 @@ export default function Pricing() {
                 </motion.li>
               ))}
             </ul>
-
+              <Link href="/registracija">
             <motion.button
               className={`w-full cursor-pointer py-4 px-6 rounded-xl font-medium transition-all duration-300 ${
                 plan.popular
@@ -126,7 +127,9 @@ export default function Pricing() {
                 Pradėti {plan.name === "Pradedantis" ? "dabar" : "nemokamai"}
               </div>
             </motion.button>
+            </Link>
           </motion.div>
+          
         ))}
       </div>
     </section>

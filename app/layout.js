@@ -1,5 +1,6 @@
 import { Inter, Roboto } from 'next/font/google'
 import "./globals.css";
+import Footer from '@/components/UI/Footer';
 
 const inter = Inter({
   subsets: ['latin', 'latin-ext'], 
@@ -23,6 +24,7 @@ export default function RootLayout({ children }) {
       <body className={`${inter.variable} ${roboto.variable} font-sans antialiased`}>
 
         {children}
+        <Footer/>
       </body>
     </html>
   );
