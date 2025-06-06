@@ -118,6 +118,7 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
               >
+                <Link href="/registracija">
                 <Button
                   variant="ctaPrimary"
                   className="flex items-center px-4 py-3 hover:shadow-[0_0_20px_var(--color-secondary)]"
@@ -125,6 +126,8 @@ export default function Hero() {
                   Išbandyti nemokamai
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
+                </Link>
+
               </motion.div>
 
               <motion.div
