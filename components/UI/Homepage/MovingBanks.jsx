@@ -24,8 +24,7 @@ useEffect(() => {
       <div className="flex flex-col items-center justify-center gap-y-4 mb-12 px-4">
         <h3 className="text-4xl font-bold mb-2">Bankų sąrašas</h3>
         <p className="text-gray-400 text-center max-w-2xl">
-          Šiuo metu palaikome šias bankų sąskaitas. Jei jūsų banko nėra,
-          susisiekite su mumis.
+          Šiuo metu palaikome šias bankų sąskaitas. Jei tavo banko nėra, susisiek su mumis.
         </p>
       <Button className="px-4 py-2" variant="basic">Peržiūrėti visus</Button>
 

@@ -98,16 +98,13 @@ export default function Footer() {
           <div className="flex flex-col">
             {/* Logo and description */}
             <div>
-              <Link
-                href="/"
-                className="inline-flex items-center space-x-3 mb-6 "
-              >
+
                 <Image
                   width={100}
                   height={100}
                   src="/logo.svg"
                 />
-              </Link>
+
               <p className="text-lg text-white/80 mb-6 leading-relaxed max-w-md">
                 Išmanus finansų valdymo įrankis, padedantis tau sekti savo
                 išlaidas ir pajamas. Susiek savo banko sąskaitą su Buget,

@@ -14,8 +14,9 @@ export default function Home() {
       <Nav navLinks={navLinks} loginButtons/>
       <Hero/>
       <HowItWorks/>
-      <MovingBanks/>
       <Pricing/>
+      <MovingBanks/>
+
     </div>
   );
 }
