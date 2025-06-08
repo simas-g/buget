@@ -1,36 +1,32 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# buget.lt — Personal Finance Management System (In Progress)
 
-## Getting Started
+**buget.lt** is a finance management web application designed to help users track, plan, and optimize their personal finances. The platform aims to provide intuitive tools for expense tracking, financial goal setting, and insightful reporting. A mobile version is planned for future development.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features (Planned / In Progress)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Expense Tracking:**  
+  Easily log and categorize daily expenses to monitor spending habits.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- **Financial Goal Setting:**  
+  Set budgets and financial targets to stay on track with your money management.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Insightful Reporting:**  
+  Visualize income and expenses with charts and reports for better financial understanding.
 
-## Learn More
+- **User-Friendly Interface:**  
+  Designed for ease of use, ensuring users of all backgrounds can manage their finances effectively.
 
-To learn more about Next.js, take a look at the following resources:
+- **Mobile Support (Upcoming):**  
+  Plans to launch a mobile app to provide finance management on the go.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Technologies Used
 
-## Deploy on Vercel
+- **Next.js:**  
+  For fast, SEO-friendly React-based development and server-side rendering.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **motion.dev:**  
+  Used to create smooth, engaging animations and transitions within the app UI.
