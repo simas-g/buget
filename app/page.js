@@ -1,3 +1,4 @@
+import Footer from "@/components/UI/Footer";
 import Hero from "@/components/UI/Homepage/Hero";
 import HowItWorks from "@/components/UI/Homepage/HowItWorks";
 import MovingBanks from "@/components/UI/Homepage/MovingBanks";
@@ -16,7 +17,7 @@ export default function Home() {
       <HowItWorks/>
       <Pricing/>
       <MovingBanks/>
-
+      <Footer/>
     </div>
   );
 }

@@ -99,11 +99,12 @@ export default function Footer() {
             {/* Logo and description */}
             <div>
 
-                <Image
+                {/* <Image
                   width={100}
                   height={100}
                   src="/logo.svg"
-                />
+                  alt="buget.lt"
+                /> */}
 
               <p className="text-lg text-white/80 mb-6 leading-relaxed max-w-md">
                 Išmanus finansų valdymo įrankis, padedantis tau sekti savo

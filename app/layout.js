@@ -24,7 +24,6 @@ export default function RootLayout({ children }) {
       <body className={`${inter.variable} ${roboto.variable} font-sans antialiased`}>
 
         {children}
-        <Footer/>
       </body>
     </html>
   );

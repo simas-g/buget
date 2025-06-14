@@ -4,6 +4,8 @@ export default function PrimaryLayout({ children }) {
   return (
     <>
         <Nav/>
+        <Footer/>
+
     </>
   );
 }
