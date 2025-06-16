@@ -1,5 +1,6 @@
+'use server'
 import client from "@/app/redis/redis";
-import crypto from "crypto";
+import crypto from "crypto"
 interface UserSession {
   id: string;
   plan: "basic" | "advanced";
@@ -21,7 +22,7 @@ async function setCookies(sessionId: string, cookies) {
     expires: Date.now() + SESSION_EXPIRATION_SECONDS * 1000,
   });
 }
-export function getUserFromSession(cookies) {
+export async function getUserFromSession(cookies) {
     const sessionId = cookies.get(SESSION_KEY).value
     if(sessionId === null) {
         return null
