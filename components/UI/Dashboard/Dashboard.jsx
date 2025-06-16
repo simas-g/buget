@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { themes } from "@/lib/themes";
+import { themes } from "@/app/lib/themes";
 import {
   BarChart3,
   PieChart,
@@ -30,6 +30,7 @@ import {
 } from "lucide-react";
 import BankConnection from "./BankConnection";
 import { useRouter } from "next/navigation";
+import { getUserFromSession } from "@/app/lib/auth/session";
 
 // Mock data for demonstration
 const mockData = {

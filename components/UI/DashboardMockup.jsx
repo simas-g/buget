@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { BarChart2, PieChart, TrendingUp } from "lucide-react";
 import { useState } from "react";
 import { Sun, Moon } from "lucide-react";
-import { themes } from "@/lib/themes";
+import { themes } from "@/app/lib/themes";
 
 export default function DashboardMockup() {
   const [theme, setTheme] = useState("dark");

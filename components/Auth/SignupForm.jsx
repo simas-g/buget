@@ -9,12 +9,11 @@ import {
   Lock,
   User,
   ArrowRight,
-  Sparkles,
 } from "lucide-react";
 import Label from "../UI/Label";
 import Input from "../UI/Input";
 import GlowingCard from "../UI/GlowingCard";
-import { signup } from "@/lib/auth/signup";
+import { signup } from "@/app/lib/auth/signup";
 function Button({ variant = "primary", className = "", children, ...props }) {
   const baseClasses =
     "inline-flex cursor-pointer items-center justify-center rounded-xl font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#0A0A20] disabled:opacity-50 disabled:cursor-not-allowed";
@@ -308,7 +307,6 @@ export default function SignUpForm() {
               </>
             ) : (
               <>
-                <Sparkles className="mr-2 h-5 w-5" />
                 Sukurti paskyrą
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
               </>

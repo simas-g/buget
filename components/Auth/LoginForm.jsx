@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Eye, EyeOff, Mail, Lock, ArrowRight, Sparkles } from "lucide-react";
+import { Eye, EyeOff, Mail, Lock, ArrowRight } from "lucide-react";
 import GlowingCard from "../UI/GlowingCard";
 
 function Button({ variant = "primary", className = "", children, ...props }) {
@@ -244,7 +244,6 @@ export default function SignInForm() {
               </>
             ) : (
               <>
-                <Sparkles className="mr-2 h-5 w-5" />
                 Prisijungti
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
               </>
