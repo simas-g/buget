@@ -27,11 +27,12 @@ import {
   ExternalLink,
   Moon,
   Sun,
+  LogOut,
 } from "lucide-react";
 import BankConnection from "./BankConnection";
 import { useRouter } from "next/navigation";
-import { getUserFromSession } from "@/app/lib/auth/session";
-
+import { deleteUserSession, getUserFromSession } from "@/app/lib/auth/session";
+import Image from "next/image";
 // Mock data for demonstration
 const mockData = {
   accounts: [
@@ -133,9 +134,9 @@ const mockData = {
   },
 };
 
-export default function Dashboard() {
+export default function Dashboard({ user }) {
   const [isRefreshing, setIsRefreshing] = useState(false);
-  const router = useRouter()
+  const router = useRouter();
   const handleRefresh = async () => {
     setIsRefreshing(true);
     // Simulate API call
@@ -143,8 +144,8 @@ export default function Dashboard() {
     setIsRefreshing(false);
   };
   const navigateToAddConnection = () => {
-    router.push('/skydelis/nauja-saskaita')
-  }
+    router.push("/skydelis/nauja-saskaita");
+  };
   const [theme, setTheme] = useState("dark");
   const currentTheme = themes[theme];
   const toggleTheme = () => {
@@ -164,40 +165,18 @@ export default function Dashboard() {
         <div className="border-b border-white/10 bg-[#0A0A20]/80 backdrop-blur-lg">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between py-6">
-              <div className="flex items-center space-x-4">
-                <div className="relative h-10 w-10 overflow-hidden rounded-xl bg-gradient-to-br from-[#2563EB] via-[#EB2563] to-[#63EB25] p-[2px]">
-                  <div className="h-full w-full rounded-[calc(0.75rem-2px)] bg-[#0A0A20] flex items-center justify-center">
-                    <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#2563EB] via-[#EB2563] to-[#63EB25]">
-                      B
-                    </span>
-                  </div>
-                </div>
-                <div>
-                  <h1 className="text-2xl font-bold text-white">
-                    Valdymo skydas
-                  </h1>
-                  <p className="text-sm text-white/60">Sveiki, Simai! 👋</p>
-                </div>
+              <div className="relative h-10 w-10 overflow-hidden rounded-xl p-[2px]">
+                <Image alt="buget.lt" src={"/logo.svg"} fill />
               </div>
 
               <div className="flex items-center space-x-4">
-                <button
-                  onClick={handleRefresh}
-                  disabled={isRefreshing}
-                  className="flex items-center space-x-2 rounded-lg bg-[#1A1A40]/50 px-4 py-2 text-white/80 hover:bg-[#1A1A40] hover:text-white transition-all duration-300 disabled:opacity-50"
-                >
-                  <RefreshCw
-                    className={`h-4 w-4 ${isRefreshing ? "animate-spin" : ""}`}
-                  />
-                  <span className="hidden sm:inline">Atnaujinti</span>
-                </button>
-                <button className="flex items-center space-x-2 rounded-lg bg-[#1A1A40]/50 px-4 py-2 text-white/80 hover:bg-[#1A1A40] hover:text-white transition-all duration-300">
-                  <Bell className="h-4 w-4" />
-                  <span className="hidden sm:inline">Pranešimai</span>
-                </button>
                 <button className="flex items-center space-x-2 rounded-lg bg-[#1A1A40]/50 px-4 py-2 text-white/80 hover:bg-[#1A1A40] hover:text-white transition-all duration-300">
                   <Settings className="h-4 w-4" />
                   <span className="hidden sm:inline">Nustatymai</span>
+                </button>
+                <button onClick={() => deleteUserSession()} className="flex items-center space-x-2 rounded-lg bg-[#1A1A40]/50 px-4 py-2 text-white/80 hover:bg-[#1A1A40] hover:text-white transition-all duration-300">
+                  <LogOut className="h-4 w-4" />
+                  <span className="hidden sm:inline">Atsijungti</span>
                 </button>
                 <button
                   onClick={toggleTheme}
@@ -221,6 +200,7 @@ export default function Dashboard() {
                     )}
                   </motion.div>
                 </button>
+                <button className="text-white">{user.plan}</button>
               </div>
             </div>
           </div>
@@ -239,21 +219,26 @@ export default function Dashboard() {
                     <CreditCard className="h-5 w-5 text-[#2563EB]" />
                     <span>Sąskaitos</span>
                   </h3>
-                  <button onClick={() => navigateToAddConnection()} className="flex items-center space-x-2 rounded-lg bg-secondary px-4 py-2 text-white font-medium transition-all cursor-pointer duration-300">
+                  <button
+                    onClick={() => navigateToAddConnection()}
+                    className="flex items-center space-x-2 rounded-lg bg-secondary px-4 py-2 text-white font-medium transition-all cursor-pointer duration-300"
+                  >
                     <Plus className="h-4 w-4" />
                     <span>Pridėti</span>
                   </button>
                 </div>
 
-                <div className="space-y-4">
+                <ul className="space-y-4">
                   {mockData.accounts.map((account) => (
-                    <BankConnection
-                      bank={account.name}
-                      currentBalance={account.balance}
-                      lastConnected={account.lastSync}
-                    />
+                    <li key={account.name}>
+                      <BankConnection
+                        bank={account.name}
+                        currentBalance={account.balance}
+                        lastConnected={account.lastSync}
+                      />
+                    </li>
                   ))}
-                </div>
+                </ul>
               </div>
             </motion.div>
           </div>

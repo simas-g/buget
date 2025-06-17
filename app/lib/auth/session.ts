@@ -1,35 +1,63 @@
-'use server'
-import client from "@/app/redis/redis";
-import crypto from "crypto"
+"use server";
+import jwt from "jsonwebtoken";
+import { cookies } from "next/headers";
+import { NextResponse } from "next/server";
+
+// Constants
+const SESSION_KEY = "SESSION_KEY"; // Cookie name
+const SESSION_EXPIRATION_SECONDS = 60 * 60 * 24 * 7; // 7 days
+const JWT_SECRET = process.env.JWT_SECRET;
+
 interface UserSession {
   id: string;
   plan: "basic" | "advanced";
 }
-const SESSION_EXPIRATION_SECONDS = 60 * 60 * 24 * 7;
+
+// Create User Session (JWT Generation)
 export async function createUserSession(user: UserSession, cookies) {
-  const sessionId = crypto.randomBytes(128).toString("hex");
-  await client.set(`session:${sessionId}`, JSON.stringify(user), {
-    EX: SESSION_EXPIRATION_SECONDS
+  // Create the JWT payload
+  const payload = {
+    id: user.id,
+    plan: user.plan,
+  };
+
+  // Sign the JWT
+  const token = jwt.sign(payload, JWT_SECRET, {
+    expiresIn: SESSION_EXPIRATION_SECONDS,
   });
-  await setCookies(sessionId, cookies);
-}
-const SESSION_KEY = "SESSION_KEY"
-async function setCookies(sessionId: string, cookies) {
-  await cookies.set(SESSION_KEY, sessionId, {
+
+  // Set the token in an HttpOnly, secure cookie
+  await cookies.set(SESSION_KEY, token, {
     secure: true,
     httpOnly: true,
     sameSite: "lax",
-    expires: Date.now() + SESSION_EXPIRATION_SECONDS * 1000,
+    expires: new Date(Date.now() + SESSION_EXPIRATION_SECONDS * 1000),
   });
 }
+
+// Get User from Session (JWT Decoding)
 export async function getUserFromSession(cookies) {
-    const sessionId = cookies.get(SESSION_KEY).value
-    if(sessionId === null) {
-        return null
-    }
-    return getUserDataBySessionId(sessionId)
+  // Get the token from cookies
+  const token = cookies.get(SESSION_KEY)?.value;
+
+  if (!token) {
+    return null;
+  }
+
+  try {
+    // Verify and decode the token
+    const decoded = jwt.verify(token, JWT_SECRET);
+    return decoded; // The user payload
+  } catch (error) {
+    console.error("Invalid or expired JWT:", error);
+    return null; // Token invalid or expired
+  }
 }
-async function getUserDataBySessionId(sessionId: string) {
-    const user = await client.get(`session:${sessionId}`)
-    return user
+
+// Delete User Session (JWT Removal)
+export async function deleteUserSession() {
+  // Remove the session cookie
+  const cookieStore = await cookies();
+  cookieStore.delete(SESSION_KEY);
+  return NextResponse.redirect('/prisijungti')
 }

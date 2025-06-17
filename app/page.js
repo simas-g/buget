@@ -11,16 +11,20 @@ export default async function Home() {
     { href: "#kaip-tai-veikia", label: "Kaip tai veikia?" },
     { href: "/#kainos", label: "Kainos" },
   ];
-  const user = await getCurrentUser()
-  console.log(user, 'our user')
+  const user = await getCurrentUser();
+  let actions = null;
+  if (user) {
+    actions = 'loggedIn';
+  }
+  console.log(user, "our user");
   return (
     <div className="bg-black h-fit">
-      <Nav navLinks={navLinks} loginButtons/>
-      <Hero/>
-      <HowItWorks/>
-      <Pricing/>
-      <MovingBanks/>
-      <Footer/>
+      <Nav navLinks={navLinks} loginButtons actions />
+      <Hero />
+      <HowItWorks />
+      <Pricing />
+      <MovingBanks />
+      <Footer />
     </div>
   );
 }

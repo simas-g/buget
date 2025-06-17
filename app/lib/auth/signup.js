@@ -4,7 +4,6 @@ import connect from "../connectToDB";
 import User from "../models/user";
 import bcrypt from "bcryptjs";
 import { createUserSession } from "./session";
-import client from "@/app/redis/redis";
 export async function signup({ password, email, name }) {
   await connect();
 
@@ -26,7 +25,6 @@ export async function signup({ password, email, name }) {
 
   const savedUser = await newUser.save();
   console.log(savedUser)
-  await client.set('whatsup', 'sss')
   await createUserSession(
     { id: savedUser._id.toString(), plan: savedUser.plan }, await cookies()
   );

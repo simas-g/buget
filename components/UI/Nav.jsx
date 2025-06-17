@@ -6,11 +6,41 @@ import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Button from "./Button";
-export default function Navigation({ navLinks = [], loginButtons = false }) {
+export default function Navigation({
+  navLinks = [],
+  loginButtons = false,
+  actions,
+}) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
-
+  let buttons;
+  if (actions == "loggedIn") {
+    buttons = (
+      <>
+        <Link href="/skydelis">
+          <Button variant="primaryGradient" className="px-4 py-2 w-full">
+            Valdymo skydelis
+          </Button>
+        </Link>
+      </>
+    );
+  } else {
+    buttons = (
+      <div className="flex items-center justify-center space-x-4">
+        <Link href="/prisijungti">
+          <Button variant="basic" className="px-4 py-2 w-full">
+            Prisijungti
+          </Button>
+        </Link>
+        <Link href="/registracija">
+          <Button variant="primaryGradient" className="px-4 py-2 w-full">
+            Registruotis
+          </Button>
+        </Link>
+      </div>
+    );
+  }
   // Handle scroll behavior
   useEffect(() => {
     const handleScroll = () => {
@@ -67,20 +97,7 @@ export default function Navigation({ navLinks = [], loginButtons = false }) {
               </li>
             ))}
           </ul>
-          {loginButtons === true && (
-            <div className="flex items-center justify-center space-x-4">
-              <Link href="/prisijungti">
-                <Button variant="basic" className="px-4 py-2 w-full">
-                  Prisijungti
-                </Button>
-              </Link>
-              <Link href="/registracija">
-                <Button variant="primaryGradient" className="px-4 py-2 w-full">
-                  Registruotis
-                </Button>
-              </Link>
-            </div>
-          )}
+          {loginButtons === true && buttons}
         </div>
 
         {/* Mobile Menu Button */}
@@ -140,26 +157,9 @@ export default function Navigation({ navLinks = [], loginButtons = false }) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: 0.3 }}
-                className="flex flex-col space-y-4 mt-12"
+                className="flex flex-col mt-8"
               >
-                <Link href="/prisijungti">
-                  <Button
-                    variant="basic"
-                    onClick={() => setIsOpen(false)}
-                    className="px-4 py-2 w-full"
-                  >
-                    Prisijungti
-                  </Button>
-                </Link>
-                <Link href="/registracija">
-                  <Button
-                    variant="primaryGradient"
-                    onClick={() => setIsOpen(false)}
-                    className="px-4 py-2"
-                  >
-                    Registruotis
-                  </Button>
-                </Link>
+                {buttons}
               </motion.div>
             </motion.div>
           )}

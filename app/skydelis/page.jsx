@@ -1,9 +1,11 @@
 import Dashboard from "@/components/UI/Dashboard/Dashboard";
+import { getCurrentUser } from "../lib/auth/currentUser";
 
-export default function Page() {
+export default async function Page() {
+  const user = await getCurrentUser()
   return (
     <div>
-      <Dashboard />
+      <Dashboard user={user}/>
     </div>
   );
 }
