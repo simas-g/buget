@@ -12,14 +12,13 @@ export default async function Home() {
     { href: "/#kainos", label: "Kainos" },
   ];
   const user = await getCurrentUser();
-  let actions = null;
+  let actions = false;
   if (user) {
-    actions = 'loggedIn';
+    actions = true;
   }
-  console.log(user, "our user");
   return (
     <div className="bg-black h-fit">
-      <Nav navLinks={navLinks} loginButtons actions />
+      <Nav navLinks={navLinks} loginButtons actions={actions} />
       <Hero />
       <HowItWorks />
       <Pricing />

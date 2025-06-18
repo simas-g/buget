@@ -4,35 +4,18 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { themes } from "@/app/lib/themes";
 import {
-  BarChart3,
-  PieChart,
-  TrendingUp,
-  TrendingDown,
   CreditCard,
-  Wallet,
-  Mail,
   Plus,
   Settings,
-  Bell,
-  Download,
-  Eye,
-  EyeOff,
-  ArrowUpRight,
-  ArrowDownRight,
-  CheckCircle,
-  Zap,
-  Shield,
-  Sparkles,
-  RefreshCw,
-  ExternalLink,
   Moon,
   Sun,
   LogOut,
 } from "lucide-react";
 import BankConnection from "./BankConnection";
 import { useRouter } from "next/navigation";
-import { deleteUserSession, getUserFromSession } from "@/app/lib/auth/session";
+import { deleteUserSession} from "@/app/lib/auth/session";
 import Image from "next/image";
+import Link from "next/link";
 // Mock data for demonstration
 const mockData = {
   accounts: [
@@ -135,14 +118,7 @@ const mockData = {
 };
 
 export default function Dashboard({ user }) {
-  const [isRefreshing, setIsRefreshing] = useState(false);
   const router = useRouter();
-  const handleRefresh = async () => {
-    setIsRefreshing(true);
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    setIsRefreshing(false);
-  };
   const navigateToAddConnection = () => {
     router.push("/skydelis/nauja-saskaita");
   };
@@ -151,6 +127,10 @@ export default function Dashboard({ user }) {
   const toggleTheme = () => {
     setTheme((prev) => (prev === "dark" ? "light" : "dark"));
   };
+  const logout = async () => {
+    await deleteUserSession()
+    router.push('/prisijungti')
+  }
   return (
     <div className="min-h-screen bg-[#0A0A20] text-white">
       {/* Background elements */}
@@ -165,16 +145,14 @@ export default function Dashboard({ user }) {
         <div className="border-b border-white/10 bg-[#0A0A20]/80 backdrop-blur-lg">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between py-6">
-              <div className="relative h-10 w-10 overflow-hidden rounded-xl p-[2px]">
-                <Image alt="buget.lt" src={"/logo.svg"} fill />
-              </div>
+              <Link href={'/'}>Pradžia</Link>
 
               <div className="flex items-center space-x-4">
                 <button className="flex items-center space-x-2 rounded-lg bg-[#1A1A40]/50 px-4 py-2 text-white/80 hover:bg-[#1A1A40] hover:text-white transition-all duration-300">
                   <Settings className="h-4 w-4" />
                   <span className="hidden sm:inline">Nustatymai</span>
                 </button>
-                <button onClick={() => deleteUserSession()} className="flex items-center space-x-2 rounded-lg bg-[#1A1A40]/50 px-4 py-2 text-white/80 hover:bg-[#1A1A40] hover:text-white transition-all duration-300">
+                <button onClick={() => logout()} className="flex items-center space-x-2 rounded-lg bg-[#1A1A40]/50 px-4 py-2 text-white/80 hover:bg-[#1A1A40] hover:text-white transition-all duration-300">
                   <LogOut className="h-4 w-4" />
                   <span className="hidden sm:inline">Atsijungti</span>
                 </button>
@@ -200,7 +178,7 @@ export default function Dashboard({ user }) {
                     )}
                   </motion.div>
                 </button>
-                <button className="text-white">{user.plan}</button>
+                <button className="text-white">{user.name}</button>
               </div>
             </div>
           </div>

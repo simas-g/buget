@@ -2,14 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import {
-  Eye,
-  EyeOff,
-  Mail,
-  Lock,
-  User,
-  ArrowRight,
-} from "lucide-react";
+import { Eye, EyeOff, Mail, Lock, User, ArrowRight } from "lucide-react";
 import Label from "../UI/Label";
 import Input from "../UI/Input";
 import GlowingCard from "../UI/GlowingCard";
@@ -133,6 +126,7 @@ export default function SignUpForm() {
       setErrors((prev) => ({ ...prev, alreadyExist: error }));
     } finally {
       setIsLoading(false);
+      window.location.href = '/skydelis'
     }
   };
 
@@ -177,6 +171,7 @@ export default function SignUpForm() {
                 error={!!errors.name}
               />
             </div>
+            <p className="text-red-400 text-xs">{errors.name}</p>
           </div>
 
           <div className="space-y-2">
@@ -192,6 +187,7 @@ export default function SignUpForm() {
                 error={!!errors.email}
               />
             </div>
+            <p className="text-red-400 text-xs">{errors.email}</p>
           </div>
         </div>
 
@@ -220,6 +216,7 @@ export default function SignUpForm() {
               )}
             </button>
           </div>
+          <p className="text-red-400 text-xs">{errors.password}</p>
         </div>
 
         <div className="space-y-2">

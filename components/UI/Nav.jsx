@@ -15,7 +15,8 @@ export default function Navigation({
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   let buttons;
-  if (actions == "loggedIn") {
+  console.log(actions, 'our actions')
+  if (actions == true ) {
     buttons = (
       <>
         <Link href="/skydelis">

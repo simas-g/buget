@@ -1,7 +1,10 @@
 "use server";
 import jwt from "jsonwebtoken";
 import { cookies } from "next/headers";
+import { notFound } from "next/navigation";
 import { NextResponse } from "next/server";
+import { cache } from "react";
+
 
 // Constants
 const SESSION_KEY = "SESSION_KEY"; // Cookie name
@@ -13,20 +16,16 @@ interface UserSession {
   plan: "basic" | "advanced";
 }
 
-// Create User Session (JWT Generation)
 export async function createUserSession(user: UserSession, cookies) {
-  // Create the JWT payload
   const payload = {
     id: user.id,
     plan: user.plan,
   };
 
-  // Sign the JWT
   const token = jwt.sign(payload, JWT_SECRET, {
     expiresIn: SESSION_EXPIRATION_SECONDS,
   });
 
-  // Set the token in an HttpOnly, secure cookie
   await cookies.set(SESSION_KEY, token, {
     secure: true,
     httpOnly: true,
@@ -35,9 +34,7 @@ export async function createUserSession(user: UserSession, cookies) {
   });
 }
 
-// Get User from Session (JWT Decoding)
 export async function getUserFromSession(cookies) {
-  // Get the token from cookies
   const token = cookies.get(SESSION_KEY)?.value;
 
   if (!token) {
@@ -45,19 +42,26 @@ export async function getUserFromSession(cookies) {
   }
 
   try {
-    // Verify and decode the token
     const decoded = jwt.verify(token, JWT_SECRET);
-    return decoded; // The user payload
+    return decoded;
   } catch (error) {
     console.error("Invalid or expired JWT:", error);
-    return null; // Token invalid or expired
+    return null;
   }
 }
 
-// Delete User Session (JWT Removal)
 export async function deleteUserSession() {
-  // Remove the session cookie
   const cookieStore = await cookies();
   cookieStore.delete(SESSION_KEY);
-  return NextResponse.redirect('/prisijungti')
+  return 'deleted session cookie'
+}
+
+export const validateToken = async (token) => {
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET); // Sync call
+    return decoded;
+  } catch (error) {
+    console.error("Token validation error:", error.message);
+    return null;
+  }
 }

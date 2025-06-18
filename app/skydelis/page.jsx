@@ -1,11 +1,15 @@
 import Dashboard from "@/components/UI/Dashboard/Dashboard";
-import { getCurrentUser } from "../lib/auth/currentUser";
+import { getFullUser } from "../lib/auth/currentUser";
 
 export default async function Page() {
-  const user = await getCurrentUser()
+  const userObject = await getFullUser();
+  if(!userObject) {
+    return null
+  }
+  const { user } = userObject;
   return (
     <div>
-      <Dashboard user={user}/>
+      <Dashboard user={user} />
     </div>
   );
 }

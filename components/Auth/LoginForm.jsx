@@ -5,7 +5,8 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Eye, EyeOff, Mail, Lock, ArrowRight } from "lucide-react";
 import GlowingCard from "../UI/GlowingCard";
-
+import { login } from "@/app/lib/auth/login";
+import { useRouter } from "next/navigation";
 function Button({ variant = "primary", className = "", children, ...props }) {
   const baseClasses =
     "inline-flex cursor-pointer items-center justify-center rounded-xl font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#0A0A20] disabled:opacity-50 disabled:cursor-not-allowed";
@@ -63,7 +64,7 @@ export default function SignInForm() {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({});
-
+  const router = useRouter()
   const validateForm = () => {
     const newErrors = {};
 
@@ -90,15 +91,19 @@ export default function SignInForm() {
 
     setIsLoading(true);
 
-    // Simulate API call
+    const data = {
+      email,
+      password,
+    };
     try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      console.log("Signing in with:", { email, password });
-      // Handle successful sign in
+      await login(data);
     } catch (error) {
-      console.error("Sign in error:", error);
+      setErrors(prev => ({
+        ...prev, account: error.message}
+      ))
     } finally {
       setIsLoading(false);
+      router.push('/skydelis')
     }
   };
 
@@ -250,6 +255,7 @@ export default function SignInForm() {
             )}
           </span>
         </Button>
+        <p className="text-red-400 text-sm">{errors?.account}</p>
       </form>
 
       {/* Sign Up Link */}

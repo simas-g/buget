@@ -30,4 +30,5 @@ export async function signup({ password, email, name }) {
   );
 
   return "Vartotojas sėkmingai sukurtas";
+  
 }
