@@ -1,12 +1,7 @@
 "use server";
 import jwt from "jsonwebtoken";
 import { cookies } from "next/headers";
-import { notFound } from "next/navigation";
-import { NextResponse } from "next/server";
-import { cache } from "react";
 
-
-// Constants
 const SESSION_KEY = "SESSION_KEY"; // Cookie name
 const SESSION_EXPIRATION_SECONDS = 60 * 60 * 24 * 7; // 7 days
 const JWT_SECRET = process.env.JWT_SECRET;
@@ -28,7 +23,7 @@ export async function createUserSession(user: UserSession, cookies) {
 
   await cookies.set(SESSION_KEY, token, {
     secure: true,
-    httpOnly: true,
+    httpOnly: false,
     sameSite: "lax",
     expires: new Date(Date.now() + SESSION_EXPIRATION_SECONDS * 1000),
   });
@@ -53,15 +48,17 @@ export async function getUserFromSession(cookies) {
 export async function deleteUserSession() {
   const cookieStore = await cookies();
   cookieStore.delete(SESSION_KEY);
-  return 'deleted session cookie'
+  return "deleted session cookie";
 }
 
-export const validateToken = async (token) => {
+export const validateToken = async (headers) => {
+  const authorization = headers.get("Authorization");
+  const token = authorization.split("Bearer")[1].trim();
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET); // Sync call
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
     return decoded;
   } catch (error) {
     console.error("Token validation error:", error.message);
     return null;
   }
-}
+};

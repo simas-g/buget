@@ -4,9 +4,7 @@ import User from "@/app/lib/models/user";
 import { NextResponse } from "next/server";
 
 export async function POST(request) {
-  const authorization = request.headers.get("Authorization");
-  const token = authorization.split("Bearer")[1].trim();
-  const isValidRequest = await validateToken(token);
+  const isValidRequest = await validateToken(request.headers);
   if (!isValidRequest) {
     return NextResponse.json(
       { error: "Unauthorized: Invalid or expired token" },

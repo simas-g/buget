@@ -2,6 +2,7 @@
 import { cache } from "react";
 import { getUserFromSession } from "./session";
 import { cookies } from "next/headers";
+import { notFound } from "next/navigation";
 
 export const getCurrentUser = cache(async () => {
   return await getUserFromSession(await cookies());
@@ -24,8 +25,7 @@ export const getFullUser = cache(async () => {
     });
 
     if (!response.ok) {
-      console.error(`Failed to fetch user data: ${response.statusText}`);
-      return null;
+      return null
     }
 
     const data = await response.json();
