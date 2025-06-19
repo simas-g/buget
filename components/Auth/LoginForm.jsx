@@ -99,7 +99,7 @@ export default function SignInForm() {
       await login(data);
     } catch (error) {
       setErrors(prev => ({
-        ...prev, account: error.message}
+        ...prev, account: "Neteisingas slaptažodis"}
       ))
     } finally {
       setIsLoading(false);
