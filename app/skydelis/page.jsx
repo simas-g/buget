@@ -1,16 +1,25 @@
 import Dashboard from "@/components/UI/Dashboard/Dashboard";
 import { getFullUser } from "../lib/auth/currentUser";
 import { notFound } from "next/navigation";
-
+import { Suspense } from "react";
+import Fallback from "@/components/UI/Fallback"
 export default async function Page() {
   const userObject = await getFullUser();
-  if(!userObject) {
-    notFound()
+  if (!userObject) {
+    notFound();
   }
   const { user } = userObject;
   return (
-    <div>
-      <Dashboard user={user} />
+    <div className="min-h-screen bg-[#0A0A20] text-white">
+      {/* Background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-[5%] left-[5%] h-[300px] w-[300px] rounded-full bg-[#2563EB]/10 blur-[100px]" />
+        <div className="absolute bottom-[20%] right-[10%] h-[400px] w-[400px] rounded-full bg-[#EB2563]/10 blur-[100px]" />
+        <div className="absolute top-[60%] left-[70%] h-[250px] w-[250px] rounded-full bg-[#63EB25]/10 blur-[100px]" />
+      </div>
+      <Suspense fallback={Fallback}>
+        <Dashboard user={user} />
+      </Suspense>
     </div>
   );
 }
