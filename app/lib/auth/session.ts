@@ -51,14 +51,30 @@ export async function deleteUserSession() {
   return "deleted session cookie";
 }
 
+
+///token is stored in a cookie
 export const validateToken = async (headers) => {
   const authorization = headers.get("Authorization");
-  const token = authorization.split("Bearer")[1].trim();
+
+  // Check if the Authorization header exists
+  if (!authorization || !authorization.startsWith("Bearer ")) {
+    console.warn("Authorization header is missing or malformed.");
+    return null;
+  }
+
+  // Extract the token
+  const token = authorization.split("Bearer ")[1]?.trim();
+  if (!token) {
+    console.warn("Token is missing in the Authorization header.");
+    return null;
+  }
+
   try {
+    // Verify the token
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     return decoded;
   } catch (error) {
-    console.error("Token validation error:", error.message);
+    console.log('error with token')
     return null;
   }
 };

@@ -21,6 +21,7 @@ export default function PossibleBanks({ sessionId }) {
         });
         const parsed = await res.json();
         setToken(parsed);
+        sessionStorage.setItem("access_token", JSON.stringify(parsed))
       } catch (error) {
         console.error("Error fetching token:", error);
       }
@@ -55,7 +56,7 @@ export default function PossibleBanks({ sessionId }) {
 
     fetchBanks();
   }, [token]);
-  
+
   ///filter the input
   useEffect(() => {
     const filtered = banks.filter((bank) =>
@@ -82,7 +83,7 @@ export default function PossibleBanks({ sessionId }) {
       ) : (
         <ul className="flex flex-col items-center w-full">
           {filteredBanks.map((bank) => (
-            <BankOption key={bank.name} logo={bank.logo} name={bank.name} />
+            <BankOption key={bank.name} bank={bank} sessionId={sessionId} />
           ))}
         </ul>
       )}
