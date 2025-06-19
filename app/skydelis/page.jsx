@@ -17,7 +17,7 @@ export default async function Page() {
         <div className="absolute bottom-[20%] right-[10%] h-[400px] w-[400px] rounded-full bg-[#EB2563]/10 blur-[100px]" />
         <div className="absolute top-[60%] left-[70%] h-[250px] w-[250px] rounded-full bg-[#63EB25]/10 blur-[100px]" />
       </div>
-      <Suspense fallback={Fallback}>
+      <Suspense fallback={<Fallback/>}>
         <Dashboard user={user} />
       </Suspense>
     </div>

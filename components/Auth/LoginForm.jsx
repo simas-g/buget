@@ -102,7 +102,6 @@ export default function SignInForm() {
         ...prev, account: "Neteisingas slaptažodis"}
       ))
     } finally {
-      setIsLoading(false);
       router.push('/skydelis')
     }
   };
