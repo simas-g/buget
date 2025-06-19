@@ -1,11 +1,14 @@
 "use client";
-
 import { useEffect, useState } from "react";
+import BankOption from "./BankOption";
+import { Search } from "lucide-react";
 
 export default function PossibleBanks({ sessionId }) {
   const [token, setToken] = useState(null);
   const [banks, setBanks] = useState([]);
+  const [filteredBanks, setFilteredBanks] = useState([]);
   const [loadingBanks, setLoadingBanks] = useState(false);
+  const [filter, setFilter] = useState("");
 
   // Fetch the token
   useEffect(() => {
@@ -26,6 +29,7 @@ export default function PossibleBanks({ sessionId }) {
     getToken();
   }, [sessionId]);
 
+  // Fetch the banks
   useEffect(() => {
     if (!token) return;
 
@@ -37,10 +41,11 @@ export default function PossibleBanks({ sessionId }) {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ token }), 
+          body: JSON.stringify({ token }),
         });
         const fetchedBanks = await res.json();
-        setBanks(fetchedBanks?.data); 
+        setBanks(fetchedBanks?.data || []);
+        setFilteredBanks(fetchedBanks?.data || []); // Initialize filteredBanks with fetched data
       } catch (error) {
         console.error("Error fetching banks:", error);
       } finally {
@@ -50,14 +55,36 @@ export default function PossibleBanks({ sessionId }) {
 
     fetchBanks();
   }, [token]);
+  
+  ///filter the input
+  useEffect(() => {
+    const filtered = banks.filter((bank) =>
+      bank.name.toLowerCase().includes(filter.toLowerCase())
+    );
+    setFilteredBanks(filtered);
+  }, [filter, banks]);
+
   return (
-    <div>
+    <div className="w-full">
+      <div className="border border-gray-300 rounded-xl flex items-center p-4 gap-3 w-full max-w-xl mb-6 shadow-sm">
+        <Search color="gray" />
+        <input
+          className="outline-none w-full text-base text-gray-700"
+          placeholder="Ieškoti"
+          type="text"
+          value={filter}
+          onChange={(e) => setFilter(e.target.value)}
+        />
+      </div>
+
       {loadingBanks ? (
-        <p>Loading banks...</p>
-      ) : banks.length > 0 ? (
-        <pre>{JSON.stringify(banks, null, 1)}</pre>
+        <p>Kraunama...</p>
       ) : (
-        <p>No banks available.</p>
+        <ul className="flex flex-col items-center w-full">
+          {filteredBanks.map((bank) => (
+            <BankOption key={bank.name} logo={bank.logo} name={bank.name} />
+          ))}
+        </ul>
       )}
     </div>
   );

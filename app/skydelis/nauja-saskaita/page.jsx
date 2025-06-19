@@ -1,18 +1,22 @@
-import { Search } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import PossibleBanks from "./PossibleBanks";
 import { cookies } from "next/headers";
+import Link from "next/link";
+
 export default async function Page() {
-  const cookieStore = await cookies()
-  const sessionId = cookieStore.get("SESSION_KEY")
+  const cookieStore = await cookies();
+  const sessionId = cookieStore.get("SESSION_KEY");
+
   return (
-    <div className="h-screen p-20 gap-">
-      <h1 className="font-bold text-3xl text-center">Pasirink banką</h1>
-      <div className="border rounded-xl flex items-center p-3 gap-2 max-w-xl m-auto">
-        <Search/>
-        <input className="outline-none w-full" type="text" />
-      </div>
-      <div>
-        <PossibleBanks sessionId={sessionId}/>
+    <div className="w-full flex flex-col items-center px-5 sm:px-20">
+      <Link href={'/skydelis'} className="absolute left-4 top-4 md:hidden">
+        <ArrowLeft size={32}/>
+      </Link>
+      <h1 className="font-semibold text-2xl text-center max-w-xl mb-7 pt-20">
+        Pasirink banką
+      </h1>  
+      <div className="w-full max-w-xl pb-10">
+        <PossibleBanks sessionId={sessionId} />
       </div>
     </div>
   );

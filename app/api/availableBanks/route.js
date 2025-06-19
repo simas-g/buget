@@ -5,7 +5,7 @@ export async function POST(req) {
   const { token } = body;
   const { access } = token.data;
   const res = await fetch(
-    "https://bankaccountdata.gocardless.com/api/v2/institutions/?country=gb",
+    "https://bankaccountdata.gocardless.com/api/v2/institutions/?country=lt",
     {
       method: "GET",
       headers: {
