@@ -3,11 +3,14 @@ import { getFullUser } from "../lib/auth/currentUser";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import Fallback from "@/components/UI/Fallback"
+import { cookies } from "next/headers";
 export default async function Page() {
   const userObject = await getFullUser();
   if (!userObject) {
     notFound();
   }
+  const cookieStore = await cookies()
+  const sessionKey = cookieStore.get("SESSION_KEY").value
   const { user } = userObject;
   return (
     <div className="min-h-screen bg-[#0A0A20] text-white">
@@ -18,7 +21,7 @@ export default async function Page() {
         <div className="absolute top-[60%] left-[70%] h-[250px] w-[250px] rounded-full bg-[#63EB25]/10 blur-[100px]" />
       </div>
       <Suspense fallback={<Fallback/>}>
-        <Dashboard user={user} />
+        <Dashboard user={user} sessionId={sessionKey}/>
       </Suspense>
     </div>
   );

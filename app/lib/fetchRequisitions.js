@@ -19,5 +19,8 @@ export async function fetchRequisitions(bank, accessToken, sessionId) {
 
   const parsed = await res.json();
   console.log(parsed)
-  return parsed.data.link; 
+  return {
+    link: parsed.data.link,
+    req_id: parsed.data.id
+  }; 
 }

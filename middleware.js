@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 export async function middleware(request) {
   const { pathname } = request.nextUrl;
-
+  
   const isAuthPage =
     pathname === "/prisijungti" || pathname === "/registracija";
   const token = request.cookies.get("SESSION_KEY");

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { themes } from "@/app/lib/themes";
 import { CreditCard, Plus, Settings, Moon, Sun, LogOut } from "lucide-react";
@@ -110,7 +110,7 @@ const mockData = {
   },
 };
 
-export default function Dashboard({ user }) {
+export default function Dashboard({ user, sessionId }) {
   const router = useRouter();
   const navigateToAddConnection = () => {
     router.push("/skydelis/nauja-saskaita");
@@ -124,6 +124,30 @@ export default function Dashboard({ user }) {
     await deleteUserSession();
     router.push("/prisijungti");
   };
+  const access_token = JSON.parse(sessionStorage.getItem("access_token")).data.access;
+  useEffect(() => {
+    async function listAccounts() {
+      try {
+        const res = await fetch("/api/listAccounts", {
+          method: "POST",
+          headers: {
+            "Authorization": "Bearer " + sessionId
+          },
+  // const { requisitionId, access_token } = body;
+
+          body: JSON.stringify({
+            requisitionId: sessionStorage.getItem("req_id"),
+            access_token
+          })
+        })
+        const data = await res.json()
+        console.log(data, 'our banks')
+      } catch (error) {
+        console.log(error, 'error')
+      }
+    }
+    listAccounts()
+  }, [])
   return (
     <div className="relative z-10">
       {/* Header */}
