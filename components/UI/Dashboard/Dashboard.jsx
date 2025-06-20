@@ -1,20 +1,22 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { themes } from "@/app/lib/themes";
 import { Settings, Moon, Sun, LogOut } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { deleteUserSession } from "@/app/lib/auth/session";
+import { useFetch } from "@/app/hooks/useFetch";
 import Link from "next/link";
 import Connected from "./Connected";
-// Mock data for demonstration
-
+import { getToken, listAccounts } from "@/app/util/http";
 export default function Dashboard({ user, sessionId }) {
   const router = useRouter();
-  const [token, setToken] = useState("");
-
   const [theme, setTheme] = useState("dark");
+
+  // Fetch the token
+  const { data: token } = useFetch(() => getToken(sessionId));
+  const shouldFetch = !!token
   const currentTheme = themes[theme];
   const toggleTheme = () => {
     setTheme((prev) => (prev === "dark" ? "light" : "dark"));
@@ -23,52 +25,10 @@ export default function Dashboard({ user, sessionId }) {
     await deleteUserSession();
     router.push("/prisijungti");
   };
-  // Fetch the token
-  useEffect(() => {
-    const access_token = sessionStorage.getItem("access_token");
-    if (access_token) {
-      setToken(access_token);
-      return;
-    }
-    async function getToken() {
-      try {
-        const res = await fetch("/api/goCardLessToken", {
-          headers: {
-            Authorization: "Bearer " + sessionId,
-          },
-        });
-        const parsed = await res.json();
-        console.log(parsed, "parsed");
-        setToken(parsed);
-        sessionStorage.setItem("access_token", JSON.stringify(parsed));
-      } catch (error) {
-        console.error("Error fetching token:", error);
-      }
-    }
-
-    getToken();
-  }, [sessionId]);
-  useEffect(() => {
-    async function listAccounts() {
-      try {
-        const res = await fetch("/api/listAccounts", {
-          method: "POST",
-          headers: {
-            Authorization: "Bearer " + sessionId,
-          },
-          body: JSON.stringify({
-            requisitionId: sessionStorage.getItem("req_id"),
-            access_token: token,
-          }),
-        });
-        const data = await res.json();
-        console.log(data, "our banks");
-      } catch (error) {
-        console.log(error, "error");
-      }
-    }
-    listAccounts();
-  }, []);
+  /// fetching Latest Connection
+  const fetchAccounts = useCallback(() => listAccounts(token, sessionId), [token, sessionId])
+  const {data: accounts} = useFetch(fetchAccounts, shouldFetch, [token, sessionId])
+  console.log(accounts)
   return (
     <div className="relative z-10">
       {/* Header */}
@@ -115,7 +75,7 @@ export default function Dashboard({ user, sessionId }) {
             </div>
           </div>
         </div>
-        
+
         {/**Connected bank accounts */}
         <Connected />
       </div>

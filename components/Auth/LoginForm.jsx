@@ -103,6 +103,7 @@ export default function SignInForm() {
       ))
     } finally {
       router.push('/skydelis')
+      setIsLoading(false)
     }
   };
 

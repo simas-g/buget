@@ -1,6 +1,7 @@
 import { CreditCard, Plus } from "lucide-react";
 import BankConnection from "./BankConnection";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 const mockData = {
   accounts: [
     {
@@ -105,6 +106,9 @@ export default function Connected() {
   const navigateToAddConnection = () => {
     router.push("/skydelis/nauja-saskaita");
   };
+//   useEffect(() => {
+//     async function
+//   }, [])
   return (
     <div className=" gap-8 mb-8 p-8 md:px-16">
       {/* Bank Accounts */}

@@ -11,9 +11,19 @@ export default function BankOption({ bank, sessionId }) {
     }
   }, []);
   const handleClick = async () => {
-    const {req_id, link: url} = await fetchRequisitions(bank, accessToken, sessionId);
+    const { req_id, link: url } = await fetchRequisitions(
+      bank,
+      accessToken,
+      sessionId
+    );
+    console.log(bank);
     window.location.href = url;
-    sessionStorage.setItem("req_id", req_id.toString())
+    const temporaryBank = {
+      logo: bank.logo,
+      name: bank.name,
+    };
+    sessionStorage.setItem("temp_bank", JSON.stringify(temporaryBank));
+    sessionStorage.setItem("req_id", req_id.toString());
   };
   return (
     <li className="flex border-b max-w-xl w-full border-gray-300 px-4 py-5 gap-4 items-center">
