@@ -52,11 +52,9 @@ export async function deleteUserSession() {
 }
 
 
-///token is stored in a cookie
 export const validateToken = async (headers) => {
   const authorization = headers.get("Authorization");
 
-  // Check if the Authorization header exists
   if (!authorization || !authorization.startsWith("Bearer ")) {
     console.warn("Authorization header is missing or malformed.");
     return null;
@@ -72,6 +70,7 @@ export const validateToken = async (headers) => {
   try {
     // Verify the token
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    console.log('our object decoedd', decoded)
     return decoded;
   } catch (error) {
     console.log('error with token')

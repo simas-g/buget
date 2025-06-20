@@ -2,8 +2,7 @@ import { NextResponse } from "next/server";
 
 export async function POST(req) {
   const body = await req.json();
-  const { token } = body;
-  const { access } = token.data;
+  const { access } = body.data;
   const res = await fetch(
     "https://bankaccountdata.gocardless.com/api/v2/institutions/?country=lt",
     {

@@ -4,36 +4,14 @@ import BankOption from "./BankOption";
 import { Search } from "lucide-react";
 
 export default function PossibleBanks({ sessionId }) {
-  const [token, setToken] = useState(null);
   const [banks, setBanks] = useState([]);
   const [filteredBanks, setFilteredBanks] = useState([]);
   const [loadingBanks, setLoadingBanks] = useState(false);
   const [filter, setFilter] = useState("");
 
-  // Fetch the token
-  useEffect(() => {
-    async function getToken() {
-      try {
-        const res = await fetch("/api/goCardLessToken", {
-          headers: {
-            Authorization: "Bearer " + sessionId.value,
-          },
-        });
-        const parsed = await res.json();
-        setToken(parsed);
-        sessionStorage.setItem("access_token", JSON.stringify(parsed))
-      } catch (error) {
-        console.error("Error fetching token:", error);
-      }
-    }
-
-    getToken();
-  }, [sessionId]);
-
   // Fetch the banks
   useEffect(() => {
-    if (!token) return;
-
+    const token = sessionStorage.getItem("access_token")
     async function fetchBanks() {
       setLoadingBanks(true);
       try {
@@ -42,7 +20,7 @@ export default function PossibleBanks({ sessionId }) {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ token }),
+          body: token,
         });
         const fetchedBanks = await res.json();
         setBanks(fetchedBanks?.data || []);
@@ -55,7 +33,7 @@ export default function PossibleBanks({ sessionId }) {
     }
 
     fetchBanks();
-  }, [token]);
+  }, []);
 
   ///filter the input
   useEffect(() => {
