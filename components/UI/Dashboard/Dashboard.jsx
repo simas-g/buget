@@ -25,10 +25,9 @@ export default function Dashboard({ user, sessionId }) {
     await deleteUserSession();
     router.push("/prisijungti");
   };
-  /// fetching Latest Connection
+  /// fetching Latest Connections
   const fetchAccounts = useCallback(() => listAccounts(token, sessionId), [token, sessionId])
-  const {data: accounts} = useFetch(fetchAccounts, shouldFetch, [token, sessionId])
-  console.log(accounts)
+  const {data} = useFetch(fetchAccounts, shouldFetch, [token, sessionId])
   return (
     <div className="relative z-10">
       {/* Header */}
@@ -77,7 +76,7 @@ export default function Dashboard({ user, sessionId }) {
         </div>
 
         {/**Connected bank accounts */}
-        <Connected accounts={accounts} sessionId={sessionId}/>
+        <Connected sessionId={sessionId}/>
       </div>
     </div>
   );

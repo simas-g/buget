@@ -37,6 +37,7 @@ export async function listAccounts(token, sessionId) {
       }),
     });
     const data = await res.json();
+    sessionStorage.setItem("data", JSON.stringify(data));
     return data;
   } catch (error) {
     console.log(error, "error");
@@ -53,8 +54,8 @@ export async function initializeBankConnection(accounts, tempBank, sessionId) {
       },
       body: JSON.stringify({ accounts, tempBank }),
     });
-    
+    return res;
   } catch (error) {
-    console.log(error, 'error')
+    console.log(error, "error");
   }
 }

@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { CreditCard, Plus } from "lucide-react";
 import BankConnection from "./BankConnection";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -103,25 +103,32 @@ const mockData = {
     ],
   },
 };
-export default function Connected({accounts, sessionId}) {
+export default function Connected({ sessionId }) {
   const router = useRouter();
   const navigateToAddConnection = () => {
     router.push("/skydelis/nauja-saskaita");
   };
-  const params = useSearchParams()
-
+  const params = useSearchParams();
   useEffect(() => {
     async function checkParamsAndBeginConnection() {
-      const error = params.get("error")
+      const error = params.get("error");
       let ref;
-      if(error) {
-        return
+      if (error) {
+        return;
       } else {
-        const tempBank = sessionStorage.getItem("temp_bank")
-        const res = await initializeBankConnection(accounts, tempBank, sessionId)
+        const tempBank = sessionStorage.getItem("temp_bank");
+        const res = await initializeBankConnection(
+          JSON.parse(sessionStorage.getItem("data")),
+          tempBank,
+          sessionId
+        );
+        if(res.ok) {
+          router.push('skydelis')
+        }
       }
     }
-  }, [params])
+    checkParamsAndBeginConnection();
+  }, [params]);
   return (
     <div className=" gap-8 mb-8 p-8 md:px-16">
       {/* Bank Accounts */}
