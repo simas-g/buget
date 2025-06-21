@@ -1,5 +1,6 @@
 import { getUserFromSession, validateToken } from "@/app/lib/auth/session";
 import BankConnection from "@/app/lib/models/bankConnection";
+import { decrypt } from "@/app/util/crypting";
 import mongoose from "mongoose";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
@@ -10,28 +11,29 @@ export async function POST(req) {
   }
   try {
     const user = await getUserFromSession(await cookies());
-  const userOid = new mongoose.Types.ObjectId(user.id);
-    
+    const userOid = new mongoose.Types.ObjectId(user.id);
+
     const body = await req.json();
-    const { tempBank, accounts } = body;
-    const accountList = accounts?.data?.accounts || [];
-    for (let i = 0; i < accountList.length; i++) {
-      const existingConnection = await BankConnection.findOne({
-        userId: userOid,
-        accountId: accountList[i],
-      });
-      if (existingConnection) {
-        continue;
-      }
-      await BankConnection.create({
-        name:
-          JSON.parse(tempBank).name +
-          (accountList.length > 1 ? ` ${i + 1}` : ""),
-        logo: JSON.parse(tempBank).logo,
-        accountId: accountList[i],
-        userId: userOid,
-      });
+    const { tempBank, accounts: encrypted } = body;
+    const accounts = await decrypt(encrypted, isValidRequest.sessionId);
+    console.log(accounts, " accounts");
+
+    const existingConnection = await BankConnection.findOne({
+      userId: userOid,
+      accountId: accounts[i],
+    });
+    if (existingConnection) {
+      return NextResponse.json(
+        { message: "Created connections successfully" },
+        { status: 200 }
+      );
     }
+    await BankConnection.create({
+      name: JSON.parse(tempBank).name,
+      logo: JSON.parse(tempBank).logo,
+      accountId: accounts,
+      userId: userOid,
+    });
 
     return NextResponse.json(
       { message: "Created connections successfully" },

@@ -1,4 +1,5 @@
 ///fetching the token 1.
+import {encrypt} from "./crypting"
 export async function getToken(sessionId) {
   const alreadyExistingToken = JSON.parse(
     sessionStorage.getItem("access_token")
@@ -37,7 +38,9 @@ export async function listAccounts(token, sessionId) {
       }),
     });
     const data = await res.json();
-    sessionStorage.setItem("data", JSON.stringify(data));
+    const string = (data.data.accounts).toString()
+    const encrypted = await encrypt(string)
+    sessionStorage.setItem("data", JSON.stringify(encrypted));
     return data;
   } catch (error) {
     console.log(error, "error");

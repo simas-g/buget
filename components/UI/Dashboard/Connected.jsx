@@ -123,7 +123,7 @@ export default function Connected({ sessionId }) {
           sessionId
         );
         if(res.ok) {
-          router.push('skydelis')
+          // router.push('skydelis')
         }
       }
     }
