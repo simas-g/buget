@@ -77,7 +77,7 @@ export default function Dashboard({ user, sessionId }) {
         </div>
 
         {/**Connected bank accounts */}
-        <Connected />
+        <Connected accounts={accounts} sessionId={sessionId}/>
       </div>
     </div>
   );

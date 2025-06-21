@@ -1,7 +1,9 @@
 ///fetching the token 1.
 export async function getToken(sessionId) {
-  const alreadyExistingToken = JSON.parse(sessionStorage.getItem("access_token"))
-  if(alreadyExistingToken) return alreadyExistingToken
+  const alreadyExistingToken = JSON.parse(
+    sessionStorage.getItem("access_token")
+  );
+  if (alreadyExistingToken) return alreadyExistingToken;
 
   try {
     const res = await fetch("/api/goCardLessToken", {
@@ -22,7 +24,7 @@ export async function getToken(sessionId) {
 
 ///listing same bank accounts
 export async function listAccounts(token, sessionId) {
-  const reqId = sessionStorage.getItem("req_id")
+  const reqId = sessionStorage.getItem("req_id");
   try {
     const res = await fetch("/api/listAccounts", {
       method: "POST",
@@ -35,8 +37,24 @@ export async function listAccounts(token, sessionId) {
       }),
     });
     const data = await res.json();
-    return data
+    return data;
   } catch (error) {
     console.log(error, "error");
+  }
+}
+
+///fetching account
+export async function initializeBankConnection(accounts, tempBank, sessionId) {
+  try {
+    const res = await fetch("/api/createBankConnection", {
+      method: "POST",
+      headers: {
+        Authorization: "Bearer " + sessionId,
+      },
+      body: JSON.stringify({ accounts, tempBank }),
+    });
+    
+  } catch (error) {
+    console.log(error, 'error')
   }
 }

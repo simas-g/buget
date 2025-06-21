@@ -1,7 +1,9 @@
+'use client'
 import { CreditCard, Plus } from "lucide-react";
 import BankConnection from "./BankConnection";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
+import { initializeBankConnection } from "@/app/util/http";
 const mockData = {
   accounts: [
     {
@@ -101,14 +103,25 @@ const mockData = {
     ],
   },
 };
-export default function Connected() {
+export default function Connected({accounts, sessionId}) {
   const router = useRouter();
   const navigateToAddConnection = () => {
     router.push("/skydelis/nauja-saskaita");
   };
-//   useEffect(() => {
-//     async function
-//   }, [])
+  const params = useSearchParams()
+
+  useEffect(() => {
+    async function checkParamsAndBeginConnection() {
+      const error = params.get("error")
+      let ref;
+      if(error) {
+        return
+      } else {
+        const tempBank = sessionStorage.getItem("temp_bank")
+        const res = await initializeBankConnection(accounts, tempBank, sessionId)
+      }
+    }
+  }, [params])
   return (
     <div className=" gap-8 mb-8 p-8 md:px-16">
       {/* Bank Accounts */}
