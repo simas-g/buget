@@ -25,8 +25,8 @@ export default function BankConnection({
     <div className="flex items-center justify-between p-4 rounded-xl bg-[#0A0A20]/50 border border-white/5 hover:border-white/10 transition-all duration-300">
       <div className="flex items-center space-x-4">
         <div className="relative">
-          <div className="h-12 w-12 overflow-hidden rounded-lg bg-white/10 flex items-center justify-center">
-            <Image src={logo} fill alt={bank}/>
+          <div className="h-12 w-12 overflow-hidden rounded-lg flex items-center justify-center">
+            <img src={logo} alt={bank}/>
           </div>
           <div className="absolute -bottom-1 -right-1 h-4 w-4 bg-[#63EB25] rounded-full flex items-center justify-center">
             <CheckCircle className="h-3 w-3 text-white" />

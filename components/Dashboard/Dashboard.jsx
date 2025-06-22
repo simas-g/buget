@@ -10,12 +10,13 @@ import { useFetch } from "@/app/hooks/useFetch";
 import Link from "next/link";
 import Connected from "./Connected";
 import { getToken, listAccounts } from "@/app/util/http";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { userActions } from "./userStore";
 export default function Dashboard({ user, sessionId }) {
   const router = useRouter();
-  const [theme, setTheme] = useState("dark");
   const dispatch = useDispatch();
+
+  const [theme, setTheme] = useState("dark");
   useEffect(() => {
     if (!user || !sessionId) return;
     dispatch(userActions.setUser({ userId: user._id, sessionId }));

@@ -120,11 +120,12 @@ export default function Connected() {
       if (error) {
         return;
       } else if (ref) {
+        console.log('we should be here')
         const tempBank = sessionStorage.getItem("temp_bank");
         const res = await initializeBankConnection(
           JSON.parse(sessionStorage.getItem("data")),
           tempBank,
-          sessionId
+          userState.sessionId
         );
         if (res.ok) {
           // router.push('skydelis')

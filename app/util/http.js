@@ -49,6 +49,7 @@ export async function listAccounts(token, sessionId) {
 
 ///fetching account
 export async function initializeBankConnection(accounts, tempBank, sessionId) {
+  console.log('helo', accounts, tempBank, sessionId)
   try {
     const res = await fetch("/api/createBankConnection", {
       method: "POST",
