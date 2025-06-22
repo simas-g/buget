@@ -16,11 +16,10 @@ export async function POST(req) {
     const body = await req.json();
     const { tempBank, accounts: encrypted } = body;
     const accounts = await decrypt(encrypted, isValidRequest.sessionId);
-    console.log(accounts, " accounts");
-
+    console.log("Accounts:", accounts);
     const existingConnection = await BankConnection.findOne({
       userId: userOid,
-      accountId: accounts[i],
+      accountId: accounts,
     });
     if (existingConnection) {
       return NextResponse.json(

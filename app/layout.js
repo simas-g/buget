@@ -1,6 +1,7 @@
 import { Inter, Roboto } from 'next/font/google'
 import "./globals.css";
 import Footer from '@/components/UI/Footer';
+import ClientLayoutWrapper from './lib/ClientLayoutWrapper';
 
 const inter = Inter({
   subsets: ['latin', 'latin-ext'], 
@@ -22,8 +23,10 @@ export default function RootLayout({ children }) {
     <html lang="lt">
       <head><link rel="icon" href="/favicon.svg"></link></head>
       <body className={`${inter.variable} ${roboto.variable} font-sans antialiased`}>
-
+      <ClientLayoutWrapper>
         {children}
+
+      </ClientLayoutWrapper>
       </body>
     </html>
   );

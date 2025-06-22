@@ -1,4 +1,4 @@
-import Dashboard from "@/components/UI/Dashboard/Dashboard";
+import Dashboard from "@/components/Dashboard/Dashboard";
 import { getFullUser } from "../lib/auth/currentUser";
 import { notFound } from "next/navigation";
 

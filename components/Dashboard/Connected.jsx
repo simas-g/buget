@@ -2,8 +2,10 @@
 import { CreditCard, Plus } from "lucide-react";
 import BankConnection from "./BankConnection";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect } from "react";
-import { initializeBankConnection } from "@/app/util/http";
+import { useCallback, useEffect, useMemo } from "react";
+import { getConnectedBanks, initializeBankConnection } from "@/app/util/http";
+import { useSelector } from "react-redux";
+import { useFetch } from "@/app/hooks/useFetch";
 const mockData = {
   accounts: [
     {
@@ -103,32 +105,43 @@ const mockData = {
     ],
   },
 };
-export default function Connected({ sessionId }) {
+export default function Connected() {
   const router = useRouter();
   const navigateToAddConnection = () => {
     router.push("/skydelis/nauja-saskaita");
   };
+  const userState = useSelector((state) => state.user);
   const params = useSearchParams();
+  ///check for new connections
   useEffect(() => {
     async function checkParamsAndBeginConnection() {
       const error = params.get("error");
-      let ref;
+      let ref = params.get("ref");
       if (error) {
         return;
-      } else {
+      } else if (ref) {
         const tempBank = sessionStorage.getItem("temp_bank");
         const res = await initializeBankConnection(
           JSON.parse(sessionStorage.getItem("data")),
           tempBank,
           sessionId
         );
-        if(res.ok) {
+        if (res.ok) {
           // router.push('skydelis')
         }
       }
     }
     checkParamsAndBeginConnection();
   }, [params]);
+  const shouldFetch = !!userState.userId && !!userState.sessionId;
+  console.log(shouldFetch, userState.userId, userState.sessionId);
+  const fetchBanks = useCallback(() => {
+    if (!shouldFetch) return;
+    return getConnectedBanks(userState.userId, userState.sessionId);
+  }, [userState.userId]);
+
+  const { data: banks, isLoading } = useFetch(fetchBanks, shouldFetch);
+  console.log(banks, "banks");
   return (
     <div className=" gap-8 mb-8 p-8 md:px-16">
       {/* Bank Accounts */}
@@ -149,12 +162,13 @@ export default function Connected({ sessionId }) {
           </div>
 
           <ul className="space-y-4">
-            {mockData.accounts.map((account) => (
+            {banks?.data.map((account) => (
               <li key={account.name}>
                 <BankConnection
                   bank={account.name}
                   currentBalance={account.balance}
-                  lastConnected={account.lastSync}
+                  lastConnected={account.createdAt}
+                  logo={account.logo}
                 />
               </li>
             ))}

@@ -62,3 +62,25 @@ export async function initializeBankConnection(accounts, tempBank, sessionId) {
     console.log(error, "error");
   }
 }
+
+///retrieve connected banks
+export async function getConnectedBanks(userId, sessionId) {
+  if(!userId || !sessionId) {
+    console.log("User ID or session ID is missing");
+    return null;
+  }
+  try {
+    const res = await fetch("/api/connectedBanks", {
+      method: "POST",
+      headers: {
+        Authorization: "Bearer " + sessionId,
+      },
+      body: JSON.stringify({userId})
+    });
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.log("Error fetching connected banks:", error);
+    return null
+  }
+}

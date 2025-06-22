@@ -12,7 +12,6 @@ export async function fetchRequisitions(bank, accessToken, sessionId) {
       accessToken,
     }),
   });
-  console.log('im am here')
 
   if (!res.ok) {
     throw new Error(`Failed to fetch requisitions: ${res.status}`);
