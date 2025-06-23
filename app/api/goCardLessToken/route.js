@@ -1,5 +1,11 @@
 import { validateToken } from "@/app/lib/auth/session";
 import { NextResponse } from "next/server";
+// {  
+//   "access": "string",
+//   "access_expires": 86400,  
+//   "refresh": "string",  
+//   "refresh_expires": 2592000 
+//  }
 export async function GET(req) {
   const validToken = await validateToken(req.headers);
   if (!validToken) {

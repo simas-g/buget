@@ -1,5 +1,15 @@
 import { validateToken } from "@/app/lib/auth/session";
 import { NextResponse } from "next/server";
+// {
+//    "id":"8126e9fb-93c9-4228-937c-68f0383c2df7",
+//    "status":"LN",
+//    "agreements":"2dea1b84-97b0-4cb4-8805-302c227587c8",
+//    "accounts":[
+//       "065da497-e6af-4950-88ed-2edbc0577d20",
+//       "bc6d7bbb-a7d8-487e-876e-a887dcfeea3d"
+//    ],
+//    "reference":"124151"
+// }
 
 export async function POST(req) {
   const isValidRequest = await validateToken(req.headers);

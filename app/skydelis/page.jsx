@@ -22,7 +22,6 @@ export default async function Page() {
       </div>
       <ClientOnly fallback={<div className="flex items-center justify-center h-screen">Loading...</div>}>
         <Dashboard user={user} sessionId={sessionKey} />
-
       </ClientOnly>
     </div>
   );

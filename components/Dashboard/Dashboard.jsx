@@ -12,6 +12,8 @@ import Connected from "./Connected";
 import { getToken, listAccounts } from "@/app/util/http";
 import { useDispatch } from "react-redux";
 import { userActions } from "./userStore";
+import LeftSidebar from "./LeftSidebar";
+import Summary from "./Summary";
 export default function Dashboard({ user, sessionId }) {
   const router = useRouter();
   const dispatch = useDispatch();
@@ -50,7 +52,9 @@ export default function Dashboard({ user, sessionId }) {
   const currentTheme = themes[theme];
 
   return (
-    <div className="relative z-10">
+    <div className=" z-10 flex h-screen">
+      <LeftSidebar/>
+
       {/* Header */}
       <div className="border-b border-white/10 bg-[#0A0A20]/80 backdrop-blur-lg">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -90,10 +94,12 @@ export default function Dashboard({ user, sessionId }) {
             </div>
           </div>
         </div>
-
         {/* Connected bank accounts */}
         <Connected />
       </div>
+
+      {/**Summary */}
+      <Summary/>
     </div>
   );
 }
