@@ -14,7 +14,7 @@ export default function DashboardMockup() {
 
   return (
     <div
-    id="demo"
+      id="demo"
       className={`scroll-mt-52 relative rounded-2xl border p-1 transition-all duration-500 ${currentTheme.container}`}
     >
       <div className="rounded-xl overflow-hidden">
@@ -24,9 +24,9 @@ export default function DashboardMockup() {
             <h3 className="text-lg font-medium text-white">Analitika</h3>
             <button
               onClick={toggleTheme}
-              className={`flex w-16 cursor-pointer p-1 border h-8 rounded-full items-center transition-all duration-300 ${currentTheme.toggleBg} ${
-                theme === "light" ? "justify-end" : "justify-start"
-              }`}
+              className={`flex w-16 cursor-pointer p-1 border h-8 rounded-full items-center transition-all duration-300 ${
+                currentTheme.toggleBg
+              } ${theme === "light" ? "justify-end" : "justify-start"}`}
             >
               <motion.div
                 layout

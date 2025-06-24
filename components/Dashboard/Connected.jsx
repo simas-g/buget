@@ -2,109 +2,12 @@
 import { CreditCard, Plus } from "lucide-react";
 import BankConnection from "./BankConnection";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useCallback, useEffect, useMemo } from "react";
+import { useCallback, useEffect } from "react";
 import { getConnectedBanks, initializeBankConnection } from "@/app/util/http";
 import { useSelector } from "react-redux";
 import { useFetch } from "@/app/hooks/useFetch";
-const mockData = {
-  accounts: [
-    {
-      id: 1,
-      name: "Swedbank",
-      balance: 2847.32,
-      currency: "EUR",
-      lastSync: "2024-01-15T10:30:00Z",
-      status: "connected",
-      logo: "/placeholder.svg?height=40&width=40",
-    },
-    {
-      id: 2,
-      name: "SEB",
-      balance: 15420.18,
-      currency: "EUR",
-      lastSync: "2024-01-15T09:15:00Z",
-      status: "connected",
-      logo: "/placeholder.svg?height=40&width=40",
-    },
-    {
-      id: 3,
-      name: "Revolut",
-      balance: 543.67,
-      currency: "EUR",
-      lastSync: "2024-01-15T11:00:00Z",
-      status: "connected",
-      logo: "/placeholder.svg?height=40&width=40",
-    },
-  ],
-  gmail: {
-    connected: true,
-    email: "simas@gmail.com",
-    lastSync: "2024-01-15T11:30:00Z",
-    receiptsFound: 23,
-    billsFound: 8,
-  },
-  transactions: [
-    {
-      id: 1,
-      description: "Maxima",
-      amount: -45.67,
-      category: "Maistas",
-      date: "2024-01-15",
-      account: "Swedbank",
-      type: "expense",
-    },
-    {
-      id: 2,
-      description: "Atlyginimas",
-      amount: 2500.0,
-      category: "Pajamos",
-      date: "2024-01-15",
-      account: "Swedbank",
-      type: "income",
-    },
-    {
-      id: 3,
-      description: "Netflix",
-      amount: -12.99,
-      category: "Pramogos",
-      date: "2024-01-14",
-      account: "Revolut",
-      type: "expense",
-    },
-    {
-      id: 4,
-      description: "Elektros sąskaita",
-      amount: -89.34,
-      category: "Komunaliniai",
-      date: "2024-01-14",
-      account: "Swedbank",
-      type: "expense",
-    },
-  ],
-  analytics: {
-    totalBalance: 18811.17,
-    monthlyIncome: 2500.0,
-    monthlyExpenses: 1247.83,
-    savingsRate: 50.1,
-    categories: [
-      { name: "Maistas", amount: 456.78, percentage: 36.6, color: "#2563EB" },
-      {
-        name: "Transportas",
-        amount: 234.56,
-        percentage: 18.8,
-        color: "#EB2563",
-      },
-      { name: "Pramogos", amount: 189.34, percentage: 15.2, color: "#63EB25" },
-      {
-        name: "Komunaliniai",
-        amount: 167.89,
-        percentage: 13.4,
-        color: "#F59E0B",
-      },
-      { name: "Kita", amount: 199.26, percentage: 16.0, color: "#8B5CF6" },
-    ],
-  },
-};
+import BoxWrapper from "./BoxWrapper";
+
 export default function Connected() {
   const router = useRouter();
   const navigateToAddConnection = () => {
@@ -120,7 +23,7 @@ export default function Connected() {
       if (error) {
         return;
       } else if (ref) {
-        console.log('we should be here')
+        console.log("we should be here");
         const tempBank = sessionStorage.getItem("temp_bank");
         const res = await initializeBankConnection(
           JSON.parse(sessionStorage.getItem("data")),
@@ -144,10 +47,10 @@ export default function Connected() {
   const { data: banks, isLoading } = useFetch(fetchBanks, shouldFetch);
   console.log(banks, "banks");
   return (
-    <div className=" gap-8 mb-8 p-8 md:px-16">
+    <div className=" gap-8 mb-8 p-8 md:px-16 w-full">
       {/* Bank Accounts */}
-      <div className="lg:col-span-2">
-        <div className="bg-[#1A1A40]/30 backdrop-blur-sm border border-white/10 rounded-2xl p-6">
+      <BoxWrapper>
+        <div className="lg:col-span-2">
           <div className="flex items-center justify-between mb-6">
             <h3 className="text-xl font-semibold text-white flex items-center space-x-2">
               <CreditCard className="h-5 w-5 text-[#2563EB]" />
@@ -175,7 +78,7 @@ export default function Connected() {
             ))}
           </ul>
         </div>
-      </div>
+      </BoxWrapper>
     </div>
   );
 }

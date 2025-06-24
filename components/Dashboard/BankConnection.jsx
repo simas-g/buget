@@ -1,27 +1,14 @@
 import { CheckCircle, CreditCard } from "lucide-react";
 import Image from "next/image";
 import Button from "../UI/Button";
+import { formatCurrency, formatDate } from "@/app/util/format";
 export default function BankConnection({
   currentBalance,
   lastConnected,
   bank,
   logo,
 }) {
-  const formatCurrency = (amount) => {
-    return new Intl.NumberFormat("lt-LT", {
-      style: "currency",
-      currency: "EUR",
-    }).format(amount);
-  };
 
-  const formatDate = (dateString) => {
-    return new Date(dateString).toLocaleDateString("lt-LT", {
-      month: "short",
-      day: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-    });
-  };
   return (
     <div className="flex items-center justify-between p-4 rounded-xl bg-[#0A0A20]/50 border border-white/5 hover:border-white/10 transition-all duration-300">
       <div className="flex items-center space-x-4">
