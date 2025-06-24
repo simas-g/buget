@@ -96,18 +96,11 @@ export default function Dashboard({ user, sessionId }) {
             </div>
           </div>
           <div className="flex flex-col gap-4 p-4">
-            <section className="flex flex-wrap gap-4">
-              {/**Net worth */}
-              <div className="col-span-1">
-                <Summary index={1} />
-              </div>
-              {/**month-in */}
-              <div className="col-span-1">
-                <Summary />
-              </div>
-              {/**month-out */}
-              <div className="col-span-1">
-                <Summary />
+            <section className="flex gap-4 sm:flex-row flex-col">
+              <Summary type="main" />
+              <div className="flex gap-4 flex-wrap flex-col sm:w-[40%]">
+                <Summary type="month-in" />
+                <Summary type="month-out" />
               </div>
             </section>
             <Connected />
