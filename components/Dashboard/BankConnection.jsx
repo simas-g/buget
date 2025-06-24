@@ -30,7 +30,7 @@ export default function BankConnection({
         </div>
       </div>
       <div className="text-right">
-        <Button variant={"outline"} className="px-3 py-1">
+        <Button className="px-3 py-1">
           Peržiūrėti
         </Button>
       </div>

@@ -47,38 +47,35 @@ export default function Connected() {
   const { data: banks, isLoading } = useFetch(fetchBanks, shouldFetch);
   console.log(banks, "banks");
   return (
-    <div className=" gap-8 mb-8 p-8 md:px-16 w-full">
-      {/* Bank Accounts */}
-      <BoxWrapper>
-        <div className="lg:col-span-2">
-          <div className="flex items-center justify-between mb-6">
-            <h3 className="text-xl font-semibold text-white flex items-center space-x-2">
-              <CreditCard className="h-5 w-5 text-[#2563EB]" />
-              <span>Sąskaitos</span>
-            </h3>
-            <button
-              onClick={() => navigateToAddConnection()}
-              className="flex items-center space-x-2 rounded-lg bg-secondary px-4 py-2 text-white font-medium transition-all cursor-pointer duration-300"
-            >
-              <Plus className="h-4 w-4" />
-              <span>Pridėti</span>
-            </button>
-          </div>
-
-          <ul className="space-y-4">
-            {banks?.data.map((account) => (
-              <li key={account.name}>
-                <BankConnection
-                  bank={account.name}
-                  currentBalance={account.balance}
-                  lastConnected={account.createdAt}
-                  logo={account.logo}
-                />
-              </li>
-            ))}
-          </ul>
+    <BoxWrapper>
+      <div className="lg:col-span-2">
+        <div className="flex items-center justify-between mb-6">
+          <h3 className="text-xl font-semibold text-white flex items-center space-x-2">
+            <CreditCard className="h-5 w-5 text-[#2563EB]" />
+            <span>Sąskaitos</span>
+          </h3>
+          <button
+            onClick={() => navigateToAddConnection()}
+            className="flex items-center space-x-2 rounded-lg bg-secondary px-4 py-2 text-white font-medium transition-all cursor-pointer duration-300"
+          >
+            <Plus className="h-4 w-4" />
+            <span>Pridėti</span>
+          </button>
         </div>
-      </BoxWrapper>
-    </div>
+
+        <ul className="space-y-4">
+          {banks?.data.map((account) => (
+            <li key={account.name}>
+              <BankConnection
+                bank={account.name}
+                currentBalance={account.balance}
+                lastConnected={account.createdAt}
+                logo={account.logo}
+              />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </BoxWrapper>
   );
 }

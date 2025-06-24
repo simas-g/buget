@@ -14,6 +14,7 @@ import { useDispatch } from "react-redux";
 import { userActions } from "./userStore";
 import LeftSidebar from "./LeftSidebar";
 import Summary from "./Summary";
+import Categories from "./Categories";
 export default function Dashboard({ user, sessionId }) {
   const router = useRouter();
   const dispatch = useDispatch();
@@ -52,11 +53,11 @@ export default function Dashboard({ user, sessionId }) {
   const currentTheme = themes[theme];
 
   return (
-    <div className=" z-10 flex h-screen">
+    <div className=" z-10 flex h-fit">
       <LeftSidebar />
       <div className="w-full">
         {/* Header */}
-        <div className="border-b w-full border-white/10 bg-[#0A0A20]/80 backdrop-blur-lg">
+        <div className="w-full  bg-[#0A0A20]/80 backdrop-blur-lg">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between py-6">
               <Link href={"/"}>Pradžia</Link>
@@ -94,12 +95,28 @@ export default function Dashboard({ user, sessionId }) {
               </div>
             </div>
           </div>
-          {/* Connected bank accounts */}
-          <Connected />
+          <div className="flex flex-col gap-4 p-4">
+            <section className="flex flex-wrap gap-4">
+              {/**Net worth */}
+              <div className="col-span-1">
+                <Summary index={1} />
+              </div>
+              {/**month-in */}
+              <div className="col-span-1">
+                <Summary />
+              </div>
+              {/**month-out */}
+              <div className="col-span-1">
+                <Summary />
+              </div>
+            </section>
+            <Connected />
+          </div>
         </div>
-
-        {/**Summary */}
-        <Summary />
+        {/**mid section */}
+        <div className=" lg:px-6 w-full px-4 mt-4">
+          <Categories />
+        </div>
       </div>
     </div>
   );
