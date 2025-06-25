@@ -71,7 +71,7 @@ export default function Connected() {
                 currentBalance={account.balance}
                 lastConnected={account.createdAt}
                 logo={account.logo}
-                id={account.accountId}
+                id={account._id}
               />
             </li>
           ))}

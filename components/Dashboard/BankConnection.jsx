@@ -29,7 +29,7 @@ export default function BankConnection({
         </div>
       </div>
       <div className="text-right">
-        <Link href={`/skydelis/${id}`} className="px-3 py-1">
+        <Link href={`/skydelis/saskaitos/${id}`} className="px-3 py-1">
           Peržiūrėti
         </Link>
       </div>

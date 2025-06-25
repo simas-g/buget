@@ -1,5 +1,5 @@
 ///fetching the token 1.
-import {encrypt} from "./crypting"
+import { encrypt } from "./crypting";
 export async function getToken(sessionId) {
   const alreadyExistingToken = JSON.parse(
     sessionStorage.getItem("access_token")
@@ -38,8 +38,8 @@ export async function listAccounts(token, sessionId) {
       }),
     });
     const data = await res.json();
-    const string = (data.data.accounts).toString()
-    const encrypted = await encrypt(string)
+    const string = data.data.accounts.toString();
+    const encrypted = await encrypt(string);
     sessionStorage.setItem("data", JSON.stringify(encrypted));
     return data;
   } catch (error) {
@@ -49,7 +49,7 @@ export async function listAccounts(token, sessionId) {
 
 ///fetching account
 export async function initializeBankConnection(accounts, tempBank, sessionId) {
-  console.log('helo', accounts, tempBank, sessionId)
+  console.log("helo", accounts, tempBank, sessionId);
   try {
     const res = await fetch("/api/createBankConnection", {
       method: "POST",
@@ -66,7 +66,7 @@ export async function initializeBankConnection(accounts, tempBank, sessionId) {
 
 ///retrieve connected banks
 export async function getConnectedBanks(userId, sessionId) {
-  if(!userId || !sessionId) {
+  if (!userId || !sessionId) {
     console.log("User ID or session ID is missing");
     return null;
   }
@@ -76,12 +76,31 @@ export async function getConnectedBanks(userId, sessionId) {
       headers: {
         Authorization: "Bearer " + sessionId,
       },
-      body: JSON.stringify({userId})
+      body: JSON.stringify({ userId }),
     });
     const data = await res.json();
     return data;
   } catch (error) {
     console.log("Error fetching connected banks:", error);
-    return null
+    return null;
+  }
+}
+
+//retrieve data about bank(logo,balance,name,account_id)
+export async function getBankData(bankId, sessionId) {
+  try {
+    const res = await fetch("/api/getBankData", {
+      method: "POST",
+      headers: {
+        "Authorization": "Bearer " + sessionId,
+      },
+      body: JSON.stringify({
+        bankId,
+      }),
+    });
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    return null;
   }
 }
