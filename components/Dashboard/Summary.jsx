@@ -3,15 +3,16 @@ import BoxWrapper from "./BoxWrapper";
 import { formatCurrency } from "@/app/util/format";
 
 export default function Summary({
-  total = 449723.1,
-  change = 1515.5,
+  total = '',
+  change = '0',
   type = "",
   message = "",
 }) {
   const formattedTotal = formatCurrency(total);
-  const formattedChange =
-    change > 0 ? `+${formatCurrency(change)}` : formatCurrency(change);
-
+  let formattedChange = formatCurrency(change)
+  if(change > 0) {
+    formattedChange = `+` + formattedChange
+  }
   let box;
   if (type === "main") {
     message = "Grynoji vertė";
@@ -50,7 +51,7 @@ export default function Summary({
         {type === "main" && (
           <p
             className={`text-sm font-medium ${
-              change > 0 ? "text-primary" : "text-accent"
+              change > 0 ? "text-primary" : change == 0 ? 'text-gray-500': "text-accent"
             }`}
           >
             {formattedChange} <span className="text-white">šį mėnesį</span> 

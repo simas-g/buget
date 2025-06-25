@@ -13,3 +13,23 @@ export const formatDate = (dateString) => {
     minute: "2-digit",
   });
 };
+
+export const formatCurrencyVisually = (amount) => {
+  const number = new Intl.NumberFormat("lt-LT", {
+    style: "currency",
+    currency: "EUR",
+  }).format(amount);
+  let object = {
+    style: "",
+    amount: number,
+  };
+  if (amount > 0) {
+    object.style = "text-primary";
+    object.amount = "+" + number;
+  } else if (amount < 0) {
+    object.style = "text-accent";
+  } else if (amount === 0) {
+    object.style = "text-gray-400";
+  }
+  return object;
+};

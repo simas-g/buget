@@ -51,7 +51,7 @@ export default function Connected() {
       <div className="lg:col-span-2">
         <div className="flex items-center justify-between mb-6">
           <h3 className="text-xl font-semibold text-white flex items-center space-x-2">
-            <CreditCard className="h-5 w-5 text-[#2563EB]" />
+            <CreditCard size={24} className="text-[#2563EB]" />
             <span>Sąskaitos</span>
           </h3>
           <button
