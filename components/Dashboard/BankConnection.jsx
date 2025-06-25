@@ -1,12 +1,11 @@
-import { CheckCircle, CreditCard } from "lucide-react";
-import Image from "next/image";
-import Button from "../UI/Button";
 import { formatCurrency, formatDate } from "@/app/util/format";
+import Link from "next/link";
 export default function BankConnection({
   currentBalance,
   lastConnected,
   bank,
   logo,
+  id
 }) {
 
   return (
@@ -30,9 +29,9 @@ export default function BankConnection({
         </div>
       </div>
       <div className="text-right">
-        <Button className="px-3 py-1">
+        <Link href={`/skydelis/${id}`} className="px-3 py-1">
           Peržiūrėti
-        </Button>
+        </Link>
       </div>
     </div>
   );

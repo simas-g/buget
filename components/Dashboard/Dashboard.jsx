@@ -54,7 +54,7 @@ export default function Dashboard({ user, sessionId }) {
   const currentTheme = themes[theme];
 
   return (
-    <div className=" z-10 flex h-fit">
+    <div className="z-10 flex h-fit">
       <LeftSidebar />
       <div className="w-full max-w-7xl">
         <div className="mx-auto px-4 sm:px-6 lg:px-8">
@@ -102,13 +102,13 @@ export default function Dashboard({ user, sessionId }) {
               <Summary type="month-out" />
             </div>
           </section>
-          <Categories />
-          <CategorizedTransactions />
+          <div className="flex w-full gap-4 flex-wrap lg:flex-nowrap">
+            <Categories />
+            <CategorizedTransactions />
+          </div>
 
           <Connected />
         </div>
-        {/**mid section */}
-        <div className="w-full px-4"></div>
       </div>
     </div>
   );

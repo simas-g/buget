@@ -2,23 +2,13 @@ import { ChartBar } from "lucide-react";
 import BoxWrapper from "./BoxWrapper";
 import Button from "../UI/Button";
 import { Plus } from "lucide-react";
-export default function Categories({
-  categories = [
-    { name: "Investicijos", color: "#FF5733", amount: 3433 },
-    { name: "Maistas", color: "#33FF57", amount: 1222 },
-    { name: "Pramogos", color: "#3357FF", amount: 2342 },
-    { name: "Transportas", color: "#FF33A1", amount: 500 },
-    { name: "Sveikata", color: "#FF8C33", amount: 4000 },
-    { name: "Kita", color: "#33FFF5", amount: 1000 },
-  ],
-  total = 12000,
-}) {
+export default function Categories({ categories = [], total}) {
   const calculatePercentage = (amount) => {
     return ((amount / total) * 100).toFixed(1);
   };
   const sortedCategories = [...categories].sort((a, b) => b.amount - a.amount);
   return (
-    <BoxWrapper className={"relative"}>
+    <BoxWrapper className={"relative w-full"}>
       <h5 className="flex items-center gap-2 text-xl font-bold">
         <ChartBar stroke="var(--color-secondary)" size={24} />
         Kategorijos

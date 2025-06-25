@@ -5,7 +5,8 @@ const BankAccountSchema = new Schema({
   logo: { type: String, required: true },
   accountId: { type: String, required: true },
   userId: { type: mongoose.Schema.ObjectId, required: true },
-  balance: { type: Number, required: true, default: 0 },
+  validUntil: { type: Date, required: true },
+  lastFetched: { type: Date, required: true },
 });
 const BankConnection =
   models.BankConnection || model("BankConnection", BankAccountSchema);

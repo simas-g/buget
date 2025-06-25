@@ -1,5 +1,4 @@
-import { formatCurrencyVisually, formatDate } from "@/app/util/format";
-import { color } from "motion";
+import { formatCurrencyVisually } from "@/app/util/format";
 
 const Transaction = ({ type = "uncategorized", operation = {} }) => {
   let content;
@@ -10,12 +9,10 @@ const Transaction = ({ type = "uncategorized", operation = {} }) => {
         <div className="flex gap-x-2 items-center w-fit">
           <div className={`w-2 h-2 rounded-full bg-secondary`}></div>
           <p>{operation?.category}</p> |
-          <p className="text-gray-300 w-full">{operation?.date}</p>
+          <p className="text-gray-300">{operation?.date}</p>
         </div>
 
-        <p className={currency.style + " text-right"}>
-          {currency.amount}
-        </p>
+        <p className={currency.style + " text-right"}>{currency.amount}</p>
         <div className="absolute inset-0">
           <div
             className={`absolute top-[60%] left-[20%] h-[40px] w-[250px] rounded-full blur-[100px] bg-[${operation.color}]`}

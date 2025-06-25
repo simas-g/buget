@@ -4,6 +4,7 @@ export default function LeftSidebar() {
       <div className="space-y-4">
         <p>Kategorijos</p>
         <p>Istorija</p>
+        <p>Planas</p>
       </div>
     </div>
   );
