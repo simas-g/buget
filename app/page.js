@@ -4,14 +4,14 @@ import HowItWorks from "@/components/UI/Homepage/HowItWorks";
 import MovingBanks from "@/components/UI/Homepage/MovingBanks";
 import Pricing from "@/components/UI/Homepage/Pricing";
 import Nav from "@/components/UI/Nav";
-import { getCurrentUser } from "./lib/auth/currentUser";
+import { getCurrentUser, getFullUser } from "./lib/auth/currentUser";
 
 export default async function Home() {
   const navLinks = [
     { href: "#kaip-tai-veikia", label: "Kaip tai veikia?" },
     { href: "/#kainos", label: "Kainos" },
   ];
-  const user = await getCurrentUser();
+  const user = await getFullUser();
   let actions = false;
   if (user) {
     actions = true;

@@ -3,7 +3,7 @@ import connect from "@/app/lib/connectToDB";
 import User from "@/app/lib/models/user";
 import { NextResponse } from "next/server";
 
-export async function POST(request) {
+export async function GET(request) {
   const isValidRequest = await validateToken(request.headers);
   if (!isValidRequest) {
     return NextResponse.json(

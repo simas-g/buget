@@ -9,16 +9,9 @@ export default async function Page({ params }) {
     notFound();
   }
 
-  const cookieStore = await cookies();
-  const sessionId = cookieStore.get("SESSION_KEY");
-  const user = getUserFromSession(cookieStore);
-  if (!user) {
-    notFound();
-  }
-
   return (
     <QueryProvider>
-      <BankTransactionPage id={id} sessionId={sessionId} />;
+      <BankTransactionPage id={id} />
     </QueryProvider>
-  );
+  )
 }

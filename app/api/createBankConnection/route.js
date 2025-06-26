@@ -12,7 +12,7 @@ export async function POST(req) {
   try {
     const user = await getUserFromSession(await cookies());
     const userOid = new mongoose.Types.ObjectId(user.id);
-
+    
     const body = await req.json();
     const { tempBank, accounts: encrypted } = body;
     const accounts = await decrypt(encrypted, isValidRequest.sessionId);

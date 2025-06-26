@@ -69,7 +69,7 @@ export default function Connected() {
               <BankConnection
                 bank={account.name}
                 currentBalance={account.balance}
-                lastConnected={account.createdAt}
+                lastConnected={account.lastFetched}
                 logo={account.logo}
                 id={account._id}
               />

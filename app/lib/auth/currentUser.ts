@@ -17,7 +17,6 @@ export const getFullUser = cache(async () => {
 
   try {
     const response = await fetch(process.env.BASE_URL + "/api/user", {
-      method: "POST",
       headers: {
         Authorization: "Bearer " + sessionKey,
         "Content-Type": "application/json",

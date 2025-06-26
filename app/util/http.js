@@ -87,13 +87,10 @@ export async function getConnectedBanks(userId, sessionId) {
 }
 
 //retrieve data about bank(logo,balance,name,account_id)
-export async function getBankData(bankId, sessionId) {
+export async function getBankData(bankId) {
   try {
     const res = await fetch("/api/getBankData", {
       method: "POST",
-      headers: {
-        "Authorization": "Bearer " + sessionId,
-      },
       body: JSON.stringify({
         bankId,
       }),

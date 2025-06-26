@@ -1,0 +1,1361 @@
+{
+    "transactions": {
+        "booked": [
+            {
+                "transactionId": "6702827062",
+                "entryReference": "17508552341747976121",
+                "bookingDate": "2025-06-25",
+                "valueDate": "2025-06-25",
+                "transactionAmount": {
+                    "amount": "100.0",
+                    "currency": "EUR"
+                },
+                "debtorName": "GEDEIKIS KĘSTUTIS",
+                "debtorAccount": {
+                    "iban": "LT437044000074641991"
+                },
+                "remittanceInformationUnstructured": "PAVEDIMAS",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=150621120",
+                    "transactionReferenceNumber=RO1910253017L02"
+                ],
+                "bankTransactionCode": "PMNT-RCDT-BOOK",
+                "internalTransactionId": "db84d8fb12ca37d67898ac06c6c49853"
+            },
+            {
+                "transactionId": "6695919867",
+                "entryReference": "17505877406879328926",
+                "endToEndId": "6420437927",
+                "bookingDate": "2025-06-22",
+                "valueDate": "2025-06-22",
+                "transactionAmount": {
+                    "amount": "-50.0",
+                    "currency": "EUR"
+                },
+                "creditorName": "UAB PAYSERA LT",
+                "creditorAccount": {
+                    "iban": "LT787044060007712716"
+                },
+                "remittanceInformationUnstructured": "R642043792 8 Kambarys koncertas | Kaunas | OLDMAN - Karolis Talutis. Užsakymo nr: 32675029. Paysera Tickets.",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=642043792",
+                    "transactionReferenceNumber=RO1907162737L01"
+                ],
+                "bankTransactionCode": "PMNT-ICDT-BOOK",
+                "internalTransactionId": "922732d65e9cadb094c2bf76310e1094"
+            },
+            {
+                "transactionId": "6684555391",
+                "entryReference": "17502451421517034450",
+                "bookingDate": "2025-06-18",
+                "valueDate": "2025-06-18",
+                "transactionAmount": {
+                    "amount": "-41.26",
+                    "currency": "EUR"
+                },
+                "creditorName": "AB REGITRA",
+                "remittanceInformationUnstructured": "17/06/2025 14:18  kortelė...813702 AB REGITRA/KAUNAS/LTU #751517",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=CLR10786029",
+                    "transactionReferenceNumber=RO1902689886L01"
+                ],
+                "bankTransactionCode": "PMNT-CCRD-OTHR",
+                "internalTransactionId": "c77583f786b418d0b3a5c2839affd92f"
+            },
+            {
+                "transactionId": "6681931217",
+                "entryReference": "17501686959042790276",
+                "bookingDate": "2025-06-17",
+                "valueDate": "2025-06-17",
+                "transactionAmount": {
+                    "amount": "-27.78",
+                    "currency": "EUR"
+                },
+                "creditorName": "UAB PAYSERA LT",
+                "creditorAccount": {
+                    "iban": "LT067044060004556274"
+                },
+                "remittanceInformationUnstructured": "R641594274 7725413 Ref:103066 No:75954225 (https://www.epaslaugos.lt)",
+                "remittanceInformationUnstructuredArray": [
+                    "transactionReferenceNumber=RO1901653867L01"
+                ],
+                "bankTransactionCode": "PMNT-ICDT-BOOK",
+                "internalTransactionId": "4210e178003ba9a76b0f90d61aa61d52"
+            },
+            {
+                "transactionId": "6677326604",
+                "entryReference": "17500591263646545663",
+                "bookingDate": "2025-06-16",
+                "valueDate": "2025-06-16",
+                "transactionAmount": {
+                    "amount": "-5.66",
+                    "currency": "EUR"
+                },
+                "creditorName": "HOSTINGER* HOSTINGER.L",
+                "remittanceInformationUnstructured": "15/06/2025 12:54  kortelė...813702 HOSTINGER* HOSTINGER.L/LARNACA/CYP #575242",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=CLR10771505",
+                    "transactionReferenceNumber=RO1899955332L01"
+                ],
+                "bankTransactionCode": "PMNT-CCRD-OTHR",
+                "internalTransactionId": "52e7e9210e66c519ea99bd915463bde6"
+            },
+            {
+                "transactionId": "6668210010",
+                "entryReference": "17497976130337809069",
+                "bookingDate": "2025-06-13",
+                "valueDate": "2025-06-13",
+                "transactionAmount": {
+                    "amount": "-104.96",
+                    "currency": "EUR"
+                },
+                "creditorName": "PAYPAL *COINBASE",
+                "remittanceInformationUnstructured": "11/06/2025 00:00  kortelė...813702 PAYPAL *COINBASE/35314369001/IRL #167275",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=CLR10753205",
+                    "transactionReferenceNumber=RO1896317610L01"
+                ],
+                "bankTransactionCode": "PMNT-CCRD-OTHR",
+                "internalTransactionId": "0f5aa80daaf0cc434b53e18e53041241"
+            },
+            {
+                "transactionId": "6665074413",
+                "entryReference": "17497146163856633472",
+                "bookingDate": "2025-06-12",
+                "valueDate": "2025-06-12",
+                "transactionAmount": {
+                    "amount": "-100.0",
+                    "currency": "EUR"
+                },
+                "creditorName": "Revolut**2478*",
+                "remittanceInformationUnstructured": "11/06/2025 15:37  kortelė...813702 Revolut**2478*/Dublin/IRL #167045",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=CLR10746843",
+                    "transactionReferenceNumber=RO1895109015L01"
+                ],
+                "bankTransactionCode": "PMNT-CCRD-OTHR",
+                "internalTransactionId": "18afa5d0d12f456f8ee070d5a794b129"
+            },
+            {
+                "transactionId": "6662708333",
+                "entryReference": "17496460401098957392",
+                "bookingDate": "2025-06-11",
+                "valueDate": "2025-06-11",
+                "transactionAmount": {
+                    "amount": "1290.75",
+                    "currency": "EUR"
+                },
+                "debtorName": "GEDEIKIS SIMAS",
+                "debtorAccount": {
+                    "iban": "LT467044090110452053"
+                },
+                "remittanceInformationUnstructured": "Išmokėti pasirinktą kaupiamojo indėlio sumą",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=DP537368",
+                    "transactionReferenceNumber=RO1894175921L02"
+                ],
+                "bankTransactionCode": "PMNT-RCDT-BOOK",
+                "internalTransactionId": "401430b562b82f058194aceccf7566c8"
+            },
+            {
+                "transactionId": "6658052616",
+                "entryReference": "17495465894775891675",
+                "bookingDate": "2025-06-10",
+                "valueDate": "2025-06-10",
+                "transactionAmount": {
+                    "amount": "-12.99",
+                    "currency": "EUR"
+                },
+                "creditorName": "Google Play Apps",
+                "remittanceInformationUnstructured": "09/06/2025 22:02  kortelė...813702 Google Play Apps/Dublin/IRL #975700",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=CLR10734457",
+                    "transactionReferenceNumber=RO1892454278L01"
+                ],
+                "bankTransactionCode": "PMNT-CCRD-OTHR",
+                "internalTransactionId": "e64fa2297861623dfb6abce42539f994"
+            },
+            {
+                "transactionId": "6657812921",
+                "entryReference": "17495430223082041980",
+                "bookingDate": "2025-06-10",
+                "valueDate": "2025-06-10",
+                "transactionAmount": {
+                    "amount": "-40.0",
+                    "currency": "EUR"
+                },
+                "creditorName": "Revolut**2478*",
+                "remittanceInformationUnstructured": "09/06/2025 18:15  kortelė...813702 Revolut**2478*/Dublin/IRL #976519",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=CLR10734457",
+                    "transactionReferenceNumber=RO1892346528L01"
+                ],
+                "bankTransactionCode": "PMNT-CCRD-OTHR",
+                "internalTransactionId": "ec41b4d1f502987b2889cedd01489618"
+            },
+            {
+                "transactionId": "6653842207",
+                "entryReference": "17494503812398841266",
+                "bookingDate": "2025-06-09",
+                "valueDate": "2025-06-09",
+                "transactionAmount": {
+                    "amount": "-10.0",
+                    "currency": "EUR"
+                },
+                "creditorName": "PAYPAL *COINBASE",
+                "remittanceInformationUnstructured": "08/06/2025 00:00  kortelė...813702 PAYPAL *COINBASE/35314369001/IRL #863790",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=CLR10728444",
+                    "transactionReferenceNumber=RO1890915759L01"
+                ],
+                "bankTransactionCode": "PMNT-CCRD-OTHR",
+                "internalTransactionId": "d728012ebf0869ce84ef6982d3872083"
+            },
+            {
+                "transactionId": "6650924149",
+                "entryReference": "17493654490773293208",
+                "bookingDate": "2025-06-08",
+                "valueDate": "2025-06-08",
+                "transactionAmount": {
+                    "amount": "-15.0",
+                    "currency": "EUR"
+                },
+                "creditorName": "Revolut**2478*",
+                "remittanceInformationUnstructured": "07/06/2025 14:47  kortelė...813702 Revolut**2478*/Dublin/IRL #764023",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=CLR10722328",
+                    "transactionReferenceNumber=RO1889812780L01"
+                ],
+                "bankTransactionCode": "PMNT-CCRD-OTHR",
+                "internalTransactionId": "5d2f1ca00236f3c148777f636eb3d0d7"
+            },
+            {
+                "transactionId": "6648423765",
+                "entryReference": "17492770840518442824",
+                "bookingDate": "2025-06-07",
+                "valueDate": "2025-06-07",
+                "transactionAmount": {
+                    "amount": "-10.0",
+                    "currency": "EUR"
+                },
+                "creditorName": "Revolut**2478*",
+                "remittanceInformationUnstructured": "06/06/2025 19:22  kortelė...813702 Revolut**2478*/Dublin/IRL #680537",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=CLR10716615",
+                    "transactionReferenceNumber=RO1888818313L01"
+                ],
+                "bankTransactionCode": "PMNT-CCRD-OTHR",
+                "internalTransactionId": "15850997ee3952d321a8357a9ffb4efb"
+            },
+            {
+                "transactionId": "6647017474",
+                "entryReference": "17492218993540306533",
+                "bookingDate": "2025-06-06",
+                "valueDate": "2025-06-06",
+                "transactionAmount": {
+                    "amount": "-5.5",
+                    "currency": "EUR"
+                },
+                "creditorName": "K.JUKNIENES KEBABINE",
+                "remittanceInformationUnstructured": "05/06/2025 18:42  kortelė...813702 K.JUKNIENES KEBABINE/JONAVOS RAJ./LTU #567340",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=CLR10712438",
+                    "transactionReferenceNumber=RO1888327322L01"
+                ],
+                "bankTransactionCode": "PMNT-CCRD-OTHR",
+                "internalTransactionId": "171ad05fa09e56ab07241fcb08620cd4"
+            },
+            {
+                "transactionId": "6646637721",
+                "entryReference": "17492150978051826780",
+                "bookingDate": "2025-06-06",
+                "valueDate": "2025-06-06",
+                "transactionAmount": {
+                    "amount": "-41.26",
+                    "currency": "EUR"
+                },
+                "creditorName": "AB REGITRA",
+                "remittanceInformationUnstructured": "05/06/2025 09:36  kortelė...813702 AB REGITRA/KAUNAS/LTU #534598",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=CLR10712438",
+                    "transactionReferenceNumber=RO1888192897L01"
+                ],
+                "bankTransactionCode": "PMNT-CCRD-OTHR",
+                "internalTransactionId": "92c36e95a162b86435a8b7e3a3c88448"
+            },
+            {
+                "transactionId": "6641407841",
+                "entryReference": "17491024760997066900",
+                "bookingDate": "2025-06-05",
+                "valueDate": "2025-06-05",
+                "transactionAmount": {
+                    "amount": "-3.0",
+                    "currency": "EUR"
+                },
+                "creditorName": "UNIPARK",
+                "remittanceInformationUnstructured": "04/06/2025 13:16  kortelė...813702 UNIPARK/Vilnius/LTU #447798",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=CLR10704565",
+                    "transactionReferenceNumber=RO1886358263L01"
+                ],
+                "bankTransactionCode": "PMNT-CCRD-OTHR",
+                "internalTransactionId": "11a90788d8d6a3ab0a05c9794e4477c7"
+            },
+            {
+                "transactionId": "6641038791",
+                "entryReference": "17490963678105997850",
+                "bookingDate": "2025-06-05",
+                "valueDate": "2025-06-05",
+                "transactionAmount": {
+                    "amount": "100.0",
+                    "currency": "EUR"
+                },
+                "debtorName": "GEDEIKIS KĘSTUTIS",
+                "debtorAccount": {
+                    "iban": "LT437044000074641991"
+                },
+                "remittanceInformationUnstructured": "PAVEDIMAS",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=147710529",
+                    "transactionReferenceNumber=RO1886245666L02"
+                ],
+                "bankTransactionCode": "PMNT-RCDT-BOOK",
+                "internalTransactionId": "9334a58dd7674c8f3d2005eb9759a09f"
+            },
+            {
+                "transactionId": "6636372571",
+                "entryReference": "17489763948643321630",
+                "bookingDate": "2025-06-03",
+                "valueDate": "2025-06-03",
+                "transactionAmount": {
+                    "amount": "-0.01",
+                    "currency": "EUR"
+                },
+                "creditorName": "JUSTAS ABAKEVICIUS",
+                "creditorAccount": {
+                    "iban": "LT753250084078492046"
+                },
+                "remittanceInformationUnstructured": "dekui",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=147543299",
+                    "transactionReferenceNumber=RD251274994"
+                ],
+                "bankTransactionCode": "PMNT-ICDT-ESCT",
+                "internalTransactionId": "3f892be1fd3457a7e6db82a847925fa7"
+            },
+            {
+                "transactionId": "6636104493",
+                "entryReference": "17489626382370213552",
+                "endToEndId": "NOTPROVIDED",
+                "bookingDate": "2025-06-03",
+                "valueDate": "2025-06-03",
+                "transactionAmount": {
+                    "amount": "15.0",
+                    "currency": "EUR"
+                },
+                "debtorName": "Justas Abakevicius",
+                "debtorAccount": {
+                    "iban": "LT753250084078492046"
+                },
+                "remittanceInformationUnstructured": "Su ateinanciu gimtadieniu, dovana bus bilietas i rungtynes.",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=REVITR25060366224174476",
+                    "transactionReferenceNumber=RO1884309872L02",
+                    "debtorAddress=Kekstu g. 6, LT"
+                ],
+                "bankTransactionCode": "PMNT-RCDT-ESCT",
+                "internalTransactionId": "c5144d9893328bdc10880e8db8852314"
+            },
+            {
+                "transactionId": "6635094843",
+                "entryReference": "17489435401051313902",
+                "bookingDate": "2025-06-03",
+                "valueDate": "2025-06-03",
+                "transactionAmount": {
+                    "amount": "-16.57",
+                    "currency": "EUR"
+                },
+                "creditorName": "NESTE RAMUCU?",
+                "remittanceInformationUnstructured": "02/06/2025 11:41  kortelė...813702 NESTE RAMUCU?/KAUNAS/LTU #242055",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=CLR10693842",
+                    "transactionReferenceNumber=RO1883928033L01"
+                ],
+                "bankTransactionCode": "PMNT-CCRD-OTHR",
+                "internalTransactionId": "aa135b4cd52f903df2db79288b3a256d"
+            },
+            {
+                "transactionId": "6635051441",
+                "entryReference": "17489428552060690500",
+                "bookingDate": "2025-06-03",
+                "valueDate": "2025-06-03",
+                "transactionAmount": {
+                    "amount": "-15.0",
+                    "currency": "EUR"
+                },
+                "creditorName": "JUSTAS ABAKEVIČIUS",
+                "creditorAccount": {
+                    "iban": "LT753250084078492046"
+                },
+                "remittanceInformationUnstructured": "Žalgirio bilietas",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=147453595",
+                    "transactionReferenceNumber=RD251212386"
+                ],
+                "bankTransactionCode": "PMNT-ICDT-ESCT",
+                "internalTransactionId": "ee41cc8570fcb072fbb9d390243d969a"
+            },
+            {
+                "transactionId": "6631950719",
+                "entryReference": "17488481820862489778",
+                "bookingDate": "2025-06-02",
+                "valueDate": "2025-06-02",
+                "transactionAmount": {
+                    "amount": "-12.89",
+                    "currency": "EUR"
+                },
+                "creditorName": "Google CLOUD 6L2X2P",
+                "remittanceInformationUnstructured": "01/06/2025 18:45  kortelė...813702 Google CLOUD 6L2X2P/Dublin/IRL #171051",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=CLR10685829",
+                    "transactionReferenceNumber=RO1882686807L01"
+                ],
+                "bankTransactionCode": "PMNT-CCRD-OTHR",
+                "internalTransactionId": "20f33cca2b0afc6dec95a007a26ff4dd"
+            },
+            {
+                "transactionId": "6626104096",
+                "entryReference": "17486695677838973155",
+                "bookingDate": "2025-05-31",
+                "valueDate": "2025-05-31",
+                "transactionAmount": {
+                    "amount": "-1.7",
+                    "currency": "EUR"
+                },
+                "creditorName": "UNIPARK",
+                "remittanceInformationUnstructured": "30/05/2025 12:10  kortelė...813702 UNIPARK/Vilnius/LTU #043817",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=CLR10674562",
+                    "transactionReferenceNumber=RO1880627055L01"
+                ],
+                "bankTransactionCode": "PMNT-CCRD-OTHR",
+                "internalTransactionId": "05b53880b8f9f3d2ac3a0add9d342437"
+            },
+            {
+                "transactionId": "6624969520",
+                "entryReference": "17486162705212278579",
+                "bookingDate": "2025-05-30",
+                "valueDate": "2025-05-30",
+                "transactionAmount": {
+                    "amount": "-13.1",
+                    "currency": "EUR"
+                },
+                "creditorName": "JUSTAS ABAKEVIČIUS",
+                "creditorAccount": {
+                    "iban": "LT753250084078492046"
+                },
+                "remittanceInformationUnstructured": "Mokėjimas mobiliąja programėle",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=146972900",
+                    "transactionReferenceNumber=RD250912793"
+                ],
+                "bankTransactionCode": "PMNT-ICDT-ESCT",
+                "internalTransactionId": "baf0d10935660dca2169176e7372b11d"
+            },
+            {
+                "transactionId": "6620685257",
+                "entryReference": "17485063656746144316",
+                "endToEndId": "2214171529 5BZ8T0Q Order: 383252944",
+                "bookingDate": "2025-05-29",
+                "valueDate": "2025-05-29",
+                "transactionAmount": {
+                    "amount": "-6.99",
+                    "currency": "EUR"
+                },
+                "creditorName": "Trustly Group AB",
+                "creditorAccount": {
+                    "iban": "DE07202208000000022742"
+                },
+                "remittanceInformationUnstructured": "2214171529 5BZ8T0Q Order: 383252944",
+                "remittanceInformationUnstructuredArray": [
+                    "transactionReferenceNumber=RMO22476076"
+                ],
+                "bankTransactionCode": "PMNT-ICDT-ESCT",
+                "internalTransactionId": "dc86e5f6664693539c763918b2de5460"
+            },
+            {
+                "transactionId": "6617270567",
+                "entryReference": "17484064079683729626",
+                "bookingDate": "2025-05-28",
+                "valueDate": "2025-05-28",
+                "transactionAmount": {
+                    "amount": "80.0",
+                    "currency": "EUR"
+                },
+                "debtorName": "GEDEIKIS KĘSTUTIS",
+                "debtorAccount": {
+                    "iban": "LT437044000074641991"
+                },
+                "remittanceInformationUnstructured": "PAVEDIMAS",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=146590654",
+                    "transactionReferenceNumber=RO1877076886L02"
+                ],
+                "bankTransactionCode": "PMNT-RCDT-BOOK",
+                "internalTransactionId": "ae42b6f6d986889b6de21be4d602c4e7"
+            },
+            {
+                "transactionId": "6615373758",
+                "entryReference": "17483411017227662817",
+                "bookingDate": "2025-05-27",
+                "valueDate": "2025-05-27",
+                "transactionAmount": {
+                    "amount": "-1.55",
+                    "currency": "EUR"
+                },
+                "creditorName": "MAXIMA LT, X-866",
+                "remittanceInformationUnstructured": "26/05/2025 10:38  kortelė...813702 MAXIMA LT, X-866/KAUNAS/LTU #638290",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=CLR10651280",
+                    "transactionReferenceNumber=RO1876322633L01"
+                ],
+                "bankTransactionCode": "PMNT-CCRD-OTHR",
+                "internalTransactionId": "950752ceefd4174b7611eba147c59bfb"
+            },
+            {
+                "transactionId": "6607787511",
+                "entryReference": "17480765693424996570",
+                "bookingDate": "2025-05-24",
+                "valueDate": "2025-05-24",
+                "transactionAmount": {
+                    "amount": "-3.98",
+                    "currency": "EUR"
+                },
+                "creditorName": "IKI SAULE",
+                "remittanceInformationUnstructured": "23/05/2025 11:14  kortelė...813702 IKI SAULE/KAUNAS/LTU #340459",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=CLR10633494",
+                    "transactionReferenceNumber=RO1873257006L01"
+                ],
+                "bankTransactionCode": "PMNT-CCRD-OTHR",
+                "internalTransactionId": "489ffc992247445500044b92439192ef"
+            },
+            {
+                "transactionId": "6605440875",
+                "entryReference": "17479976013122819934",
+                "bookingDate": "2025-05-23",
+                "valueDate": "2025-05-23",
+                "transactionAmount": {
+                    "amount": "-17.73",
+                    "currency": "EUR"
+                },
+                "creditorName": "NESTE RAMUCU?",
+                "remittanceInformationUnstructured": "22/05/2025 16:21  kortelė...813702 NESTE RAMUCU?/KAUNAS/LTU #258828",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=CLR10627284",
+                    "transactionReferenceNumber=RO1872261802L01"
+                ],
+                "bankTransactionCode": "PMNT-CCRD-OTHR",
+                "internalTransactionId": "3bd3bf570d457501d43f86cf04f6fdc0"
+            },
+            {
+                "transactionId": "6602992668",
+                "entryReference": "17479181811968031727",
+                "bookingDate": "2025-05-22",
+                "valueDate": "2025-05-22",
+                "transactionAmount": {
+                    "amount": "-11.96",
+                    "currency": "EUR"
+                },
+                "creditorName": "GINTARINE VAISTINE",
+                "remittanceInformationUnstructured": "21/05/2025 16:14  kortelė...813702 GINTARINE VAISTINE/KARMELAVA/LTU #158441",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=CLR10621079",
+                    "transactionReferenceNumber=RO1871254146L01"
+                ],
+                "bankTransactionCode": "PMNT-CCRD-OTHR",
+                "internalTransactionId": "b05091d68d9d094d6869d205ec1cb749"
+            },
+            {
+                "transactionId": "6599257058",
+                "entryReference": "17478182841941046117",
+                "bookingDate": "2025-05-21",
+                "valueDate": "2025-05-21",
+                "transactionAmount": {
+                    "amount": "-1.0",
+                    "currency": "EUR"
+                },
+                "creditorName": "DOMANTAS BUTKYS",
+                "creditorAccount": {
+                    "iban": "LT183500010016895072"
+                },
+                "remittanceInformationUnstructured": "Mokėjimas mobiliąja programėle",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=145735934",
+                    "transactionReferenceNumber=RD249957055"
+                ],
+                "bankTransactionCode": "PMNT-ICDT-ESCT",
+                "internalTransactionId": "917faa91df90f9c679f2184a363db313"
+            },
+            {
+                "transactionId": "6588470679",
+                "entryReference": "17474735715204229738",
+                "bookingDate": "2025-05-17",
+                "valueDate": "2025-05-17",
+                "transactionAmount": {
+                    "amount": "-1.59",
+                    "currency": "EUR"
+                },
+                "creditorName": "MAXIMA LT, X-866",
+                "remittanceInformationUnstructured": "16/05/2025 12:29  kortelė...813702 MAXIMA LT, X-866/KAUNAS/LTU #644948",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=CLR10590712",
+                    "transactionReferenceNumber=RO1865628962L01"
+                ],
+                "bankTransactionCode": "PMNT-CCRD-OTHR",
+                "internalTransactionId": "632e08e898872a7474b1be0180e06e8c"
+            },
+            {
+                "transactionId": "6578345777",
+                "entryReference": "17472179174935644836",
+                "bookingDate": "2025-05-14",
+                "valueDate": "2025-05-14",
+                "transactionAmount": {
+                    "amount": "-18.16",
+                    "currency": "EUR"
+                },
+                "creditorName": "NESTE RAMUCU?",
+                "remittanceInformationUnstructured": "13/05/2025 16:08  kortelė...813702 NESTE RAMUCU?/KAUNAS/LTU #358018",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=CLR10571846",
+                    "transactionReferenceNumber=RO1861672405L01"
+                ],
+                "bankTransactionCode": "PMNT-CCRD-OTHR",
+                "internalTransactionId": "9b91c6b25eb8a95720582b3d4c0adfd5"
+            },
+            {
+                "transactionId": "6575398741",
+                "entryReference": "17471359888636377800",
+                "bookingDate": "2025-05-13",
+                "valueDate": "2025-05-13",
+                "transactionAmount": {
+                    "amount": "-5.98",
+                    "currency": "EUR"
+                },
+                "creditorName": "IKI SAULE",
+                "remittanceInformationUnstructured": "12/05/2025 12:14  kortelė...813702 IKI SAULE/KAUNAS/LTU #244096",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=CLR10565548",
+                    "transactionReferenceNumber=RO1860523625L01"
+                ],
+                "bankTransactionCode": "PMNT-CCRD-OTHR",
+                "internalTransactionId": "be2fd25bf33eccd7173507da71a43cc7"
+            },
+            {
+                "transactionId": "6571318400",
+                "entryReference": "17470377990285887459",
+                "bookingDate": "2025-05-12",
+                "valueDate": "2025-05-12",
+                "transactionAmount": {
+                    "amount": "-20.0",
+                    "currency": "EUR"
+                },
+                "creditorName": "GEDEIKIS SIMAS",
+                "creditorAccount": {
+                    "iban": "LT467044090110452053"
+                },
+                "remittanceInformationUnstructured": "Mokėjimas mobiliąja programėle",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=144416949",
+                    "transactionReferenceNumber=RO1859012214L01"
+                ],
+                "bankTransactionCode": "PMNT-ICDT-BOOK",
+                "internalTransactionId": "2b459f6a25b51c7faf381c28ef0b30bc"
+            },
+            {
+                "transactionId": "6566873363",
+                "entryReference": "17468902030351832422",
+                "bookingDate": "2025-05-10",
+                "valueDate": "2025-05-10",
+                "transactionAmount": {
+                    "amount": "-26.24",
+                    "currency": "EUR"
+                },
+                "creditorName": "WWW.LENSOR.LT",
+                "remittanceInformationUnstructured": "09/05/2025 15:32  kortelė...813702 WWW.LENSOR.LT/VILNIUS/LTU #955929",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=CLR10548311",
+                    "transactionReferenceNumber=RO1857370887L01"
+                ],
+                "bankTransactionCode": "PMNT-CCRD-OTHR",
+                "internalTransactionId": "c417d11f36ced32f1eccb024e9e11731"
+            },
+            {
+                "transactionId": "6565860631",
+                "entryReference": "17468704222060219690",
+                "bookingDate": "2025-05-10",
+                "valueDate": "2025-05-10",
+                "transactionAmount": {
+                    "amount": "-2.35",
+                    "currency": "EUR"
+                },
+                "creditorName": "IKI SAULE",
+                "remittanceInformationUnstructured": "09/05/2025 09:19  kortelė...813702 IKI SAULE/KAUNAS/LTU #933588",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=CLR10547666",
+                    "transactionReferenceNumber=RO1856973394L01"
+                ],
+                "bankTransactionCode": "PMNT-CCRD-OTHR",
+                "internalTransactionId": "053e8a6b7fca86abe30180bfa8019d66"
+            },
+            {
+                "transactionId": "6565394129",
+                "entryReference": "17468606047547673188",
+                "bookingDate": "2025-05-10",
+                "valueDate": "2025-05-10",
+                "transactionAmount": {
+                    "amount": "-12.99",
+                    "currency": "EUR"
+                },
+                "creditorName": "Google Play Apps",
+                "remittanceInformationUnstructured": "09/05/2025 22:02  kortelė...813702 Google Play Apps/Dublin/IRL #975701",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=CLR10545589",
+                    "transactionReferenceNumber=RO1856795977L01"
+                ],
+                "bankTransactionCode": "PMNT-CCRD-OTHR",
+                "internalTransactionId": "8f802f8da2956086bff83bda9976d172"
+            },
+            {
+                "transactionId": "6565193564",
+                "entryReference": "17468569453212242623",
+                "endToEndId": "NOTPROVIDED",
+                "bookingDate": "2025-05-10",
+                "valueDate": "2025-05-10",
+                "transactionAmount": {
+                    "amount": "20.0",
+                    "currency": "EUR"
+                },
+                "debtorName": "Kęstutis Gedeikis",
+                "debtorAccount": {
+                    "iban": "LT803500010002714496"
+                },
+                "remittanceInformationUnstructured": "pavedimas",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=43148407",
+                    "transactionReferenceNumber=RO1856679444L02",
+                    "debtorAddress=Jaunystės 5, Jonava district, 55328, LT"
+                ],
+                "bankTransactionCode": "PMNT-RCDT-ESCT",
+                "internalTransactionId": "78df8de20f1d2eb960b826c07c4293be"
+            },
+            {
+                "transactionId": "6560875374",
+                "entryReference": "17467623902521524433",
+                "bookingDate": "2025-05-09",
+                "valueDate": "2025-05-09",
+                "transactionAmount": {
+                    "amount": "50.0",
+                    "currency": "EUR"
+                },
+                "debtorName": "GEDEIKIS KĘSTUTIS",
+                "debtorAccount": {
+                    "iban": "LT437044000074641991"
+                },
+                "remittanceInformationUnstructured": "PAVEDIMAS",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=143903685",
+                    "transactionReferenceNumber=RO1855095197L02"
+                ],
+                "bankTransactionCode": "PMNT-RCDT-BOOK",
+                "internalTransactionId": "5bc5c7669bd65e627caeec69fde92b7a"
+            },
+            {
+                "transactionId": "6543208131",
+                "entryReference": "17462693405871677190",
+                "bookingDate": "2025-05-03",
+                "valueDate": "2025-05-03",
+                "transactionAmount": {
+                    "amount": "-19.46",
+                    "currency": "EUR"
+                },
+                "creditorName": "NESTE RAMUCU?",
+                "remittanceInformationUnstructured": "02/05/2025 16:33  kortelė...813702 NESTE RAMUCU?/KAUNAS/LTU #259558",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=CLR10505039",
+                    "transactionReferenceNumber=RO1848414179L01"
+                ],
+                "bankTransactionCode": "PMNT-CCRD-OTHR",
+                "internalTransactionId": "831c6f8eccf92141d3c95eb109b85b8e"
+            },
+            {
+                "transactionId": "6538264882",
+                "entryReference": "17460961201818913941",
+                "bookingDate": "2025-05-01",
+                "valueDate": "2025-05-01",
+                "transactionAmount": {
+                    "amount": "-1.05",
+                    "currency": "EUR"
+                },
+                "creditorName": "IKI SAULE",
+                "remittanceInformationUnstructured": "30/04/2025 12:14  kortelė...813702 IKI SAULE/KAUNAS/LTU #044079",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=CLR10492962",
+                    "transactionReferenceNumber=RO1846360449L01"
+                ],
+                "bankTransactionCode": "PMNT-CCRD-OTHR",
+                "internalTransactionId": "b2d5588f5a5b78a0ba62d3dad6ba22a6"
+            },
+            {
+                "transactionId": "6533427762",
+                "entryReference": "17459930904304766821",
+                "bookingDate": "2025-04-30",
+                "valueDate": "2025-04-30",
+                "transactionAmount": {
+                    "amount": "9.67",
+                    "currency": "EUR"
+                },
+                "debtorName": "HOSTINGER* HOSTINGER.L",
+                "remittanceInformationUnstructured": "28/04/2025 12:16  kortelė...813702 HOSTINGER* HOSTINGER.L/LARNACA/CYP #",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=CLR10484778",
+                    "transactionReferenceNumber=RO1844787482L02"
+                ],
+                "bankTransactionCode": "PMNT-MCOP-ADJT",
+                "internalTransactionId": "a17f1d24c9c08e347bfcf95ada469195"
+            },
+            {
+                "transactionId": "6532381976",
+                "entryReference": "17459480195682021035",
+                "bookingDate": "2025-04-29",
+                "valueDate": "2025-04-29",
+                "transactionAmount": {
+                    "amount": "-5.0",
+                    "currency": "EUR"
+                },
+                "creditorName": "KAUNO BMK",
+                "creditorAccount": {
+                    "iban": "LT827300010134753987"
+                },
+                "remittanceInformationUnstructured": "Vietrino bėgimas",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=142569647",
+                    "transactionReferenceNumber=RD247527116"
+                ],
+                "bankTransactionCode": "PMNT-ICDT-ESCT",
+                "internalTransactionId": "b6cca460db3a6d9b9381810b8939ad45"
+            },
+            {
+                "transactionId": "6530613413",
+                "entryReference": "17459083524529622472",
+                "bookingDate": "2025-04-29",
+                "valueDate": "2025-04-29",
+                "transactionAmount": {
+                    "amount": "-9.67",
+                    "currency": "EUR"
+                },
+                "creditorName": "HOSTINGER* HOSTINGER.L",
+                "remittanceInformationUnstructured": "28/04/2025 11:23  kortelė...813702 HOSTINGER* HOSTINGER.L/LARNACA/CYP #869825",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=CLR10478591",
+                    "transactionReferenceNumber=RO1843682833L01"
+                ],
+                "bankTransactionCode": "PMNT-CCRD-OTHR",
+                "internalTransactionId": "1fd1ec8d6c1ae33d6b7a8f0a0b71c6f2"
+            },
+            {
+                "transactionId": "6524499143",
+                "entryReference": "17456809706818678202",
+                "bookingDate": "2025-04-26",
+                "valueDate": "2025-04-26",
+                "transactionAmount": {
+                    "amount": "-1.87",
+                    "currency": "EUR"
+                },
+                "creditorName": "SILAS PC, UAB EIGINTA",
+                "remittanceInformationUnstructured": "25/04/2025 17:37  kortelė...813702 SILAS PC, UAB EIGINTA/KAUNO RAJ./LTU #563411",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=CLR10463146",
+                    "transactionReferenceNumber=RO1841169087L01"
+                ],
+                "bankTransactionCode": "PMNT-CCRD-OTHR",
+                "internalTransactionId": "a791b3481521bf18c549c2ae63fa8be6"
+            },
+            {
+                "transactionId": "6523026082",
+                "entryReference": "17456463231099085141",
+                "bookingDate": "2025-04-26",
+                "valueDate": "2025-04-26",
+                "transactionAmount": {
+                    "amount": "30.0",
+                    "currency": "EUR"
+                },
+                "debtorName": "GEDEIKIS KĘSTUTIS",
+                "debtorAccount": {
+                    "iban": "LT437044000074641991"
+                },
+                "remittanceInformationUnstructured": "PAVEDIMAS",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=142127281",
+                    "transactionReferenceNumber=RO1840501637L02"
+                ],
+                "bankTransactionCode": "PMNT-RCDT-BOOK",
+                "internalTransactionId": "e298ef1c0ec51f12d86a51eeb958e05f"
+            },
+            {
+                "transactionId": "6518127952",
+                "entryReference": "17454894452230417011",
+                "bookingDate": "2025-04-24",
+                "valueDate": "2025-04-24",
+                "transactionAmount": {
+                    "amount": "-0.99",
+                    "currency": "EUR"
+                },
+                "creditorName": "MAXIMA LT, X-866",
+                "remittanceInformationUnstructured": "23/04/2025 15:37  kortelė...813702 MAXIMA LT, X-866/KAUNAS/LTU #356231",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=CLR10449827",
+                    "transactionReferenceNumber=RO1838573190L01"
+                ],
+                "bankTransactionCode": "PMNT-CCRD-OTHR",
+                "internalTransactionId": "3af36f494aef0e0467abda58ebfa0341"
+            },
+            {
+                "transactionId": "6508842425",
+                "entryReference": "17451488295502921484",
+                "bookingDate": "2025-04-20",
+                "valueDate": "2025-04-20",
+                "transactionAmount": {
+                    "amount": "-4.17",
+                    "currency": "EUR"
+                },
+                "creditorName": "SILAS PC, UAB EIGINTA",
+                "remittanceInformationUnstructured": "19/04/2025 19:44  kortelė...813702 SILAS PC, UAB EIGINTA/KAUNO RAJ./LTU #971072",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=CLR10426277",
+                    "transactionReferenceNumber=RO1835094607L01"
+                ],
+                "bankTransactionCode": "PMNT-CCRD-OTHR",
+                "internalTransactionId": "f173797e77e2349f944174501795770f"
+            },
+            {
+                "transactionId": "6507106368",
+                "entryReference": "17450824989373515427",
+                "bookingDate": "2025-04-19",
+                "valueDate": "2025-04-19",
+                "transactionAmount": {
+                    "amount": "-5.9",
+                    "currency": "EUR"
+                },
+                "creditorName": "ZUBKOVAS ALEKSANDRAS",
+                "creditorAccount": {
+                    "iban": "LT337044090103693133"
+                },
+                "remittanceInformationUnstructured": "Mokėjimas mobiliąja programėle",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=141401877",
+                    "transactionReferenceNumber=RO1834433085L01"
+                ],
+                "bankTransactionCode": "PMNT-ICDT-BOOK",
+                "internalTransactionId": "8d036adaf81bbefc6a821950e1fd3ae6"
+            },
+            {
+                "transactionId": "6504586230",
+                "entryReference": "17449904072014315289",
+                "bookingDate": "2025-04-18",
+                "valueDate": "2025-04-18",
+                "transactionAmount": {
+                    "amount": "-3.59",
+                    "currency": "EUR"
+                },
+                "creditorName": "SILAS PC, UAB EIGINTA",
+                "remittanceInformationUnstructured": "17/04/2025 16:55  kortelė...813702 SILAS PC, UAB EIGINTA/KAUNO RAJ./LTU #760935",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=CLR10415302",
+                    "transactionReferenceNumber=RO1833276822L01"
+                ],
+                "bankTransactionCode": "PMNT-CCRD-OTHR",
+                "internalTransactionId": "c614fe0e2a078ea003f76108f95f636d"
+            },
+            {
+                "transactionId": "6504426910",
+                "entryReference": "17449864470007645969",
+                "bookingDate": "2025-04-18",
+                "valueDate": "2025-04-18",
+                "transactionAmount": {
+                    "amount": "-20.67",
+                    "currency": "EUR"
+                },
+                "creditorName": "NESTE RAMUCU?",
+                "remittanceInformationUnstructured": "17/04/2025 16:41  kortelė...813702 NESTE RAMUCU?/KAUNAS/LTU #760053",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=CLR10415302",
+                    "transactionReferenceNumber=RO1833203240L01"
+                ],
+                "bankTransactionCode": "PMNT-CCRD-OTHR",
+                "internalTransactionId": "300fd0de4496a344850e6184baadf728"
+            },
+            {
+                "transactionId": "6503135481",
+                "entryReference": "17449630804002584540",
+                "endToEndId": "NOTPROVIDED",
+                "bookingDate": "2025-04-18",
+                "valueDate": "2025-04-18",
+                "transactionAmount": {
+                    "amount": "5.0",
+                    "currency": "EUR"
+                },
+                "debtorName": "Domantas Butkys",
+                "debtorAccount": {
+                    "iban": "LT233500010016992855"
+                },
+                "remittanceInformationUnstructured": "Lazybos",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=42664291",
+                    "transactionReferenceNumber=RO1832629068L02",
+                    "debtorAddress=Šušvės g. 15, Kaunas, 45377, LT"
+                ],
+                "bankTransactionCode": "PMNT-RCDT-ESCT",
+                "internalTransactionId": "827e56be4e560bf32d4f9f1a03a2195c"
+            },
+            {
+                "transactionId": "6501165412",
+                "entryReference": "17448967721254624471",
+                "bookingDate": "2025-04-17",
+                "valueDate": "2025-04-17",
+                "transactionAmount": {
+                    "amount": "-1.29",
+                    "currency": "EUR"
+                },
+                "creditorName": "IKI SAULE",
+                "remittanceInformationUnstructured": "16/04/2025 13:08  kortelė...813702 IKI SAULE/KAUNAS/LTU #647283",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=CLR10408454",
+                    "transactionReferenceNumber=RO1831771327L01"
+                ],
+                "bankTransactionCode": "PMNT-CCRD-OTHR",
+                "internalTransactionId": "4dbb64aa0441c32a9061f24558cae8ac"
+            },
+            {
+                "transactionId": "6487459009",
+                "entryReference": "17445509254488408068",
+                "bookingDate": "2025-04-13",
+                "valueDate": "2025-04-13",
+                "transactionAmount": {
+                    "amount": "-10.18",
+                    "currency": "EUR"
+                },
+                "creditorName": "SILAS PC, UAB EIGINTA",
+                "remittanceInformationUnstructured": "11/04/2025 16:42  kortelė...813702 SILAS PC, UAB EIGINTA/KAUNO RAJ./LTU #160129",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=CLR10382816",
+                    "transactionReferenceNumber=RO1826555711L01"
+                ],
+                "bankTransactionCode": "PMNT-CCRD-OTHR",
+                "internalTransactionId": "235b4482b1e8f332f6d0886e9092d037"
+            },
+            {
+                "transactionId": "6483895529",
+                "entryReference": "17444390461144984588",
+                "bookingDate": "2025-04-12",
+                "valueDate": "2025-04-12",
+                "transactionAmount": {
+                    "amount": "-5.0",
+                    "currency": "EUR"
+                },
+                "creditorName": "BOLT.EU/O/2504111022",
+                "remittanceInformationUnstructured": "11/04/2025 12:39  kortelė...813702 BOLT.EU/O/2504111022/Tallinn/EST #148168",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=CLR10374556",
+                    "transactionReferenceNumber=RO1825108554L01"
+                ],
+                "bankTransactionCode": "PMNT-CCRD-OTHR",
+                "internalTransactionId": "93cbaf1ca096742c25aa53a74bb67551"
+            },
+            {
+                "transactionId": "6472543439",
+                "entryReference": "17441739840766562498",
+                "bookingDate": "2025-04-09",
+                "valueDate": "2025-04-09",
+                "transactionAmount": {
+                    "amount": "100.0",
+                    "currency": "EUR"
+                },
+                "debtorName": "GEDEIKIS KĘSTUTIS",
+                "debtorAccount": {
+                    "iban": "LT437044000074641991"
+                },
+                "remittanceInformationUnstructured": "PAVEDIMAS",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=139792354",
+                    "transactionReferenceNumber=RO1820861427L02"
+                ],
+                "bankTransactionCode": "PMNT-RCDT-BOOK",
+                "internalTransactionId": "8cd4b7a7e2209510e0d8a709539ac5b2"
+            },
+            {
+                "transactionId": "6471480431",
+                "entryReference": "17441267907237539490",
+                "bookingDate": "2025-04-08",
+                "valueDate": "2025-04-08",
+                "transactionAmount": {
+                    "amount": "-18.29",
+                    "currency": "EUR"
+                },
+                "creditorName": "NESTE RAMUCU?",
+                "remittanceInformationUnstructured": "07/04/2025 14:42  kortelė...813702 NESTE RAMUCU?/KAUNAS/LTU #752867",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=CLR10353202",
+                    "transactionReferenceNumber=RO1820533366L01"
+                ],
+                "bankTransactionCode": "PMNT-CCRD-OTHR",
+                "internalTransactionId": "42eef8f9c5c45bad7b506178d654fec3"
+            },
+            {
+                "transactionId": "6463773273",
+                "entryReference": "17439299996243862332",
+                "bookingDate": "2025-04-06",
+                "valueDate": "2025-04-06",
+                "transactionAmount": {
+                    "amount": "-5.21",
+                    "currency": "EUR"
+                },
+                "creditorName": "SILAS PC, UAB EIGINTA ",
+                "remittanceInformationUnstructured": "04/04/2025 12:49  kortelė...813702 SILAS PC, UAB EIGINTA/KAUNO RAJ./LTU #446173",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=CLR10338384",
+                    "transactionReferenceNumber=RO1817868572L01"
+                ],
+                "bankTransactionCode": "PMNT-CCRD-OTHR",
+                "internalTransactionId": "1312dc2fbd80679caebb1d403f943a43"
+            },
+            {
+                "transactionId": "6451787587",
+                "entryReference": "17435858931827416646",
+                "bookingDate": "2025-04-02",
+                "valueDate": "2025-04-02",
+                "transactionAmount": {
+                    "amount": "-0.96",
+                    "currency": "EUR"
+                },
+                "creditorName": "DOMANTAS BUTKYS",
+                "creditorAccount": {
+                    "iban": "LT183500010016895072"
+                },
+                "remittanceInformationUnstructured": "Mokėjimas mobiliąja programėle",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=138807721",
+                    "transactionReferenceNumber=RD244620034"
+                ],
+                "bankTransactionCode": "PMNT-ICDT-ESCT",
+                "internalTransactionId": "30ee291478c5743e16523fe1e7cb3086"
+            },
+            {
+                "transactionId": "6449538677",
+                "entryReference": "17435094180209437736",
+                "bookingDate": "2025-04-01",
+                "valueDate": "2025-04-01",
+                "transactionAmount": {
+                    "amount": "-1.8",
+                    "currency": "EUR"
+                },
+                "creditorName": "UNIPARK",
+                "remittanceInformationUnstructured": "31/03/2025 15:12  kortelė...813702 UNIPARK/Vilnius/LTU #554774",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=CLR10310773",
+                    "transactionReferenceNumber=RO1812293539L01"
+                ],
+                "bankTransactionCode": "PMNT-CCRD-OTHR",
+                "internalTransactionId": "cea74e1093304ef23fb258030796594f"
+            },
+            {
+                "transactionId": "6449036693",
+                "entryReference": "17434992715478845752",
+                "bookingDate": "2025-04-01",
+                "valueDate": "2025-04-01",
+                "transactionAmount": {
+                    "amount": "-0.75",
+                    "currency": "EUR"
+                },
+                "creditorName": "IKI SAULE",
+                "remittanceInformationUnstructured": "31/03/2025 12:11  kortelė...813702 IKI SAULE/KAUNAS/LTU #543910",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=CLR10310773",
+                    "transactionReferenceNumber=RO1812085583L01"
+                ],
+                "bankTransactionCode": "PMNT-CCRD-OTHR",
+                "internalTransactionId": "03095b5a9a3bd6e476e7b0f5cfbc14a5"
+            },
+            {
+                "transactionId": "6443538180",
+                "entryReference": "17433472269987137239",
+                "bookingDate": "2025-03-30",
+                "valueDate": "2025-03-30",
+                "transactionAmount": {
+                    "amount": "-1.62",
+                    "currency": "EUR"
+                },
+                "creditorName": "SILAS PC, UAB EIGINTA ",
+                "remittanceInformationUnstructured": "29/03/2025 20:53  kortelė...813702 SILAS PC, UAB EIGINTA/KAUNO RAJ./LTU #975237",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=CLR10299852",
+                    "transactionReferenceNumber=RO1810306055L01"
+                ],
+                "bankTransactionCode": "PMNT-CCRD-OTHR",
+                "internalTransactionId": "cf6145714d411ed7abe931ffa941884f"
+            },
+            {
+                "transactionId": "6442962919",
+                "entryReference": "17433289513901601978",
+                "bookingDate": "2025-03-30",
+                "valueDate": "2025-03-30",
+                "transactionAmount": {
+                    "amount": "-10.0",
+                    "currency": "EUR"
+                },
+                "creditorName": "AB REGITRA",
+                "remittanceInformationUnstructured": "29/03/2025 09:50  kortelė...813702 AB REGITRA/KAUNAS/LTU #935434",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=CLR10299263",
+                    "transactionReferenceNumber=RO1810024109L01"
+                ],
+                "bankTransactionCode": "PMNT-CCRD-OTHR",
+                "internalTransactionId": "b911821619067a37516dcb2e5c81bb3f"
+            },
+            {
+                "transactionId": "6442453269",
+                "entryReference": "17433154737256842328",
+                "bookingDate": "2025-03-30",
+                "valueDate": "2025-03-30",
+                "transactionAmount": {
+                    "amount": "-14.99",
+                    "currency": "EUR"
+                },
+                "creditorName": "UDEMY: ONLINE COURSES",
+                "remittanceInformationUnstructured": "29/03/2025 09:31  kortelė...813702 UDEMY: ONLINE COURSES/DUBLIN/IRL #959478",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=CLR10296115",
+                    "transactionReferenceNumber=RO1809801581L01"
+                ],
+                "bankTransactionCode": "PMNT-CCRD-OTHR",
+                "internalTransactionId": "056a8755bc3a08a1164f49f6472a1122"
+            },
+            {
+                "transactionId": "6442392594",
+                "entryReference": "17433140534516675300",
+                "bookingDate": "2025-03-30",
+                "valueDate": "2025-03-30",
+                "transactionAmount": {
+                    "amount": "-19.6",
+                    "currency": "EUR"
+                },
+                "creditorName": "NESTE RAMUCU?         ",
+                "remittanceInformationUnstructured": "29/03/2025 10:38  kortelė...813702 NESTE RAMUCU?/KAUNAS/LTU #938258",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=CLR10296115",
+                    "transactionReferenceNumber=RO1809756564L01"
+                ],
+                "bankTransactionCode": "PMNT-CCRD-OTHR",
+                "internalTransactionId": "f6033d13cd2f4d9c77f7fcdcd0588619"
+            },
+            {
+                "transactionId": "6441675705",
+                "entryReference": "17432754375751378411",
+                "bookingDate": "2025-03-29",
+                "valueDate": "2025-03-29",
+                "transactionAmount": {
+                    "amount": "-3.08",
+                    "currency": "EUR"
+                },
+                "creditorName": "SILAS PC, UAB EIGINTA ",
+                "remittanceInformationUnstructured": "28/03/2025 16:29  kortelė...813702 SILAS PC, UAB EIGINTA/KAUNO RAJ./LTU #859359",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=CLR10294136",
+                    "transactionReferenceNumber=RO1809503207L01"
+                ],
+                "bankTransactionCode": "PMNT-CCRD-OTHR",
+                "internalTransactionId": "659c69b9c25d06ce0cae5296d04109e3"
+            },
+            {
+                "transactionId": "6441574076",
+                "entryReference": "17432702503945586782",
+                "bookingDate": "2025-03-29",
+                "valueDate": "2025-03-29",
+                "transactionAmount": {
+                    "amount": "-5.5",
+                    "currency": "EUR"
+                },
+                "creditorName": "ZUBKOVAS ALEKSANDRAS",
+                "creditorAccount": {
+                    "iban": "LT337044090103693133"
+                },
+                "remittanceInformationUnstructured": "Mokėjimas mobiliąja programėle",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=138344460",
+                    "transactionReferenceNumber=RO1809432599L01"
+                ],
+                "bankTransactionCode": "PMNT-ICDT-BOOK",
+                "internalTransactionId": "0b0dad0acf1337c8d28a445c68672565"
+            },
+            {
+                "transactionId": "6440338647",
+                "entryReference": "17432342641554621353",
+                "bookingDate": "2025-03-29",
+                "valueDate": "2025-03-29",
+                "transactionAmount": {
+                    "amount": "-9.67",
+                    "currency": "EUR"
+                },
+                "creditorName": "HOSTINGER* HOSTINGER.L",
+                "remittanceInformationUnstructured": "28/03/2025 11:21  kortelė...813702 HOSTINGER* HOSTINGER.L/LARNACA/CYP #866081",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=CLR10292133",
+                    "transactionReferenceNumber=RO1808920273L01"
+                ],
+                "bankTransactionCode": "PMNT-CCRD-OTHR",
+                "internalTransactionId": "8ba6c8041221cd7bd17b57c47cac0367"
+            },
+            {
+                "transactionId": "6440171017",
+                "entryReference": "17432306018291963723",
+                "bookingDate": "2025-03-29",
+                "valueDate": "2025-03-29",
+                "transactionAmount": {
+                    "amount": "50.0",
+                    "currency": "EUR"
+                },
+                "debtorName": "GEDEIKIS KĘSTUTIS",
+                "debtorAccount": {
+                    "iban": "LT437044000074641991"
+                },
+                "remittanceInformationUnstructured": "PAVEDIMAS",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=1579",
+                    "transactionReferenceNumber=RO1808813062L02"
+                ],
+                "bankTransactionCode": "PMNT-RCDT-BOOK",
+                "internalTransactionId": "7088b768403470020926640403ad49cb"
+            },
+            {
+                "transactionId": "6437720943",
+                "entryReference": "17431493087027043649",
+                "bookingDate": "2025-03-28",
+                "valueDate": "2025-03-28",
+                "transactionAmount": {
+                    "amount": "-50.67",
+                    "currency": "EUR"
+                },
+                "creditorName": "HOSTINGER* HOSTINGER.L",
+                "remittanceInformationUnstructured": "27/03/2025 14:30  kortelė...813702 HOSTINGER* HOSTINGER.L/LARNACA/CYP #477463",
+                "remittanceInformationUnstructuredArray": [
+                    "instructedIdentification=CLR10285921",
+                    "transactionReferenceNumber=RO1807848407L01"
+                ],
+                "bankTransactionCode": "PMNT-CCRD-OTHR",
+                "internalTransactionId": "a1e49c3dabfa34c622f7a5721c76d9e1"
+            }
+        ],
+        "pending": []
+    },
+    "last_updated": "2025-06-25T17:17:46.175367Z"
+}
