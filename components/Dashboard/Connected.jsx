@@ -7,7 +7,7 @@ import { getConnectedBanks, initializeBankConnection } from "@/app/util/http";
 import { useSelector } from "react-redux";
 import { useFetch } from "@/app/hooks/useFetch";
 import BoxWrapper from "./BoxWrapper";
-
+import Loading from "../UI/Loading";
 export default function Connected() {
   const router = useRouter();
   const navigateToAddConnection = () => {
@@ -62,19 +62,23 @@ export default function Connected() {
             <span>Pridėti</span>
           </button>
         </div>
-
         <ul className="space-y-4">
-          {banks?.data.map((account) => (
-            <li key={account.name}>
-              <BankConnection
-                bank={account.name}
-                currentBalance={account.balance}
-                lastConnected={account.lastFetched}
-                logo={account.logo}
-                id={account._id}
-              />
-            </li>
-          ))}
+          {isLoading === true ? (
+            <Loading />
+          ) : (
+            banks?.data.map((account) => (
+              <li key={account.name}>
+                <BankConnection
+                  bank={account.name}
+                  currentBalance={account.balance}
+                  lastConnected={account.lastFetched}
+                  logo={account.logo}
+                  id={account._id}
+                  accountId={account.accountId}
+                />
+              </li>
+            ))
+          )}
         </ul>
       </div>
     </BoxWrapper>

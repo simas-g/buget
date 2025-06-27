@@ -3,7 +3,7 @@ import { getFullUser } from "../lib/auth/currentUser";
 import { notFound } from "next/navigation";
 
 import { cookies } from "next/headers";
-import ClientOnly from '@/app/lib/ClientOnly'
+import QueryProvider from "../lib/QueryWrapper";
 export default async function Page() {
   const userObject = await getFullUser();
   if (!userObject) {
@@ -20,9 +20,9 @@ export default async function Page() {
         <div className="absolute bottom-[20%] right-[10%] h-[400px] w-[400px] rounded-full bg-[#EB2563]/10 blur-[100px]" />
         <div className="absolute top-[60%] left-[70%] h-[250px] w-[250px] rounded-full bg-[#63EB25]/10 blur-[100px]" />
       </div>
-      <ClientOnly fallback={<div className="flex items-center justify-center h-screen">Loading...</div>}>
+      <QueryProvider>
         <Dashboard user={user} sessionId={sessionKey} />
-      </ClientOnly>
+      </QueryProvider>
     </div>
   );
 }

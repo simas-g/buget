@@ -28,7 +28,7 @@ const Transaction = ({ type = "uncategorized", operation = {} }) => {
     content = (
       <li className="flex gap-4 hover:bg-black cursor-pointer flex-wrap p-3 overflow-hidden rounded-lg relative justify-between w-full bg-[#0A0A20]/50 border border-white/40">
         <div className="flex gap-x-2 items-center w-fit">
-          <p className="text-white">{operation?.creditorName} | </p>
+          <p className="text-white">{operation?.creditorName || 'nežinoma'} | </p>
           <p className="text-gray-400">
             {operation?.bookingDate.split("T")[0]}
           </p>

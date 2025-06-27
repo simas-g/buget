@@ -1,14 +1,12 @@
 "use client";
-import { useFetch } from "@/app/hooks/useFetch";
-import QueryProvider from "@/app/lib/QueryWrapper";
+
 import { formatDate } from "@/app/util/format";
 import { getBankData } from "@/app/util/http";
 import Transaction from "@/components/Dashboard/Transaction";
 import Button from "@/components/UI/Button";
 import { useQuery } from "@tanstack/react-query";
 import { Recycle, RefreshCw } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
-
+import Loading from "@/components/UI/Loading"
 const BankTransactionPage = ({ id }) => {
   async function getTransactions() {
     const token = JSON.parse(sessionStorage.getItem("access_token")).data
@@ -19,7 +17,7 @@ const BankTransactionPage = ({ id }) => {
       },
     });
     if (!res.ok || res.status === 404) {
-      ///manage not-foind
+      return null
     }
     const data = await res.json();
     return data;
@@ -35,7 +33,7 @@ const BankTransactionPage = ({ id }) => {
   });
   const {
     data: dataT,
-    isLoadingT,
+    isLoading: isLoadingT,
     errorT,
   } = useQuery({
     queryKey: ["transactions", id],
@@ -69,8 +67,8 @@ const BankTransactionPage = ({ id }) => {
         </div>
 
         <ul className="space-y-3 text-white px-4 m-auto w-full">
-          {transactions?.map((t) => (
-            <Transaction key={t.id} operation={t} type="uncategorized" />
+          {isLoadingT === true ? (<Loading/>) : (transactions?.map((t) => (
+            <Transaction key={t.transactionId} operation={t} type="uncategorized" />)
           ))}
         </ul>
       </div>

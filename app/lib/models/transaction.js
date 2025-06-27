@@ -1,9 +1,17 @@
-import mongoose, { Schema, model, models } from "mongoose";
+import mongoose from "mongoose";
+const { Schema, model, models } = mongoose;
 const TransactionSchema = new Schema({
-  userId: {type: mongoose.Schema.ObjectId, required: true },
-  category: { type: String, required: true },
+  ///shared props
   amount: { type: Number, required: true },
-  bookingDate: {type: Date, required: true},
+  bookingDate: { type: Date, required: true },
+  bankId: { type: mongoose.Schema.ObjectId, required: true },
+  transactionId: { type: String, required: true, unique: true },
+  type: {type: String, enum: ['fetched', 'categorized'], required: true},
+  ///only fetched
+  creditorName: { type: Schema.Types.Mixed, required: false },
+  ///only categorized
+  category: { type: String, required: false },
 });
-const Transaction = models.Transaction || model("Transaction", TransactionSchema)
-export default Transaction
+const Transaction =
+  models.Transaction || model("Transaction", TransactionSchema);
+export default Transaction;
