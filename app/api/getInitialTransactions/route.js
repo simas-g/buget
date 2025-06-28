@@ -23,7 +23,6 @@ export async function GET(req) {
     bankId: id,
   }).lean();
   if (availableTransactions.length > 0) {
-    console.log(availableTransactions, "transa");
     return NextResponse.json({ availableTransactions }, { status: 200 });
   }
   const bankConnection = await BankConnection.findOne(

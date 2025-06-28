@@ -23,7 +23,7 @@ export async function createUserSession(user: UserSession, cookies) {
 
   await cookies.set(SESSION_KEY, token, {
     secure: true,
-    httpOnly: false,
+    httpOnly: true,
     sameSite: "lax",
     expires: new Date(Date.now() + SESSION_EXPIRATION_SECONDS * 1000),
   });

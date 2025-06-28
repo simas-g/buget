@@ -90,14 +90,37 @@ export async function getConnectedBanks(userId, sessionId) {
 export async function getBankData(bankId) {
   try {
     const res = await fetch("/api/getBankData", {
-      method: "POST",
-      body: JSON.stringify({
-        bankId,
-      }),
+      headers: {
+        "Bank-Id": bankId
+      }
     });
     const data = await res.json();
     return data;
   } catch (error) {
     return null;
+  }
+}
+
+///fetch bank details
+export async function fetchBankDetails( bankId, accountId, access_token) {
+  try {
+    const res = await fetch("/api/bankDetails", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        bankId,
+        id: accountId,
+        access_token
+      }),
+    });
+
+    const data = await res.json();
+    if(data.message == "Rate limit exceeded")
+    return "Rate limit exceeded";
+  } catch (error) {
+    console.log("Error fetching bank details:", error);
+    return null
   }
 }

@@ -23,7 +23,6 @@ export default function Connected() {
       if (error) {
         return;
       } else if (ref) {
-        console.log("we should be here");
         const tempBank = sessionStorage.getItem("temp_bank");
         const res = await initializeBankConnection(
           JSON.parse(sessionStorage.getItem("data")),
@@ -45,7 +44,6 @@ export default function Connected() {
   }, [userState.userId]);
 
   const { data: banks, isLoading } = useFetch(fetchBanks, shouldFetch);
-  console.log(banks, "banks");
   return (
     <BoxWrapper>
       <div className="lg:col-span-2">

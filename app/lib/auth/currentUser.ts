@@ -11,7 +11,7 @@ export const getFullUser = cache(async () => {
   const cookiesStore = await cookies();
   const sessionKey = cookiesStore.get("SESSION_KEY")?.value;
   if (!sessionKey) {
-    console.error("Session key not found");
+    console.log("Session key not found");
     return null;
   }
 

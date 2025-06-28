@@ -8,17 +8,17 @@ import { NextResponse } from "next/server";
 export async function POST(req) {
   const isValidRequest = await validateToken(req.headers);
   if (!isValidRequest) {
-    console.log(req.headers, "our headers");
     return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
   }
   const body = await req.json();
-  const { userId, bankId, id, type, access_token } = body;
-  if (!userId || !bankId || !id || !type || !access_token) {
+  const { bankId, id, access_token } = body;
+  if (!bankId || !id || !access_token) {
     return NextResponse.json({ error: "missing details" }, { status: 400 });
   }
+  ///fetch transactions
   try {
     const res = await fetch(
-      `https://bankaccountdata.gocardless.com/api/v2/accounts/${id}/${type}/`,
+      `https://bankaccountdata.gocardless.com/api/v2/accounts/${id}/transactions`,
       {
         method: "GET",
         headers: {
@@ -29,16 +29,15 @@ export async function POST(req) {
     );
     const data = await res.json();
 
-    if (!res.ok) {
-      return NextResponse.json({ data }, { status: 404 });
+    if (data.status_code == 429) {
+      return NextResponse.json({ message: "Rate limit exceeded" }, { status: 429 });
     }
 
-    console.log(data, "fetch transactions");
     const { last_updated, transactions } = data;
 
     ///update docs skip duplicates
-    const booked = transactions.booked;
-    const transformed = booked.map((t) => ({
+    const all = [...transactions.booked];
+    const transformed = all.map((t) => ({
       amount: t.transactionAmount.amount,
       bookingDate: new Date(t.bookingDate),
       creditorName: t?.creditorName || t.debtorName,
@@ -46,14 +45,44 @@ export async function POST(req) {
       bankId,
       type: "fetched",
     }));
-    await Transaction.insertMany(transformed, { ordered: false });
 
-    ///updating last fetched date for the bank connection
-    const currentDate = new Date().toISOString().split("T")[0];
-    await BankConnection.findOneAndUpdate(
-      { _id: bankId },
-      { lastFetched: currentDate }
-    );
+    ///new transaction insert
+    try {
+      await Transaction.insertMany(transformed, { ordered: false });
+    } catch (err) {
+      console.log(
+        "Some or all transactions already exist. Skipped duplicates."
+      );
+    }
+
+    ///fetch bank balance
+
+    try {
+      const resBalance = await fetch(
+        `https://bankaccountdata.gocardless.com/api/v2/accounts/${id}/balances`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: "Bearer " + access_token,
+            accept: "application/json",
+          },
+        }
+      );
+      const dataBalance = await resBalance.json();
+
+      ///TO DO: GET ALL MULTIPLE BALANCES IF EXIST
+
+      const { amount } = dataBalance.balances[0].balanceAmount;
+
+      ///last fetched date + balance update
+      await BankConnection.findOneAndUpdate(
+        { _id: bankId },
+        { lastFetched: last_updated, balance: amount }
+      );
+    } catch (error) {
+      console.log(error, "error");
+      return NextResponse.json({ error }, { status: 400 });
+    }
     const allTransactions = await Transaction.find({ bankId });
     return NextResponse.json({ allTransactions }, { status: 200 });
   } catch (error) {

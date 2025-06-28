@@ -54,7 +54,7 @@ export default function Dashboard({ user, sessionId }) {
   const currentTheme = themes[theme];
 
   return (
-    <div className="z-10 flex h-fit">
+    <div className=" flex h-fit">
       <LeftSidebar />
       <div className="w-full max-w-7xl">
         <div className="mx-auto px-4 sm:px-6 lg:px-8">

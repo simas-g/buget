@@ -11,12 +11,7 @@ export default function BankConnection({
   bank,
   logo,
   id,
-  accountId,
 }) {
-  const {data, isLoading, error} = useQuery({
-    queryKey: ['connection', id],
-    queryFn: async () => getBankBalance(id)
-  })
   return (
     <div className="flex items-center justify-between p-4 rounded-xl bg-[#0A0A20]/50 border border-white/5 hover:border-white/10 transition-all duration-300">
       <div className="flex items-center space-x-4">

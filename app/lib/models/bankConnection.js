@@ -3,9 +3,10 @@ import mongoose from "mongoose";
 const BankAccountSchema = new Schema({
   name: { type: String, required: true },
   logo: { type: String, required: true },
+  balance: { type: Number, required: true },
   accountId: { type: String, required: true },
   userId: { type: mongoose.Schema.ObjectId, required: true },
-  validUntil: { type: Date, required: true },
+  validUntil: { type: String, required: true },
   lastFetched: { type: String, required: true },
 });
 const BankConnection =

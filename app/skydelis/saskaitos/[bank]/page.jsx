@@ -11,5 +11,5 @@ export default async function Page({ params }) {
     <QueryProvider>
       <BankTransactionPage id={id} />
     </QueryProvider>
-  )
+  );
 }
