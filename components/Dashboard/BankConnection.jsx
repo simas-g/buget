@@ -28,7 +28,7 @@ export default function BankConnection({
           </div>
 
           <p className="text-xs text-white/40">
-            Atnaujinta: {lastConnected === "nodata" ? "nėra" : lastConnected}
+            Atnaujinta: {lastConnected === "nodata" ? "nėra" : formatDate(lastConnected)}
           </p>
         </div>
       </div>

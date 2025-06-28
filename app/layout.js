@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="lt">
       <head><link rel="icon" href="/favicon.svg"></link></head>
-      <body className={`${inter.variable} ${roboto.variable} font-sans antialiased`}>
+      <body id='appBody' className={`${inter.variable} ${roboto.variable} font-sans antialiased`}>
       <ClientLayoutWrapper>
         {children}
 

@@ -67,12 +67,12 @@ const BankTransactionPage = ({ id }) => {
 
   return (
     <section className="h-full pb-4 min-h-screen w-full bg-[#0A0A20]">
-      <div className="text-white text-xl flex border-b p-4 max-w-5xl m-auto">
+      <div className="text-white text-xl flex border-b p-4 max-w-5xl m-auto gap-4 flex-col sm:flex-row">
         <div className="flex items-center gap-4 w-full ">
           <img className="w-20 h-20" src={bank?.logo} alt="" />
           <h1 className="text-4xl font-bold">{bank?.name}</h1>
         </div>
-        <div className=" w-full flex flex-col justify-center items-end gap-2">
+        <div className=" w-full relative flex flex-col justify-center sm:items-end gap-2">
           <Button
             onClick={async () => handleRefresh()}
             variant="outline"
@@ -85,14 +85,14 @@ const BankTransactionPage = ({ id }) => {
               stroke="var(--color-secondary)"
             />
           </Button>
-          <span className="text-xs text-accent">{error?.refreshError}</span>
+          <span className="text-xs text-accent sm:absolute -bottom-2">{error?.refreshError}</span>
         </div>
       </div>
       <div className="flex gap-2 max-w-5xl m-auto flex-col">
         <div className="flex text-white gap-2 p-4">
           <p className="text-sm text-whites">Paskutinį kartą atnaujinta: </p>
           <span className="text-sm text-gray-400">
-            {formatDate(bank?.lastFetched) || formatDate(new Date())}
+            {bank && formatDate(bank?.lastFetched)}
           </span>
         </div>
 
