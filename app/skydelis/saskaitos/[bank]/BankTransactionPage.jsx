@@ -4,11 +4,13 @@ import { formatDate } from "@/app/util/format";
 import { fetchBankDetails, getBankData } from "@/app/util/http";
 import Transaction from "@/components/Dashboard/Transaction";
 import Button from "@/components/UI/Button";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Recycle, RefreshCw } from "lucide-react";
 import Loading from "@/components/UI/Loading";
 import { useState } from "react";
 const BankTransactionPage = ({ id }) => {
+  const queryClient = useQueryClient();
+
   let token;
   const [loadingNewT, setLoadingNewT] = useState(false);
   const [error, setError] = useState({});
@@ -55,13 +57,15 @@ const BankTransactionPage = ({ id }) => {
           refreshError: "Per dieną galima atnaujinti 4 kartus",
         }));
       }
+      queryClient.invalidateQueries({ queryKey: ["transactions", id] });
+      queryClient.invalidateQueries({ queryKey: ["bankId", id] });
     } catch (error) {
       setError((prev) => ({
         ...prev,
         refreshError: "Nepavyko atnaujinti",
       }));
     } finally {
-      setLoadingNewT(false)
+      setLoadingNewT(false);
     }
   };
 
@@ -85,7 +89,9 @@ const BankTransactionPage = ({ id }) => {
               stroke="var(--color-secondary)"
             />
           </Button>
-          <span className="text-xs text-accent sm:absolute -bottom-2">{error?.refreshError}</span>
+          <span className="text-xs text-accent sm:absolute -bottom-2">
+            {error?.refreshError}
+          </span>
         </div>
       </div>
       <div className="flex gap-2 max-w-5xl m-auto flex-col">

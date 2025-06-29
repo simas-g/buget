@@ -21,7 +21,9 @@ export async function GET(req) {
   }
   let availableTransactions = await Transaction.find({
     bankId: id,
-  }).lean();
+  })
+    .sort({ bookingDate: "desc" })
+    .lean();
   if (availableTransactions.length > 0) {
     return NextResponse.json({ availableTransactions }, { status: 200 });
   }

@@ -10,7 +10,7 @@ const TransactionSchema = new Schema({
   ///only fetched
   creditorName: { type: Schema.Types.Mixed, required: false },
   ///only categorized
-  category: { type: String, required: false },
+  categoryId: { type: mongoose.Schema.ObjectId, required: false },
 });
 const Transaction =
   models.Transaction || model("Transaction", TransactionSchema);

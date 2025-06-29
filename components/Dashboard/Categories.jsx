@@ -3,29 +3,77 @@ import { ChartBar } from "lucide-react";
 import BoxWrapper from "./BoxWrapper";
 import Button from "../UI/Button";
 import { Plus } from "lucide-react";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import DialogWrapper from "@/components/UI/Dialog";
 import { createPortal } from "react-dom";
+import { useSelector } from "react-redux";
 export default function Categories({ categories = [], total }) {
-  const [category, setCategory] = useState();
+  const [showAddCategory, setShowAddCategory] = useState();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState();
+  const user = useSelector((state) => state.user);
+  const newCategory = useRef();
   const calculatePercentage = (amount) => {
     return ((amount / total) * 100).toFixed(1);
   };
   const handleAddCategory = () => {
-    setCategory(true);
+    setShowAddCategory(true);
   };
   const handleCancelCategory = () => {
-    setCategory(false);
+    setError('')
+    setShowAddCategory(false);
   };
+  const handleSubmitCategory = async () => {
+    const name = newCategory.current?.value.trim();
+    if (!name) return;
+    console.log(user, 'our selector')
+    setLoading(true);
+    try {
+      const res = await fetch("/api/user/category/create", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId: user.userId,
+          name,
+        }),
+      });
+
+      if (res.ok) {
+        setLoading(false);
+        setShowAddCategory(false);
+        return;
+      } else {
+        throw new Error();
+      }
+    } catch (error) {
+      setLoading(false);
+      setError("Įvyko klaida");
+    }
+  };
+
   const sortedCategories = [...categories].sort((a, b) => b.amount - a.amount);
   return (
     <BoxWrapper className={"relative w-full"}>
-      {category &&
+      {showAddCategory &&
         createPortal(
-          <DialogWrapper open={category} onClose={handleCancelCategory}>
+          <DialogWrapper open={showAddCategory} onClose={handleCancelCategory}>
             <div className="flex flex-col gap-2">
-              <input type="text" placeholder="kategorija" className="border outline-none px-4 py-2 rounded-lg placeholder:text-sm placeholder:text-gray-400"/>
-              <button className="w-fit border px-4 py-2 rounded-lg cursor-pointer bg-primary">Pridėti</button>
+              <input
+                ref={newCategory}
+                type="text"
+                placeholder="kategorija"
+                className="border outline-none px-4 py-2 rounded-lg placeholder:text-sm placeholder:text-gray-400"
+              />
+              {error && <p className="text-accent">{error}</p>}
+              <button
+                onClick={handleSubmitCategory}
+                disabled={loading}
+                className="w-fit border px-4 py-2 rounded-lg cursor-pointer bg-primary"
+              >
+                Pridėti
+              </button>
             </div>
           </DialogWrapper>,
           document.body
