@@ -34,7 +34,7 @@ export async function GET(req) {
 
   let rawData;
 
-  const result = await fetch(process.env.BASE_URL + "/api/bankDetails", {
+  const result = await fetch(process.env.BASE_URL + "/api/transactions/bankDetails", {
     headers: {
       Cookie: cookie,
     },

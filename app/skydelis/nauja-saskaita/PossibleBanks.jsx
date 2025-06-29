@@ -15,7 +15,7 @@ export default function PossibleBanks({ sessionId }) {
     async function fetchBanks() {
       setLoadingBanks(true);
       try {
-        const res = await fetch("/api/availableBanks", {
+        const res = await fetch("/api/go/availableBanks", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

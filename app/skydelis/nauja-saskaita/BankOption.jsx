@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { fetchRequisitions } from "@/app/lib/fetchRequisitions";
+import { fetchRequisitions } from "@/app/util/http";
 export default function BankOption({ bank, sessionId }) {
   const [accessToken, setAccessToken] = useState(null);
   useEffect(() => {

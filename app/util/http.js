@@ -7,7 +7,7 @@ export async function getToken(sessionId) {
   if (alreadyExistingToken) return alreadyExistingToken;
 
   try {
-    const res = await fetch("/api/goCardLessToken", {
+    const res = await fetch("/api/gogoCardLessToken", {
       headers: {
         Authorization: "Bearer " + sessionId,
       },
@@ -27,7 +27,7 @@ export async function getToken(sessionId) {
 export async function listAccounts(token, sessionId) {
   const reqId = sessionStorage.getItem("req_id");
   try {
-    const res = await fetch("/api/listAccounts", {
+    const res = await fetch("/api/go/listAccounts", {
       method: "POST",
       headers: {
         Authorization: "Bearer " + sessionId,
@@ -46,12 +46,37 @@ export async function listAccounts(token, sessionId) {
     console.log(error, "error");
   }
 }
+///requisition
+export async function fetchRequisitions(bank, accessToken, sessionId) {
+  const res = await fetch("/api/go/getRequisition", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${sessionId.value}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      bank,
+      accessToken,
+    }),
+  });
+
+  if (!res.ok) {
+    throw new Error(`Failed to fetch requisitions: ${res.status}`);
+  }
+
+  const parsed = await res.json();
+  console.log(parsed);
+  return {
+    link: parsed.data.link,
+    req_id: parsed.data.id,
+  };
+}
 
 ///fetching account
 export async function initializeBankConnection(accounts, tempBank, sessionId) {
   console.log("helo", accounts, tempBank, sessionId);
   try {
-    const res = await fetch("/api/createBankConnection", {
+    const res = await fetch("/api/bank/createBankConnection", {
       method: "POST",
       headers: {
         Authorization: "Bearer " + sessionId,
@@ -71,7 +96,7 @@ export async function getConnectedBanks(userId, sessionId) {
     return null;
   }
   try {
-    const res = await fetch("/api/connectedBanks", {
+    const res = await fetch("/api/bank/connectedBanks", {
       method: "POST",
       headers: {
         Authorization: "Bearer " + sessionId,
@@ -89,10 +114,10 @@ export async function getConnectedBanks(userId, sessionId) {
 //retrieve data about bank(logo,balance,name,account_id)
 export async function getBankData(bankId) {
   try {
-    const res = await fetch("/api/getBankData", {
+    const res = await fetch("/api/bank/getBankData", {
       headers: {
-        "Bank-Id": bankId
-      }
+        "Bank-Id": bankId,
+      },
     });
     const data = await res.json();
     return data;
@@ -101,10 +126,10 @@ export async function getBankData(bankId) {
   }
 }
 
-///fetch bank details
-export async function fetchBankDetails( bankId, accountId, access_token) {
+///fetch bank transactions/balance
+export async function fetchBankDetails(bankId, accountId, access_token) {
   try {
-    const res = await fetch("/api/bankDetails", {
+    const res = await fetch("/api/transactions/bankDetails", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -112,15 +137,14 @@ export async function fetchBankDetails( bankId, accountId, access_token) {
       body: JSON.stringify({
         bankId,
         id: accountId,
-        access_token
+        access_token,
       }),
     });
 
     const data = await res.json();
-    if(data.message == "Rate limit exceeded")
-    return "Rate limit exceeded";
+    if (data.message == "Rate limit exceeded") return "Rate limit exceeded";
   } catch (error) {
     console.log("Error fetching bank details:", error);
-    return null
+    return null;
   }
 }

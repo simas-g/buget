@@ -21,7 +21,7 @@ const BankTransactionPage = ({ id }) => {
     if (!token) {
       return;
     }
-    const res = await fetch(`/api/getInitialTransactions?id=${id}`, {
+    const res = await fetch(`/api/transactions/getInitialTransactions?id=${id}`, {
       headers: {
         "Banking-Token": token,
       },

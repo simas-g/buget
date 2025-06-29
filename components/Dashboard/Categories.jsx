@@ -52,7 +52,9 @@ export default function Categories({ categories = [], total }) {
       setError("Įvyko klaida");
     }
   };
-
+  async function fetchCategories() {
+    
+  }
   const sortedCategories = [...categories].sort((a, b) => b.amount - a.amount);
   return (
     <BoxWrapper className={"relative w-full"}>

@@ -18,6 +18,7 @@ export async function POST(req) {
   await Category.create({
     userId,
     name,
+    amount: 0
   });
 
   return NextResponse.json({ message: "success" }, { status: 200 });
