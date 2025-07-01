@@ -7,7 +7,7 @@ export async function getToken(sessionId) {
   if (alreadyExistingToken) return alreadyExistingToken;
 
   try {
-    const res = await fetch("/api/gogoCardLessToken", {
+    const res = await fetch("/api/go/goCardLessToken", {
       headers: {
         Authorization: "Bearer " + sessionId,
       },

@@ -33,3 +33,19 @@ export const formatCurrencyVisually = (amount) => {
   }
   return object;
 };
+
+/// e.g, '2025-05' if its may
+export function getCurrentMonthDate() {
+  const year = new Date().getFullYear();
+  const month = String(new Date().getMonth() + 1).padStart(2, "0");
+  return `${year}-${month}`;
+}
+
+/// e.g, '2025-04' if its may
+export function getPreviousMonthDate() {
+  const now = new Date();
+  const previousMonth = new Date(now.getFullYear(), now.getMonth() - 1);
+  const year = previousMonth.getFullYear();
+  const month = String(previousMonth.getMonth() + 1).padStart(2, "0");
+  return `${year}-${month}`;
+}

@@ -7,6 +7,7 @@ import { useRef, useState } from "react";
 import DialogWrapper from "@/components/UI/Dialog";
 import { createPortal } from "react-dom";
 import { useSelector } from "react-redux";
+import { getCurrentMonthDate } from "@/app/util/format";
 export default function Categories({ categories = [], total }) {
   const [showAddCategory, setShowAddCategory] = useState();
   const [loading, setLoading] = useState(false);
@@ -20,16 +21,15 @@ export default function Categories({ categories = [], total }) {
     setShowAddCategory(true);
   };
   const handleCancelCategory = () => {
-    setError('')
+    setError("");
     setShowAddCategory(false);
   };
   const handleSubmitCategory = async () => {
     const name = newCategory.current?.value.trim();
     if (!name) return;
-    console.log(user, 'our selector')
     setLoading(true);
     try {
-      const res = await fetch("/api/user/category/create", {
+      const res = await fetch("/api/category/create", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -37,6 +37,7 @@ export default function Categories({ categories = [], total }) {
         body: JSON.stringify({
           userId: user.userId,
           name,
+          date: getCurrentMonthDate(),
         }),
       });
 
@@ -49,12 +50,10 @@ export default function Categories({ categories = [], total }) {
       }
     } catch (error) {
       setLoading(false);
-      setError("Įvyko klaida");
+      setError("Įvyko klaida " + error);
     }
   };
-  async function fetchCategories() {
-    
-  }
+  async function fetchCategories() {}
   const sortedCategories = [...categories].sort((a, b) => b.amount - a.amount);
   return (
     <BoxWrapper className={"relative w-full"}>
