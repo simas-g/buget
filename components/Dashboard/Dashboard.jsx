@@ -11,7 +11,7 @@ import Link from "next/link";
 import Connected from "./Connected";
 import { getToken, listAccounts } from "@/app/util/http";
 import { useDispatch } from "react-redux";
-import { userActions } from "./userStore";
+import { summaryActions, userActions } from "./userStore";
 import LeftSidebar from "./LeftSidebar";
 import Summary from "./Summary";
 import Categories from "./Categories";
@@ -45,11 +45,18 @@ export default function Dashboard({ user, sessionId }) {
     if (!sessionId) return null;
     return () => getToken(sessionId);
   }, [sessionId]);
-  const { data: monthSummary, isLoading: loadingSummary } = useQuery({
+  const { data: monthSummary, isLoading: loadingSummary, refetch } = useQuery({
     queryKey: ["summary", user.id],
     queryFn: async () => fetchMonthlySummary(),
   });
-  console.log(monthSummary, 'oour mointh summary')
+  useEffect(() => {
+    if (!monthSummary) {
+      return;
+    }
+    dispatch(summaryActions.setSummary({summary: monthSummary}));
+
+    sessionStorage.setItem('monthlySummary', JSON.stringify(monthSummary))
+  }, [monthSummary]);
   const { data: token } = useFetch(fetchToken, !!sessionId);
 
   const shouldFetchAccounts = !!token;
@@ -122,17 +129,16 @@ export default function Dashboard({ user, sessionId }) {
         </div>
         <div className="flex flex-col gap-4 p-4">
           <section className="flex gap-4 sm:flex-row flex-col">
-            <Summary type="main" />
+            <Summary type="main" change={10} total={12299} />
             <div className="flex gap-4 flex-wrap flex-col sm:w-[40%]">
-              <Summary type="month-in" />
+              <Summary type="month-in"/>
               <Summary type="month-out" />
             </div>
           </section>
           <div className="flex w-full gap-4 flex-wrap lg:flex-nowrap">
-            <Categories />
+            <Categories refetch={refetch} />
             <CategorizedTransactions />
           </div>
-
           <Connected />
         </div>
       </div>

@@ -1,20 +1,36 @@
 "use client";
 import { ChartBar } from "lucide-react";
 import BoxWrapper from "./BoxWrapper";
-import Button from "../UI/Button";
 import { Plus } from "lucide-react";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import DialogWrapper from "@/components/UI/Dialog";
 import { createPortal } from "react-dom";
 import { useSelector } from "react-redux";
 import { getCurrentMonthDate } from "@/app/util/format";
-export default function Categories({ categories = [], total }) {
+export default function Categories({refetch}) {
+  const [categories, setCategories] = useState([]);
+  const [total, setTotal] = useState([]);
   const [showAddCategory, setShowAddCategory] = useState();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
   const user = useSelector((state) => state.user);
+  const summaryStore = useSelector((state) => state.summary)
   const newCategory = useRef();
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const data = JSON.parse(sessionStorage.getItem("monthlySummary"));
+    if (!data) {
+      return;
+    }
+    const { categories } = data;
+    const array = Array.from(Object.entries(categories));
+    const flow = data.inflow - data.outflow;
+    setTotal(flow);
+    setCategories(array);
+    console.log(summaryStore, 'our store')
+  }, [summaryStore]);
   const calculatePercentage = (amount) => {
+    if (amount === 0) return 0;
     return ((amount / total) * 100).toFixed(1);
   };
   const handleAddCategory = () => {
@@ -51,10 +67,12 @@ export default function Categories({ categories = [], total }) {
     } catch (error) {
       setLoading(false);
       setError("Įvyko klaida " + error);
+    } finally {
+      refetch()
     }
   };
   async function fetchCategories() {}
-  const sortedCategories = [...categories].sort((a, b) => b.amount - a.amount);
+  const sortedCategories = [...categories].sort((a, b) => b[1] - a[1]);
   return (
     <BoxWrapper className={"relative w-full"}>
       {showAddCategory &&
@@ -91,24 +109,24 @@ export default function Categories({ categories = [], total }) {
         <span>Pridėti</span>
       </button>
       <ul className="mt-4 space-y-3">
-        {sortedCategories.map((category) => (
-          <li className="flex flex-col gap-2" key={category.color}>
+        {sortedCategories.map(([name, amount]) => (
+          <li className="flex flex-col gap-2" key={name}>
             <div className="flex items-center gap-2">
               <span
                 className="inline-block w-2 h-2 mr-2 rounded-full"
-                style={{ backgroundColor: category.color }}
+                style={{ backgroundColor: "#ccc" }} // default or static color
               ></span>
-              {category.name}{" "}
+              {name}{" "}
               <span className="text-gray-400 text-xs">
-                ({calculatePercentage(category.amount)}%)
+                ({calculatePercentage(amount)}%)
               </span>
             </div>
 
             <div className="w-full relative h-2 rounded-full bg-white/10">
               <div
                 style={{
-                  width: `${calculatePercentage(category.amount)}%`,
-                  backgroundColor: category.color,
+                  width: `${calculatePercentage(amount)}%`,
+                  backgroundColor: "#ccc", // match the dot color
                 }}
                 className="h-2 rounded-full"
               ></div>

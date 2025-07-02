@@ -12,7 +12,7 @@ export async function POST(req) {
   try {
     const user = await getUserFromSession(await cookies());
     const userOid = new mongoose.Types.ObjectId(user.id);
-    
+
     const body = await req.json();
     const { tempBank, accounts: encrypted } = body;
     const accounts = await decrypt(encrypted, isValidRequest.sessionId);
@@ -32,6 +32,9 @@ export async function POST(req) {
       logo: JSON.parse(tempBank).logo,
       accountId: accounts,
       userId: userOid,
+      validUntil: new Date(Date.now() + 1000 * 60 * 60 * 24 * 90).toISOString(),
+      balance: "nodata",
+      lastFetched: "nodata",
     });
 
     return NextResponse.json(

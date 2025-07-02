@@ -30,7 +30,7 @@ export default function Connected() {
           userState.sessionId
         );
         if (res.ok) {
-          // router.push('skydelis')
+          router.push('skydelis')
         }
       }
     }

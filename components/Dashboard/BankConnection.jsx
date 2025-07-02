@@ -22,7 +22,7 @@ export default function BankConnection({
           <div className="flex items-center space-x-2">
             <div className="h-2 w-2 bg-[#63EB25] rounded-full animate-pulse" />
             <p className="text-xs text-white/70">
-              Balansas: {formatCurrency(currentBalance)}
+              Balansas: {formatCurrency(currentBalance) || "neatnaujinta"}
             </p>
           </div>
 

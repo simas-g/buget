@@ -62,18 +62,28 @@ export async function POST(req) {
         "Some or all transactions already exist. Skipped duplicates."
       );
     }
+    console.log(inserted, "inserted docs");
     ///monthly summary update based on inserted
     const summaries = inserted.reduce((acc, tx) => {
-      const month = tx.bookingDate.toISOString().slice(0, 7);
+      const month = tx.bookingDate.toISOString().slice(0, 7); // "2025-07"
+
       if (!acc[month]) {
-        if (tx > 0) acc[month].inflow = tx.amount;
-        if (tx < 0) acc[month].outflow = tx.amount;
-      } else {
-        if (tx > 0) acc[month].inflow += tx.amount;
-        if (tx < 0) acc[month].outflow += tx.amount;
+        acc[month] = {
+          inflow: 0,
+          outflow: 0,
+        };
       }
+
+      if (tx.amount > 0) {
+        acc[month].inflow += tx.amount;
+      } else if (tx.amount < 0) {
+        acc[month].outflow += tx.amount;
+      }
+
+      return acc;
     }, {});
-    console.log(summaries, 'our summaires')
+
+    console.log(summaries, "our summaires");
     ///fetch bank balance
     try {
       const resBalance = await fetch(

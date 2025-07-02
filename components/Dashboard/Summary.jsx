@@ -1,18 +1,14 @@
+'use client'
 import { Coins, TrendingDown, TrendingUp } from "lucide-react";
 import BoxWrapper from "./BoxWrapper";
 import { formatCurrency } from "@/app/util/format";
-
+import { useEffect, useState } from "react";
 export default function Summary({
-  total = '',
-  change = '0',
+  total = 0,
+  change = 0,
   type = "",
   message = "",
 }) {
-  const formattedTotal = formatCurrency(total);
-  let formattedChange = formatCurrency(change)
-  if(change > 0) {
-    formattedChange = `+` + formattedChange
-  }
   let box;
   if (type === "main") {
     message = "Grynoji vertė";
@@ -39,9 +35,49 @@ export default function Summary({
       icon: <TrendingDown stroke="var(--color-accent)" className="w-5 h-5" />,
     };
   }
+  const [data, setData] = useState();
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    setLoading(true);
+    if (typeof window === "undefined") return;
+    const data = JSON.parse(sessionStorage.getItem("monthlySummary"));
+    if (!data) {
+      return;
+    }
+    if (type === "main") {
+    }
+    switch (type) {
+      case "main":
+        setData((prev) => ({
+          total: data?.closingBalance,
+          change: data?.inflow + data?.outflow,
+        }));
+        break;
+      case "month-in":
+        setData((prev) => ({
+          total: data?.inflow,
+        }));
+        break;
 
+      case "month-out":
+        setData((prev) => ({
+          total: data?.outflow,
+        }));
+        break;
+    }
+    setLoading(false);
+  }, []);
+  const formattedTotal = formatCurrency(data?.total || 0);
+  let formattedChange = formatCurrency(data?.change || 0);
+  if (data?.change > 0) {
+    formattedChange = `+` + formattedChange;
+  }
   return (
-    <BoxWrapper className={`flex flex-col justify-center ${type == 'main' ? "gap-4" : 'gap-2'} p-3 ${box?.width}`}>
+    <BoxWrapper
+      className={`flex flex-col justify-center ${
+        type == "main" ? "gap-4" : "gap-2"
+      } p-3 ${box?.width}`}
+    >
       <h5 className={`flex items-center gap-2 ${box.heading}`}>
         {box?.icon}
         <span>{message}</span>
@@ -51,10 +87,14 @@ export default function Summary({
         {type === "main" && (
           <p
             className={`text-sm font-medium ${
-              change > 0 ? "text-primary" : change == 0 ? 'text-gray-500': "text-accent"
+              data?.change > 0
+                ? "text-primary"
+                : data?.change == 0
+                ? "text-gray-500"
+                : "text-accent"
             }`}
           >
-            {formattedChange} <span className="text-white">šį mėnesį</span> 
+            {formattedChange} <span className="text-white">šį mėnesį</span>
           </p>
         )}
       </div>
