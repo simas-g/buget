@@ -30,7 +30,10 @@ export async function POST(req) {
     const data = await res.json();
 
     if (data.status_code == 429) {
-      return NextResponse.json({ message: "Rate limit exceeded" }, { status: 429 });
+      return NextResponse.json(
+        { message: "Rate limit exceeded" },
+        { status: 429 }
+      );
     }
 
     const { last_updated, transactions } = data;
@@ -47,16 +50,31 @@ export async function POST(req) {
     }));
 
     ///new transaction insert
+    let inserted;
     try {
-      await Transaction.insertMany(transformed, { ordered: false });
+      inserted = await Transaction.insertMany(transformed, {
+        ordered: false,
+        rawResult: true,
+      });
     } catch (err) {
+      inserted = err.insertedDocs;
       console.log(
         "Some or all transactions already exist. Skipped duplicates."
       );
     }
-
+    ///monthly summary update based on inserted
+    const summaries = inserted.reduce((acc, tx) => {
+      const month = tx.bookingDate.toISOString().slice(0, 7);
+      if (!acc[month]) {
+        if (tx > 0) acc[month].inflow = tx.amount;
+        if (tx < 0) acc[month].outflow = tx.amount;
+      } else {
+        if (tx > 0) acc[month].inflow += tx.amount;
+        if (tx < 0) acc[month].outflow += tx.amount;
+      }
+    }, {});
+    console.log(summaries, 'our summaires')
     ///fetch bank balance
-
     try {
       const resBalance = await fetch(
         `https://bankaccountdata.gocardless.com/api/v2/accounts/${id}/balances`,

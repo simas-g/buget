@@ -37,7 +37,6 @@ export default function Connected() {
     checkParamsAndBeginConnection();
   }, [params]);
   const shouldFetch = !!userState.userId && !!userState.sessionId;
-  console.log(shouldFetch, userState.userId, userState.sessionId);
   const fetchBanks = useCallback(() => {
     if (!shouldFetch) return;
     return getConnectedBanks(userState.userId, userState.sessionId);

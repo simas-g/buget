@@ -1,0 +1,31 @@
+import MonthSummary from "@/app/lib/models/monthSummary";
+import { getCurrentMonthDate } from "@/app/util/format";
+import { NextResponse } from "next/server";
+import { validateToken } from "@/app/lib/auth/session";
+
+export async function GET(req) {
+  const isValidRequest = await validateToken(req.headers);
+  if (!isValidRequest) {
+    return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+  }
+
+  try {
+    const url = new URL(req.url);
+    const userId = url.searchParams.get("userId");
+
+    const month = getCurrentMonthDate(); // e.g. "2025-07"
+    const summary = await MonthSummary.findOne({
+      month,
+      userId,
+    });
+
+    if (!summary) {
+      throw new Error("Summary not found");
+    }
+
+    return NextResponse.json({ summary }, { status: 200 });
+  } catch (error) {
+    console.log(error, "error");
+    return NextResponse.json({ message: error.message || "Unknown error" }, { status: 400 });
+  }
+}

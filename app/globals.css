@@ -17,6 +17,7 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
 @keyframes scrolling-banks {
   to{
     transform: translateX(calc(-1380px - 60px));
