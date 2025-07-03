@@ -4,6 +4,7 @@
   --color-primary: #63EB25;
   --color-secondary: #2563EB;
   --color-accent: #EB2563;
+  --color-dark-backgroud: #0A0A20;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);

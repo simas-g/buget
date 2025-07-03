@@ -4,6 +4,7 @@
 
 import { validateToken } from "@/app/lib/auth/session";
 import BankConnection from "@/app/lib/models/bankConnection";
+import MonthSummary from "@/app/lib/models/monthSummary";
 import Transaction from "@/app/lib/models/transaction";
 import { NextResponse } from "next/server";
 export async function GET(req) {
@@ -21,6 +22,7 @@ export async function GET(req) {
   }
   let availableTransactions = await Transaction.find({
     bankId: id,
+    type: "fetched",
   })
     .sort({ bookingDate: "desc" })
     .lean();
@@ -34,19 +36,28 @@ export async function GET(req) {
 
   let rawData;
 
-  const result = await fetch(process.env.BASE_URL + "/api/transactions/bankDetails", {
-    headers: {
-      Cookie: cookie,
-    },
-    method: "POST",
-    body: JSON.stringify({
-      bankId: id,
-      access_token: token,
-      id: bankConnection.accountId,
-      type: "transactions",
-      userId: bankConnection.userId,
-    }),
-  });
+  const result = await fetch(
+    process.env.BASE_URL + "/api/transactions/bankDetails",
+    {
+      headers: {
+        Cookie: cookie,
+      },
+      method: "POST",
+      body: JSON.stringify({
+        bankId: id,
+        access_token: token,
+        id: bankConnection.accountId,
+        type: "transactions",
+        userId: bankConnection.userId,
+      }),
+    }
+  );
+  if (result.status === 429) {
+    return NextResponse.json(
+      { message: "Rate limit exceeded" },
+      { status: 429 }
+    );
+  }
   rawData = await result.json();
   const { allTransactions } = rawData;
   return NextResponse.json(

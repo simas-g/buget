@@ -10,8 +10,8 @@ export default function Categorized({ operations = [] }) {
           <Book size={24} stroke="var(--color-secondary)" />
           Kategorizuotos operacijos
         </h5>
-        <Button variant="outline" className="px-4 py-1">
-          Pridėti rankiniu būdu
+        <Button variant="outline" className="px-4 py-2 absolute top-4 right-4">
+          <span>Valdyti</span>
         </Button>
       </div>
 

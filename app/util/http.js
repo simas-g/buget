@@ -140,11 +140,27 @@ export async function fetchBankDetails(bankId, accountId, access_token) {
         access_token,
       }),
     });
-
     const data = await res.json();
-    if (data.message == "Rate limit exceeded") return "Rate limit exceeded";
+    if (data.status_code == 429) return "Rate limit exceeded";
   } catch (error) {
     console.log("Error fetching bank details:", error);
+    return null;
+  }
+}
+
+///all banks monthly summary
+export async function fetchMonthlySummary(userId) {
+  try {
+    const res = await fetch("/api/bank/getMonthlySummary?userId=" + userId);
+    if (!res.ok) {
+      throw new Error();
+    }
+    const data = await res.json();
+
+    const { summary } = data;
+    return summary;
+  } catch (error) {
+    console.log(error, "error");
     return null;
   }
 }

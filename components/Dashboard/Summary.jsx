@@ -1,8 +1,9 @@
-'use client'
+"use client";
 import { Coins, TrendingDown, TrendingUp } from "lucide-react";
 import BoxWrapper from "./BoxWrapper";
 import { formatCurrency } from "@/app/util/format";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 export default function Summary({
   total = 0,
   change = 0,
@@ -37,7 +38,11 @@ export default function Summary({
   }
   const [data, setData] = useState();
   const [loading, setLoading] = useState(false);
+  const summary = useSelector(
+    (state) => state.summary
+  );
   useEffect(() => {
+    console.log(summary)
     setLoading(true);
     if (typeof window === "undefined") return;
     const data = JSON.parse(sessionStorage.getItem("monthlySummary"));

@@ -3,12 +3,13 @@ import { getCurrentMonthDate } from "@/app/util/format";
 import { NextResponse } from "next/server";
 import { validateToken } from "@/app/lib/auth/session";
 import BankConnection from "@/app/lib/models/bankConnection";
+import connect from "@/app/lib/connectToDB";
 export async function GET(req) {
   const isValidRequest = await validateToken(req.headers);
   if (!isValidRequest) {
     return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
   }
-
+  await connect()
   try {
     const url = new URL(req.url);
     const userId = url.searchParams.get("userId");

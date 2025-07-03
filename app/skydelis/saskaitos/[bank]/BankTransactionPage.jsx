@@ -21,11 +21,14 @@ const BankTransactionPage = ({ id }) => {
     if (!token) {
       return;
     }
-    const res = await fetch(`/api/transactions/getInitialTransactions?id=${id}`, {
-      headers: {
-        "Banking-Token": token,
-      },
-    });
+    const res = await fetch(
+      `/api/transactions/getInitialTransactions?id=${id}`,
+      {
+        headers: {
+          "Banking-Token": token,
+        },
+      }
+    );
     if (!res.ok || res.status === 404) {
       return null;
     }
@@ -43,7 +46,7 @@ const BankTransactionPage = ({ id }) => {
     enabled: typeof window !== "undefined",
   });
   const bank = dataB?.bank;
-  const transactions = dataT?.availableTransactions;
+  const transactions = dataT?.availableTransactions || [];
   const handleRefresh = async () => {
     setLoadingNewT(true);
     try {
@@ -108,12 +111,21 @@ const BankTransactionPage = ({ id }) => {
           ) : (
             transactions?.map((t) => (
               <Transaction
+                id={id}
                 key={t.transactionId}
                 operation={t}
                 type="uncategorized"
               />
             ))
           )}
+          {!isLoadingT &&
+            typeof window !== "undefined" &&
+            transactions.length === 0 && (
+              <p className="text-white w-full text-center">
+                Naujų operacijų nėra
+              </p>
+            )}
+          {error?.refreshError && <p>{error.refreshError}</p>}
         </ul>
       </div>
     </section>
