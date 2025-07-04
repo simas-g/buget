@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import connect from "@/app/lib/connectToDB";
 import MonthSummary from "@/app/lib/models/monthSummary";
 import { validateToken } from "@/app/lib/auth/session";
+import Transaction from "@/app/lib/models/transaction";
 export async function POST(req) {
   const isValidRequest = await validateToken(req.headers);
   if (!isValidRequest) {
@@ -9,8 +10,8 @@ export async function POST(req) {
   }
 
   const body = await req.json();
-  const { amount, name, userId, month } = body;
-  if (!amount || !name || !userId || !month) {
+  const { amount, name, userId, month, transactionId } = body;
+  if (!amount || !name || !userId || !month || !transactionId) {
     return NextResponse.json({ message: "Missing data" }, { status: 400 });
   }
 
@@ -24,9 +25,17 @@ export async function POST(req) {
         $inc: {
           [updateField]: amount,
         },
+      },
+      {
+        upsert: true,
       }
     );
-    console.log(result, 'update result')
+    await Transaction.updateOne(
+      { transactionId },
+      {
+        $set: { type: "categorized" },
+      }
+    );
     return NextResponse.json(
       { message: "Update successful", result },
       { status: 200 }

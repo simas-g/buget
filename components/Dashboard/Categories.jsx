@@ -40,61 +40,11 @@ export default function Categories({ refetch }) {
     setError("");
     setShowAddCategory(false);
   };
-  const handleSubmitCategory = async () => {
-    const name = newCategory.current?.value.trim();
-    if (!name) return;
-    setLoading(true);
-    try {
-      const res = await fetch("/api/category/create", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          userId: user.userId,
-          name,
-          date: getCurrentMonthDate(),
-        }),
-      });
-
-      if (res.ok) {
-        setLoading(false);
-        setShowAddCategory(false);
-        return;
-      } else {
-        throw new Error();
-      }
-    } catch (error) {
-      setLoading(false);
-      setError("Įvyko klaida " + error);
-    } finally {
-      refetch();
-    }
-  };
+  
   async function fetchCategories() {}
   const sortedCategories = [...categories].sort((a, b) => b[1] - a[1]);
   return (
     <BoxWrapper className={"relative w-full"}>
-      {showAddCategory && (
-        <DialogWrapper open={showAddCategory} onClose={handleCancelCategory}>
-          <div className="flex flex-col gap-2">
-            <input
-              ref={newCategory}
-              type="text"
-              placeholder="kategorija"
-              className="border outline-none px-4 py-2 rounded-lg placeholder:text-sm placeholder:text-gray-400"
-            />
-            {error && <p className="text-accent">{error}</p>}
-            <button
-              onClick={handleSubmitCategory}
-              disabled={loading}
-              className="w-fit border px-4 py-2 rounded-lg cursor-pointer bg-primary"
-            >
-              Pridėti
-            </button>
-          </div>
-        </DialogWrapper>
-      )}
       <h5 className="flex items-center gap-2 text-xl font-bold">
         <ChartBar stroke="var(--color-secondary)" size={24} />
         Kategorijos

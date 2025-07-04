@@ -141,6 +141,7 @@ export async function fetchBankDetails(bankId, accountId, access_token) {
       }),
     });
     const data = await res.json();
+    console.log(data, 'our darta')
     if (data.status_code == 429) return "Rate limit exceeded";
   } catch (error) {
     console.log("Error fetching bank details:", error);

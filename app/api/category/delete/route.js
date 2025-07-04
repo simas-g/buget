@@ -1,7 +1,7 @@
 import { validateToken } from "@/app/lib/auth/session";
 import MonthSummary from "@/app/lib/models/monthSummary";
 import { NextResponse } from "next/server";
-export async function POST(req) {
+export async function DELETE(req) {
   const isValidRequest = await validateToken(req.headers);
   if (!isValidRequest) {
     return NextResponse.json({ message: "Unauthorized" }, { status: 401 });

@@ -16,7 +16,6 @@ export default function BankOption({ bank, sessionId }) {
       accessToken,
       sessionId
     );
-    console.log(bank);
     window.location.href = url;
     const temporaryBank = {
       logo: bank.logo,

@@ -29,10 +29,10 @@ const BankTransactionPage = ({ id }) => {
         },
       }
     );
-    if (!res.ok || res.status === 404) {
-      return null;
-    }
     const data = await res.json();
+    if (res.status === 429) {
+      return "Rate limit exceeded";
+    }
     return data;
   }
   const { data: dataB, isLoading } = useQuery({
@@ -40,7 +40,12 @@ const BankTransactionPage = ({ id }) => {
     queryFn: async () => getBankData(id),
     enabled: typeof window !== "undefined" && !!id,
   });
-  const { data: dataT, isLoading: isLoadingT } = useQuery({
+  const {
+    data: dataT,
+    isLoading: isLoadingT,
+    error: errorT,
+    refetch
+  } = useQuery({
     queryKey: ["transactions", id],
     queryFn: async () => getTransactions(),
     enabled: typeof window !== "undefined",
@@ -93,7 +98,9 @@ const BankTransactionPage = ({ id }) => {
             />
           </Button>
           <span className="text-xs text-accent sm:absolute -bottom-2">
-            {error?.refreshError}
+            {error?.refreshError || dataT === "Rate limit exceeded"
+              ? "Per dieną galima atnaujinti 4 kartus"
+              : ""}
           </span>
         </div>
       </div>
@@ -111,22 +118,22 @@ const BankTransactionPage = ({ id }) => {
           ) : (
             transactions?.map((t) => (
               <Transaction
-                id={id}
+                refetch={refetch}
+                id={bank.userId}
                 key={t.transactionId}
                 operation={t}
                 type="uncategorized"
               />
             ))
           )}
-          {!isLoadingT &&
-            typeof window !== "undefined" &&
-            transactions.length === 0 && (
-              <p className="text-white w-full text-center">
-                Naujų operacijų nėra
-              </p>
-            )}
-          {error?.refreshError && <p>{error.refreshError}</p>}
         </ul>
+        {!isLoadingT &&
+          typeof window !== "undefined" &&
+          transactions.length === 0 && (
+            <p className="text-white w-full text-center">
+              Naujų operacijų nėra
+            </p>
+          )}
       </div>
     </section>
   );

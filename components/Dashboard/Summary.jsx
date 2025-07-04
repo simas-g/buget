@@ -42,7 +42,6 @@ export default function Summary({
     (state) => state.summary
   );
   useEffect(() => {
-    console.log(summary)
     setLoading(true);
     if (typeof window === "undefined") return;
     const data = JSON.parse(sessionStorage.getItem("monthlySummary"));
@@ -71,7 +70,7 @@ export default function Summary({
         break;
     }
     setLoading(false);
-  }, []);
+  }, [summary]);
   const formattedTotal = formatCurrency(data?.total || 0);
   let formattedChange = formatCurrency(data?.change || 0);
   if (data?.change > 0) {

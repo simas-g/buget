@@ -93,7 +93,7 @@ export async function POST(req) {
     // };
     const array = Object.entries(summaries);
     const updates = array.map(([month, { inflow, outflow }]) => {
-      MonthSummary.updateOne(
+      return MonthSummary.updateOne(
         { month, userId },
         {
           $inc: {
@@ -104,7 +104,8 @@ export async function POST(req) {
         { upsert: true }
       );
     });
-    await Promise.all(updates);
+    const ourUpdate = await Promise.all(updates);
+    console.log(ourUpdate, 'our update')
     ///fetch bank balance
     try {
       const resBalance = await fetch(

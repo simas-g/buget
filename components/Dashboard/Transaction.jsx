@@ -3,16 +3,16 @@ import DialogWrapper from "../UI/Dialog";
 import { useEffect, useState } from "react";
 import Button from "../UI/Button";
 
-const Transaction = ({ id, type = "uncategorized", operation = {} }) => {
+const Transaction = ({ id, type = "uncategorized", operation = {}, refetch }) => {
   let content;
   const currency = formatCurrencyVisually(operation.amount);
+  const [loading, setLoading] = useState(false)
   const [showEdit, setShowEdit] = useState(false);
   const [categories, setCategories] = useState([]);
   useEffect(() => {
     if (typeof window === "undefined") return;
     const data = JSON.parse(sessionStorage.getItem("monthlySummary"));
     const array = Array.from(Object.entries(data.categories));
-    console.log(array);
     setCategories(array);
   }, []);
   const handleOpenCategorize = () => {
@@ -24,6 +24,7 @@ const Transaction = ({ id, type = "uncategorized", operation = {} }) => {
 
   const handleCategorize = async (key) => {
     try {
+      setLoading(true)
       const res = await fetch("/api/category/assign", {
         method: "POST",
         body: JSON.stringify({
@@ -31,6 +32,7 @@ const Transaction = ({ id, type = "uncategorized", operation = {} }) => {
           name: key,
           month: operation.bookingDate.slice(0, 7),
           amount: operation.amount,
+          transactionId: operation.transactionId
         }),
       });
       const data = await res.json();
@@ -38,8 +40,11 @@ const Transaction = ({ id, type = "uncategorized", operation = {} }) => {
         return true;
       }
     } catch (error) {
-      console.log(error, "error");
       return false;
+    } finally {
+      setLoading(false)
+      await refetch()
+      handleCategorizeClose()
     }
   };
   if (type === "categorized") {

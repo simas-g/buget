@@ -52,7 +52,7 @@ export default function Dashboard({ user, sessionId }) {
   useFetch(fetchAccounts, shouldFetchAccounts);
 
   return (
-    <div className=" flex h-fit">
+    <div className="bg-dark-backgroud flex h-fit">
       <LeftSidebar />
       <div className="w-full max-w-7xl">
         <SharedNav />

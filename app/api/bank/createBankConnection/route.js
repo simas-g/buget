@@ -33,7 +33,7 @@ export async function POST(req) {
       accountId: accounts,
       userId: userOid,
       validUntil: new Date(Date.now() + 1000 * 60 * 60 * 24 * 90).toISOString(),
-      balance: "nodata",
+      balance: 0,
       lastFetched: "nodata",
     });
 
