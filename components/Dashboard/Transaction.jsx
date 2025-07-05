@@ -71,9 +71,9 @@ const Transaction = ({ id, type = "uncategorized", operation = {}, refetch }) =>
           <DialogWrapper
             open={showEdit}
             onClose={handleCategorizeClose}
-            className="flex flex-col gap-4"
+            className="flex flex-col gap-2"
           >
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-1">
               <input
                 type="text"
                 placeholder="kategorija"
@@ -84,7 +84,7 @@ const Transaction = ({ id, type = "uncategorized", operation = {}, refetch }) =>
               </button>
             </div>
             {categories?.map(([key, value], i) => (
-              <Button onClick={() => handleCategorize(key)} className="px-4 py-2 border-gray-400 border bg-gray-100">
+              <Button onClick={() => handleCategorize(key)} className="px-4 py-1 border-gray-400 border bg-gray-100">
                 {key}
               </Button>
             ))}

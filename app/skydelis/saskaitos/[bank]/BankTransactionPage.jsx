@@ -119,7 +119,7 @@ const BankTransactionPage = ({ id }) => {
             transactions?.map((t) => (
               <Transaction
                 refetch={refetch}
-                id={bank.userId}
+                id={bank?.userId}
                 key={t.transactionId}
                 operation={t}
                 type="uncategorized"

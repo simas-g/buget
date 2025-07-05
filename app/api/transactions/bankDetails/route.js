@@ -48,6 +48,7 @@ export async function POST(req) {
       transactionId: t.transactionId,
       bankId,
       type: "fetched",
+      userId
     }));
 
     ///new transaction insert
@@ -64,7 +65,6 @@ export async function POST(req) {
         "Some or all transactions already exist. Skipped duplicates."
       );
     }
-    console.log(inserted, "inserted docs");
     ///monthly summaries update based on inserted
     const summaries = inserted.reduce((acc, tx) => {
       const month = tx.bookingDate.toISOString().slice(0, 7); // "2025-07"
@@ -104,8 +104,7 @@ export async function POST(req) {
         { upsert: true }
       );
     });
-    const ourUpdate = await Promise.all(updates);
-    console.log(ourUpdate, 'our update')
+    await Promise.all(updates);
     ///fetch bank balance
     try {
       const resBalance = await fetch(

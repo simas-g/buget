@@ -44,7 +44,7 @@ export default function Connected() {
 
   const { data: banks, isLoading } = useFetch(fetchBanks, shouldFetch);
   return (
-    <BoxWrapper>
+    <BoxWrapper className={'p-5'}>
       <div className="lg:col-span-2">
         <div className="flex items-center justify-between mb-6">
           <h3 className="text-xl font-semibold text-white flex items-center space-x-2">

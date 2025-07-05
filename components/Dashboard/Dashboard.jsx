@@ -52,7 +52,7 @@ export default function Dashboard({ user, sessionId }) {
   useFetch(fetchAccounts, shouldFetchAccounts);
 
   return (
-    <div className="bg-dark-backgroud flex h-fit">
+    <div className="bg-dark-backgroud flex min-h-screen">
       <LeftSidebar />
       <div className="w-full max-w-7xl">
         <SharedNav />
@@ -65,7 +65,7 @@ export default function Dashboard({ user, sessionId }) {
             </div>
           </section>
           <div className="flex w-full gap-4 flex-wrap lg:flex-nowrap">
-            <Categories refetch={refetch} />
+            <Categories/>
             <CategorizedTransactions />
           </div>
           <Connected />

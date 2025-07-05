@@ -8,6 +8,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Delete, DeleteIcon, Edit, Trash, Trash2 } from "lucide-react";
 import { CreationModal, DeletionModal } from "./ActionModals";
 import { useRef, useState } from "react";
+import BoxWrapper from "@/components/Dashboard/BoxWrapper";
 
 export default function CategoryPage({ userId }) {
   const [isOpenConfirmDeletion, setIsOpenConfirmDeletion] = useState({
@@ -34,7 +35,7 @@ export default function CategoryPage({ userId }) {
 
   const calculatePercentage = (amount) => {
     if (totalFlow === 0) return 0;
-    return ((amount / totalFlow) * 100).toFixed(1);
+    return Math.abs(((amount / totalFlow) * 100).toFixed(1));
   };
 
   ///handling deletion
@@ -94,8 +95,9 @@ export default function CategoryPage({ userId }) {
   return (
     <div className="text-white p-4 space-y-6">
       <SharedNav />
-      <div className="flex justify-between items-end max-w-4xl">
+      <div className="flex justify-between items-end max-w-2xl">
         <div className="flex flex-col">
+          <span className="text-gray-500 text-sm">{getCurrentMonthDate()}</span>
           <h2 className="text-xl font-semibold mb-2">Operacijų vertė:</h2>
           <p className="text-2xl">{formatCurrency(totalFlow)}</p>
         </div>
@@ -123,14 +125,11 @@ export default function CategoryPage({ userId }) {
           onDelete={handleDeleteCategory}
         />
       )}
-      <div className="space-y-4 max-w-4xl">
+      <div className="space-y-4 max-w-2xl">
         {categories.map(([category, amount]) => {
           const percentage = calculatePercentage(amount);
           return (
-            <div
-              key={category}
-              className="flex w-full border p-3 rounded-md gap-5"
-            >
+            <BoxWrapper className='flex p-4 gap-4'>
               <div className="space-y-1 w-full">
                 <div className="flex justify-between text-sm">
                   <span className="capitalize">{category}</span>
@@ -138,9 +137,9 @@ export default function CategoryPage({ userId }) {
                     {formatCurrency(amount)} ({percentage}%)
                   </span>
                 </div>
-                <div className="w-full h-3 bg-gray-700 rounded">
+                <div className="w-full h-2 bg-gray-700 rounded">
                   <div
-                    className="h-3 bg-secondary rounded transition-all duration-300"
+                    className="h-2 bg-gradient-to-r from-secondary  to-secondary/30 border border-gray-400 rounded transition-all duration-300"
                     style={{ width: `${percentage}%` }}
                   ></div>
                 </div>
@@ -149,7 +148,7 @@ export default function CategoryPage({ userId }) {
                 <Edit />
                 <Trash2 onClick={() => handleTrashConfirm(category)} />
               </div>
-            </div>
+            </BoxWrapper>
           );
         })}
       </div>

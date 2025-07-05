@@ -141,7 +141,7 @@ export async function fetchBankDetails(bankId, accountId, access_token) {
       }),
     });
     const data = await res.json();
-    console.log(data, 'our darta')
+    console.log(data, "our darta");
     if (data.status_code == 429) return "Rate limit exceeded";
   } catch (error) {
     console.log("Error fetching bank details:", error);
@@ -151,6 +151,9 @@ export async function fetchBankDetails(bankId, accountId, access_token) {
 
 ///all banks monthly summary
 export async function fetchMonthlySummary(userId) {
+  if(!userId) {
+    return null
+  }
   try {
     const res = await fetch("/api/bank/getMonthlySummary?userId=" + userId);
     if (!res.ok) {
@@ -162,6 +165,16 @@ export async function fetchMonthlySummary(userId) {
     return summary;
   } catch (error) {
     console.log(error, "error");
+    return null;
+  }
+}
+export async function fetchCategorizedTransactions(userId) {
+  try {
+    const res = await fetch("/api/transactions/getCategorized?userId=" + userId);
+    const data = await res.json();
+    console.log(data)
+    return data;
+  } catch (error) {
     return null;
   }
 }

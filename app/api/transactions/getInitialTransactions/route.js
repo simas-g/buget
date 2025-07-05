@@ -26,7 +26,8 @@ export async function GET(req) {
   })
     .sort({ bookingDate: "desc" })
     .lean();
-  if (availableTransactions.length > 0) {
+  const isEmpty = await Transaction.estimatedDocumentCount();
+  if (isEmpty !== 0 || availableTransactions.length > 0) {
     return NextResponse.json({ availableTransactions }, { status: 200 });
   }
   const bankConnection = await BankConnection.findOne(

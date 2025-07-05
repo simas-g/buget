@@ -1,22 +1,15 @@
 "use client";
 import { ChartBar } from "lucide-react";
 import BoxWrapper from "./BoxWrapper";
-import { Plus } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
-import DialogWrapper from "@/components/UI/Dialog";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { getCurrentMonthDate } from "@/app/util/format";
 import Button from "../UI/Button";
 import Link from "next/link";
-export default function Categories({ refetch }) {
+export default function Categories() {
   const [categories, setCategories] = useState([]);
   const [total, setTotal] = useState([]);
-  const [showAddCategory, setShowAddCategory] = useState();
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState();
-  const user = useSelector((state) => state.user);
+
   const summaryStore = useSelector((state) => state.summary);
-  const newCategory = useRef();
   useEffect(() => {
     if (typeof window === "undefined") return;
     const data = JSON.parse(sessionStorage.getItem("monthlySummary"));
@@ -31,20 +24,12 @@ export default function Categories({ refetch }) {
   }, [summaryStore]);
   const calculatePercentage = (amount) => {
     if (amount === 0) return 0;
-    return ((amount / total) * 100).toFixed(1);
-  };
-  const handleAddCategory = () => {
-    setShowAddCategory(true);
-  };
-  const handleCancelCategory = () => {
-    setError("");
-    setShowAddCategory(false);
+    return Math.abs(((amount / total) * 100).toFixed(1));
   };
   
-  async function fetchCategories() {}
-  const sortedCategories = [...categories].sort((a, b) => b[1] - a[1]);
+  const sortedCategories = [...categories].sort((a, b) => Math.abs(b[1]) - Math.abs(a[1]));
   return (
-    <BoxWrapper className={"relative w-full"}>
+    <BoxWrapper className={"relative w-full p-5"}>
       <h5 className="flex items-center gap-2 text-xl font-bold">
         <ChartBar stroke="var(--color-secondary)" size={24} />
         Kategorijos
@@ -57,15 +42,10 @@ export default function Categories({ refetch }) {
           <span>Valdyti</span>
         </Button>
       </Link>
-
       <ul className="mt-4 space-y-3">
         {sortedCategories.map(([name, amount]) => (
           <li className="flex flex-col gap-2" key={name}>
             <div className="flex items-center gap-2">
-              <span
-                className="inline-block w-2 h-2 mr-2 rounded-full"
-                style={{ backgroundColor: "#ccc" }} // default or static color
-              ></span>
               {name}{" "}
               <span className="text-gray-400 text-xs">
                 ({calculatePercentage(amount)}%)
@@ -76,9 +56,8 @@ export default function Categories({ refetch }) {
               <div
                 style={{
                   width: `${calculatePercentage(amount)}%`,
-                  backgroundColor: "#ccc", // match the dot color
                 }}
-                className="h-2 rounded-full"
+                className="h-2 bg-gradient-to-r from-secondary  to-secondary/30 border border-gray-400 rounded-full"
               ></div>
             </div>
           </li>
