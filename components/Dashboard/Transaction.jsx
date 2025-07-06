@@ -3,10 +3,15 @@ import DialogWrapper from "../UI/Dialog";
 import { useEffect, useState } from "react";
 import Button from "../UI/Button";
 
-const Transaction = ({ id, type = "uncategorized", operation = {}, refetch }) => {
+const Transaction = ({
+  id,
+  type = "uncategorized",
+  operation = {},
+  refetch,
+}) => {
   let content;
   const currency = formatCurrencyVisually(operation.amount);
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
   const [categories, setCategories] = useState([]);
   useEffect(() => {
@@ -21,10 +26,25 @@ const Transaction = ({ id, type = "uncategorized", operation = {}, refetch }) =>
   const handleCategorizeClose = () => {
     setShowEdit(false);
   };
-
+  const handleBlacklist = async (key) => {
+    try {
+      const res = await fetch("/api/category/blacklist", {
+        method: "PATCH",
+        body: JSON.stringify({ transactionId: operation.transactionId }),
+      });
+      if (res.ok) {
+        return true;
+      } else return false;
+    } catch (error) {
+      return false;
+    } finally {
+      await refetch();
+      handleCategorizeClose();
+    }
+  };
   const handleCategorize = async (key) => {
     try {
-      setLoading(true)
+      setLoading(true);
       const res = await fetch("/api/category/assign", {
         method: "POST",
         body: JSON.stringify({
@@ -32,7 +52,7 @@ const Transaction = ({ id, type = "uncategorized", operation = {}, refetch }) =>
           name: key,
           month: operation.bookingDate.slice(0, 7),
           amount: operation.amount,
-          transactionId: operation.transactionId
+          transactionId: operation.transactionId,
         }),
       });
       const data = await res.json();
@@ -42,9 +62,9 @@ const Transaction = ({ id, type = "uncategorized", operation = {}, refetch }) =>
     } catch (error) {
       return false;
     } finally {
-      setLoading(false)
-      await refetch()
-      handleCategorizeClose()
+      setLoading(false);
+      await refetch();
+      handleCategorizeClose();
     }
   };
   if (type === "categorized") {
@@ -52,8 +72,10 @@ const Transaction = ({ id, type = "uncategorized", operation = {}, refetch }) =>
       <li className="flex gap-4 flex-wrap p-3 overflow-hidden rounded-full relative justify-between w-full bg-[#0A0A20]/50 border border-white/10">
         <div className="flex gap-x-2 items-center w-fit">
           <div className={`w-2 h-2 rounded-full bg-secondary`}></div>
-          <p>{operation?.category}</p> |
-          <p className="text-gray-300">{operation?.date}</p>
+          <p>{operation?.category || "categoryField"}</p> |
+          <p className="text-gray-300">
+            {operation?.bookingDate.split("T")[0]}
+          </p>
         </div>
 
         <p className={currency.style + " text-right"}>{currency.amount}</p>
@@ -73,21 +95,20 @@ const Transaction = ({ id, type = "uncategorized", operation = {}, refetch }) =>
             onClose={handleCategorizeClose}
             className="flex flex-col gap-2"
           >
-            <div className="flex flex-col gap-1">
-              <input
-                type="text"
-                placeholder="kategorija"
-                className="border outline-none px-4 py-2 rounded-lg placeholder:text-sm placeholder:text-gray-400"
-              />
-              <button className="w-fit border px-4 py-2 rounded-lg cursor-pointer bg-primary">
-                Pridėti naują
-              </button>
-            </div>
             {categories?.map(([key, value], i) => (
-              <Button onClick={() => handleCategorize(key)} className="px-4 py-1 border-gray-400 border bg-gray-100">
+              <Button
+                onClick={() => handleCategorize(key)}
+                className="px-4 py-1 border-gray-400 border bg-gray-100"
+              >
                 {key}
               </Button>
             ))}
+            <Button
+              onClick={handleBlacklist}
+              className="bg-black text-white py-2 mt-4"
+            >
+              Praleisti
+            </Button>
           </DialogWrapper>
         )}
         <li

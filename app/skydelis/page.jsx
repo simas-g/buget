@@ -1,7 +1,7 @@
 import Dashboard from "@/components/Dashboard/Dashboard";
 import { getFullUser } from "../lib/auth/currentUser";
 import { notFound } from "next/navigation";
-import ClientLayoutWrapper from "@/app/lib/ClientLayoutWrapper"
+import ClientLayoutWrapper from "@/app/lib/ClientLayoutWrapper";
 import { cookies } from "next/headers";
 import QueryProvider from "../lib/QueryWrapper";
 export default async function Page() {
@@ -21,8 +21,9 @@ export default async function Page() {
         <div className="absolute top-[60%] left-[70%] h-[250px] w-[250px] rounded-full bg-[#63EB25]/10 blur-[100px]" />
       </div>
       <QueryProvider>
-        <ClientLayoutWrapper></ClientLayoutWrapper>
-        <Dashboard user={user} sessionId={sessionKey} />
+        <ClientLayoutWrapper>
+          <Dashboard user={user} sessionId={sessionKey} />
+        </ClientLayoutWrapper>
       </QueryProvider>
     </div>
   );

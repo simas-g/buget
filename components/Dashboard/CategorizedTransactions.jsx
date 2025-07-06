@@ -1,3 +1,4 @@
+"use client";
 import { Book, Plus } from "lucide-react";
 import BoxWrapper from "./BoxWrapper";
 import Transaction from "./Transaction";
@@ -5,35 +6,42 @@ import Button from "../UI/Button";
 import { useQuery } from "@tanstack/react-query";
 import { fetchCategorizedTransactions } from "@/app/util/http";
 import { useSelector } from "react-redux";
-export default function Categorized({ operations = [] }) {
+import Loading from "../UI/Loading";
+export default function Categorized() {
   const user = useSelector((state) => state.user);
-  if (!user) {
-    return;
-  }
+
   const { data: cTransactions, isLoading } = useQuery({
-    queryFn: async () => fetchCategorizedTransactions(user.userId),
+    queryFn: async () => fetchCategorizedTransactions(user.userId, 5),
     queryKey: ["categorized", user.userId],
   });
+  const { transactions = [] } = cTransactions || {};
   return (
-    <BoxWrapper className="flex flex-col p-5 gap-y-4 w-full">
+    <BoxWrapper className="flex flex-col p-5 w-full">
       <div className="flex flex-wrap gap-4 justify-between">
         <h5 className="text-xl font-bold flex items-center gap-x-2">
           <Book size={24} stroke="var(--color-secondary)" />
           Kategorizuotos operacijos
         </h5>
-        <Button variant="outline" className="px-4 py-2 absolute top-4 right-4">
+        <Button variant="outline" className="px-4 py-2">
           <span>Valdyti</span>
         </Button>
       </div>
+      {transactions.length === 0 && !isLoading && (
+        <p className="text-gray-500 text-sm">
+          Kategorizuotų operacijų nėra
+        </p>
+      )}
 
-      <ul className="space-y-4">
-        {operations.map((op) => (
-          <Transaction operation={op} key={`${op.category}-${op.amount}`} />
+      <ul className={`space-y-3 mt-6`}>
+        {transactions?.map((op) => (
+          <Transaction
+            type="categorized"
+            operation={op}
+            key={`${op?.category}-${op.amount}`}
+          />
         ))}
       </ul>
-      {operations.length > 0 && (
-        <button className="text-left underline w-fit">Peržiūrėti visas</button>
-      )}
+      {isLoading && <Loading />}
     </BoxWrapper>
   );
 }

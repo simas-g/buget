@@ -33,7 +33,7 @@ export async function POST(req) {
     await Transaction.updateOne(
       { transactionId },
       {
-        $set: { type: "categorized" },
+        $set: { type: "categorized", categoryName: name },
       }
     );
     return NextResponse.json(
