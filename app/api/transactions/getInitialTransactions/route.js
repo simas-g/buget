@@ -6,6 +6,7 @@ import { validateToken } from "@/app/lib/auth/session";
 import BankConnection from "@/app/lib/models/bankConnection";
 import MonthSummary from "@/app/lib/models/monthSummary";
 import Transaction from "@/app/lib/models/transaction";
+import { calculateClosing } from "@/app/util/calculateClosing";
 import { NextResponse } from "next/server";
 export async function GET(req) {
   const cookie = req.headers.get("cookie");
@@ -26,8 +27,9 @@ export async function GET(req) {
   })
     .sort({ bookingDate: "desc" })
     .lean();
-  const isEmpty = await Transaction.estimatedDocumentCount();
-  if (isEmpty !== 0 || availableTransactions.length > 0) {
+
+  const isEmpty = await Transaction.exists({ bankId: id });
+  if (isEmpty !== null || availableTransactions.length > 0) {
     return NextResponse.json({ availableTransactions }, { status: 200 });
   }
   const bankConnection = await BankConnection.findOne(

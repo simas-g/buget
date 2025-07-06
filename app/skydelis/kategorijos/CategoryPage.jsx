@@ -29,9 +29,12 @@ export default function CategoryPage({ userId }) {
       </div>
     );
   }
-
-  const categories = Object.entries(data.categories);
-  const totalFlow = data.inflow - data.outflow;
+  let categories = []
+  let totalFlow = 0
+  if (data) {
+    categories = Object.entries(data.categories);
+    totalFlow = data.inflow - data.outflow;
+  }
 
   const calculatePercentage = (amount) => {
     if (totalFlow === 0) return 0;
@@ -126,13 +129,13 @@ export default function CategoryPage({ userId }) {
         />
       )}
       <div className="space-y-4 max-w-2xl">
-        {categories.map(([category, amount]) => {
+        {categories?.map(([category, amount]) => {
           const percentage = calculatePercentage(amount);
           return (
-            <BoxWrapper className='flex p-4 gap-4'>
+            <BoxWrapper className="flex p-4 gap-4">
               <div className="space-y-1 w-full">
                 <div className="flex justify-between text-sm">
-                  <span className="capitalize">{category}</span>
+                  <span>{category}</span>
                   <span>
                     {formatCurrency(amount)} ({percentage}%)
                   </span>

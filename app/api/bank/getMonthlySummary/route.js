@@ -29,7 +29,7 @@ export async function GET(req) {
       },
       { inflow: 1, outflow: 1, closingBalance: 1, categories: 1, _id: 0 }
     ).lean();
-    if(summary.closingBalance !== totalNet) [
+    if(summary?.closingBalance !== totalNet) [
       await MonthSummary.updateOne({
         userId, month
       }, {

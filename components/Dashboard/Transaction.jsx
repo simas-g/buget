@@ -72,7 +72,7 @@ const Transaction = ({
       <li className="flex gap-4 flex-wrap p-3 overflow-hidden rounded-full relative justify-between w-full bg-[#0A0A20]/50 border border-white/10">
         <div className="flex gap-x-2 items-center w-fit">
           <div className={`w-2 h-2 rounded-full bg-secondary`}></div>
-          <p>{operation?.category || "categoryField"}</p> |
+          <p>{operation?.categoryName}</p> |
           <p className="text-gray-300">
             {operation?.bookingDate.split("T")[0]}
           </p>

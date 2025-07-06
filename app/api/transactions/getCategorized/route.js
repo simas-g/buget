@@ -1,6 +1,7 @@
 import { validateToken } from "@/app/lib/auth/session";
 import connect from "@/app/lib/connectToDB";
 import Transaction from "@/app/lib/models/transaction";
+import { calculateClosing } from "@/app/util/calculateClosing";
 import { NextResponse } from "next/server";
 
 export async function GET(req) {
@@ -15,7 +16,7 @@ export async function GET(req) {
   }
 
   await connect();
-  console.log(userId, "our if");
+    await calculateClosing(userId);
   try {
     const transactions = await Transaction.find({
       userId,

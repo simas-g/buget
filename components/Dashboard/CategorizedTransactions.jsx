@@ -9,10 +9,9 @@ import { useSelector } from "react-redux";
 import Loading from "../UI/Loading";
 export default function Categorized() {
   const user = useSelector((state) => state.user);
-
   const { data: cTransactions, isLoading } = useQuery({
     queryFn: async () => fetchCategorizedTransactions(user.userId, 5),
-    queryKey: ["categorized", user.userId],
+    queryKey: ["categorized", user?.userId || 'user'],
   });
   const { transactions = [] } = cTransactions || {};
   return (

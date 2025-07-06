@@ -14,7 +14,11 @@ export default function Categories() {
   useEffect(() => {
     if (typeof window === "undefined") return;
     const data = JSON.parse(sessionStorage.getItem("monthlySummary"));
-
+    if(!data) {
+      setCategories([])
+      setLoading(false)
+      return
+    }
     const { categories } = data;
     const array = Array.from(Object.entries(categories)).slice(0, 6);
     const flow = data.inflow - data.outflow;

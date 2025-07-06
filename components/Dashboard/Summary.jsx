@@ -20,7 +20,7 @@ export default function Summary({
       icon: <Coins stroke="var(--color-secondary)" size={36} />,
     };
   } else if (type === "month-in") {
-    message = "Mėnesio pajamos";
+    message = "Mėnesio įplaukos";
     box = {
       width: "w-full",
       heading: "text-sm font-medium text-white/80",

@@ -12,7 +12,7 @@ const TransactionSchema = new Schema({
   creditorName: { type: Schema.Types.Mixed, required: false },
   ///only categorized
   categoryId: { type: mongoose.Schema.ObjectId, required: false },
-  categoryName: { type: String, required: true },
+  categoryName: { type: String, required: false },
 });
 const Transaction =
   models.Transaction || model("Transaction", TransactionSchema);
