@@ -2,6 +2,7 @@ import { validateToken } from "@/app/lib/auth/session";
 import BankConnection from "@/app/lib/models/bankConnection";
 import MonthSummary from "@/app/lib/models/monthSummary";
 import Transaction from "@/app/lib/models/transaction";
+import { recalculateCurrentClosing } from "@/app/lib/recalculateClosing";
 import { NextResponse } from "next/server";
 
 ////available to fetch max 4 times a day
@@ -48,7 +49,7 @@ export async function POST(req) {
       transactionId: t.transactionId,
       bankId,
       type: "fetched",
-      userId
+      userId,
     }));
 
     ///new transaction insert
@@ -128,14 +129,13 @@ export async function POST(req) {
         { _id: bankId },
         { lastFetched: last_updated, balance: amount }
       );
+      await recalculateCurrentClosing(userId);
     } catch (error) {
-      console.log(error, "error");
       return NextResponse.json({ error }, { status: 400 });
     }
     const allTransactions = await Transaction.find({ bankId });
     return NextResponse.json({ allTransactions }, { status: 200 });
   } catch (error) {
-    console.log(error);
     return NextResponse.json({ message: error }, { status: 400 });
   }
 }

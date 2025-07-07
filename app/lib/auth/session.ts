@@ -70,7 +70,6 @@ export const validateToken = async (headers) => {
   try {
     // Verify the token
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    console.log(decoded, 'decoded')
     return decoded;
   } catch (error) {
     console.log('error with token')

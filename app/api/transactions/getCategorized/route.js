@@ -16,16 +16,16 @@ export async function GET(req) {
   }
 
   await connect();
-    await calculateClosing(userId);
+  await calculateClosing(userId);
   try {
     const transactions = await Transaction.find({
       userId,
       type: "categorized",
     })
-      .limit(limit).sort({bookingDate: -1})
+      .limit(limit)
+      .sort({ bookingDate: -1 })
       .lean();
-    console.log(transactions, "our tarnsationc");
-    return NextResponse.json({ transactions }, { status: 200 });
+    return NextResponse.json(transactions, { status: 200 });
   } catch (error) {
     return NextResponse.json({ message: error }, { status: 500 });
   }

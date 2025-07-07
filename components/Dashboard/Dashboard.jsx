@@ -12,6 +12,7 @@ import Summary from "./Summary";
 import Categories from "./Categories";
 import CategorizedTransactions from "./CategorizedTransactions";
 import { useQuery } from "@tanstack/react-query";
+import { getCurrentMonthDate, getPreviousMonthDate } from "@/app/util/format";
 export default function Dashboard({ user, sessionId }) {
   const dispatch = useDispatch();
 
@@ -30,16 +31,20 @@ export default function Dashboard({ user, sessionId }) {
     refetch,
   } = useQuery({
     queryKey: ["summary", user.id],
-    queryFn: async () => fetchMonthlySummary(user?._id),
+    queryFn: async () => fetchMonthlySummary(user?._id, getCurrentMonthDate()),
+  });
+  const { data: prevMonthSummary } = useQuery({
+    queryKey: ["summary", user.id, getPreviousMonthDate()],
+    queryFn: async () => fetchMonthlySummary(user?._id, getPreviousMonthDate()),
   });
   useEffect(() => {
-    if (!monthSummary) {
+    if (!monthSummary || !prevMonthSummary) {
       return;
     }
-    dispatch(summaryActions.setSummary({ summary: monthSummary }));
+    dispatch(summaryActions.setSummary({ summary: monthSummary, lastSummary: prevMonthSummary }));
 
-    sessionStorage.setItem("monthlySummary", JSON.stringify(monthSummary));
-  }, [monthSummary]);
+    sessionStorage.setItem("monthlySummary", JSON.stringify({ summary: monthSummary, lastSummary: prevMonthSummary }));
+  }, [monthSummary, prevMonthSummary]);
   const { data: token } = useFetch(fetchToken, !!sessionId);
 
   const shouldFetchAccounts = !!token;
@@ -65,8 +70,8 @@ export default function Dashboard({ user, sessionId }) {
             </div>
           </section>
           <div className="flex w-full gap-4 flex-wrap lg:flex-nowrap">
-            <Categories/>
-            <CategorizedTransactions />
+            <Categories />
+            <CategorizedTransactions/>
           </div>
           <Connected />
         </div>

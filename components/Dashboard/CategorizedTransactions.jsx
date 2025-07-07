@@ -12,6 +12,7 @@ export default function Categorized() {
   const { data: cTransactions, isLoading } = useQuery({
     queryFn: async () => fetchCategorizedTransactions(user.userId, 5),
     queryKey: ["categorized", user?.userId || 'user'],
+    enabled: !!user.userId
   });
   const { transactions = [] } = cTransactions || {};
   return (

@@ -18,7 +18,10 @@ const summarySlice = createSlice({
   initialState: {},
   reducers: {
     setSummary(state, action) {
-      return action.payload.summary; 
+      return {
+        prevMonth: action.payload.lastSummary,
+        current: action.payload.summary,
+      };
     },
   },
 });

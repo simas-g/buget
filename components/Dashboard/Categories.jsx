@@ -13,19 +13,28 @@ export default function Categories() {
   const summaryStore = useSelector((state) => state.summary);
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const data = JSON.parse(sessionStorage.getItem("monthlySummary"));
-    if(!data) {
-      setCategories([])
-      setLoading(false)
-      return
+
+    try {
+      const raw = sessionStorage.getItem("monthlySummary");
+      if (!raw) throw new Error("No data in sessionStorage");
+
+      const data = JSON.parse(raw);
+      console.log(data);
+      const { categories } = data.summary;
+
+      const array = Array.from(Object.entries(categories ?? {})).slice(0, 6);
+      const flow = data.inflow - data.outflow;
+
+      setTotal(flow);
+      setCategories(array);
+    } catch (err) {
+      console.error("Failed to load or parse summary data:", err);
+      setCategories([]);
+    } finally {
+      setLoading(false);
     }
-    const { categories } = data;
-    const array = Array.from(Object.entries(categories)).slice(0, 6);
-    const flow = data.inflow - data.outflow;
-    setTotal(flow);
-    setCategories(array);
-    setLoading(false);
   }, [summaryStore]);
+
   const calculatePercentage = (amount) => {
     if (amount === 0) return 0;
     return Math.abs(((amount / total) * 100).toFixed(1));
@@ -48,9 +57,7 @@ export default function Categories() {
         </Link>
       </div>
       {sortedCategories.length === 0 && !loading && (
-        <p className="text-gray-500 text-sm">
-          Sukurtų kategorijų nėra
-        </p>
+        <p className="text-gray-500 text-sm">Sukurtų kategorijų nėra</p>
       )}
       <ul className="mt-4 space-y-3">
         {sortedCategories.map(([name, amount]) => (

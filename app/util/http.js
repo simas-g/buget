@@ -150,12 +150,12 @@ export async function fetchBankDetails(bankId, accountId, access_token) {
 }
 
 ///all banks monthly summary
-export async function fetchMonthlySummary(userId) {
-  if (!userId) {
+export async function fetchMonthlySummary(userId, month) {
+  if (!userId || !month) {
     return null;
   }
   try {
-    const res = await fetch("/api/bank/getMonthlySummary?userId=" + userId);
+    const res = await fetch("/api/bank/getMonthlySummary?userId=" + userId + "&month=" + month);
     if (!res.ok) {
       throw new Error();
     }
@@ -170,7 +170,7 @@ export async function fetchMonthlySummary(userId) {
 }
 export async function fetchCategorizedTransactions(userId, limit) {
   if (!userId) {
-    return;
+    return 
   }
   let query = "?userId=" + userId;
   if (limit) {
@@ -181,9 +181,8 @@ export async function fetchCategorizedTransactions(userId, limit) {
       "/api/transactions/getCategorized" + query
     );
     const data = await res.json();
-    console.log(data, "adatama");
     return data;
   } catch (error) {
-    return null;
+    return [];
   }
 }

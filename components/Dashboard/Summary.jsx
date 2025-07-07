@@ -53,19 +53,19 @@ export default function Summary({
     switch (type) {
       case "main":
         setData((prev) => ({
-          total: data?.closingBalance,
-          change: data?.inflow + data?.outflow,
+          total: data?.summary.closingBalance,
+          change: data?.summary.inflow + data?.summary.outflow,
         }));
         break;
       case "month-in":
         setData((prev) => ({
-          total: data?.inflow,
+          total: data?.summary.inflow,
         }));
         break;
 
       case "month-out":
         setData((prev) => ({
-          total: data?.outflow,
+          total: data?.summary.outflow,
         }));
         break;
     }

@@ -9,10 +9,14 @@ export async function GET(req) {
   if (!isValidRequest) {
     return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
   }
-  await connect()
+  await connect();
   try {
     const url = new URL(req.url);
     const userId = url.searchParams.get("userId");
+    const month = url.searchParams.get("month");
+    if (!userId || !month) {
+      throw new Error();
+    }
     const balances = await BankConnection.find(
       {},
       { balance: 1, _id: 0 }
@@ -21,7 +25,6 @@ export async function GET(req) {
       acc += bank.balance;
       return acc;
     }, 0);
-    const month = getCurrentMonthDate(); // e.g. "2025-07"
     const summary = await MonthSummary.findOne(
       {
         month,
@@ -29,15 +32,19 @@ export async function GET(req) {
       },
       { inflow: 1, outflow: 1, closingBalance: 1, categories: 1, _id: 0 }
     ).lean();
-    if(summary?.closingBalance !== totalNet) [
-      await MonthSummary.updateOne({
-        userId, month
-      }, {
-        $set: {
-          closingBalance: totalNet
+    if (summary?.closingBalance !== totalNet) {
+      await MonthSummary.updateOne(
+        {
+          userId,
+          month,
+        },
+        {
+          $set: {
+            closingBalance: totalNet,
+          },
         }
-      })
-    ]
+      );
+    }
     if (!summary) {
       throw new Error("Summary not found");
     }
