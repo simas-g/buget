@@ -1,19 +1,26 @@
-import { getFullUser } from "@/app/lib/auth/currentUser";
+'use client'
 import CategoryPage from "./CategoryPage";
-import { cookies } from "next/headers";
-import QueryWrapper from "@/app/lib/QueryWrapper"
-export default async function Page() {
-  const userObject = await getFullUser();
-  if (!userObject) {
-    notFound();
-  }
-  const cookieStore = await cookies();
-  const sessionKey = cookieStore.get("SESSION_KEY").value;
-  const { user } = userObject;
+import QueryWrapper from "@/app/lib/QueryWrapper";
+import { getClientUser } from "@/app/util/http";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { summaryActions, userActions } from "@/components/Dashboard/userStore";
+
+export default function Page() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    async function getUser() {
+      const userObject = await getClientUser();
+      const { user, sessionId } = userObject;
+      if (!user || !sessionId) return;
+      dispatch(userActions.setUser({ userId: user._id, sessionId }));
+    }
+    getUser();
+  }, []);
   return (
     <div className="bg-dark-backgroud min-h-screen w-full">
       <QueryWrapper>
-        <CategoryPage userId={user._id} />
+        <CategoryPage />
       </QueryWrapper>
     </div>
   );

@@ -9,8 +9,11 @@ import { Delete, DeleteIcon, Edit, Trash, Trash2 } from "lucide-react";
 import { CreationModal, DeletionModal } from "./ActionModals";
 import { useRef, useState } from "react";
 import BoxWrapper from "@/components/Dashboard/BoxWrapper";
+import { useDispatch, useSelector } from "react-redux";
 
-export default function CategoryPage({ userId }) {
+export default function CategoryPage() {
+  const dispatch = useDispatch()
+  const { userId }= useSelector(state => state.user)
   const [isOpenConfirmDeletion, setIsOpenConfirmDeletion] = useState({
     isOpen: false,
     name: "",
@@ -19,18 +22,10 @@ export default function CategoryPage({ userId }) {
   const newCategory = useRef();
   const { data, isLoading, refetch } = useQuery({
     queryKey: ["summary", userId],
-    queryFn: async () => fetchMonthlySummary(userId),
+    queryFn: async () => fetchMonthlySummary(userId, getCurrentMonthDate()),
   });
-
-  if (isLoading) {
-    return (
-      <div className="text-white p-4">
-        <SharedNav />
-      </div>
-    );
-  }
-  let categories = []
-  let totalFlow = 0
+  let categories = [];
+  let totalFlow = 0;
   if (data) {
     categories = Object.entries(data.categories);
     totalFlow = data.inflow - data.outflow;
@@ -132,7 +127,7 @@ export default function CategoryPage({ userId }) {
         {categories?.map(([category, amount]) => {
           const percentage = calculatePercentage(amount);
           return (
-            <BoxWrapper className="flex p-4 gap-4">
+            <BoxWrapper className="flex p-4 gap-4" key={category}>
               <div className="space-y-1 w-full">
                 <div className="flex justify-between text-sm">
                   <span>{category}</span>
@@ -148,8 +143,7 @@ export default function CategoryPage({ userId }) {
                 </div>
               </div>
               <div className="flex gap-2 items-center">
-                <Edit />
-                <Trash2 onClick={() => handleTrashConfirm(category)} />
+                <Trash2 className='cursor-pointer' onClick={() => handleTrashConfirm(category)} />
               </div>
             </BoxWrapper>
           );
