@@ -8,13 +8,15 @@ import { fetchCategorizedTransactions } from "@/app/util/http";
 import { useSelector } from "react-redux";
 import Loading from "../UI/Loading";
 export default function Categorized() {
+  if (typeof window === "undefined") {
+    return;
+  }
   const user = useSelector((state) => state.user);
   const { data: cTransactions, isLoading } = useQuery({
     queryFn: async () => fetchCategorizedTransactions(user.userId, 5),
-    queryKey: ["categorized", user?.userId || 'user'],
-    enabled: !!user.userId
+    queryKey: ["categorized", user.userId],
   });
-  const { transactions = [] } = cTransactions || {};
+  console.log(cTransactions, "ttt");
   return (
     <BoxWrapper className="flex flex-col p-5 w-full">
       <div className="flex flex-wrap gap-4 justify-between">
@@ -26,14 +28,12 @@ export default function Categorized() {
           <span>Valdyti</span>
         </Button>
       </div>
-      {transactions.length === 0 && !isLoading && (
-        <p className="text-gray-500 text-sm">
-          Kategorizuotų operacijų nėra
-        </p>
+      {cTransactions?.length === 0 && !isLoading && user.userId && (
+        <p className="text-gray-500 text-sm">Kategorizuotų operacijų nėra</p>
       )}
 
       <ul className={`space-y-3 mt-6`}>
-        {transactions?.map((op) => (
+        {cTransactions?.map((op) => (
           <Transaction
             type="categorized"
             operation={op}

@@ -51,7 +51,6 @@ export async function deleteUserSession() {
   return "deleted session cookie";
 }
 
-
 export const validateToken = async (headers) => {
   const authorization = headers.get("Authorization");
 
@@ -70,9 +69,12 @@ export const validateToken = async (headers) => {
   try {
     // Verify the token
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    if (!decoded) {
+      return null;
+    }
     return decoded;
   } catch (error) {
-    console.log('error with token')
+    console.log("error with token");
     return null;
   }
 };

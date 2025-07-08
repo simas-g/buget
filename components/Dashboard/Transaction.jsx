@@ -17,7 +17,7 @@ const Transaction = ({
   useEffect(() => {
     if (typeof window === "undefined") return;
     const data = JSON.parse(sessionStorage.getItem("monthlySummary"));
-    const array = Array.from(Object.entries(data.categories));
+    const array = Array.from(Object.entries(data.summary.categories));
     setCategories(array);
   }, []);
   const handleOpenCategorize = () => {

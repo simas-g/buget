@@ -5,7 +5,7 @@ import SharedNav from "./SharedNav";
 import { useFetch } from "@/app/hooks/useFetch";
 import Connected from "./Connected";
 import { fetchMonthlySummary, getToken, listAccounts } from "@/app/util/http";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { summaryActions, userActions } from "./userStore";
 import LeftSidebar from "./LeftSidebar";
 import Summary from "./Summary";
@@ -13,14 +13,9 @@ import Categories from "./Categories";
 import CategorizedTransactions from "./CategorizedTransactions";
 import { useQuery } from "@tanstack/react-query";
 import { getCurrentMonthDate, getPreviousMonthDate } from "@/app/util/format";
-export default function Dashboard({ user, sessionId }) {
+export default function Dashboard() {
+  const { userId, sessionId } = useSelector((state) => state.user);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (!user || !sessionId) return;
-    dispatch(userActions.setUser({ userId: user._id, sessionId }));
-  }, [user, sessionId]);
-
   const fetchToken = useMemo(() => {
     if (!sessionId) return null;
     return () => getToken(sessionId);
@@ -30,20 +25,28 @@ export default function Dashboard({ user, sessionId }) {
     isLoading: loadingSummary,
     refetch,
   } = useQuery({
-    queryKey: ["summary", user.id],
-    queryFn: async () => fetchMonthlySummary(user?._id, getCurrentMonthDate()),
+    queryKey: ["summary", userId],
+    queryFn: async () => fetchMonthlySummary(userId, getCurrentMonthDate()),
   });
   const { data: prevMonthSummary } = useQuery({
-    queryKey: ["summary", user.id, getPreviousMonthDate()],
-    queryFn: async () => fetchMonthlySummary(user?._id, getPreviousMonthDate()),
+    queryKey: ["summary", userId, getPreviousMonthDate()],
+    queryFn: async () => fetchMonthlySummary(userId, getPreviousMonthDate()),
   });
   useEffect(() => {
     if (!monthSummary || !prevMonthSummary) {
       return;
     }
-    dispatch(summaryActions.setSummary({ summary: monthSummary, lastSummary: prevMonthSummary }));
+    dispatch(
+      summaryActions.setSummary({
+        summary: monthSummary,
+        lastSummary: prevMonthSummary,
+      })
+    );
 
-    sessionStorage.setItem("monthlySummary", JSON.stringify({ summary: monthSummary, lastSummary: prevMonthSummary }));
+    sessionStorage.setItem(
+      "monthlySummary",
+      JSON.stringify({ summary: monthSummary, lastSummary: prevMonthSummary })
+    );
   }, [monthSummary, prevMonthSummary]);
   const { data: token } = useFetch(fetchToken, !!sessionId);
 
@@ -71,7 +74,7 @@ export default function Dashboard({ user, sessionId }) {
           </section>
           <div className="flex w-full gap-4 flex-wrap lg:flex-nowrap">
             <Categories />
-            <CategorizedTransactions/>
+            <CategorizedTransactions />
           </div>
           <Connected />
         </div>

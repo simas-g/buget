@@ -22,14 +22,16 @@ export default function Categories() {
       console.log(data);
       const { categories } = data.summary;
 
-      const array = Array.from(Object.entries(categories ?? {})).slice(0, 6);
-      const flow = data.inflow - data.outflow;
+      const array = Array.from(Object.entries(categories)).slice(0, 6);
+
+      const flow = data.summary.inflow - data.summary.outflow;
 
       setTotal(flow);
       setCategories(array);
     } catch (err) {
       console.error("Failed to load or parse summary data:", err);
       setCategories([]);
+      setLoading(false);
     } finally {
       setLoading(false);
     }
@@ -37,12 +39,13 @@ export default function Categories() {
 
   const calculatePercentage = (amount) => {
     if (amount === 0) return 0;
-    return Math.abs(((amount / total) * 100).toFixed(1));
+    return Math.abs(((Math.abs(amount) / total) * 100).toFixed(1));
   };
 
-  const sortedCategories = [...categories].sort(
+  const sortedCategories = categories.sort(
     (a, b) => Math.abs(b[1]) - Math.abs(a[1])
   );
+  console.log(sortedCategories, "soreteds");
   return (
     <BoxWrapper className={"relative flex flex-col w-full p-5"}>
       <div className="flex w-full justify-between">

@@ -155,7 +155,9 @@ export async function fetchMonthlySummary(userId, month) {
     return null;
   }
   try {
-    const res = await fetch("/api/bank/getMonthlySummary?userId=" + userId + "&month=" + month);
+    const res = await fetch(
+      "/api/bank/getMonthlySummary?userId=" + userId + "&month=" + month
+    );
     if (!res.ok) {
       throw new Error();
     }
@@ -170,19 +172,31 @@ export async function fetchMonthlySummary(userId, month) {
 }
 export async function fetchCategorizedTransactions(userId, limit) {
   if (!userId) {
-    return 
+    return [];
   }
   let query = "?userId=" + userId;
   if (limit) {
     query += "&limit=" + limit;
   }
   try {
-    const res = await fetch(
-      "/api/transactions/getCategorized" + query
-    );
+    const res = await fetch("/api/transactions/getCategorized" + query);
     const data = await res.json();
     return data;
   } catch (error) {
     return [];
+  }
+}
+
+export async function getClientUser() {
+  try {
+    const res = await fetch("/api/user/client");
+    const data = await res.json();
+    const { user, sessionId } = data;
+    if (!user || !sessionId) {
+      return null;
+    }
+    return { user, sessionId };
+  } catch (error) {
+    console.log(error, "error");
   }
 }
