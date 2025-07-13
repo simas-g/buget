@@ -18,7 +18,7 @@ export default function SharedNav() {
   const router = useRouter();
   const currentTheme = themes[theme];
   return (
-    <div className="mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="mx-auto z-10 px-4 sm:px-6 lg:px-8 w-full">
       <div className="flex items-center justify-between py-6">
         <Link
           href={"/"}
