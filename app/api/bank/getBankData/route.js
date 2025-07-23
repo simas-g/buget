@@ -1,4 +1,5 @@
 import { validateToken } from "@/app/lib/auth/session";
+import connect from "@/app/lib/connectToDB";
 import BankConnection from "@/app/lib/models/bankConnection";
 import { NextResponse } from "next/server";
 
@@ -8,7 +9,7 @@ export async function GET(req) {
     return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
   }
   const bankId = await req.headers.get("bank-id")
-  console.log(bankId, 'our bank iD')
+  await connect()
   const bank = await BankConnection.findOne({ _id: bankId });
   if (!bank) {
     return NextResponse.json({ error: "not-found" }, { status: 404 });

@@ -55,7 +55,8 @@ const BankTransactionPage = ({ id }) => {
   const handleRefresh = async () => {
     setLoadingNewT(true);
     try {
-      const res = await fetchBankDetails(bank._id, bank.accountId, token);
+      console.log(dataB, "userId");
+      const res = await fetchBankDetails(bank._id, bank.accountId, token, bank.userId);
       if (res === null) {
         throw new Error();
       }

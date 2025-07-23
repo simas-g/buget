@@ -15,6 +15,7 @@ export async function POST(req) {
   const body = await req.json();
   const { bankId, id, access_token, userId } = body;
   if (!bankId || !id || !access_token || !userId) {
+    console.log(bankId, id, access_token, userId, "missing details");
     return NextResponse.json({ error: "missing details" }, { status: 400 });
   }
   ///fetch transactions
@@ -131,6 +132,7 @@ export async function POST(req) {
       );
       await recalculateCurrentClosing(userId);
     } catch (error) {
+      console.log(error, 'error')
       return NextResponse.json({ error }, { status: 400 });
     }
     const allTransactions = await Transaction.find({ bankId });

@@ -127,7 +127,7 @@ export async function getBankData(bankId) {
 }
 
 ///fetch bank transactions/balance
-export async function fetchBankDetails(bankId, accountId, access_token) {
+export async function fetchBankDetails(bankId, accountId, access_token, userId) {
   try {
     const res = await fetch("/api/transactions/bankDetails", {
       method: "POST",
@@ -138,6 +138,7 @@ export async function fetchBankDetails(bankId, accountId, access_token) {
         bankId,
         id: accountId,
         access_token,
+        userId,
       }),
     });
     const data = await res.json();

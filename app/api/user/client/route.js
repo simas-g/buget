@@ -1,4 +1,5 @@
 import { validateToken } from "@/app/lib/auth/session";
+import connect from "@/app/lib/connectToDB";
 import User from "@/app/lib/models/user";
 import { NextResponse } from "next/server";
 
@@ -10,6 +11,7 @@ export async function GET(request) {
       { status: 401 }
     );
   }
+  await connect()
   const { id } = isValidRequest;
   const user = await User.findOne({ _id: id }, { password: 0, email: 0 });
   console.log(isValidRequest, "ISVALID", user, "user");
