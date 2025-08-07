@@ -1,5 +1,5 @@
 import MonthSummary from "@/app/lib/models/monthSummary";
-import { getCurrentMonthDate } from "@/app/util/format";
+import { getCurrentMonthDate, getPreviousMonthDate } from "@/app/util/format";
 import { NextResponse } from "next/server";
 import { validateToken } from "@/app/lib/auth/session";
 import BankConnection from "@/app/lib/models/bankConnection";
@@ -25,7 +25,7 @@ export async function GET(req) {
       acc += bank.balance;
       return acc;
     }, 0);
-    const summary = await MonthSummary.findOne(
+    let summary = await MonthSummary.findOne(
       {
         month,
         userId,
@@ -46,7 +46,26 @@ export async function GET(req) {
       );
     }
     if (!summary) {
-      throw new Error("Summary not found");
+      const previousMonth = getPreviousMonthDate();
+      const { categories } = await MonthSummary.findOne(
+        {
+          month: previousMonth,
+          userId,
+        },
+        { categories: 1, _id: 0 }
+      );
+      for (const key of categories.keys()) {
+        categories.set(key, 0);
+      }
+      console.log(categories, "categories");
+      summary = await MonthSummary.create({
+        month,
+        userId,
+        inflow: 0,
+        outflow: 0,
+        closingBalance: totalNet,
+        categories,
+      });
     }
 
     return NextResponse.json({ summary }, { status: 200 });
