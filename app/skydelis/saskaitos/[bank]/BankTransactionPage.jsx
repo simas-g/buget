@@ -5,7 +5,7 @@ import { fetchBankDetails, getBankData } from "@/app/util/http";
 import Transaction from "@/components/Dashboard/Transaction";
 import Button from "@/components/UI/Button";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { Recycle, RefreshCw } from "lucide-react";
+import { RefreshCw } from "lucide-react";
 import Loading from "@/components/UI/Loading";
 import { useState } from "react";
 const BankTransactionPage = ({ id }) => {
@@ -55,7 +55,6 @@ const BankTransactionPage = ({ id }) => {
   const handleRefresh = async () => {
     setLoadingNewT(true);
     try {
-      console.log(dataB, "userId");
       const res = await fetchBankDetails(bank._id, bank.accountId, token, bank.userId);
       if (res === null) {
         throw new Error();
@@ -121,7 +120,6 @@ const BankTransactionPage = ({ id }) => {
               <Transaction
                 refetch={refetch}
                 id={bank?.userId}
-                key={t.transactionId}
                 operation={t}
                 type="uncategorized"
               />

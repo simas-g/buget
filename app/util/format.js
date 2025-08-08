@@ -49,3 +49,11 @@ export function getPreviousMonthDate() {
   const month = String(previousMonth.getMonth() + 1).padStart(2, "0");
   return `${year}-${month}`;
 }
+
+/// slice string
+export function sliceString(str, length) {
+  if (str.length <= length) {
+    return str;
+  }
+  return str.slice(0, length) + "...";
+}

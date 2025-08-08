@@ -1,4 +1,4 @@
-import { formatCurrencyVisually } from "@/app/util/format";
+import { formatCurrencyVisually, sliceString } from "@/app/util/format";
 import DialogWrapper from "../UI/Dialog";
 import { useEffect, useState } from "react";
 import Button from "../UI/Button";
@@ -95,6 +95,8 @@ const Transaction = ({
             onClose={handleCategorizeClose}
             className="flex flex-col gap-2"
           >
+            {categories.length === 0 && <p>Kol kas kategorijų nėra sukurta</p>}
+
             {categories?.map(([key, value], i) => (
               <Button
                 onClick={() => handleCategorize(key)}
@@ -103,12 +105,20 @@ const Transaction = ({
                 {key}
               </Button>
             ))}
-            <Button
-              onClick={handleBlacklist}
-              className="bg-black text-white py-2 mt-4"
-            >
-              Praleisti
-            </Button>
+            <div className="flex gap-3 w-full mt-3">
+              <Button
+                onClick={handleCategorizeClose}
+                className="underline"
+              >
+                Praleisti
+              </Button>
+              <Button
+                onClick={handleBlacklist}
+                className="bg-black w-full text-white py-2"
+              >
+                Naikinti
+              </Button>
+            </div>
           </DialogWrapper>
         )}
         <li
@@ -117,7 +127,7 @@ const Transaction = ({
         >
           <div className="flex gap-x-2 items-center w-fit">
             <p className="text-white">
-              {operation?.creditorName || "nežinoma"} |{" "}
+              {sliceString(operation?.creditorName, 18) || "nežinoma"} |{" "}
             </p>
             <p className="text-gray-400">
               {operation?.bookingDate.split("T")[0]}

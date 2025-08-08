@@ -16,7 +16,9 @@ export default function Categories() {
 
     try {
       const raw = sessionStorage.getItem("monthlySummary");
-      if (!raw) throw new Error("No data in sessionStorage");
+      if (!raw) {
+        return;
+      }
 
       const data = JSON.parse(raw);
       console.log(data);
