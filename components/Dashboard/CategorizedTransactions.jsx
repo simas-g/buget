@@ -37,7 +37,6 @@ export default function Categorized() {
           <Transaction
             type="categorized"
             operation={op}
-            key={`${op?.category}-${op.amount}`}
           />
         ))}
       </ul>

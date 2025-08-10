@@ -69,7 +69,10 @@ const Transaction = ({
   };
   if (type === "categorized") {
     content = (
-      <li className="flex gap-4 flex-wrap p-3 overflow-hidden rounded-full relative justify-between w-full bg-[#0A0A20]/50 border border-white/10">
+      <li
+        key={operation.transactionId}
+        className="flex gap-4 flex-wrap p-3 overflow-hidden rounded-full relative justify-between w-full bg-[#0A0A20]/50 border border-white/10"
+      >
         <div className="flex gap-x-2 items-center w-fit">
           <div className={`w-2 h-2 rounded-full bg-secondary`}></div>
           <p>{operation?.categoryName}</p> |
@@ -88,7 +91,7 @@ const Transaction = ({
     );
   } else if (type === "uncategorized") {
     content = (
-      <>
+      <div key={operation.transactionId}>
         {showEdit && (
           <DialogWrapper
             open={showEdit}
@@ -106,10 +109,7 @@ const Transaction = ({
               </Button>
             ))}
             <div className="flex gap-3 w-full mt-3">
-              <Button
-                onClick={handleCategorizeClose}
-                className="underline"
-              >
+              <Button onClick={handleCategorizeClose} className="underline">
                 Praleisti
               </Button>
               <Button
@@ -140,10 +140,10 @@ const Transaction = ({
             />
           </div>
         </li>
-      </>
+      </div>
     );
   }
-  return <>{content}</>;
+  return content;
 };
 
 export default Transaction;

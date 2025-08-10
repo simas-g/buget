@@ -21,8 +21,7 @@ export default function Categories() {
       }
 
       const data = JSON.parse(raw);
-      console.log(data);
-      const { categories } = data.summary;
+      const { categories } = data?.summary;
 
       const array = Array.from(Object.entries(categories)).slice(0, 6);
 
@@ -54,6 +53,7 @@ export default function Categories() {
         <h5 className="flex items-center gap-2 text-xl font-bold">
           <ChartBar stroke="var(--color-secondary)" size={24} />
           Kategorijos
+          <span className="text-sm text-gray-500 font-medium">(šio mėnesio)</span>
         </h5>
         <Link href="/skydelis/kategorijos" prefetch>
           <Button variant="outline" className="px-4 py-2">
