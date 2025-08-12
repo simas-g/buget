@@ -34,10 +34,9 @@ export default function Categorized() {
 
       <ul className={`space-y-3 mt-6`}>
         {cTransactions?.map((op) => (
-          <Transaction
-            type="categorized"
-            operation={op}
-          />
+          <li key={op.transactionId}>
+            <Transaction type="categorized" operation={op} />
+          </li>
         ))}
       </ul>
       {isLoading && <Loading />}

@@ -69,7 +69,7 @@ const Transaction = ({
   };
   if (type === "categorized") {
     content = (
-      <li
+      <div
         key={operation.transactionId}
         className="flex gap-4 flex-wrap p-3 overflow-hidden rounded-full relative justify-between w-full bg-[#0A0A20]/50 border border-white/10"
       >
@@ -87,7 +87,7 @@ const Transaction = ({
             className={`absolute top-[60%] left-[20%] h-[40px] w-[250px] rounded-full blur-[100px] bg-[${operation.color}]`}
           />
         </div>
-      </li>
+      </div>
     );
   } else if (type === "uncategorized") {
     content = (
