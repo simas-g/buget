@@ -52,6 +52,7 @@ export function getPreviousMonthDate() {
 
 /// slice string
 export function sliceString(str, length) {
+  console.log(str, 'nigeris')
   if (str.length <= length) {
     return str;
   }

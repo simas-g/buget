@@ -44,7 +44,7 @@ const BankTransactionPage = ({ id }) => {
     data: dataT,
     isLoading: isLoadingT,
     error: errorT,
-    refetch
+    refetch,
   } = useQuery({
     queryKey: ["transactions", id],
     queryFn: async () => getTransactions(),
@@ -55,7 +55,12 @@ const BankTransactionPage = ({ id }) => {
   const handleRefresh = async () => {
     setLoadingNewT(true);
     try {
-      const res = await fetchBankDetails(bank._id, bank.accountId, token, bank.userId);
+      const res = await fetchBankDetails(
+        bank._id,
+        bank.accountId,
+        token,
+        bank.userId
+      );
       if (res === null) {
         throw new Error();
       }
@@ -128,7 +133,7 @@ const BankTransactionPage = ({ id }) => {
         </ul>
         {!isLoadingT &&
           typeof window !== "undefined" &&
-          transactions.length === 0 && (
+          transactions?.length === 0 && (
             <p className="text-white w-full text-center">
               Naujų operacijų nėra
             </p>

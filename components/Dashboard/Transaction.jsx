@@ -91,7 +91,7 @@ const Transaction = ({
     );
   } else if (type === "uncategorized") {
     content = (
-      <div key={operation.transactionId}>
+      <div key={operation?._id}>
         {showEdit && (
           <DialogWrapper
             open={showEdit}
@@ -127,7 +127,7 @@ const Transaction = ({
         >
           <div className="flex gap-x-2 items-center w-fit">
             <p className="text-white">
-              {sliceString(operation?.creditorName, 18) || "nežinoma"} |{" "}
+              {sliceString(operation?.creditorName || '', 18) || "nežinoma"} |{" "}
             </p>
             <p className="text-gray-400">
               {operation?.bookingDate.split("T")[0]}

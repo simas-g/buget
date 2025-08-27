@@ -252,7 +252,7 @@ export default function SignUpForm() {
         </div>
 
         {/* Terms and Conditions */}
-        <div className="space-y-2">
+        {/* <div className="space-y-2">
           <div className="flex items-center justify-center space-x-3">
             <Checkbox
               id="agreeToTerms"
@@ -287,7 +287,7 @@ export default function SignUpForm() {
               </Link>{" "}
             </span>
           </div>
-        </div>
+        </div> */}
 
         {/* Submit Button */}
         <Button
@@ -326,7 +326,7 @@ export default function SignUpForm() {
       </div>
 
       {/* Additional Links */}
-      <div className="mt-6 flex justify-center space-x-6 text-sm">
+      {/* <div className="mt-6 flex justify-center space-x-6 text-sm">
         <Link
           href="/privacy"
           className="text-white/50 hover:text-white/80 transition-colors duration-300"
@@ -339,7 +339,7 @@ export default function SignUpForm() {
         >
           Naudojimo sąlygos
         </Link>
-      </div>
+      </div> */}
     </GlowingCard>
   );
 }

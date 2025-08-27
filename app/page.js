@@ -20,10 +20,10 @@ export default async function Home() {
     <div className="bg-black h-fit">
       <Nav navLinks={navLinks} loginButtons actions={actions} />
       <Hero />
-      <HowItWorks />
-      <Pricing />
+      {/* <HowItWorks /> */}
+      {/* <Pricing /> */}
       <MovingBanks />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

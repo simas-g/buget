@@ -259,7 +259,7 @@ export default function SignInForm() {
       </form>
 
       {/* Sign Up Link */}
-      <div className="mt-8 text-center">
+      <div className="mt-2 text-center">
         <p className="text-white/70">
           Neturite paskyros?{" "}
           <Link
@@ -271,7 +271,7 @@ export default function SignInForm() {
         </p>
       </div>
 
-      {/* Additional Links */}
+      {/* Additional Links
       <div className="mt-6 flex justify-center space-x-6 text-sm">
         <Link
           href="/privacy"
@@ -285,7 +285,7 @@ export default function SignInForm() {
         >
           Naudojimo sąlygos
         </Link>
-      </div>
+      </div> */}
     </GlowingCard>
   );
 }

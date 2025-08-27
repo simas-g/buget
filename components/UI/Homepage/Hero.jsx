@@ -130,7 +130,7 @@ export default function Hero() {
 
               </motion.div>
 
-              <motion.div
+              {/* <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
@@ -143,7 +143,7 @@ export default function Hero() {
                     Sužinoti daugiau
                   </Button>
                 </Link>
-              </motion.div>
+              </motion.div> */}
             </div>
           </motion.div>
           {/* Dashboard preview */}
