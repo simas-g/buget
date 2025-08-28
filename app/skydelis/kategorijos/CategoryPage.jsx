@@ -10,7 +10,7 @@ import { CreationModal, DeletionModal } from "./ActionModals";
 import { useRef, useState } from "react";
 import BoxWrapper from "@/components/Dashboard/BoxWrapper";
 import { useDispatch, useSelector } from "react-redux";
-
+import PieChart from "@/components/UI/charts/ModifiedPie";
 export default function CategoryPage() {
   const dispatch = useDispatch();
   const { userId } = useSelector((state) => state.user);
@@ -91,71 +91,78 @@ export default function CategoryPage() {
     handleCancelCreation();
   };
   return (
-    <div className="w-full text-white items-center">
+    <>
       <SharedNav />
-      <div className="p-4 space-y-6 w-full max-w-2xl">
-        <div className="flex justify-between items-end">
-          <div className="flex flex-col">
-            <span className="text-gray-500 text-sm">
-              {getCurrentMonthDate()}
-            </span>
-            <h2 className="text-xl font-semibold mb-2">Operacijų vertė:</h2>
-            <p className="text-2xl">{formatCurrency(totalFlow)}</p>
-          </div>
+      <section className="flex md:flex-row flex-col">
+        <div className="text-white items-center w-full">
+          <div className="p-4 space-y-6 w-full">
+            <div className="flex justify-between items-end">
+              <div className="flex flex-col">
+                <span className="text-gray-500 text-sm">
+                  {getCurrentMonthDate()}
+                </span>
+                <h2 className="text-xl font-semibold mb-2">Operacijų vertė:</h2>
+                <p className="text-2xl">{formatCurrency(totalFlow)}</p>
+              </div>
 
-          <Button
-            onClick={handleCreate}
-            variant="outline"
-            className="px-4 py-2 h-fit"
-          >
-            Pridėti
-          </Button>
+              <Button
+                onClick={handleCreate}
+                variant="outline"
+                className="px-4 py-2 h-fit"
+              >
+                Pridėti
+              </Button>
+            </div>
+            {isOpenCreation && (
+              <CreationModal
+                open={isOpenCreation}
+                onClose={handleCancelCreation}
+                ref={newCategory}
+                onCreate={handleCategoryCreation}
+              />
+            )}
+            {isOpenConfirmDeletion.isOpen && (
+              <DeletionModal
+                open={isOpenConfirmDeletion}
+                onClose={handleTrashCancel}
+                onDelete={handleDeleteCategory}
+              />
+            )}
+            <div className="space-y-4">
+              {categories?.map(([category, amount]) => {
+                const percentage = calculatePercentage(amount);
+                return (
+                  <BoxWrapper className="flex p-4 gap-4" key={category}>
+                    <div className="space-y-1 w-full">
+                      <div className="flex justify-between text-sm">
+                        <span>{category}</span>
+                        <span>
+                          {formatCurrency(amount)} ({percentage}%)
+                        </span>
+                      </div>
+                      <div className="w-full h-2 bg-gray-700 rounded">
+                        <div
+                          className="h-2 bg-gradient-to-r from-secondary  to-secondary/30 border border-gray-400 rounded transition-all duration-300"
+                          style={{ width: `${percentage}%` }}
+                        ></div>
+                      </div>
+                    </div>
+                    <div className="flex gap-2 items-center">
+                      <Trash2
+                        className="cursor-pointer"
+                        onClick={() => handleTrashConfirm(category)}
+                      />
+                    </div>
+                  </BoxWrapper>
+                );
+              })}
+            </div>
+          </div>
         </div>
-        {isOpenCreation && (
-          <CreationModal
-            open={isOpenCreation}
-            onClose={handleCancelCreation}
-            ref={newCategory}
-            onCreate={handleCategoryCreation}
-          />
-        )}
-        {isOpenConfirmDeletion.isOpen && (
-          <DeletionModal
-            open={isOpenConfirmDeletion}
-            onClose={handleTrashCancel}
-            onDelete={handleDeleteCategory}
-          />
-        )}
-        <div className="space-y-4">
-          {categories?.map(([category, amount]) => {
-            const percentage = calculatePercentage(amount);
-            return (
-              <BoxWrapper className="flex p-4 gap-4" key={category}>
-                <div className="space-y-1 w-full">
-                  <div className="flex justify-between text-sm">
-                    <span>{category}</span>
-                    <span>
-                      {formatCurrency(amount)} ({percentage}%)
-                    </span>
-                  </div>
-                  <div className="w-full h-2 bg-gray-700 rounded">
-                    <div
-                      className="h-2 bg-gradient-to-r from-secondary  to-secondary/30 border border-gray-400 rounded transition-all duration-300"
-                      style={{ width: `${percentage}%` }}
-                    ></div>
-                  </div>
-                </div>
-                <div className="flex gap-2 items-center">
-                  <Trash2
-                    className="cursor-pointer"
-                    onClick={() => handleTrashConfirm(category)}
-                  />
-                </div>
-              </BoxWrapper>
-            );
-          })}
+        <div className="w-full flex justify-center p-8 border border-white">
+          <PieChart />
         </div>
-      </div>
-    </div>
+      </section>
+    </>
   );
 }
