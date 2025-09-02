@@ -22,9 +22,7 @@ export default function Categories() {
 
       const data = JSON.parse(raw);
       const { categories } = data?.summary;
-
-      const array = Array.from(Object.entries(categories)).slice(0, 6);
-
+      const array = Array.from(Object.entries(categories))
       const flow = data.summary.inflow - data.summary.outflow;
 
       setTotal(flow);

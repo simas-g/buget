@@ -2,6 +2,7 @@ import { formatCurrencyVisually, sliceString } from "@/app/util/format";
 import DialogWrapper from "../UI/Dialog";
 import { useEffect, useState } from "react";
 import Button from "../UI/Button";
+import Link from "next/link";
 
 const Transaction = ({
   id,
@@ -98,27 +99,40 @@ const Transaction = ({
             onClose={handleCategorizeClose}
             className="flex flex-col gap-2"
           >
-            {categories.length === 0 && <p>Kol kas kategorijų nėra sukurta</p>}
+            {categories.length === 0 ? (
+              <>
+                <p className="text-sm mb-1">Kategorijų nėra.</p>
+                <Link
+                  href="/skydelis/kategorijos"
+                  className="w-full border rounded-lg p-2"
+                >
+                  Sukurti naują
+                </Link>
+              </>
+            ) : (
+              <>
+                {categories?.map(([key, value], i) => (
+                  <Button
+                    onClick={() => handleCategorize(key)}
+                    className="px-4 py-1 border-gray-400 border bg-gray-100"
+                  >
+                    {key}
+                  </Button>
+                ))}
 
-            {categories?.map(([key, value], i) => (
-              <Button
-                onClick={() => handleCategorize(key)}
-                className="px-4 py-1 border-gray-400 border bg-gray-100"
-              >
-                {key}
-              </Button>
-            ))}
-            <div className="flex gap-3 w-full mt-3">
-              <Button onClick={handleCategorizeClose} className="underline">
-                Praleisti
-              </Button>
-              <Button
-                onClick={handleBlacklist}
-                className="bg-black w-full text-white py-2"
-              >
-                Naikinti
-              </Button>
-            </div>
+                <div className="flex gap-3 w-full mt-3">
+                  <Button onClick={handleCategorizeClose} className="underline">
+                    Praleisti
+                  </Button>
+                  <Button
+                    onClick={handleBlacklist}
+                    className="bg-black w-full text-white p-2"
+                  >
+                    Naikinti
+                  </Button>
+                </div>
+              </>
+            )}
           </DialogWrapper>
         )}
         <li
@@ -127,7 +141,7 @@ const Transaction = ({
         >
           <div className="flex gap-x-2 items-center w-fit">
             <p className="text-white">
-              {sliceString(operation?.creditorName || '', 18) || "nežinoma"} |{" "}
+              {sliceString(operation?.creditorName || "", 18) || "nežinoma"} |{" "}
             </p>
             <p className="text-gray-400">
               {operation?.bookingDate.split("T")[0]}
