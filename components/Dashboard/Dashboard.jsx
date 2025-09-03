@@ -43,10 +43,12 @@ export default function Dashboard() {
       })
     );
 
-    sessionStorage.setItem(
-      "monthlySummary",
-      JSON.stringify({ summary: monthSummary, lastSummary: prevMonthSummary })
-    );
+    if (typeof window !== "undefined") {
+      sessionStorage.setItem(
+        "monthlySummary",
+        JSON.stringify({ summary: monthSummary, lastSummary: prevMonthSummary })
+      );
+    }
   }, [monthSummary, prevMonthSummary]);
   const { data: token } = useFetch(fetchToken, !!sessionId);
 
