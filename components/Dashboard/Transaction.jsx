@@ -17,7 +17,8 @@ const Transaction = ({
   const [categories, setCategories] = useState([]);
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const data = JSON.parse(sessionStorage.getItem("monthlySummary"));
+    const data = JSON.parse(sessionStorage?.getItem("monthlySummary"));
+    console.log(data, "dataaa");
     const array = Array.from(Object.entries(data.summary.categories));
     setCategories(array);
   }, []);
