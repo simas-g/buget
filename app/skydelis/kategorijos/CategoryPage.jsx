@@ -37,14 +37,18 @@ export default function CategoryPage() {
   const pieData = useMemo(() => {
     if (!data) return null;
     const filtered = categories.filter(([, amount]) => amount > 0);
-    const colors = Array.from({length: filtered.length}, () => randomColor())
-    console.log(colors, 'colors')
+    const colors = randomColor({
+      count: filtered.length,
+      luminosity: "dark",
+      color: "#2563EB",
+    });
+    console.log(colors, "colors");
     return {
       labels: filtered.map((item) => item[0]),
       datasets: [
         {
           data: filtered.map((item) => item[1]),
-          backgroundColor: colors
+          backgroundColor: colors,
         },
       ],
     };
@@ -187,7 +191,7 @@ export default function CategoryPage() {
 
         {/* Pie Chart */}
         <div className="flex justify-center items-center">
-          {pieData && <PieChart data={pieData}/>}
+          {pieData && <PieChart data={pieData} />}
         </div>
       </section>
     </>
