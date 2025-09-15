@@ -63,8 +63,8 @@ export default function Dashboard() {
 
   return (
     <div className="bg-dark-backgroud flex min-h-screen">
-      <LeftSidebar />
-      <div className="w-full max-w-7xl flex flex-col">
+      {/* <LeftSidebar /> */}
+      <div className="w-full flex flex-col">
         <SharedNav />
         <div className="flex flex-col gap-4 p-4">
           <section className="flex gap-4 sm:flex-row flex-col">

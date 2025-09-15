@@ -6,7 +6,6 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 const PieChart = ({ data }) => {
   const options = {
-    responsive: true,
     plugins: {
       legend: {
         position: "top",
@@ -21,11 +20,14 @@ const PieChart = ({ data }) => {
         },
       },
     },
+        hover: {
+      mode: null, // disable hover effects
+    },
   };
 
   return (
     <div className="max-w-4xl max-h-96">
-      <Pie data={data} options={options} />;
+      <Pie data={data} options={options} />
     </div>
   );
 };

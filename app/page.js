@@ -7,10 +7,6 @@ import Nav from "@/components/UI/Nav";
 import { getCurrentUser, getFullUser } from "./lib/auth/currentUser";
 
 export default async function Home() {
-  const navLinks = [
-    { href: "#kaip-tai-veikia", label: "Kaip tai veikia?" },
-    { href: "/#kainos", label: "Kainos" },
-  ];
   const user = await getFullUser();
   let actions = false;
   if (user) {
@@ -18,7 +14,7 @@ export default async function Home() {
   }
   return (
     <div className="bg-black h-fit">
-      <Nav navLinks={navLinks} loginButtons actions={actions} />
+      <Nav loginButtons actions={actions} />
       <Hero />
       {/* <HowItWorks /> */}
       {/* <Pricing /> */}
