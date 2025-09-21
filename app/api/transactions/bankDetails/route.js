@@ -39,9 +39,12 @@ export async function POST(req) {
       );
     }
 
-    const { last_updated, transactions } = data;
-
+    const { last_updated, transactions, status_code } = data;
+    if(status_code === 401) {
+      return NextResponse.json({message: "new connection required"}, {status: 401})
+    }
     ///update docs skip duplicates
+    console.log(data, 'data')
     const all = [...transactions.booked];
     const transformed = all.map((t) => ({
       amount: t.transactionAmount.amount,
@@ -138,6 +141,7 @@ export async function POST(req) {
     const allTransactions = await Transaction.find({ bankId });
     return NextResponse.json({ allTransactions }, { status: 200 });
   } catch (error) {
+    console.log(error, 'error')
     return NextResponse.json({ message: error }, { status: 400 });
   }
 }

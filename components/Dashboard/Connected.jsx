@@ -72,6 +72,7 @@ export default function Connected() {
                   logo={account.logo}
                   id={account._id}
                   accountId={account.accountId}
+                  connected={account.connected}
                 />
               </li>
             ))
