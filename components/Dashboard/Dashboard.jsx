@@ -16,8 +16,9 @@ import { getCurrentMonthDate, getPreviousMonthDate } from "@/app/util/format";
 export default function Dashboard() {
   const { userId, sessionId } = useSelector((state) => state.user);
   const dispatch = useDispatch();
+  
   const fetchToken = useMemo(() => {
-    if (!sessionId) return null;
+    if (!sessionId || sessionId === "test_session") return null;
     return () => getToken(sessionId);
   }, [sessionId]);
   const {
@@ -25,12 +26,14 @@ export default function Dashboard() {
     isLoading: loadingSummary,
     refetch,
   } = useQuery({
-    queryKey: ["summary", userId],
+    queryKey: ["summary", userId, getCurrentMonthDate()],
     queryFn: async () => fetchMonthlySummary(userId, getCurrentMonthDate()),
+    enabled: !!userId,
   });
   const { data: prevMonthSummary } = useQuery({
     queryKey: ["summary", userId, getPreviousMonthDate()],
     queryFn: async () => fetchMonthlySummary(userId, getPreviousMonthDate()),
+    enabled: !!userId,
   });
   useEffect(() => {
     if (!monthSummary || !prevMonthSummary) {
@@ -62,25 +65,22 @@ export default function Dashboard() {
   useFetch(fetchAccounts, shouldFetchAccounts);
 
   return (
-    <div className="bg-dark-backgroud flex min-h-screen">
-      {/* <LeftSidebar /> */}
-      <div className="w-full flex flex-col">
-        <SharedNav />
-        <div className="flex flex-col gap-4 p-4">
-          <section className="flex gap-4 sm:flex-row flex-col">
-            <Summary type="main" change={10} total={12299} />
-            <div className="flex gap-4 flex-wrap flex-col sm:w-[40%]">
-              <Summary type="month-in" />
-              <Summary type="month-out" />
-            </div>
-          </section>
-          <div className="flex w-full gap-4 flex-wrap lg:flex-nowrap">
-            <Categories />
-            <CategorizedTransactions />
+    <>
+      <SharedNav />
+      <div className="flex flex-col gap-6 p-6 max-w-7xl mx-auto w-full">
+        <section className="flex gap-6 sm:flex-row flex-col">
+          <Summary type="main" change={10} total={12299} />
+          <div className="flex gap-6 flex-wrap flex-col sm:w-[40%]">
+            <Summary type="month-in" />
+            <Summary type="month-out" />
           </div>
-          <Connected />
+        </section>
+        <div className="flex w-full gap-6 flex-wrap lg:flex-nowrap">
+          <Categories />
+          <CategorizedTransactions />
         </div>
+        <Connected />
       </div>
-    </div>
+    </>
   );
 }

@@ -4,6 +4,7 @@ import HowItWorks from "@/components/UI/Homepage/HowItWorks";
 import MovingBanks from "@/components/UI/Homepage/MovingBanks";
 import Pricing from "@/components/UI/Homepage/Pricing";
 import Nav from "@/components/UI/Nav";
+import LandingPageWrapper from "@/components/UI/Homepage/LandingPageWrapper";
 import { getCurrentUser, getFullUser } from "./lib/auth/currentUser";
 
 export default async function Home() {
@@ -13,13 +14,13 @@ export default async function Home() {
     actions = true;
   }
   return (
-    <div className="bg-black h-fit">
+    <LandingPageWrapper>
       <Nav loginButtons actions={actions} />
       <Hero />
       {/* <HowItWorks /> */}
       {/* <Pricing /> */}
       <MovingBanks />
       {/* <Footer /> */}
-    </div>
+    </LandingPageWrapper>
   );
 }

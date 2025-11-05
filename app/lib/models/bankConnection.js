@@ -8,6 +8,7 @@ const BankAccountSchema = new Schema({
   userId: { type: mongoose.Schema.ObjectId, required: true },
   validUntil: { type: String, required: true },
   lastFetched: { type: String, required: true },
+  connected: { type: String, required: false }, // Date when connection was established/revalidated
 });
 const BankConnection =
   models.BankConnection || model("BankConnection", BankAccountSchema);

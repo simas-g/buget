@@ -43,7 +43,7 @@ export default function Pricing() {
       className="text-white scroll-mt-24 flex flex-col items-center justify-center py-16"
     >
       <div className="flex flex-col items-center justify-center gap-y-4 mb-12 px-4">
-        <Label className="bg-secondary px-4 py-1 rounded-full text-sm">
+        <Label className="bg-[#2563EB] px-4 py-1 rounded-full text-sm">
           30 dienų nemokamai
         </Label>
         <h3 className="text-4xl font-bold mb-2">Įkainiai</h3>
@@ -106,7 +106,7 @@ export default function Pricing() {
                   transition={{ delay: index * 0.1 + featureIndex * 0.05 }}
                 >
                   <div
-                    className={`flex-shrink-0 w-5 h-5 rounded-full bg-secondary flex items-center justify-center`}
+                    className={`flex-shrink-0 w-5 h-5 rounded-full bg-[#2563EB] flex items-center justify-center`}
                   >
                     <Check className="h-3 w-3 text-white" />
                   </div>

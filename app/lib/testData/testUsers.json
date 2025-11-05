@@ -1,0 +1,40 @@
+{
+  "testUsers": [
+    {
+      "userId": "test_user_001",
+      "name": "Jonė Kazlauskaitė",
+      "email": "jone.kazlauskaite@test.lt",
+      "description": "25-metė IT specialistė, gyvenanti Vilniuje. Freelancer'ė, dirbanti su užsienio klientais. Mėgsta keliones ir technologijas. Aktyviai taupo atostogoms ir investicijoms.",
+      "avatar": "👩‍💻"
+    },
+    {
+      "userId": "test_user_002",
+      "name": "Tomas Petrauskas",
+      "email": "tomas.petrauskas@test.lt",
+      "description": "42-metis verslo konsultantas ir trijų vaikų tėvas. Gyvena Kaune su šeima. Mėgsta automobilius ir golfo žaidimą. Stengiasi subalansuoti šeimos išlaidas su hobiais.",
+      "avatar": "👨‍💼"
+    },
+    {
+      "userId": "test_user_003",
+      "name": "Laura Vasiliauskienė",
+      "email": "laura.vasiliauskiene@test.lt",
+      "description": "34-metė dizainerė ir jaunoji mama. Dirba iš namų, augina 2-metį sūnų. Mėgsta meną, jogą ir ekologišką gyvenimo būdą. Kruopščiai planuoja biudžetą.",
+      "avatar": "👩‍🎨"
+    },
+    {
+      "userId": "test_user_004",
+      "name": "Mantas Jankauskas",
+      "email": "mantas.jankauskas@test.lt",
+      "description": "28-metis sportininkas ir asmeninis treneris. Gyvena Klaipėdoje, vedęs neseniai. Mėgsta aktyvų gyvenimo būdą, maisto papildus ir naują sporto įrangą.",
+      "avatar": "🏋️‍♂️"
+    },
+    {
+      "userId": "test_user_005",
+      "name": "Rasa Baltrūnaitė",
+      "email": "rasa.baltrunaite@test.lt",
+      "description": "51-metė mokytoja ir knygų mylėtoja. Gyvena Šiauliuose, augina paauglę dukrą. Mėgsta teatrą, keliones po Europą ir daržininkystę. Taupiai tvarko savo finansus.",
+      "avatar": "👩‍🏫"
+    }
+  ]
+}
+

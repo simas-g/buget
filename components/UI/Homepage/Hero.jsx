@@ -6,8 +6,11 @@ import DashboardMockup from "../DashboardMockup";
 import Button from "../Button";
 import Image from "next/image";
 import Link from "next/link";
+import { useTheme } from "@/app/lib/ThemeContext";
+
 export default function Hero() {
   const canvasRef = useRef(null);
+  const { theme } = useTheme();
 
   // Animated particles background
   useEffect(() => {
@@ -84,13 +87,21 @@ export default function Hero() {
             transition={{ duration: 0.8 }}
           >
             {/* Badge */}
-            <div className="inline-flex items-center rounded-full border border-[#2563EB]/30 bg-[#2563EB]/10 px-4 py-1 text-sm font-medium text-[#2563EB] backdrop-blur-sm mb-6">
+            <div className={`inline-flex items-center rounded-full border px-4 py-1 text-sm font-medium backdrop-blur-sm mb-6 ${
+              theme === "dark"
+                ? "border-[#2563EB]/30 bg-[#2563EB]/10 text-[#2563EB]"
+                : "border-[#2563EB]/40 bg-[#2563EB]/15 text-[#2563EB]"
+            }`}>
               <Sparkles className="mr-2 h-4 w-4 text-[#63EB25]" />
               Naujos kartos finansų valdymas
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6">
-              <span className="block text-white drop-shadow-[0_0_10px_rgba(37,99,235,0.3)]">
+              <span className={`block ${
+                theme === "dark"
+                  ? "text-white drop-shadow-[0_0_10px_rgba(37,99,235,0.3)]"
+                  : "text-slate-900"
+              }`}>
                 Valdyk savo
               </span>
               <div className="relative inline-block mt-1">
@@ -105,7 +116,9 @@ export default function Hero() {
             </h1>
 
             {/* Description */}
-            <p className="text-lg md:text-xl text-white/80 mb-8 max-w-2xl mx-auto">
+            <p className={`text-lg md:text-xl mb-8 max-w-2xl mx-auto ${
+              theme === "dark" ? "text-white/80" : "text-slate-700"
+            }`}>
               Lengvai sek savo išlaidas, planuok biudžetą ir gauk mėnesines
               ataskaitas. Užsiregistruok dabar ir pasiek savo finansinius
               tikslus.
@@ -154,7 +167,9 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.5 }}
           >
             <div className="relative">
-              <div className="absolute text-white font-bold -top-20 lg:-left-20 left-0 z-10">
+              <div className={`absolute font-bold -top-20 lg:-left-20 left-0 z-10 ${
+                theme === "dark" ? "text-white" : "text-slate-900"
+              }`}>
                 <span>DEMO</span>
                 <div
                   style={{ transform: "rotateX(180deg)", rotate: "90deg" }}
@@ -164,7 +179,9 @@ export default function Hero() {
                 </div>
               </div>
               {/* Glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-secondary to-accent rounded-2xl blur-sm opacity-50"></div>
+              <div className={`absolute inset-0 bg-gradient-to-r from-[#2563EB] to-[#EB2563] rounded-2xl blur-sm ${
+                theme === "dark" ? "opacity-50" : "opacity-30"
+              }`}></div>
 
               {/* Dashboard mockup */}
               <DashboardMockup />
@@ -181,7 +198,9 @@ export default function Hero() {
                   ease: "easeInOut",
                 }}
               >
-                <div className="h-full w-full rounded-full bg-[#0A0A20] flex items-center justify-center">
+                <div className={`h-full w-full rounded-full flex items-center justify-center ${
+                  theme === "dark" ? "bg-[#0A0A20]" : "bg-white"
+                }`}>
                   <Sparkles className="h-6 w-6 text-[#63EB25]" />
                 </div>
               </motion.div>

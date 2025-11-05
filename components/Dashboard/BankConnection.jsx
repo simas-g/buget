@@ -2,6 +2,9 @@
 
 import { formatCurrency, formatDate } from "@/app/util/format";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useTheme } from "@/app/lib/ThemeContext";
+import { themes } from "@/app/lib/themes";
 
 export default function BankConnection({
   currentBalance,
@@ -10,39 +13,72 @@ export default function BankConnection({
   logo,
   id,
   connected,
+  accountId,
+  validUntil,
 }) {
-  const diffMs = new Date() - new Date(connected);
-  const diffDays = diffMs / (1000 * 60 * 60 * 24);
-  const requiresUpdate = diffDays >= 90;
+  const router = useRouter();
+  const { theme } = useTheme();
+  const currentTheme = themes[theme] || themes.dark;
+  
+  // Check if connection is still valid by comparing current date with validUntil
+  const isValid = (() => {
+    if (!validUntil) {
+      // If validUntil is not set, fall back to checking 90 days from connected date
+      const connectionDate = connected || lastConnected;
+      if (!connectionDate) return false;
+      const diffMs = new Date() - new Date(connectionDate);
+      const diffDays = diffMs / (1000 * 60 * 60 * 24);
+      return diffDays < 90;
+    }
+    // Check if current date is before the validUntil date
+    const validUntilDate = new Date(validUntil);
+    const now = new Date();
+    return now < validUntilDate;
+  })();
+  
+  const requiresUpdate = !isValid;
+
+  const handleRevalidation = () => {
+    // Store bank info for revalidation
+    sessionStorage.setItem("revalidate_bank_id", id);
+    sessionStorage.setItem("revalidate_account_id", accountId);
+    sessionStorage.setItem("revalidate_bank_name", bank);
+    sessionStorage.setItem("revalidate_bank_logo", logo);
+    // Navigate to connection flow
+    router.push("/skydelis/nauja-saskaita");
+  };
 
   return (
-    <div className="flex items-center justify-between p-4 rounded-xl bg-[#0A0A20]/50 border border-white/5 hover:border-white/10 transition-all duration-300">
+    <div className={`flex items-center justify-between p-5 rounded-xl ${currentTheme.card} ${currentTheme.cardBorder} ${currentTheme.cardHover} transition-all duration-300 shadow-md hover:shadow-lg`}>
       {/* Left side: logo + bank info */}
       <div className="flex items-center space-x-4">
-        <div className="h-12 w-12 overflow-hidden rounded-lg flex items-center justify-center bg-white/5">
-          <img src={logo} alt={bank} className="max-h-10" />
+        <div className={`h-14 w-14 overflow-hidden rounded-xl flex items-center justify-center bg-gradient-to-br ${theme === 'dark' ? 'from-white/10 to-white/5' : 'from-gray-100 to-gray-50'} border ${currentTheme.cardBorder} shadow-inner`}>
+          <img src={logo} alt={bank} className="max-h-10 max-w-10 object-contain" />
         </div>
 
-        <div>
-          <h4 className={`font-semibold flex-col sm:flex-row text-white flex sm:items-center ${requiresUpdate ? 'mb-1' : ''}`}>
-            {bank}
+        <div className="flex flex-col gap-1.5">
+          <h4 className={`font-semibold flex-col sm:flex-row ${currentTheme.textPrimary} flex sm:items-center gap-2 ${requiresUpdate ? 'mb-1' : ''}`}>
+            <span>{bank}</span>
             {requiresUpdate && (
-              <span className="sm:ml-2 my-1 text-xs border cursor-pointer border-red-400 text-red-400 font-light rounded px-2 py-0.5">
+              <button
+                onClick={handleRevalidation}
+                className="text-xs border cursor-pointer border-red-400/50 bg-red-400/10 text-red-400 hover:bg-red-400/20 hover:border-red-400/70 font-medium rounded-md px-2.5 py-1 transition-all"
+              >
                 Reikia atnaujinti
-              </span>
+              </button>
             )}
           </h4>
 
           <div className="flex items-center space-x-2">
-            <div className="h-2 w-2 bg-[#63EB25] rounded-full animate-pulse" />
-            <p className="text-xs text-white/70">
-              Balansas: {formatCurrency(currentBalance) || "neatnaujinta"}
+            <div className={`h-2 w-2 ${requiresUpdate ? 'bg-red-400' : 'bg-[#63EB25]'} rounded-full ${!requiresUpdate ? 'animate-pulse' : ''} shadow-sm ${!requiresUpdate ? 'shadow-[#63EB25]/50' : 'shadow-red-400/50'}`} />
+            <p className={`text-sm ${currentTheme.textSecondary} font-medium`}>
+              Balansas: <span className={currentTheme.textPrimary}>{formatCurrency(currentBalance) || "neatnaujinta"}</span>
             </p>
           </div>
 
-          <p className="text-xs text-white/40">
+          <p className={`text-xs ${currentTheme.textMuted}`}>
             Atnaujinta:{" "}
-            {lastConnected === "nodata" ? "nėra" : formatDate(lastConnected)}
+            <span className={currentTheme.textSecondary}>{lastConnected === "nodata" ? "nėra" : formatDate(lastConnected)}</span>
           </p>
         </div>
       </div>
@@ -51,10 +87,10 @@ export default function BankConnection({
       <div className="text-right">
         <Link
           href={`/skydelis/saskaitos/${id}`}
-          className={`px-3 py-1 rounded transition-colors ${
+          className={`px-4 py-2 rounded-lg transition-all font-medium ${
             requiresUpdate
-              ? "text-gray-400 cursor-not-allowed pointer-events-none"
-              : "text-blue-500 hover:text-blue-400"
+              ? `${currentTheme.textMuted} cursor-not-allowed pointer-events-none ${theme === 'dark' ? 'bg-gray-500/10' : 'bg-gray-300/50'}`
+              : `text-[#2563EB] hover:text-white bg-[#2563EB]/10 hover:bg-[#2563EB]/20 border border-[#2563EB]/30 hover:border-[#2563EB]/50`
           }`}
         >
           Peržiūrėti

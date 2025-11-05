@@ -24,10 +24,10 @@ export const formatCurrencyVisually = (amount) => {
     amount: number,
   };
   if (amount > 0) {
-    object.style = "text-primary";
+    object.style = "text-[#63EB25]";
     object.amount = "+" + number;
   } else if (amount < 0) {
-    object.style = "text-accent";
+    object.style = "text-[#EB2563]";
   } else if (amount === 0) {
     object.style = "text-gray-400";
   }

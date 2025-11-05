@@ -70,46 +70,8 @@ export async function POST(req) {
         "Some or all transactions already exist. Skipped duplicates."
       );
     }
-    ///monthly summaries update based on inserted
-    const summaries = inserted.reduce((acc, tx) => {
-      const month = tx.bookingDate.toISOString().slice(0, 7); // "2025-07"
-
-      if (!acc[month]) {
-        acc[month] = {
-          inflow: 0,
-          outflow: 0,
-        };
-      }
-
-      if (tx.amount > 0) {
-        acc[month].inflow += tx.amount;
-      } else if (tx.amount < 0) {
-        acc[month].outflow += tx.amount;
-      }
-
-      return acc;
-    }, {});
-
-    ///e.g - summaries
-    // const dummySummary = {
-    //   "2025-06": { inflow: 1505.75, outflow: -558.95 },
-    //   "2025-05": { inflow: 150, outflow: -165.83000000000004 },
-    //   "2025-04": { inflow: 144.67000000000002, outflow: -91.83 },
-    // };
-    const array = Object.entries(summaries);
-    const updates = array.map(([month, { inflow, outflow }]) => {
-      return MonthSummary.updateOne(
-        { month, userId },
-        {
-          $inc: {
-            inflow,
-            outflow,
-          },
-        },
-        { upsert: true }
-      );
-    });
-    await Promise.all(updates);
+    ///monthly summaries are not updated here
+    ///inflow and outflow are only counted when transactions are categorized
     ///fetch bank balance
     try {
       const resBalance = await fetch(

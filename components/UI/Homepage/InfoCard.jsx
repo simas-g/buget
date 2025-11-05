@@ -19,10 +19,10 @@ export default function InfoCard({ title, description, icon, list, id }) {
   const IconComponent = Icons[icon];
 
   // Generic gradient for all cards
-  const gradientColor = "from-secondary to-accent";
+  const gradientColor = "from-[#2563EB] to-[#EB2563]";
 
   // Generic glow color for all cards
-  const glowColor = "shadow-accent/25";
+  const glowColor = "shadow-[#EB2563]/25";
 
   return (
     <motion.div
@@ -49,15 +49,15 @@ export default function InfoCard({ title, description, icon, list, id }) {
       >
         {/* Animated background pattern */}
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-secondary/10"></div>
-          <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
-          <div className="absolute bottom-0 right-0 w-full h-px bg-gradient-to-l from-transparent via-accent/30 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-[#63EB25]/20 via-transparent to-[#2563EB]/10"></div>
+          <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#63EB25]/30 to-transparent"></div>
+          <div className="absolute bottom-0 right-0 w-full h-px bg-gradient-to-l from-transparent via-[#EB2563]/30 to-transparent"></div>
         </div>
 
         {/* Floating orbs for extra visual appeal */}
-        <div className="absolute top-4 right-4 w-16 h-16 bg-gradient-to-br from-secondary/20 to-primary/10 rounded-full blur-xl opacity-60 animate-pulse"></div>
+        <div className="absolute top-4 right-4 w-16 h-16 bg-gradient-to-br from-[#2563EB]/20 to-[#63EB25]/10 rounded-full blur-xl opacity-60 animate-pulse"></div>
         <div
-          className="absolute bottom-6 left-6 w-12 h-12 bg-gradient-to-br from-accent/15 to-secondary/20 rounded-full blur-lg opacity-40 animate-pulse"
+          className="absolute bottom-6 left-6 w-12 h-12 bg-gradient-to-br from-[#EB2563]/15 to-[#2563EB]/20 rounded-full blur-lg opacity-40 animate-pulse"
           style={{ animationDelay: "1s" }}
         ></div>
 
@@ -97,7 +97,7 @@ export default function InfoCard({ title, description, icon, list, id }) {
                 key={index}
               >
                 <CheckCircle
-                  className="inline-block mr-3 mt-0.5 text-primary flex-shrink-0"
+                  className="inline-block mr-3 mt-0.5 text-[#63EB25] flex-shrink-0"
                   size={16}
                 />
                 <span className="group-hover/item:text-white transition-colors duration-200">

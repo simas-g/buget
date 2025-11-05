@@ -1,5 +1,5 @@
-///fetching the token 1.
 import { encrypt } from "./crypting";
+import { isTestMode, getTestMonthSummaries, getTestBankConnections } from "../lib/testMode";
 export async function getToken(sessionId) {
   const alreadyExistingToken = JSON.parse(
     sessionStorage.getItem("access_token")
@@ -38,12 +38,35 @@ export async function listAccounts(token, sessionId) {
       }),
     });
     const data = await res.json();
+    
+    // Validate accounts data exists
+    if (!data?.data?.accounts) {
+      console.error("listAccounts: No accounts data received from API");
+      return data;
+    }
+    
     const string = data.data.accounts.toString();
-    const encrypted = await encrypt(string);
+    
+    // Validate string is not empty before encrypting
+    if (!string || string === "") {
+      console.error("listAccounts: Account string is empty");
+      return data;
+    }
+    
+    // Pass sessionId to encrypt function
+    const encrypted = await encrypt(string, sessionId);
+    
+    // Validate encryption succeeded
+    if (!encrypted) {
+      console.error("listAccounts: Encryption returned null or undefined");
+      return data;
+    }
+    
     sessionStorage.setItem("data", JSON.stringify(encrypted));
     return data;
   } catch (error) {
-    console.log(error, "error");
+    console.error("Error in listAccounts:", error);
+    return null;
   }
 }
 ///requisition
@@ -76,16 +99,49 @@ export async function fetchRequisitions(bank, accessToken, sessionId) {
 export async function initializeBankConnection(accounts, tempBank, sessionId) {
   console.log("helo", accounts, tempBank, sessionId);
   try {
+    // Validate required parameters
+    if (!accounts || !tempBank || !sessionId) {
+      console.error("initializeBankConnection: Missing required parameters", { 
+        hasAccounts: !!accounts, 
+        hasTempBank: !!tempBank, 
+        hasSessionId: !!sessionId 
+      });
+      return new Response(JSON.stringify({ message: "Missing required parameters" }), {
+        status: 400,
+        headers: { "Content-Type": "application/json" }
+      });
+    }
+    
+    // Check if this is a revalidation
+    const revalidateBankId = sessionStorage.getItem("revalidate_bank_id");
+    const body = { accounts, tempBank };
+    if (revalidateBankId) {
+      body.revalidateBankId = revalidateBankId;
+    }
+    
     const res = await fetch("/api/bank/createBankConnection", {
       method: "POST",
       headers: {
         Authorization: "Bearer " + sessionId,
       },
-      body: JSON.stringify({ accounts, tempBank }),
+      body: JSON.stringify(body),
     });
+    
+    // Clear revalidation data after successful connection (whether it was new or revalidation)
+    if (res.ok && revalidateBankId) {
+      sessionStorage.removeItem("revalidate_bank_id");
+      sessionStorage.removeItem("revalidate_account_id");
+      sessionStorage.removeItem("revalidate_bank_name");
+      sessionStorage.removeItem("revalidate_bank_logo");
+    }
+    
     return res;
   } catch (error) {
-    console.log(error, "error");
+    console.error("Error in initializeBankConnection:", error);
+    return new Response(JSON.stringify({ message: "Failed to initialize bank connection" }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" }
+    });
   }
 }
 
@@ -95,6 +151,11 @@ export async function getConnectedBanks(userId, sessionId) {
     console.log("User ID or session ID is missing");
     return null;
   }
+  
+  if (isTestMode()) {
+    return { data: getTestBankConnections() };
+  }
+  
   try {
     const res = await fetch("/api/bank/connectedBanks", {
       method: "POST",
@@ -155,6 +216,22 @@ export async function fetchMonthlySummary(userId, month) {
   if (!userId || !month) {
     return null;
   }
+  
+  if (isTestMode()) {
+    const summaries = getTestMonthSummaries();
+    const summary = summaries.find(s => s.month === month);
+    
+    if (summary) {
+      const bankConnections = getTestBankConnections();
+      const totalNet = bankConnections.reduce((acc, bank) => acc + bank.balance, 0);
+      return {
+        ...summary,
+        closingBalance: totalNet
+      };
+    }
+    return null;
+  }
+  
   try {
     const res = await fetch(
       "/api/bank/getMonthlySummary?userId=" + userId + "&month=" + month
@@ -171,10 +248,44 @@ export async function fetchMonthlySummary(userId, month) {
     return null;
   }
 }
+
+export const recalculateMonthlySummaries = async (userId) => {
+  if (!userId) {
+    throw new Error("userId is required");
+  }
+  try {
+    const res = await fetch("/api/summaries/recalculate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ userId }),
+    });
+    if (!res.ok) {
+      throw new Error("Failed to recalculate summaries");
+    }
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.error("Error recalculating summaries:", error);
+    throw error;
+  }
+};
+
 export async function fetchCategorizedTransactions(userId, limit) {
   if (!userId) {
     return [];
   }
+  
+  if (isTestMode()) {
+    const { getTestTransactions } = await import("../lib/testMode");
+    let transactions = getTestTransactions();
+    if (limit) {
+      transactions = transactions.slice(0, limit);
+    }
+    return transactions;
+  }
+  
   let query = "?userId=" + userId;
   if (limit) {
     query += "&limit=" + limit;

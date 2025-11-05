@@ -6,7 +6,12 @@ import { useSelector } from "react-redux";
 import Button from "../UI/Button";
 import Link from "next/link";
 import Loading from "../UI/Loading";
+import { useTheme } from "@/app/lib/ThemeContext";
+import { themes } from "@/app/lib/themes";
+
 export default function Categories() {
+  const { theme } = useTheme();
+  const currentTheme = themes[theme] || themes.dark;
   const [categories, setCategories] = useState([]);
   const [total, setTotal] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -46,38 +51,51 @@ export default function Categories() {
   );
   console.log(sortedCategories, "soreteds");
   return (
-    <BoxWrapper className={"relative flex flex-col w-full p-5"}>
-      <div className="flex w-full justify-between">
-        <h5 className="flex items-center gap-2 text-xl font-bold">
-          <ChartBar stroke="var(--color-secondary)" size={24} />
-          Kategorijos
-          <span className="text-sm text-gray-500 font-medium">(šio mėnesio)</span>
+    <BoxWrapper className={"relative flex flex-col w-full p-6 overflow-hidden"}>
+      <div className={`absolute top-0 right-0 w-40 h-40 bg-gradient-to-br ${currentTheme.orbSecondary} to-transparent rounded-full blur-3xl -mr-20 -mt-20`} />
+      <div className="flex w-full justify-between items-center mb-6 relative z-10">
+        <h5 className={`flex items-center gap-3 text-xl font-bold ${currentTheme.textPrimary}`}>
+          <div className={`p-2 rounded-lg ${currentTheme.iconBg}`}>
+            <ChartBar stroke="var(--color-secondary)" size={24} />
+          </div>
+          <div className="flex flex-col">
+            <span>Kategorijos</span>
+            <span className={`text-xs ${currentTheme.textMuted} font-normal`}>(šio mėnesio)</span>
+          </div>
         </h5>
         <Link href="/skydelis/kategorijos" prefetch>
-          <Button variant="outline" className="px-4 py-2">
+          <Button variant="outline" className={`px-4 py-2 ${currentTheme.buttonHover} transition-colors`}>
             <span>Valdyti</span>
           </Button>
         </Link>
       </div>
       {sortedCategories.length === 0 && !loading && (
-        <p className="text-gray-500 text-sm">Sukurtų kategorijų nėra</p>
+        <p className={`${currentTheme.textMuted} text-sm relative z-10`}>Sukurtų kategorijų nėra</p>
       )}
-      <ul className="mt-4 space-y-3">
+      <ul className="space-y-4 relative z-10">
         {sortedCategories.map(([name, amount]) => (
-          <li className="flex flex-col gap-2" key={name}>
-            <div className="flex items-center gap-2">
-              {name}{" "}
-              <span className="text-gray-400 text-xs">
-                ({calculatePercentage(amount)}%)
-              </span>
+          <li className="flex flex-col gap-3 group" key={name}>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <div className={`w-2 h-2 rounded-full bg-[#2563EB] animate-pulse`} />
+                <span className={`${currentTheme.textPrimary} font-medium`}>{name}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className={`${currentTheme.textMuted} text-xs`}>
+                  {calculatePercentage(amount)}%
+                </span>
+                <span className={`text-sm font-semibold ${amount >= 0 ? 'text-[#63EB25]' : 'text-[#EB2563]'}`}>
+                  {amount >= 0 ? '+' : ''}{Math.abs(amount).toFixed(2)}€
+                </span>
+              </div>
             </div>
 
-            <div className="w-full relative h-2 rounded-full bg-white/10">
+            <div className={`w-full relative h-2.5 rounded-full ${currentTheme.progressBg} overflow-hidden ${currentTheme.progressBgHover} transition-colors`}>
               <div
                 style={{
                   width: `${calculatePercentage(amount)}%`,
                 }}
-                className="h-2 bg-gradient-to-r from-secondary  to-secondary/30 border border-gray-400 rounded-full"
+                className="h-full bg-gradient-to-r from-[#2563EB] via-[#2563EB]/80 to-[#2563EB]/50 rounded-full shadow-lg shadow-[#2563EB]/30 transition-all duration-500"
               ></div>
             </div>
           </li>

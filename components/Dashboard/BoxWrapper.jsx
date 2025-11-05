@@ -1,6 +1,13 @@
+"use client";
+import { useTheme } from "@/app/lib/ThemeContext";
+import { themes } from "@/app/lib/themes";
+
 export default function BoxWrapper({ children, className }) {
+  const { theme } = useTheme();
+  const currentTheme = themes[theme] || themes.dark;
+  
   return (
-    <div className={`${className} bg-[#1A1A40]/30 backdrop-blur-sm border border-white/10 rounded-2xl`}>
+    <div className={`${className} ${currentTheme.card} backdrop-blur-md ${currentTheme.cardBorder} ${currentTheme.cardHover} border rounded-2xl shadow-lg transition-all duration-300`}>
       {children}
     </div>
   );

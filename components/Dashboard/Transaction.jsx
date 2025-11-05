@@ -3,6 +3,8 @@ import DialogWrapper from "../UI/Dialog";
 import { useEffect, useState } from "react";
 import Button from "../UI/Button";
 import Link from "next/link";
+import { useTheme } from "@/app/lib/ThemeContext";
+import { themes } from "@/app/lib/themes";
 
 const Transaction = ({
   id,
@@ -10,6 +12,8 @@ const Transaction = ({
   operation = {},
   refetch,
 }) => {
+  const { theme } = useTheme();
+  const currentTheme = themes[theme] || themes.dark;
   let content;
   const currency = formatCurrencyVisually(operation.amount);
   const [loading, setLoading] = useState(false);
@@ -73,20 +77,21 @@ const Transaction = ({
     content = (
       <div
         key={operation.transactionId}
-        className="flex gap-4 flex-wrap p-3 overflow-hidden rounded-full relative justify-between w-full bg-[#0A0A20]/50 border border-white/10"
+        className={`flex gap-4 flex-wrap p-4 overflow-hidden rounded-xl relative justify-between w-full ${currentTheme.card} ${currentTheme.cardBorder} ${currentTheme.cardHover} transition-all duration-300 group`}
       >
-        <div className="flex gap-x-2 items-center w-fit">
-          <div className={`w-2 h-2 rounded-full bg-secondary`}></div>
-          <p>{operation?.categoryName}</p> |
-          <p className="text-gray-300">
+        <div className="flex gap-x-3 items-center w-fit">
+          <div className={`w-2.5 h-2.5 rounded-full bg-[#2563EB] shadow-sm shadow-[#2563EB]/50 animate-pulse`}></div>
+          <p className={`${currentTheme.textPrimary} font-medium`}>{operation?.categoryName}</p>
+          <span className={theme === 'dark' ? "text-white/30" : "text-slate-400"}>|</span>
+          <p className={`${currentTheme.textMuted} text-sm`}>
             {operation?.bookingDate.split("T")[0]}
           </p>
         </div>
 
-        <p className={currency.style + " text-right"}>{currency.amount}</p>
-        <div className="absolute inset-0">
+        <p className={`${currency.style} text-right font-semibold`}>{currency.amount}</p>
+        <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity">
           <div
-            className={`absolute top-[60%] left-[20%] h-[40px] w-[250px] rounded-full blur-[100px] bg-[${operation.color}]`}
+            className={`absolute top-[50%] left-[20%] h-[60px] w-[200px] rounded-full blur-[80px] ${currentTheme.orbSecondary}`}
           />
         </div>
       </div>
@@ -138,20 +143,22 @@ const Transaction = ({
         )}
         <li
           onClick={handleOpenCategorize}
-          className="flex gap-4 hover:bg-black cursor-pointer flex-wrap p-3 overflow-hidden rounded-lg relative justify-between w-full bg-[#0A0A20]/50 border border-white/40"
+          className={`flex gap-4 cursor-pointer flex-wrap p-4 overflow-hidden rounded-xl relative justify-between w-full ${currentTheme.card} ${currentTheme.cardBorder} ${currentTheme.cardHover} transition-all duration-300 group`}
         >
-          <div className="flex gap-x-2 items-center w-fit">
-            <p className="text-white">
-              {sliceString(operation?.creditorName || "", 18) || "nežinoma"} |{" "}
+          <div className="flex gap-x-3 items-center w-fit">
+            <div className="w-2.5 h-2.5 rounded-full bg-[#EB2563]/50 group-hover:bg-[#EB2563] transition-colors"></div>
+            <p className={`${currentTheme.textPrimary} font-medium`}>
+              {sliceString(operation?.creditorName || "", 18) || "nežinoma"}
             </p>
-            <p className="text-gray-400">
+            <span className={theme === 'dark' ? "text-white/30" : "text-slate-400"}>|</span>
+            <p className={`${currentTheme.textMuted} text-sm`}>
               {operation?.bookingDate.split("T")[0]}
             </p>
           </div>
-          <p className={currency.style + " text-right"}>{currency.amount}</p>
-          <div className="absolute inset-0">
+          <p className={`${currency.style} text-right font-semibold`}>{currency.amount}</p>
+          <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity">
             <div
-              className={`absolute top-[60%] left-[20%] h-[40px] w-[250px] rounded-full blur-[100px] bg-[${operation.color}]`}
+              className={`absolute top-[50%] left-[20%] h-[60px] w-[200px] rounded-full blur-[80px] ${currentTheme.orbAccent}`}
             />
           </div>
         </li>

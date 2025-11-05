@@ -7,15 +7,19 @@ import { Eye, EyeOff, Mail, Lock, ArrowRight } from "lucide-react";
 import GlowingCard from "../UI/GlowingCard";
 import { login } from "@/app/lib/auth/login";
 import { useRouter } from "next/navigation";
-function Button({ variant = "primary", className = "", children, ...props }) {
+import { useTheme } from "@/app/lib/ThemeContext";
+
+const Button = ({ variant = "primary", className = "", children, ...props }) => {
+  const { theme } = useTheme();
   const baseClasses =
-    "inline-flex cursor-pointer items-center justify-center rounded-xl font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#0A0A20] disabled:opacity-50 disabled:cursor-not-allowed";
+    "inline-flex cursor-pointer items-center justify-center rounded-xl font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed";
 
   const variantClasses = {
     primary:
-      "bg-gradient-to-r from-secondary to-accent text-white hover:shadow-[0_0_20px_var(--color-secondary)] focus:ring-[#2563EB]",
-    outline:
-      "border border-white/20 bg-white/5 text-white hover:bg-white/10 hover:border-white/30 focus:ring-white/20",
+      "bg-gradient-to-r from-[#2563EB] to-[#EB2563] text-white hover:shadow-[0_0_20px_var(--color-secondary)] focus:ring-[#2563EB]",
+    outline: theme === "dark"
+      ? "border border-white/20 bg-white/5 text-white hover:bg-white/10 hover:border-white/30 focus:ring-white/20"
+      : "border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 hover:border-slate-400 focus:ring-slate-300",
   };
 
   return (
@@ -26,37 +30,49 @@ function Button({ variant = "primary", className = "", children, ...props }) {
       {children}
     </button>
   );
-}
-function Input({ className = "", error = false, ...props }) {
+};
+
+const Input = ({ className = "", error = false, ...props }) => {
+  const { theme } = useTheme();
   const baseClasses =
-    "w-full rounded-lg bg-[#1A1A40]/50 border text-white placeholder:text-white/50 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#0A0A20]";
+    "w-full rounded-lg border transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2";
+  const themeClasses = theme === "dark"
+    ? "bg-[#1A1A40]/50 text-white placeholder:text-white/50 focus:ring-offset-[#0A0A20]"
+    : "bg-white text-slate-900 placeholder:text-slate-400 focus:ring-offset-white";
   const errorClasses = error
     ? "border-[#EB2563] focus:border-[#EB2563] focus:ring-[#EB2563]/20"
-    : "border-white/20 focus:border-[#2563EB] focus:ring-[#2563EB]/20";
+    : theme === "dark"
+      ? "border-white/20 focus:border-[#2563EB] focus:ring-[#2563EB]/20"
+      : "border-slate-300 focus:border-[#2563EB] focus:ring-[#2563EB]/20";
 
   return (
     <input
-      className={`${baseClasses} ${errorClasses} ${className}`}
+      className={`${baseClasses} ${themeClasses} ${errorClasses} ${className}`}
       {...props}
     />
   );
-}
+};
 
-function Label({ className = "", children, ...props }) {
+const Label = ({ className = "", children, ...props }) => {
+  const { theme } = useTheme();
   return (
     <label
-      className={`block text-sm font-medium text-white/90 ${className}`}
+      className={`block text-sm font-medium ${
+        theme === "dark" ? "text-white/90" : "text-slate-700"
+      } ${className}`}
       {...props}
     >
       {children}
     </label>
   );
-}
+};
 
-// Custom Separator Component
-function Separator({ className }) {
-  return <div className={`h-px bg-white/20 ${className}`} />;
-}
+const Separator = ({ className }) => {
+  const { theme } = useTheme();
+  return <div className={`h-px ${
+    theme === "dark" ? "bg-white/20" : "bg-slate-200"
+  } ${className}`} />;
+};
 
 export default function SignInForm() {
   const [showPassword, setShowPassword] = useState(false);
@@ -64,7 +80,8 @@ export default function SignInForm() {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({});
-  const router = useRouter()
+  const router = useRouter();
+  const { theme } = useTheme();
   const validateForm = () => {
     const newErrors = {};
 
@@ -124,7 +141,9 @@ export default function SignInForm() {
 
   return (
     <GlowingCard>
-      <p className="text-white/70 mb-8">Prisijunkite prie savo paskyros</p>
+      <p className={`mb-8 ${theme === "dark" ? "text-white/70" : "text-slate-600"}`}>
+        Prisijunkite prie savo paskyros
+      </p>
 
       {/* Google Sign In */}
       <Button
@@ -158,7 +177,11 @@ export default function SignInForm() {
       <div className="relative mb-6">
         <Separator />
         <div className="absolute inset-0 flex items-center justify-center">
-          <span className="bg-[#0A0A20] px-4 text-sm text-white/50">arba</span>
+          <span className={`px-4 text-sm ${
+            theme === "dark" ? "bg-[#0A0A20] text-white/50" : "bg-white text-slate-500"
+          }`}>
+            arba
+          </span>
         </div>
       </div>
 
@@ -167,7 +190,9 @@ export default function SignInForm() {
         <div className="space-y-2">
           <Label htmlFor="email">El. paštas</Label>
           <div className="relative">
-            <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-white/50" />
+            <Mail className={`absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 ${
+              theme === "dark" ? "text-white/50" : "text-slate-400"
+            }`} />
             <Input
               id="email"
               type="email"
@@ -192,7 +217,9 @@ export default function SignInForm() {
         <div className="space-y-2">
           <Label htmlFor="password">Slaptažodis</Label>
           <div className="relative">
-            <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-white/50" />
+            <Lock className={`absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 ${
+              theme === "dark" ? "text-white/50" : "text-slate-400"
+            }`} />
             <Input
               id="password"
               type={showPassword ? "text" : "password"}
@@ -205,7 +232,9 @@ export default function SignInForm() {
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-white/50 hover:text-white/80 transition-colors"
+              className={`absolute right-3 top-1/2 transform -translate-y-1/2 transition-colors ${
+                theme === "dark" ? "text-white/50 hover:text-white/80" : "text-slate-400 hover:text-slate-600"
+              }`}
             >
               {showPassword ? (
                 <EyeOff className="h-5 w-5" />
@@ -229,7 +258,7 @@ export default function SignInForm() {
         <div className="flex justify-end">
           <Link
             href="/forgot-password"
-            className="text-sm text-secondary transition-colors duration-300"
+            className="text-sm text-[#2563EB] transition-colors duration-300"
           >
             Pamiršote slaptažodį?
           </Link>
@@ -260,11 +289,11 @@ export default function SignInForm() {
 
       {/* Sign Up Link */}
       <div className="mt-2 text-center">
-        <p className="text-white/70">
+        <p className={theme === "dark" ? "text-white/70" : "text-slate-600"}>
           Neturite paskyros?{" "}
           <Link
             href="/registracija"
-            className="text-secondary font-medium transition-colors duration-300 relative"
+            className="text-[#2563EB] font-medium transition-colors duration-300 relative"
           >
             Registruotis čia
           </Link>

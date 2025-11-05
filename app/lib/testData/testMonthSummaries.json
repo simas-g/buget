@@ -1,0 +1,2263 @@
+{
+  "test_user_001": [
+    {
+      "month": "2024-08",
+      "inflow": 2671.19,
+      "outflow": -2018.09,
+      "closingBalance": 1015.11,
+      "categories": {
+        "Pajamos": 2671.19,
+        "Būstas": -860.91,
+        "Maistas": -318,
+        "Pramogos": -93.49,
+        "Kelionės": -269.9,
+        "Transportas": -116.55,
+        "Komunalinės": -220.37
+      }
+    },
+    {
+      "month": "2024-09",
+      "inflow": 2932.37,
+      "outflow": -2069.48,
+      "closingBalance": 1036.09,
+      "categories": {
+        "Pajamos": 2932.37,
+        "Būstas": -918.75,
+        "Maistas": -339.2,
+        "Pramogos": -75.99,
+        "Kelionės": -251.11,
+        "Transportas": -86.27,
+        "Komunalinės": -174.91,
+        "Dovanos": -166
+      }
+    },
+    {
+      "month": "2024-10",
+      "inflow": 3237.09,
+      "outflow": -2200.99,
+      "closingBalance": 1053.41,
+      "categories": {
+        "Pajamos": 3237.09,
+        "Būstas": -1041.02,
+        "Maistas": -361.55,
+        "Pramogos": -78.2,
+        "Kelionės": -294.94,
+        "Transportas": -105.89,
+        "Komunalinės": -232.59
+      }
+    },
+    {
+      "month": "2024-11",
+      "inflow": 2981.05,
+      "outflow": -2381.99,
+      "closingBalance": 1009.71,
+      "categories": {
+        "Pajamos": 2981.05,
+        "Būstas": -1089.4,
+        "Maistas": -289.07,
+        "Pramogos": 0,
+        "Kelionės": -293.46,
+        "Transportas": -136.83,
+        "Komunalinės": -206.98
+      }
+    },
+    {
+      "month": "2024-12",
+      "inflow": 2919.73,
+      "outflow": -2118.65,
+      "closingBalance": 1029.91,
+      "categories": {
+        "Pajamos": 2919.73,
+        "Būstas": -973.71,
+        "Maistas": -356.38,
+        "Pramogos": -100.21,
+        "Kelionės": -270.33,
+        "Transportas": -107.02,
+        "Komunalinės": -181.15
+      }
+    },
+    {
+      "month": "2025-01",
+      "inflow": 2778.04,
+      "outflow": -2112.08,
+      "closingBalance": 1016.4,
+      "categories": {
+        "Pajamos": 2778.04,
+        "Būstas": -825.95,
+        "Maistas": -287.72,
+        "Pramogos": -82.98,
+        "Kelionės": -275.68,
+        "Transportas": -99.78,
+        "Komunalinės": -202.42
+      }
+    },
+    {
+      "month": "2025-02",
+      "inflow": 3264.79,
+      "outflow": -2100.54,
+      "closingBalance": 1066.22,
+      "categories": {
+        "Pajamos": 3264.79,
+        "Būstas": -1126.97,
+        "Maistas": -286.75,
+        "Pramogos": -97.98,
+        "Kelionės": -255.62,
+        "Transportas": -108.03,
+        "Komunalinės": -206.29
+      }
+    },
+    {
+      "month": "2025-03",
+      "inflow": 2735.3,
+      "outflow": -2198.7,
+      "closingBalance": 1003.46,
+      "categories": {
+        "Pajamos": 2735.3,
+        "Būstas": -1212.3,
+        "Maistas": -405.78,
+        "Pramogos": -96.54,
+        "Kelionės": -353.51,
+        "Transportas": -131.13,
+        "Komunalinės": -179.92
+      }
+    },
+    {
+      "month": "2025-04",
+      "inflow": 2900.48,
+      "outflow": -1993.25,
+      "closingBalance": 1040.52,
+      "categories": {
+        "Pajamos": 2900.48,
+        "Būstas": -829.1,
+        "Maistas": -320.92,
+        "Pramogos": -97.09,
+        "Kelionės": -277.88,
+        "Transportas": -104.73,
+        "Komunalinės": -212.32
+      }
+    },
+    {
+      "month": "2025-05",
+      "inflow": 2785.16,
+      "outflow": -1684,
+      "closingBalance": 1059.92,
+      "categories": {
+        "Pajamos": 2785.16,
+        "Būstas": -893.7,
+        "Maistas": -286.31,
+        "Pramogos": -61.73,
+        "Kelionės": -231.5,
+        "Transportas": -83.56,
+        "Komunalinės": -161.47
+      }
+    },
+    {
+      "month": "2025-06",
+      "inflow": 2900.48,
+      "outflow": -2069.49,
+      "closingBalance": 1032.9,
+      "categories": {
+        "Pajamos": 2900.48,
+        "Būstas": -981.19,
+        "Maistas": -336.38,
+        "Pramogos": -83.02,
+        "Kelionės": -241.94,
+        "Transportas": -104.34,
+        "Komunalinės": -230.87
+      }
+    },
+    {
+      "month": "2025-07",
+      "inflow": 2592.84,
+      "outflow": -1735.58,
+      "closingBalance": 1035.53,
+      "categories": {
+        "Pajamos": 2592.84,
+        "Būstas": -874.06,
+        "Maistas": -232.91,
+        "Pramogos": -76.98,
+        "Kelionės": -224.06,
+        "Transportas": -76.34,
+        "Komunalinės": -193.59
+      }
+    },
+    {
+      "month": "2025-08",
+      "inflow": 2730.55,
+      "outflow": -2041.29,
+      "closingBalance": 1018.73,
+      "categories": {
+        "Pajamos": 2730.55,
+        "Būstas": -919.02,
+        "Maistas": -338.15,
+        "Pramogos": 0,
+        "Kelionės": -235.85,
+        "Transportas": -83.76,
+        "Komunalinės": -175.54
+      }
+    },
+    {
+      "month": "2025-09",
+      "inflow": 2963.24,
+      "outflow": -2133.28,
+      "closingBalance": 1032.8,
+      "categories": {
+        "Pajamos": 2963.24,
+        "Būstas": -946.05,
+        "Maistas": -252.87,
+        "Pramogos": 0,
+        "Kelionės": -219.95,
+        "Transportas": -117.06,
+        "Komunalinės": -183.17
+      }
+    },
+    {
+      "month": "2025-10",
+      "inflow": 2983.2,
+      "outflow": -2380.29,
+      "closingBalance": 1010.09,
+      "categories": {
+        "Pajamos": 2983.2,
+        "Būstas": -856.31,
+        "Maistas": -254.05,
+        "Pramogos": -103.49,
+        "Kelionės": -297.65,
+        "Transportas": -95.9,
+        "Komunalinės": -245.22
+      }
+    },
+    {
+      "month": "2025-11",
+      "inflow": 3429.81,
+      "outflow": -1901.28,
+      "closingBalance": 1102.65,
+      "categories": {
+        "Pajamos": 3429.81,
+        "Būstas": -612.68,
+        "Maistas": -284.92,
+        "Pramogos": -86.5,
+        "Kelionės": -254.53,
+        "Transportas": -88.35,
+        "Komunalinės": -139.47,
+        "Remontas": -132
+      }
+    },
+    {
+      "month": "2025-12",
+      "inflow": 2983.2,
+      "outflow": -2291.99,
+      "closingBalance": 1018.92,
+      "categories": {
+        "Pajamos": 2983.2,
+        "Būstas": -1039.39,
+        "Maistas": -318,
+        "Pramogos": -94.33,
+        "Kelionės": -221.09,
+        "Transportas": -86.27,
+        "Komunalinės": -210.28
+      }
+    },
+    {
+      "month": "2026-01",
+      "inflow": 3148.44,
+      "outflow": -2087.65,
+      "closingBalance": 1055.88,
+      "categories": {
+        "Pajamos": 3148.44,
+        "Būstas": -1029.3,
+        "Maistas": -262.52,
+        "Pramogos": -85.48,
+        "Kelionės": -284.93,
+        "Transportas": -87.19,
+        "Komunalinės": -181.34
+      }
+    },
+    {
+      "month": "2026-02",
+      "inflow": 2878.95,
+      "outflow": -1995.89,
+      "closingBalance": 1038.11,
+      "categories": {
+        "Pajamos": 2878.95,
+        "Būstas": -1018.58,
+        "Maistas": -332.41,
+        "Pramogos": -90.23,
+        "Kelionės": -286.99,
+        "Transportas": -83.4,
+        "Komunalinės": -159.51
+      }
+    },
+    {
+      "month": "2026-03",
+      "inflow": 2991.73,
+      "outflow": -1844.06,
+      "closingBalance": 1064.57,
+      "categories": {
+        "Pajamos": 2991.73,
+        "Būstas": -746.12,
+        "Maistas": -275.6,
+        "Pramogos": -89.51,
+        "Kelionės": -236.33,
+        "Transportas": -85.4,
+        "Komunalinės": -187.52
+      }
+    },
+    {
+      "month": "2026-04",
+      "inflow": 2900.48,
+      "outflow": -1717.28,
+      "closingBalance": 1068.12,
+      "categories": {
+        "Pajamos": 2900.48,
+        "Būstas": -729,
+        "Maistas": -240.47,
+        "Pramogos": -64.92,
+        "Kelionės": -186.75,
+        "Transportas": -103.59,
+        "Komunalinės": -189.24
+      }
+    },
+    {
+      "month": "2026-05",
+      "inflow": 2703.25,
+      "outflow": -1783.87,
+      "closingBalance": 1041.74,
+      "categories": {
+        "Pajamos": 2703.25,
+        "Būstas": -803.51,
+        "Maistas": -283.63,
+        "Pramogos": -71.77,
+        "Kelionės": -204.98,
+        "Transportas": -87.24,
+        "Komunalinės": -144.11
+      }
+    },
+    {
+      "month": "2026-06",
+      "inflow": 2569,
+      "outflow": -1773.22,
+      "closingBalance": 1029.38,
+      "categories": {
+        "Pajamos": 2569,
+        "Būstas": -938.21,
+        "Maistas": -225.06,
+        "Pramogos": -71.7,
+        "Kelionės": -188.68,
+        "Transportas": -79.93,
+        "Komunalinės": -185.1
+      }
+    },
+    {
+      "month": "2026-07",
+      "inflow": 2763.79,
+      "outflow": -1961.38,
+      "closingBalance": 1030.04,
+      "categories": {
+        "Pajamos": 2763.79,
+        "Būstas": -727.56,
+        "Maistas": -254.2,
+        "Pramogos": -66.06,
+        "Kelionės": -269.37,
+        "Transportas": -112.16,
+        "Komunalinės": -204.82
+      }
+    },
+    {
+      "month": "2026-08",
+      "inflow": 3057.03,
+      "outflow": -2160.58,
+      "closingBalance": 1039.45,
+      "categories": {
+        "Pajamos": 3057.03,
+        "Būstas": -873.97,
+        "Maistas": -276.4,
+        "Pramogos": -100.06,
+        "Kelionės": -212,
+        "Transportas": -97.88,
+        "Komunalinės": -160.27
+      }
+    },
+    {
+      "month": "2026-09",
+      "inflow": 3148.44,
+      "outflow": -2099.33,
+      "closingBalance": 1054.71,
+      "categories": {
+        "Pajamos": 3148.44,
+        "Būstas": -863.07,
+        "Maistas": -306.27,
+        "Pramogos": -72.55,
+        "Kelionės": -248.91,
+        "Transportas": -109.8,
+        "Komunalinės": -207.61
+      }
+    },
+    {
+      "month": "2026-10",
+      "inflow": 3173.62,
+      "outflow": -2238.27,
+      "closingBalance": 1043.34,
+      "categories": {
+        "Pajamos": 3173.62,
+        "Būstas": -942.81,
+        "Maistas": -231.47,
+        "Pramogos": -88.73,
+        "Kelionės": -267.12,
+        "Transportas": -110.44,
+        "Komunalinės": -199.65,
+        "Elektronika": -191
+      }
+    },
+    {
+      "month": "2026-11",
+      "inflow": 2981.05,
+      "outflow": -2389.29,
+      "closingBalance": 1008.98,
+      "categories": {
+        "Pajamos": 2981.05,
+        "Būstas": -1010.11,
+        "Maistas": -344.5,
+        "Pramogos": -77.94,
+        "Kelionės": -219.47,
+        "Transportas": -104.98,
+        "Komunalinės": -177.29
+      }
+    },
+    {
+      "month": "2026-12",
+      "inflow": 3110.15,
+      "outflow": -2329.26,
+      "closingBalance": 1027.89,
+      "categories": {
+        "Pajamos": 3110.15,
+        "Būstas": -731.43,
+        "Maistas": -305.65,
+        "Pramogos": -99.06,
+        "Kelionės": -246.61,
+        "Transportas": -100.9,
+        "Komunalinės": -226.67
+      }
+    }
+  ],
+  "test_user_002": [
+    {
+      "month": "2024-08",
+      "inflow": 4035.64,
+      "outflow": -2936.58,
+      "closingBalance": 1187.81,
+      "categories": {
+        "Pajamos": 4035.64,
+        "Būstas": -1073.82,
+        "Maistas": -615.89,
+        "Vaikai": -172.02,
+        "Transportas": -481.58,
+        "Hobiai": -127.71,
+        "Pramogos": -68.34,
+        "Komunalinės": -187.31,
+        "Remontas": -155
+      }
+    },
+    {
+      "month": "2024-09",
+      "inflow": 4809.14,
+      "outflow": -3531.96,
+      "closingBalance": 1205.62,
+      "categories": {
+        "Pajamos": 4809.14,
+        "Būstas": -1415.39,
+        "Maistas": -752.35,
+        "Vaikai": -163.73,
+        "Transportas": -540.88,
+        "Hobiai": -140.94,
+        "Pramogos": 0,
+        "Komunalinės": -233.1,
+        "Remontas": -124
+      }
+    },
+    {
+      "month": "2024-10",
+      "inflow": 4405.14,
+      "outflow": -3615.98,
+      "closingBalance": 1156.82,
+      "categories": {
+        "Pajamos": 4405.14,
+        "Būstas": -1295.21,
+        "Maistas": -961.98,
+        "Vaikai": -183.59,
+        "Transportas": -686.12,
+        "Hobiai": -142.6,
+        "Pramogos": -69.42,
+        "Komunalinės": -233.1
+      }
+    },
+    {
+      "month": "2024-11",
+      "inflow": 4585.49,
+      "outflow": -3532.4,
+      "closingBalance": 1183.21,
+      "categories": {
+        "Pajamos": 4585.49,
+        "Būstas": -1269.21,
+        "Maistas": -984.05,
+        "Vaikai": -183.52,
+        "Transportas": -628.79,
+        "Hobiai": -115.78,
+        "Pramogos": -66.8,
+        "Komunalinės": -251.56
+      }
+    },
+    {
+      "month": "2024-12",
+      "inflow": 4854.64,
+      "outflow": -3411.77,
+      "closingBalance": 1222.19,
+      "categories": {
+        "Pajamos": 4854.64,
+        "Būstas": -1087.6,
+        "Maistas": -688,
+        "Vaikai": -143.16,
+        "Transportas": -689.63,
+        "Hobiai": -127.63,
+        "Pramogos": -75.91,
+        "Komunalinės": -197.36
+      }
+    },
+    {
+      "month": "2025-01",
+      "inflow": 3978.47,
+      "outflow": -3065.65,
+      "closingBalance": 1169.18,
+      "categories": {
+        "Pajamos": 3978.47,
+        "Būstas": -907.91,
+        "Maistas": -810.97,
+        "Vaikai": -130.06,
+        "Transportas": -532.93,
+        "Hobiai": -150.47,
+        "Pramogos": -86.49,
+        "Komunalinės": -216.95,
+        "Kelionės": -220
+      }
+    },
+    {
+      "month": "2025-02",
+      "inflow": 4287.87,
+      "outflow": -2767.26,
+      "closingBalance": 1229.96,
+      "categories": {
+        "Pajamos": 4287.87,
+        "Būstas": -867.1,
+        "Maistas": -715.8,
+        "Vaikai": -164.37,
+        "Transportas": -597.35,
+        "Hobiai": -104.82,
+        "Pramogos": -61.78,
+        "Komunalinės": -200.9
+      }
+    },
+    {
+      "month": "2025-03",
+      "inflow": 4197.06,
+      "outflow": -3360.93,
+      "closingBalance": 1161.51,
+      "categories": {
+        "Pajamos": 4197.06,
+        "Būstas": -1079.53,
+        "Maistas": -761.09,
+        "Vaikai": -145.74,
+        "Transportas": -765.15,
+        "Hobiai": -145.44,
+        "Pramogos": -101.7,
+        "Komunalinės": -237.5,
+        "Elektronika": -204
+      }
+    },
+    {
+      "month": "2025-04",
+      "inflow": 4264.67,
+      "outflow": -3060.45,
+      "closingBalance": 1198.32,
+      "categories": {
+        "Pajamos": 4264.67,
+        "Būstas": -1277.95,
+        "Maistas": -972.93,
+        "Vaikai": -154.7,
+        "Transportas": -548.65,
+        "Hobiai": -130.32,
+        "Pramogos": -70.29,
+        "Komunalinės": -170.58
+      }
+    },
+    {
+      "month": "2025-05",
+      "inflow": 4254.24,
+      "outflow": -3405.06,
+      "closingBalance": 1162.82,
+      "categories": {
+        "Pajamos": 4254.24,
+        "Būstas": -1067.2,
+        "Maistas": -897.39,
+        "Vaikai": -165.73,
+        "Transportas": -579.97,
+        "Hobiai": -158.52,
+        "Pramogos": -90.35,
+        "Komunalinės": -267.01
+      }
+    },
+    {
+      "month": "2025-06",
+      "inflow": 3638.66,
+      "outflow": -2658.13,
+      "closingBalance": 1175.95,
+      "categories": {
+        "Pajamos": 3638.66,
+        "Būstas": -1079.76,
+        "Maistas": -815.63,
+        "Vaikai": -169.19,
+        "Transportas": -540.76,
+        "Hobiai": -102.44,
+        "Pramogos": -61.13,
+        "Komunalinės": -157.31
+      }
+    },
+    {
+      "month": "2025-07",
+      "inflow": 3914.57,
+      "outflow": -3588.23,
+      "closingBalance": 1110.53,
+      "categories": {
+        "Pajamos": 3914.57,
+        "Būstas": -1067.2,
+        "Maistas": -888.23,
+        "Vaikai": -169.5,
+        "Transportas": -773.29,
+        "Hobiai": -160.08,
+        "Pramogos": -104.66,
+        "Komunalinės": -250.9
+      }
+    },
+    {
+      "month": "2025-08",
+      "inflow": 4540.09,
+      "outflow": -3252.99,
+      "closingBalance": 1206.61,
+      "categories": {
+        "Pajamos": 4540.09,
+        "Būstas": -902.53,
+        "Maistas": -943.74,
+        "Vaikai": -166.37,
+        "Transportas": -514.25,
+        "Hobiai": -149.52,
+        "Pramogos": -86,
+        "Komunalinės": -183.41
+      }
+    },
+    {
+      "month": "2025-09",
+      "inflow": 4109.63,
+      "outflow": -3925.3,
+      "closingBalance": 1096.33,
+      "categories": {
+        "Pajamos": 4109.63,
+        "Būstas": -1129.98,
+        "Maistas": -1025.58,
+        "Vaikai": -199.63,
+        "Transportas": -607.58,
+        "Hobiai": -152.24,
+        "Pramogos": -102.87,
+        "Komunalinės": -188.75
+      }
+    },
+    {
+      "month": "2025-10",
+      "inflow": 4045.53,
+      "outflow": -3729.5,
+      "closingBalance": 1109.5,
+      "categories": {
+        "Pajamos": 4045.53,
+        "Būstas": -946.81,
+        "Maistas": -976.86,
+        "Vaikai": -192.25,
+        "Transportas": -514.31,
+        "Hobiai": -129.9,
+        "Pramogos": -85.56,
+        "Komunalinės": -237.09
+      }
+    },
+    {
+      "month": "2025-11",
+      "inflow": 4721.7,
+      "outflow": -4005.54,
+      "closingBalance": 1149.52,
+      "categories": {
+        "Pajamos": 4721.7,
+        "Būstas": -1136.37,
+        "Maistas": -1042.67,
+        "Vaikai": -212.61,
+        "Transportas": -745.85,
+        "Hobiai": -181.76,
+        "Pramogos": -87.93,
+        "Komunalinės": -262.1
+      }
+    },
+    {
+      "month": "2025-12",
+      "inflow": 4674.84,
+      "outflow": -4167.61,
+      "closingBalance": 1128.62,
+      "categories": {
+        "Pajamos": 4674.84,
+        "Būstas": -1392.97,
+        "Maistas": -810.89,
+        "Vaikai": -195.52,
+        "Transportas": -646.54,
+        "Hobiai": -185.31,
+        "Pramogos": -86.5,
+        "Komunalinės": -257.72
+      }
+    },
+    {
+      "month": "2026-01",
+      "inflow": 4503.1,
+      "outflow": -3572.67,
+      "closingBalance": 1170.94,
+      "categories": {
+        "Pajamos": 4503.1,
+        "Būstas": -1031.33,
+        "Maistas": -809.41,
+        "Vaikai": -149.65,
+        "Transportas": -733.59,
+        "Hobiai": -155.54,
+        "Pramogos": -76.68,
+        "Komunalinės": -182.91
+      }
+    },
+    {
+      "month": "2026-02",
+      "inflow": 4413.98,
+      "outflow": -3175.47,
+      "closingBalance": 1201.75,
+      "categories": {
+        "Pajamos": 4413.98,
+        "Būstas": -1216.97,
+        "Maistas": -789.79,
+        "Vaikai": -126.85,
+        "Transportas": -663.56,
+        "Hobiai": -117.32,
+        "Pramogos": -80.83,
+        "Komunalinės": -200.42
+      }
+    },
+    {
+      "month": "2026-03",
+      "inflow": 4075.99,
+      "outflow": -3595.55,
+      "closingBalance": 1125.94,
+      "categories": {
+        "Pajamos": 4075.99,
+        "Būstas": -1343.87,
+        "Maistas": -953.64,
+        "Vaikai": -168.89,
+        "Transportas": -579.23,
+        "Hobiai": -177.07,
+        "Pramogos": -86.26,
+        "Komunalinės": -228.62
+      }
+    },
+    {
+      "month": "2026-04",
+      "inflow": 3873.42,
+      "outflow": -2886.15,
+      "closingBalance": 1176.63,
+      "categories": {
+        "Pajamos": 3873.42,
+        "Būstas": -957.79,
+        "Maistas": -640.34,
+        "Vaikai": -125.71,
+        "Transportas": -559.62,
+        "Hobiai": -109.75,
+        "Pramogos": -72.51,
+        "Komunalinės": -157.31
+      }
+    },
+    {
+      "month": "2026-05",
+      "inflow": 4060.86,
+      "outflow": -3317.16,
+      "closingBalance": 1152.27,
+      "categories": {
+        "Pajamos": 4060.86,
+        "Būstas": -1316.29,
+        "Maistas": -875.8,
+        "Vaikai": -169.73,
+        "Transportas": -628.6,
+        "Hobiai": -154.44,
+        "Pramogos": -91.32,
+        "Komunalinės": -207.45
+      }
+    },
+    {
+      "month": "2026-06",
+      "inflow": 3834.29,
+      "outflow": -3142.33,
+      "closingBalance": 1147.1,
+      "categories": {
+        "Pajamos": 3834.29,
+        "Būstas": -947.03,
+        "Maistas": -902.62,
+        "Vaikai": -156.58,
+        "Transportas": -674.65,
+        "Hobiai": -113,
+        "Pramogos": -85.88,
+        "Komunalinės": -209.14
+      }
+    },
+    {
+      "month": "2026-07",
+      "inflow": 4075.99,
+      "outflow": -3798.96,
+      "closingBalance": 1105.6,
+      "categories": {
+        "Pajamos": 4075.99,
+        "Būstas": -1042.09,
+        "Maistas": -1062.21,
+        "Vaikai": -220.34,
+        "Transportas": -669.72,
+        "Hobiai": -171.07,
+        "Pramogos": -85.88,
+        "Komunalinės": -246.3
+      }
+    },
+    {
+      "month": "2026-08",
+      "inflow": 4456.02,
+      "outflow": -3869.05,
+      "closingBalance": 1136.6,
+      "categories": {
+        "Pajamos": 4456.02,
+        "Būstas": -1173.02,
+        "Maistas": -882.26,
+        "Vaikai": -219.94,
+        "Transportas": -550.99,
+        "Hobiai": -131.36,
+        "Pramogos": 0,
+        "Komunalinės": -208.34
+      }
+    },
+    {
+      "month": "2026-09",
+      "inflow": 4415.66,
+      "outflow": -4227.76,
+      "closingBalance": 1096.69,
+      "categories": {
+        "Pajamos": 4415.66,
+        "Būstas": -1290.73,
+        "Maistas": -950.69,
+        "Vaikai": -216.61,
+        "Transportas": -681.68,
+        "Hobiai": -132.59,
+        "Pramogos": -96.51,
+        "Komunalinės": -224.92
+      }
+    },
+    {
+      "month": "2026-10",
+      "inflow": 4944.54,
+      "outflow": -3409.09,
+      "closingBalance": 1231.45,
+      "categories": {
+        "Pajamos": 4944.54,
+        "Būstas": -947.81,
+        "Maistas": -851.36,
+        "Vaikai": -164.62,
+        "Transportas": -570.6,
+        "Hobiai": -99.77,
+        "Pramogos": -59,
+        "Komunalinės": -204.86
+      }
+    },
+    {
+      "month": "2026-11",
+      "inflow": 4948.7,
+      "outflow": -4003.07,
+      "closingBalance": 1172.46,
+      "categories": {
+        "Pajamos": 4948.7,
+        "Būstas": -1304.74,
+        "Maistas": -884.22,
+        "Vaikai": -145.48,
+        "Transportas": -679.4,
+        "Hobiai": -132.79,
+        "Pramogos": 0,
+        "Komunalinės": -211.69
+      }
+    },
+    {
+      "month": "2026-12",
+      "inflow": 4315.24,
+      "outflow": -3478.83,
+      "closingBalance": 1161.54,
+      "categories": {
+        "Pajamos": 4315.24,
+        "Būstas": -1129.98,
+        "Maistas": -640.17,
+        "Vaikai": -169.5,
+        "Transportas": -599.2,
+        "Hobiai": -133.68,
+        "Pramogos": -76.91,
+        "Komunalinės": -181.27
+      }
+    }
+  ],
+  "test_user_003": [
+    {
+      "month": "2024-08",
+      "inflow": 1797.22,
+      "outflow": -1210.72,
+      "closingBalance": 527.77,
+      "categories": {
+        "Pajamos": 1797.22,
+        "Būstas": -581.56,
+        "Maistas": -329.83,
+        "Vaikai": -102.96,
+        "Sveikata": -34.87,
+        "Pramogos": 0,
+        "Komunalinės": -109.58
+      }
+    },
+    {
+      "month": "2024-09",
+      "inflow": 1833.51,
+      "outflow": -1435.29,
+      "closingBalance": 508.94,
+      "categories": {
+        "Pajamos": 1833.51,
+        "Būstas": -645.9,
+        "Maistas": -409,
+        "Vaikai": -136.42,
+        "Sveikata": -45.19,
+        "Pramogos": -26.6,
+        "Komunalinės": -127.09
+      }
+    },
+    {
+      "month": "2024-10",
+      "inflow": 1885.13,
+      "outflow": -1375.42,
+      "closingBalance": 520.09,
+      "categories": {
+        "Pajamos": 1885.13,
+        "Būstas": -687.19,
+        "Maistas": -314.42,
+        "Vaikai": -133.34,
+        "Sveikata": -50.19,
+        "Pramogos": -28.59,
+        "Komunalinės": -132.25
+      }
+    },
+    {
+      "month": "2024-11",
+      "inflow": 2014.94,
+      "outflow": -1232.05,
+      "closingBalance": 547.41,
+      "categories": {
+        "Pajamos": 2014.94,
+        "Būstas": -567.41,
+        "Maistas": -257.41,
+        "Vaikai": -119.66,
+        "Sveikata": 0,
+        "Pramogos": 0,
+        "Komunalinės": -93.58
+      }
+    },
+    {
+      "month": "2024-12",
+      "inflow": 1940.04,
+      "outflow": -1266.9,
+      "closingBalance": 536.43,
+      "categories": {
+        "Pajamos": 1940.04,
+        "Būstas": -523.09,
+        "Maistas": -301.46,
+        "Vaikai": -117.42,
+        "Sveikata": -37.41,
+        "Pramogos": -20.96,
+        "Komunalinės": -96.7
+      }
+    },
+    {
+      "month": "2025-01",
+      "inflow": 1762.3,
+      "outflow": -1331.67,
+      "closingBalance": 512.18,
+      "categories": {
+        "Pajamos": 1762.3,
+        "Būstas": -562.46,
+        "Maistas": -292.37,
+        "Vaikai": -121.79,
+        "Sveikata": -42.36,
+        "Pramogos": -25.83,
+        "Komunalinės": -139.92
+      }
+    },
+    {
+      "month": "2025-02",
+      "inflow": 1831.45,
+      "outflow": -1479.94,
+      "closingBalance": 504.27,
+      "categories": {
+        "Pajamos": 1831.45,
+        "Būstas": -781.88,
+        "Maistas": -321.6,
+        "Vaikai": -128.49,
+        "Sveikata": -56.59,
+        "Pramogos": -34.76,
+        "Komunalinės": -146.15
+      }
+    },
+    {
+      "month": "2025-03",
+      "inflow": 1610.31,
+      "outflow": -1378.21,
+      "closingBalance": 492.33,
+      "categories": {
+        "Pajamos": 1610.31,
+        "Būstas": -768.41,
+        "Maistas": -398.6,
+        "Vaikai": -130.22,
+        "Sveikata": 0,
+        "Pramogos": -31.42,
+        "Komunalinės": -119.69
+      }
+    },
+    {
+      "month": "2025-04",
+      "inflow": 1608.98,
+      "outflow": -1028.3,
+      "closingBalance": 527.19,
+      "categories": {
+        "Pajamos": 1608.98,
+        "Būstas": -462.33,
+        "Maistas": -226.9,
+        "Vaikai": -102.57,
+        "Sveikata": -30.92,
+        "Pramogos": -26.86,
+        "Komunalinės": -88.38
+      }
+    },
+    {
+      "month": "2025-05",
+      "inflow": 1606.2,
+      "outflow": -1141.68,
+      "closingBalance": 515.57,
+      "categories": {
+        "Pajamos": 1606.2,
+        "Būstas": -675.26,
+        "Maistas": -283.79,
+        "Vaikai": -95.53,
+        "Sveikata": -36.99,
+        "Pramogos": -26.89,
+        "Komunalinės": -134.15
+      }
+    },
+    {
+      "month": "2025-06",
+      "inflow": 1497.47,
+      "outflow": -1038.51,
+      "closingBalance": 515.02,
+      "categories": {
+        "Pajamos": 1497.47,
+        "Būstas": -478.09,
+        "Maistas": -286.33,
+        "Vaikai": -89.27,
+        "Sveikata": -32.37,
+        "Pramogos": -21.96,
+        "Komunalinės": -114.57
+      }
+    },
+    {
+      "month": "2025-07",
+      "inflow": 1643.17,
+      "outflow": -1405.73,
+      "closingBalance": 492.86,
+      "categories": {
+        "Pajamos": 1643.17,
+        "Būstas": -692.94,
+        "Maistas": -388.02,
+        "Vaikai": -146.34,
+        "Sveikata": -55.1,
+        "Pramogos": -33.25,
+        "Komunalinės": -142.49
+      }
+    },
+    {
+      "month": "2025-08",
+      "inflow": 1540.48,
+      "outflow": -1391.92,
+      "closingBalance": 483.98,
+      "categories": {
+        "Pajamos": 1540.48,
+        "Būstas": -519.2,
+        "Maistas": -353.7,
+        "Vaikai": -99.72,
+        "Sveikata": -48.52,
+        "Pramogos": -25.68,
+        "Komunalinės": -145.57
+      }
+    },
+    {
+      "month": "2025-09",
+      "inflow": 1940.32,
+      "outflow": -1440.8,
+      "closingBalance": 519.07,
+      "categories": {
+        "Pajamos": 1940.32,
+        "Būstas": -700.67,
+        "Maistas": -320.59,
+        "Vaikai": -120.85,
+        "Sveikata": -42.28,
+        "Pramogos": -30.29,
+        "Komunalinės": -156.2
+      }
+    },
+    {
+      "month": "2025-10",
+      "inflow": 1848.53,
+      "outflow": -1502.86,
+      "closingBalance": 503.69,
+      "categories": {
+        "Pajamos": 1848.53,
+        "Būstas": -733.36,
+        "Maistas": -397.08,
+        "Vaikai": -124.36,
+        "Sveikata": -45.38,
+        "Pramogos": -31.74,
+        "Komunalinės": -157.7
+      }
+    },
+    {
+      "month": "2025-11",
+      "inflow": 1663.71,
+      "outflow": -1336.4,
+      "closingBalance": 501.85,
+      "categories": {
+        "Pajamos": 1663.71,
+        "Būstas": -460.6,
+        "Maistas": -315.76,
+        "Vaikai": -84.29,
+        "Sveikata": -44.09,
+        "Pramogos": -30.34,
+        "Komunalinės": -108.65
+      }
+    },
+    {
+      "month": "2025-12",
+      "inflow": 1793.62,
+      "outflow": -1358.39,
+      "closingBalance": 512.64,
+      "categories": {
+        "Pajamos": 1793.62,
+        "Būstas": -598.43,
+        "Maistas": -286.77,
+        "Vaikai": -122.88,
+        "Sveikata": -41.43,
+        "Pramogos": -23.51,
+        "Komunalinės": -114.63
+      }
+    },
+    {
+      "month": "2026-01",
+      "inflow": 1780.11,
+      "outflow": -1412.24,
+      "closingBalance": 505.91,
+      "categories": {
+        "Pajamos": 1780.11,
+        "Būstas": -710.8,
+        "Maistas": -340.04,
+        "Vaikai": -110.61,
+        "Sveikata": -38.51,
+        "Pramogos": -28.58,
+        "Komunalinės": -134.79
+      }
+    },
+    {
+      "month": "2026-02",
+      "inflow": 1848.57,
+      "outflow": -1418.95,
+      "closingBalance": 512.08,
+      "categories": {
+        "Pajamos": 1848.57,
+        "Būstas": -559.25,
+        "Maistas": -271.01,
+        "Vaikai": -111.55,
+        "Sveikata": -46.73,
+        "Pramogos": -28.01,
+        "Komunalinės": -146.86
+      }
+    },
+    {
+      "month": "2026-03",
+      "inflow": 1725.33,
+      "outflow": -1329.16,
+      "closingBalance": 508.74,
+      "categories": {
+        "Pajamos": 1725.33,
+        "Būstas": -686.7,
+        "Maistas": -356.27,
+        "Vaikai": -126.39,
+        "Sveikata": 0,
+        "Pramogos": -26.64,
+        "Komunalinės": -138.73
+      }
+    },
+    {
+      "month": "2026-04",
+      "inflow": 1672.71,
+      "outflow": -1410.06,
+      "closingBalance": 495.39,
+      "categories": {
+        "Pajamos": 1672.71,
+        "Būstas": -686.7,
+        "Maistas": -356.56,
+        "Vaikai": -133.96,
+        "Sveikata": -44.24,
+        "Pramogos": -29.32,
+        "Komunalinės": -158.15,
+        "Dovanos": -116
+      }
+    },
+    {
+      "month": "2026-05",
+      "inflow": 1558.96,
+      "outflow": -1438.54,
+      "closingBalance": 481.16,
+      "categories": {
+        "Pajamos": 1558.96,
+        "Būstas": -586.69,
+        "Maistas": -351.92,
+        "Vaikai": -116.15,
+        "Sveikata": -48.84,
+        "Pramogos": -26.08,
+        "Komunalinės": -142.16,
+        "Kelionės": -212
+      }
+    },
+    {
+      "month": "2026-06",
+      "inflow": 1577.12,
+      "outflow": -1112.74,
+      "closingBalance": 515.56,
+      "categories": {
+        "Pajamos": 1577.12,
+        "Būstas": -467.77,
+        "Maistas": -235.04,
+        "Vaikai": -105.7,
+        "Sveikata": -34.22,
+        "Pramogos": -25.05,
+        "Komunalinės": -120.33
+      }
+    },
+    {
+      "month": "2026-07",
+      "inflow": 1626.74,
+      "outflow": -1220.12,
+      "closingBalance": 509.78,
+      "categories": {
+        "Pajamos": 1626.74,
+        "Būstas": -523.09,
+        "Maistas": -245.81,
+        "Vaikai": -97.61,
+        "Sveikata": -42.44,
+        "Pramogos": -28.76,
+        "Komunalinės": -107.47
+      }
+    },
+    {
+      "month": "2026-08",
+      "inflow": 1643.17,
+      "outflow": -1501.33,
+      "closingBalance": 483.3,
+      "categories": {
+        "Pajamos": 1643.17,
+        "Būstas": -681.2,
+        "Maistas": -323.03,
+        "Vaikai": -101.62,
+        "Sveikata": -42.58,
+        "Pramogos": -23.82,
+        "Komunalinės": -145.6
+      }
+    },
+    {
+      "month": "2026-09",
+      "inflow": 1637.7,
+      "outflow": -1319.36,
+      "closingBalance": 500.95,
+      "categories": {
+        "Pajamos": 1637.7,
+        "Būstas": -611.91,
+        "Maistas": -260.27,
+        "Vaikai": -98.55,
+        "Sveikata": -40.44,
+        "Pramogos": -25.72,
+        "Komunalinės": -122.46,
+        "Dovanos": -186
+      }
+    },
+    {
+      "month": "2026-10",
+      "inflow": 1866.83,
+      "outflow": -1695.83,
+      "closingBalance": 486.22,
+      "categories": {
+        "Pajamos": 1866.83,
+        "Būstas": -636.88,
+        "Maistas": -302.54,
+        "Vaikai": -105.12,
+        "Sveikata": -41.69,
+        "Pramogos": -31.09,
+        "Komunalinės": -132.27
+      }
+    },
+    {
+      "month": "2026-11",
+      "inflow": 2014.94,
+      "outflow": -1413.38,
+      "closingBalance": 529.28,
+      "categories": {
+        "Pajamos": 2014.94,
+        "Būstas": -489.03,
+        "Maistas": -324.53,
+        "Vaikai": -112.04,
+        "Sveikata": -38.58,
+        "Pramogos": -25.79,
+        "Komunalinės": -108.65,
+        "Elektronika": -182
+      }
+    },
+    {
+      "month": "2026-12",
+      "inflow": 1720.41,
+      "outflow": -1390.42,
+      "closingBalance": 502.12,
+      "categories": {
+        "Pajamos": 1720.41,
+        "Būstas": -534.34,
+        "Maistas": -271.84,
+        "Vaikai": -92.52,
+        "Sveikata": -34.66,
+        "Pramogos": -27.51,
+        "Komunalinės": -95.79
+      }
+    }
+  ],
+  "test_user_004": [
+    {
+      "month": "2024-08",
+      "inflow": 1792.94,
+      "outflow": -1769.17,
+      "closingBalance": 361.59,
+      "categories": {
+        "Pajamos": 1792.94,
+        "Būstas": -695.66,
+        "Maistas": -434.92,
+        "Sportas": -418,
+        "Pramogos": -64.43,
+        "Transportas": -39.05,
+        "Komunalinės": -98.3
+      }
+    },
+    {
+      "month": "2024-09",
+      "inflow": 2030.4,
+      "outflow": -1558.34,
+      "closingBalance": 406.42,
+      "categories": {
+        "Pajamos": 2030.4,
+        "Būstas": -483.43,
+        "Maistas": -439.75,
+        "Sportas": -302.36,
+        "Pramogos": -49.76,
+        "Transportas": -37.27,
+        "Komunalinės": -76.27
+      }
+    },
+    {
+      "month": "2024-10",
+      "inflow": 2215.38,
+      "outflow": -1504.27,
+      "closingBalance": 430.32,
+      "categories": {
+        "Pajamos": 2215.38,
+        "Būstas": -485.42,
+        "Maistas": -369.68,
+        "Sportas": -288.64,
+        "Pramogos": 0,
+        "Transportas": -31.99,
+        "Komunalinės": -75.84
+      }
+    },
+    {
+      "month": "2024-11",
+      "inflow": 2302.13,
+      "outflow": -1922.39,
+      "closingBalance": 397.18,
+      "categories": {
+        "Pajamos": 2302.13,
+        "Būstas": -618.16,
+        "Maistas": -495.52,
+        "Sportas": -418.04,
+        "Pramogos": -74.47,
+        "Transportas": -41.46,
+        "Komunalinės": -79.07
+      }
+    },
+    {
+      "month": "2024-12",
+      "inflow": 2002.36,
+      "outflow": -1859.37,
+      "closingBalance": 373.51,
+      "categories": {
+        "Pajamos": 2002.36,
+        "Būstas": -580.11,
+        "Maistas": -389.49,
+        "Sportas": -451.88,
+        "Pramogos": -66.56,
+        "Transportas": 0,
+        "Komunalinės": -95.6
+      }
+    },
+    {
+      "month": "2025-01",
+      "inflow": 1906.09,
+      "outflow": -1957.43,
+      "closingBalance": 354.08,
+      "categories": {
+        "Pajamos": 1906.09,
+        "Būstas": -743.74,
+        "Maistas": -464.55,
+        "Sportas": -388.5,
+        "Pramogos": -69.6,
+        "Transportas": -38.44,
+        "Komunalinės": -100.93
+      }
+    },
+    {
+      "month": "2025-02",
+      "inflow": 2012.07,
+      "outflow": -1891.63,
+      "closingBalance": 371.25,
+      "categories": {
+        "Pajamos": 2012.07,
+        "Būstas": -721.42,
+        "Maistas": -532.21,
+        "Sportas": -437.57,
+        "Pramogos": -62.64,
+        "Transportas": -42.15,
+        "Komunalinės": -83.78
+      }
+    },
+    {
+      "month": "2025-03",
+      "inflow": 1855.09,
+      "outflow": -1645.83,
+      "closingBalance": 380.14,
+      "categories": {
+        "Pajamos": 1855.09,
+        "Būstas": -784.71,
+        "Maistas": -484.01,
+        "Sportas": -335.59,
+        "Pramogos": -70.29,
+        "Transportas": -38.76,
+        "Komunalinės": -76.46
+      }
+    },
+    {
+      "month": "2025-04",
+      "inflow": 2021,
+      "outflow": -1555.96,
+      "closingBalance": 405.71,
+      "categories": {
+        "Pajamos": 2021,
+        "Būstas": -592.2,
+        "Maistas": -315.72,
+        "Sportas": -361.41,
+        "Pramogos": -51.15,
+        "Transportas": -30.01,
+        "Komunalinės": -101.57
+      }
+    },
+    {
+      "month": "2025-05",
+      "inflow": 1759.47,
+      "outflow": -1451.05,
+      "closingBalance": 390.05,
+      "categories": {
+        "Pajamos": 1759.47,
+        "Būstas": -629.25,
+        "Maistas": -329.73,
+        "Sportas": -282.17,
+        "Pramogos": -65.74,
+        "Transportas": -32.93,
+        "Komunalinės": -93.69
+      }
+    },
+    {
+      "month": "2025-06",
+      "inflow": 1761.42,
+      "outflow": -1811.94,
+      "closingBalance": 354.16,
+      "categories": {
+        "Pajamos": 1761.42,
+        "Būstas": -795.4,
+        "Maistas": -523.31,
+        "Sportas": -462.11,
+        "Pramogos": -66.71,
+        "Transportas": -49.2,
+        "Komunalinės": 0
+      }
+    },
+    {
+      "month": "2025-07",
+      "inflow": 1893.34,
+      "outflow": -1778.42,
+      "closingBalance": 370.7,
+      "categories": {
+        "Pajamos": 1893.34,
+        "Būstas": -646.59,
+        "Maistas": -508.45,
+        "Sportas": -398.5,
+        "Pramogos": -65.82,
+        "Transportas": -32.77,
+        "Komunalinės": -78.11
+      }
+    },
+    {
+      "month": "2025-08",
+      "inflow": 1812.86,
+      "outflow": -1583.21,
+      "closingBalance": 382.17,
+      "categories": {
+        "Pajamos": 1812.86,
+        "Būstas": -640.54,
+        "Maistas": -355.46,
+        "Sportas": -395.4,
+        "Pramogos": 0,
+        "Transportas": -33.58,
+        "Komunalinės": -84.47
+      }
+    },
+    {
+      "month": "2025-09",
+      "inflow": 2196.15,
+      "outflow": -1654.56,
+      "closingBalance": 413.37,
+      "categories": {
+        "Pajamos": 2196.15,
+        "Būstas": -640.54,
+        "Maistas": -359.13,
+        "Sportas": -315.65,
+        "Pramogos": -65.03,
+        "Transportas": -29.89,
+        "Komunalinės": -67.25
+      }
+    },
+    {
+      "month": "2025-10",
+      "inflow": 2023.66,
+      "outflow": -1934.81,
+      "closingBalance": 368.1,
+      "categories": {
+        "Pajamos": 2023.66,
+        "Būstas": -649.77,
+        "Maistas": -435.52,
+        "Sportas": -383.61,
+        "Pramogos": -51.84,
+        "Transportas": -39.15,
+        "Komunalinės": -92.82,
+        "Elektronika": -73
+      }
+    },
+    {
+      "month": "2025-11",
+      "inflow": 2194.55,
+      "outflow": -1696.73,
+      "closingBalance": 408.99,
+      "categories": {
+        "Pajamos": 2194.55,
+        "Būstas": -667.84,
+        "Maistas": -379.91,
+        "Sportas": -367.21,
+        "Pramogos": -47.56,
+        "Transportas": -36.13,
+        "Komunalinės": -95.45
+      }
+    },
+    {
+      "month": "2025-12",
+      "inflow": 2172.77,
+      "outflow": -1650.02,
+      "closingBalance": 411.49,
+      "categories": {
+        "Pajamos": 2172.77,
+        "Būstas": -647.05,
+        "Maistas": -409.91,
+        "Sportas": -336.72,
+        "Pramogos": -56.76,
+        "Transportas": -26.65,
+        "Komunalinės": -71.35
+      }
+    },
+    {
+      "month": "2026-01",
+      "inflow": 1988.96,
+      "outflow": -1983.19,
+      "closingBalance": 359.79,
+      "categories": {
+        "Pajamos": 1988.96,
+        "Būstas": -746.06,
+        "Maistas": -482.6,
+        "Sportas": -335.99,
+        "Pramogos": -77.13,
+        "Transportas": -40.27,
+        "Komunalinės": -99.32
+      }
+    },
+    {
+      "month": "2026-02",
+      "inflow": 1932.39,
+      "outflow": -1790.63,
+      "closingBalance": 373.39,
+      "categories": {
+        "Pajamos": 1932.39,
+        "Būstas": -723.81,
+        "Maistas": -459.08,
+        "Sportas": -387.04,
+        "Pramogos": -67.73,
+        "Transportas": 0,
+        "Komunalinės": -77.5
+      }
+    },
+    {
+      "month": "2026-03",
+      "inflow": 2084.59,
+      "outflow": -1640.79,
+      "closingBalance": 403.59,
+      "categories": {
+        "Pajamos": 2084.59,
+        "Būstas": -605.61,
+        "Maistas": -417,
+        "Sportas": -385.03,
+        "Pramogos": -56.08,
+        "Transportas": -40.31,
+        "Komunalinės": -77.91
+      }
+    },
+    {
+      "month": "2026-04",
+      "inflow": 1817.05,
+      "outflow": -1463.64,
+      "closingBalance": 394.55,
+      "categories": {
+        "Pajamos": 1817.05,
+        "Būstas": -566.17,
+        "Maistas": -283.78,
+        "Sportas": -339.9,
+        "Pramogos": -47.57,
+        "Transportas": -36.92,
+        "Komunalinės": -79.97
+      }
+    },
+    {
+      "month": "2026-05",
+      "inflow": 1924.42,
+      "outflow": -1837.85,
+      "closingBalance": 367.87,
+      "categories": {
+        "Pajamos": 1924.42,
+        "Būstas": -708.54,
+        "Maistas": -478.41,
+        "Sportas": -465.91,
+        "Pramogos": -71.77,
+        "Transportas": -47.9,
+        "Komunalinės": -102.11,
+        "Dovanos": -187
+      }
+    },
+    {
+      "month": "2026-06",
+      "inflow": 1891.21,
+      "outflow": -1715.1,
+      "closingBalance": 376.82,
+      "categories": {
+        "Pajamos": 1891.21,
+        "Būstas": -684.1,
+        "Maistas": -418.93,
+        "Sportas": -354.03,
+        "Pramogos": -59,
+        "Transportas": -30.56,
+        "Komunalinės": -91.93
+      }
+    },
+    {
+      "month": "2026-07",
+      "inflow": 1969.84,
+      "outflow": -1706.89,
+      "closingBalance": 385.5,
+      "categories": {
+        "Pajamos": 1969.84,
+        "Būstas": -586.16,
+        "Maistas": -328.12,
+        "Sportas": -414.39,
+        "Pramogos": -55.45,
+        "Transportas": -41.16,
+        "Komunalinės": -82.17,
+        "Remontas": -187
+      }
+    },
+    {
+      "month": "2026-08",
+      "inflow": 2091.76,
+      "outflow": -1823.06,
+      "closingBalance": 386.08,
+      "categories": {
+        "Pajamos": 2091.76,
+        "Būstas": -617.96,
+        "Maistas": -458.47,
+        "Sportas": -361.48,
+        "Pramogos": -67.06,
+        "Transportas": -31.42,
+        "Komunalinės": -101.71
+      }
+    },
+    {
+      "month": "2026-09",
+      "inflow": 2154.71,
+      "outflow": -1866.23,
+      "closingBalance": 388.06,
+      "categories": {
+        "Pajamos": 2154.71,
+        "Būstas": -611.92,
+        "Maistas": -437.49,
+        "Sportas": -336.47,
+        "Pramogos": 0,
+        "Transportas": -35.44,
+        "Komunalinės": -70.81
+      }
+    },
+    {
+      "month": "2026-10",
+      "inflow": 1981.06,
+      "outflow": -1728.84,
+      "closingBalance": 384.43,
+      "categories": {
+        "Pajamos": 1981.06,
+        "Būstas": -467.96,
+        "Maistas": -360.86,
+        "Sportas": -314.49,
+        "Pramogos": -63.25,
+        "Transportas": -35.96,
+        "Komunalinės": -69,
+        "Sveikata": -75
+      }
+    },
+    {
+      "month": "2026-11",
+      "inflow": 2173.04,
+      "outflow": -2096.89,
+      "closingBalance": 366.83,
+      "categories": {
+        "Pajamos": 2173.04,
+        "Būstas": -787.3,
+        "Maistas": -360.17,
+        "Sportas": -379.74,
+        "Pramogos": -65.92,
+        "Transportas": -43.36,
+        "Komunalinės": -89.04
+      }
+    },
+    {
+      "month": "2026-12",
+      "inflow": 2002.36,
+      "outflow": -2185.77,
+      "closingBalance": 340.87,
+      "categories": {
+        "Pajamos": 2002.36,
+        "Būstas": -738.29,
+        "Maistas": -390.66,
+        "Sportas": -334.31,
+        "Pramogos": 0,
+        "Transportas": 0,
+        "Komunalinės": -112.97
+      }
+    }
+  ],
+  "test_user_005": [
+    {
+      "month": "2024-08",
+      "inflow": 1484.51,
+      "outflow": -890.98,
+      "closingBalance": 457.34,
+      "categories": {
+        "Pajamos": 1484.51,
+        "Būstas": -357.59,
+        "Maistas": -190.28,
+        "Kultūra": -38.29,
+        "Knygos": 0,
+        "Hobiai": 0,
+        "Pramogos": -44.04,
+        "Komunalinės": -63.7
+      }
+    },
+    {
+      "month": "2024-09",
+      "inflow": 1412.8,
+      "outflow": -920.95,
+      "closingBalance": 447.18,
+      "categories": {
+        "Pajamos": 1412.8,
+        "Būstas": -490.59,
+        "Maistas": -239.88,
+        "Kultūra": -40.92,
+        "Knygos": -22.29,
+        "Hobiai": 0,
+        "Pramogos": -44.03,
+        "Komunalinės": -78.9
+      }
+    },
+    {
+      "month": "2024-10",
+      "inflow": 1347.76,
+      "outflow": -962.56,
+      "closingBalance": 436.51,
+      "categories": {
+        "Pajamos": 1347.76,
+        "Būstas": -388.88,
+        "Maistas": -197.42,
+        "Kultūra": -33.26,
+        "Knygos": -26.95,
+        "Hobiai": -27.51,
+        "Pramogos": -45.49,
+        "Komunalinės": -59.01
+      }
+    },
+    {
+      "month": "2024-11",
+      "inflow": 1406.64,
+      "outflow": -1130.9,
+      "closingBalance": 425.56,
+      "categories": {
+        "Pajamos": 1406.64,
+        "Būstas": -558.69,
+        "Maistas": -283.53,
+        "Kultūra": -44.32,
+        "Knygos": -31.48,
+        "Hobiai": -26.74,
+        "Pramogos": -62.17,
+        "Komunalinės": -75.27
+      }
+    },
+    {
+      "month": "2024-12",
+      "inflow": 1497.51,
+      "outflow": -1005.2,
+      "closingBalance": 447.22,
+      "categories": {
+        "Pajamos": 1497.51,
+        "Būstas": -388.13,
+        "Maistas": -265.54,
+        "Kultūra": -42.78,
+        "Knygos": -25.07,
+        "Hobiai": -25.88,
+        "Pramogos": -45.03,
+        "Komunalinės": -63.07
+      }
+    },
+    {
+      "month": "2025-01",
+      "inflow": 1529.32,
+      "outflow": -939.9,
+      "closingBalance": 456.93,
+      "categories": {
+        "Pajamos": 1529.32,
+        "Būstas": -446.39,
+        "Maistas": -268.11,
+        "Kultūra": 0,
+        "Knygos": -27.38,
+        "Hobiai": -21.76,
+        "Pramogos": -40.2,
+        "Komunalinės": -59.01
+      }
+    },
+    {
+      "month": "2025-02",
+      "inflow": 1330.46,
+      "outflow": -1094.1,
+      "closingBalance": 421.63,
+      "categories": {
+        "Pajamos": 1330.46,
+        "Būstas": -457.84,
+        "Maistas": -283.29,
+        "Kultūra": -52.98,
+        "Knygos": -26.56,
+        "Hobiai": -33.09,
+        "Pramogos": -62.25,
+        "Komunalinės": -87.05
+      }
+    },
+    {
+      "month": "2025-03",
+      "inflow": 1236.9,
+      "outflow": -1145.23,
+      "closingBalance": 407.16,
+      "categories": {
+        "Pajamos": 1236.9,
+        "Būstas": -594.9,
+        "Maistas": -291.97,
+        "Kultūra": -58.48,
+        "Knygos": -29.44,
+        "Hobiai": -29.5,
+        "Pramogos": -66.29,
+        "Komunalinės": -103.1
+      }
+    },
+    {
+      "month": "2025-04",
+      "inflow": 1316.49,
+      "outflow": -941.19,
+      "closingBalance": 435.52,
+      "categories": {
+        "Pajamos": 1316.49,
+        "Būstas": -565.12,
+        "Maistas": -259.23,
+        "Kultūra": -48.48,
+        "Knygos": 0,
+        "Hobiai": -29.08,
+        "Pramogos": -53.28,
+        "Komunalinės": -85.5
+      }
+    },
+    {
+      "month": "2025-05",
+      "inflow": 1352.86,
+      "outflow": -1079.55,
+      "closingBalance": 425.32,
+      "categories": {
+        "Pajamos": 1352.86,
+        "Būstas": -658.14,
+        "Maistas": -305.31,
+        "Kultūra": -46.73,
+        "Knygos": -29.91,
+        "Hobiai": -33.93,
+        "Pramogos": -72.48,
+        "Komunalinės": -97.88,
+        "Dovanos": -242
+      }
+    },
+    {
+      "month": "2025-06",
+      "inflow": 1329.52,
+      "outflow": -1077.93,
+      "closingBalance": 423.15,
+      "categories": {
+        "Pajamos": 1329.52,
+        "Būstas": -607.71,
+        "Maistas": -293.98,
+        "Kultūra": -54.02,
+        "Knygos": -34.22,
+        "Hobiai": -39.1,
+        "Pramogos": -60.42,
+        "Komunalinės": -91.16
+      }
+    },
+    {
+      "month": "2025-07",
+      "inflow": 1357.91,
+      "outflow": -904.01,
+      "closingBalance": 443.38,
+      "categories": {
+        "Pajamos": 1357.91,
+        "Būstas": -473.81,
+        "Maistas": -252.12,
+        "Kultūra": -37.91,
+        "Knygos": -26.71,
+        "Hobiai": -24.21,
+        "Pramogos": -45.49,
+        "Komunalinės": -55.65
+      }
+    },
+    {
+      "month": "2025-08",
+      "inflow": 1540.53,
+      "outflow": -1010.08,
+      "closingBalance": 451.04,
+      "categories": {
+        "Pajamos": 1540.53,
+        "Būstas": -515.3,
+        "Maistas": -294.51,
+        "Kultūra": -33.44,
+        "Knygos": -23.54,
+        "Hobiai": -24.67,
+        "Pramogos": -50.11,
+        "Komunalinės": -70.14
+      }
+    },
+    {
+      "month": "2025-09",
+      "inflow": 1602.15,
+      "outflow": -944.48,
+      "closingBalance": 463.76,
+      "categories": {
+        "Pajamos": 1602.15,
+        "Būstas": -443.98,
+        "Maistas": -199.9,
+        "Kultūra": -38.05,
+        "Knygos": -24.1,
+        "Hobiai": -28.9,
+        "Pramogos": -54.08,
+        "Komunalinės": -51.23
+      }
+    },
+    {
+      "month": "2025-10",
+      "inflow": 1467.56,
+      "outflow": -1010.22,
+      "closingBalance": 443.72,
+      "categories": {
+        "Pajamos": 1467.56,
+        "Būstas": -495.01,
+        "Maistas": -223.42,
+        "Kultūra": -35.57,
+        "Knygos": -20.83,
+        "Hobiai": -23.66,
+        "Pramogos": -56.47,
+        "Komunalinės": -57.02
+      }
+    },
+    {
+      "month": "2025-11",
+      "inflow": 1542.77,
+      "outflow": -1025.26,
+      "closingBalance": 449.74,
+      "categories": {
+        "Pajamos": 1542.77,
+        "Būstas": -362.42,
+        "Maistas": -197.55,
+        "Kultūra": -39.77,
+        "Knygos": -21.56,
+        "Hobiai": -26.66,
+        "Pramogos": -39.72,
+        "Komunalinės": -59.01,
+        "Remontas": -163
+      }
+    },
+    {
+      "month": "2025-12",
+      "inflow": 1407.66,
+      "outflow": -996.78,
+      "closingBalance": 439.08,
+      "categories": {
+        "Pajamos": 1407.66,
+        "Būstas": -466.48,
+        "Maistas": -266.61,
+        "Kultūra": -43.36,
+        "Knygos": -23.2,
+        "Hobiai": -30.84,
+        "Pramogos": -43.03,
+        "Komunalinės": -62.85
+      }
+    },
+    {
+      "month": "2026-01",
+      "inflow": 1602.15,
+      "outflow": -1110.04,
+      "closingBalance": 447.2,
+      "categories": {
+        "Pajamos": 1602.15,
+        "Būstas": -526.65,
+        "Maistas": -293.33,
+        "Kultūra": -47.28,
+        "Knygos": -31.3,
+        "Hobiai": -34.23,
+        "Pramogos": -43.17,
+        "Komunalinės": -73.09
+      }
+    },
+    {
+      "month": "2026-02",
+      "inflow": 1386.48,
+      "outflow": -984.88,
+      "closingBalance": 438.15,
+      "categories": {
+        "Pajamos": 1386.48,
+        "Būstas": -393.25,
+        "Maistas": -286.22,
+        "Kultūra": -42.63,
+        "Knygos": -23.54,
+        "Hobiai": -32.83,
+        "Pramogos": -39.64,
+        "Komunalinės": -65.09
+      }
+    },
+    {
+      "month": "2026-03",
+      "inflow": 1250.35,
+      "outflow": -1044.95,
+      "closingBalance": 418.53,
+      "categories": {
+        "Pajamos": 1250.35,
+        "Būstas": -482.3,
+        "Maistas": -240.77,
+        "Kultūra": -45.61,
+        "Knygos": -24.8,
+        "Hobiai": -29.07,
+        "Pramogos": -50.61,
+        "Komunalinės": -78.32
+      }
+    },
+    {
+      "month": "2026-04",
+      "inflow": 1407.73,
+      "outflow": -1079.54,
+      "closingBalance": 430.81,
+      "categories": {
+        "Pajamos": 1407.73,
+        "Būstas": -527.35,
+        "Maistas": -283.42,
+        "Kultūra": -45.63,
+        "Knygos": -34.4,
+        "Hobiai": -38.3,
+        "Pramogos": -47.39,
+        "Komunalinės": -71.99
+      }
+    },
+    {
+      "month": "2026-05",
+      "inflow": 1339.98,
+      "outflow": -959.79,
+      "closingBalance": 436.01,
+      "categories": {
+        "Pajamos": 1339.98,
+        "Būstas": -420.17,
+        "Maistas": -293.92,
+        "Kultūra": -38.4,
+        "Knygos": -26.91,
+        "Hobiai": -32.25,
+        "Pramogos": -48.56,
+        "Komunalinės": -59.49
+      }
+    },
+    {
+      "month": "2026-06",
+      "inflow": 1277.38,
+      "outflow": -1089.66,
+      "closingBalance": 416.76,
+      "categories": {
+        "Pajamos": 1277.38,
+        "Būstas": -548.45,
+        "Maistas": -283.42,
+        "Kultūra": -52.93,
+        "Knygos": -27.75,
+        "Hobiai": -27.91,
+        "Pramogos": -56.53,
+        "Komunalinės": 0
+      }
+    },
+    {
+      "month": "2026-07",
+      "inflow": 1250.35,
+      "outflow": -1193.68,
+      "closingBalance": 403.66,
+      "categories": {
+        "Pajamos": 1250.35,
+        "Būstas": -641.11,
+        "Maistas": -252.15,
+        "Kultūra": -41.49,
+        "Knygos": -35.45,
+        "Hobiai": -40.49,
+        "Pramogos": -65.19,
+        "Komunalinės": -67.74
+      }
+    },
+    {
+      "month": "2026-08",
+      "inflow": 1428.49,
+      "outflow": -1226.66,
+      "closingBalance": 418.17,
+      "categories": {
+        "Pajamos": 1428.49,
+        "Būstas": -558.39,
+        "Maistas": -273.82,
+        "Kultūra": -39.79,
+        "Knygos": -26.41,
+        "Hobiai": -39.08,
+        "Pramogos": -58.09,
+        "Komunalinės": -98.54
+      }
+    },
+    {
+      "month": "2026-09",
+      "inflow": 1543.89,
+      "outflow": -1258.08,
+      "closingBalance": 426.57,
+      "categories": {
+        "Pajamos": 1543.89,
+        "Būstas": -548.14,
+        "Maistas": -251.64,
+        "Kultūra": -52.55,
+        "Knygos": -31.52,
+        "Hobiai": -34.07,
+        "Pramogos": -59.93,
+        "Komunalinės": -71.75
+      }
+    },
+    {
+      "month": "2026-10",
+      "inflow": 1347.76,
+      "outflow": -1299.43,
+      "closingBalance": 402.82,
+      "categories": {
+        "Pajamos": 1347.76,
+        "Būstas": -472.91,
+        "Maistas": -274.52,
+        "Kultūra": -54.87,
+        "Knygos": -33.29,
+        "Hobiai": -31.75,
+        "Pramogos": -55.28,
+        "Komunalinės": -85.45
+      }
+    },
+    {
+      "month": "2026-11",
+      "inflow": 1633.52,
+      "outflow": -1121.29,
+      "closingBalance": 449.21,
+      "categories": {
+        "Pajamos": 1633.52,
+        "Būstas": -438.76,
+        "Maistas": -214.01,
+        "Kultūra": -44.69,
+        "Knygos": -23.3,
+        "Hobiai": -26.16,
+        "Pramogos": -49.98,
+        "Komunalinės": -61.7
+      }
+    },
+    {
+      "month": "2026-12",
+      "inflow": 1572.38,
+      "outflow": -1360.29,
+      "closingBalance": 419.2,
+      "categories": {
+        "Pajamos": 1572.38,
+        "Būstas": -574.21,
+        "Maistas": -353.01,
+        "Kultūra": -53.55,
+        "Knygos": -24.45,
+        "Hobiai": -39.8,
+        "Pramogos": -48.29,
+        "Komunalinės": -71.92,
+        "Dovanos": -184
+      }
+    }
+  ]
+}

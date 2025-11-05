@@ -1,0 +1,103 @@
+{
+  "test_user_001": [
+    {
+      "accountId": "test_bank_001_acc_001",
+      "name": "Revolut",
+      "logo": "/banks/revolut.svg",
+      "balance": 3245.67,
+      "validUntil": "2025-05-01",
+      "lastFetched": "2024-11-18",
+      "connected": "2024-08-01"
+    },
+    {
+      "accountId": "test_bank_001_acc_002",
+      "name": "Paysera",
+      "logo": "/banks/paysera.png",
+      "balance": 1852.34,
+      "validUntil": "2025-05-01",
+      "lastFetched": "2024-11-18",
+      "connected": "2024-08-01"
+    }
+  ],
+  "test_user_002": [
+    {
+      "accountId": "test_bank_002_acc_001",
+      "name": "Swedbank",
+      "logo": "/banks/swedbank.png",
+      "balance": 8420.15,
+      "validUntil": "2025-05-01",
+      "lastFetched": "2024-11-18",
+      "connected": "2024-08-01"
+    },
+    {
+      "accountId": "test_bank_002_acc_002",
+      "name": "SEB",
+      "logo": "/banks/seb.png",
+      "balance": 15600.89,
+      "validUntil": "2025-05-01",
+      "lastFetched": "2024-11-18",
+      "connected": "2024-08-01"
+    },
+    {
+      "accountId": "test_bank_002_acc_003",
+      "name": "Revolut",
+      "logo": "/banks/revolut.svg",
+      "balance": 945.23,
+      "validUntil": "2025-05-01",
+      "lastFetched": "2024-11-18",
+      "connected": "2024-08-01"
+    }
+  ],
+  "test_user_003": [
+    {
+      "accountId": "test_bank_003_acc_001",
+      "name": "Luminor",
+      "logo": "/banks/luminor.png",
+      "balance": 2567.45,
+      "validUntil": "2025-05-01",
+      "lastFetched": "2024-11-18",
+      "connected": "2024-08-01"
+    },
+    {
+      "accountId": "test_bank_003_acc_002",
+      "name": "Revolut",
+      "logo": "/banks/revolut.svg",
+      "balance": 845.30,
+      "validUntil": "2025-05-01",
+      "lastFetched": "2024-11-18",
+      "connected": "2024-08-01"
+    }
+  ],
+  "test_user_004": [
+    {
+      "accountId": "test_bank_004_acc_001",
+      "name": "Swedbank",
+      "logo": "/banks/swedbank.png",
+      "balance": 1234.56,
+      "validUntil": "2025-05-01",
+      "lastFetched": "2024-11-18",
+      "connected": "2024-08-01"
+    },
+    {
+      "accountId": "test_bank_004_acc_002",
+      "name": "Revolut",
+      "logo": "/banks/revolut.svg",
+      "balance": 456.78,
+      "validUntil": "2025-05-01",
+      "lastFetched": "2024-11-18",
+      "connected": "2024-08-01"
+    }
+  ],
+  "test_user_005": [
+    {
+      "accountId": "test_bank_005_acc_001",
+      "name": "SEB",
+      "logo": "/banks/seb.png",
+      "balance": 1875.92,
+      "validUntil": "2025-05-01",
+      "lastFetched": "2024-11-18",
+      "connected": "2024-08-01"
+    }
+  ]
+}
+

@@ -102,7 +102,7 @@ const BankTransactionPage = ({ id }) => {
               stroke="var(--color-secondary)"
             />
           </Button>
-          <span className="text-xs text-accent sm:absolute -bottom-2">
+          <span className="text-xs text-[#EB2563] sm:absolute -bottom-2">
             {error?.refreshError || dataT === "Rate limit exceeded"
               ? "Per dieną galima atnaujinti 4 kartus"
               : ""}

@@ -1,38 +1,116 @@
 export const themes = {
   dark: {
-    container: "bg-[#0A0A20]/80 border-white/10 shadow-[0_0_25px_rgba(37,99,235,0.3)]",
-    content: "bg-[#0A0A20]/95",
-    card: "bg-[#1A1A40]/50 border-white/5",
-    cardHover: {
-      blue: "hover:border-[#2563EB]/30 hover:shadow-[0_0_15px_rgba(37,99,235,0.2)]",
-      red: "hover:border-[#EB2563]/30 hover:shadow-[0_0_15px_rgba(235,37,99,0.2)]",
-      green: "hover:border-[#63EB25]/30 hover:shadow-[0_0_15px_rgba(99,235,37,0.2)]",
-    },
+    // Backgrounds
+    background: "bg-[#0A0A20]",
+    backgroundGradient: "bg-gradient-to-br from-[#0A0A20] to-[#1A1A40]",
+    backgroundBlur: "bg-[#1A1A40]/40 backdrop-blur-md",
+    
+    // Cards
+    card: "bg-gradient-to-br from-[#1A1A40]/40 via-[#1A1A40]/30 to-[#0A0A20]/40",
+    cardBorder: "border-white/10",
+    cardHover: "hover:border-white/20 hover:shadow-xl hover:shadow-black/30",
+    
+    // Text
     text: {
       primary: "text-white",
-      secondary: "text-white/70",
+      secondary: "text-white/80",
       muted: "text-white/50",
+      heading: "text-white",
     },
-    progressBg: "bg-[#1A1A40]",
-    toggleBg: "bg-[#1A1A40] border-white/20",
-    toggleIcon: "text-white",
+    textPrimary: "text-white",
+    textSecondary: "text-white/80",
+    textMuted: "text-white/50",
+    textHeading: "text-white",
+    
+    // Progress bars
+    progressBg: "bg-white/5",
+    progressBgHover: "hover:bg-white/10",
+    progressBar: "bg-[#2563EB]",
+    
+    // Buttons
+    buttonPrimary: "bg-gradient-to-r from-[#2563EB] to-[#2563EB]/80 hover:from-[#2563EB]/90 hover:to-[#2563EB]/70",
+    buttonSecondary: "bg-gradient-to-r from-[#1A1A40]/60 to-[#1A1A40]/40 border-white/10 hover:border-white/20",
+    buttonAccent: "bg-gradient-to-r from-[#EB2563]/20 to-[#EB2563]/10 border-[#EB2563]/30 hover:border-[#EB2563]/50",
+    buttonHover: "hover:bg-white/10",
+    
+    // Navigation
+    navBorder: "border-white/5",
+    
+    // Icons
+    iconBg: "bg-[#2563EB]/20",
+    iconBgPrimary: "bg-[#63EB25]/20",
+    iconBgAccent: "bg-[#EB2563]/20",
+    
+    // Toggle
+    toggleBg: "bg-gradient-to-r from-[#1A1A40]/60 to-[#1A1A40]/40 border-white/10 hover:border-white/20",
+    
+    // Gradient orbs
+    orbSecondary: "from-[#2563EB]/20",
+    orbPrimary: "from-[#63EB25]/20",
+    orbAccent: "from-[#EB2563]/20",
+    
+    // Amount text gradient
+    amountGradient: "bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent",
+    
+    // Container
+    container: "bg-gradient-to-br from-[#0A0A20] to-[#1A1A40] border-white/10",
+    content: "bg-gradient-to-br from-[#1A1A40]/40 via-[#1A1A40]/30 to-[#0A0A20]/40",
   },
   light: {
-    container: "bg-white/95 border-gray-200 shadow-[0_0_25px_rgba(0,0,0,0.1)]",
-    content: "bg-white",
-    card: "bg-gray-100 border-gray-200/50",
-    cardHover: {
-      blue: "hover:border-[#2563EB]/30 hover:shadow-[0_0_15px_rgba(37,99,235,0.1)]",
-      red: "hover:border-[#EB2563]/30 hover:shadow-[0_0_15px_rgba(235,37,99,0.1)]",
-      green: "hover:border-[#63EB25]/30 hover:shadow-[0_0_15px_rgba(99,235,37,0.1)]",
-    },
+    // Backgrounds
+    background: "bg-slate-50",
+    backgroundGradient: "bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/20",
+    backgroundBlur: "bg-white/90 backdrop-blur-md",
+    
+    // Cards
+    card: "bg-gradient-to-br from-white via-white/95 to-slate-50/80",
+    cardBorder: "border-slate-200",
+    cardHover: "hover:border-slate-300 hover:shadow-xl hover:shadow-slate-200/50",
+    
+    // Text
     text: {
-      primary: "text-gray-900",
-      secondary: "text-gray-600",
-      muted: "text-gray-400",
+      primary: "text-slate-900",
+      secondary: "text-slate-700",
+      muted: "text-slate-500",
+      heading: "text-slate-900",
     },
-    progressBg: "bg-gray-200",
-    toggleBg: "bg-gray-200 border-gray-300",
-    toggleIcon: "text-gray-700",
+    textPrimary: "text-slate-900",
+    textSecondary: "text-slate-700",
+    textMuted: "text-slate-500",
+    textHeading: "text-slate-900",
+    
+    // Progress bars
+    progressBg: "bg-slate-100",
+    progressBgHover: "hover:bg-slate-200",
+    progressBar: "bg-[#2563EB]",
+    
+    // Buttons
+    buttonPrimary: "bg-gradient-to-r from-[#2563EB] to-[#2563EB]/80 hover:from-[#2563EB]/90 hover:to-[#2563EB]/70",
+    buttonSecondary: "bg-gradient-to-r from-slate-100 to-white border-slate-300 hover:border-slate-400 hover:from-slate-200 hover:to-slate-100",
+    buttonAccent: "bg-gradient-to-r from-[#EB2563]/15 to-[#EB2563]/10 border-[#EB2563]/40 hover:border-[#EB2563]/60",
+    buttonHover: "hover:bg-slate-100",
+    
+    // Navigation
+    navBorder: "border-slate-200",
+    
+    // Icons
+    iconBg: "bg-[#2563EB]/15",
+    iconBgPrimary: "bg-[#63EB25]/15",
+    iconBgAccent: "bg-[#EB2563]/15",
+    
+    // Toggle
+    toggleBg: "bg-gradient-to-r from-slate-200 to-slate-100 border-slate-300 hover:border-slate-400",
+    
+    // Gradient orbs
+    orbSecondary: "from-[#2563EB]/10",
+    orbPrimary: "from-[#63EB25]/10",
+    orbAccent: "from-[#EB2563]/10",
+    
+    // Amount text gradient
+    amountGradient: "bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent",
+    
+    // Container
+    container: "bg-gradient-to-br from-white to-slate-50 border-slate-200",
+    content: "bg-gradient-to-br from-white via-white/95 to-slate-50/80",
   },
 }

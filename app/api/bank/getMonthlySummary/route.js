@@ -18,7 +18,7 @@ export async function GET(req) {
       throw new Error();
     }
     const balances = await BankConnection.find(
-      {},
+      { userId },
       { balance: 1, _id: 0 }
     ).lean();
     const totalNet = balances.reduce((acc, bank) => {
@@ -44,18 +44,22 @@ export async function GET(req) {
           },
         }
       );
+      summary.closingBalance = totalNet;
     }
     if (!summary) {
       const previousMonth = getPreviousMonthDate();
-      const { categories } = await MonthSummary.findOne(
+      const previousSummary = await MonthSummary.findOne(
         {
           month: previousMonth,
           userId,
         },
         { categories: 1, _id: 0 }
       );
-      for (const key of categories.keys()) {
-        categories.set(key, 0);
+      let categories = new Map();
+      if (previousSummary?.categories) {
+        for (const key of previousSummary.categories.keys()) {
+          categories.set(key, 0);
+        }
       }
       console.log(categories, "categories");
       summary = await MonthSummary.create({

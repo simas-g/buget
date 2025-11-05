@@ -6,22 +6,43 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 const PieChart = ({ data }) => {
   const options = {
+    responsive: true,
+    maintainAspectRatio: true,
     plugins: {
       legend: {
-        position: "top",
-        onClick: () => null,
+        display: false,
       },
       tooltip: {
+        enabled: true,
+        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+        titleColor: '#fff',
+        bodyColor: '#fff',
+        borderColor: 'rgba(255, 255, 255, 0.1)',
+        borderWidth: 1,
+        padding: 12,
+        displayColors: true,
+        boxWidth: 15,
+        boxHeight: 15,
+        usePointStyle: true,
         callbacks: {
           label: (context) => {
-            let value = context.raw;
-            return ` ${value} €`;
+            const value = context.raw;
+            const total = context.dataset.data.reduce((a, b) => a + b, 0);
+            const percentage = ((value / total) * 100).toFixed(1);
+            return ` ${context.label}: ${value.toFixed(2)} € (${percentage}%)`;
           },
         },
       },
     },
-        hover: {
-      mode: null, // disable hover effects
+    animation: {
+      animateRotate: true,
+      animateScale: true,
+      duration: 1000,
+      easing: 'easeInOutQuart',
+    },
+    hover: {
+      mode: 'nearest',
+      intersect: true,
     },
   };
 

@@ -14,9 +14,57 @@ export async function POST(req) {
     const userOid = new mongoose.Types.ObjectId(user.id);
 
     const body = await req.json();
-    const { tempBank, accounts: encrypted } = body;
+    const { tempBank, accounts: encrypted, revalidateBankId } = body;
+    
+    // Check if this is a revalidation of an existing connection
+    if (revalidateBankId) {
+      const existingConnection = await BankConnection.findOne({
+        _id: revalidateBankId,
+        userId: userOid,
+      });
+      
+      if (existingConnection) {
+        // Update the existing connection with new validUntil date and connected date
+        const today = new Date().toISOString();
+        await BankConnection.findOneAndUpdate(
+          { _id: revalidateBankId, userId: userOid },
+          {
+            validUntil: new Date(Date.now() + 1000 * 60 * 60 * 24 * 90).toISOString(),
+            connected: today, // Update connected field to today's date
+          }
+        );
+        return NextResponse.json(
+          { message: "Bank connection revalidated successfully" },
+          { status: 200 }
+        );
+      } else {
+        // Revalidation ID provided but connection not found - continue with new connection flow
+        console.warn("Revalidation ID provided but connection not found, proceeding with new connection");
+      }
+    }
+    
+    // For new connections, validate encrypted data exists
+    if (!encrypted || encrypted === null) {
+      console.error("Bank connection failed: encrypted accounts data is missing");
+      return NextResponse.json(
+        { message: "Missing encrypted accounts data" },
+        { status: 400 }
+      );
+    }
+    
     const accounts = await decrypt(encrypted, isValidRequest.sessionId);
     console.log("Accounts:", accounts);
+    
+    // Validate decryption succeeded
+    if (!accounts || accounts === null) {
+      console.error("Bank connection failed: decryption returned null");
+      return NextResponse.json(
+        { message: "Failed to decrypt accounts data" },
+        { status: 400 }
+      );
+    }
+    
+    // Check for existing connection by accountId (for new connections)
     const existingConnection = await BankConnection.findOne({
       userId: userOid,
       accountId: accounts,
@@ -27,6 +75,9 @@ export async function POST(req) {
         { status: 200 }
       );
     }
+    
+    // Create new connection
+    const today = new Date().toISOString();
     await BankConnection.create({
       name: JSON.parse(tempBank).name,
       logo: JSON.parse(tempBank).logo,
@@ -35,6 +86,7 @@ export async function POST(req) {
       validUntil: new Date(Date.now() + 1000 * 60 * 60 * 24 * 90).toISOString(),
       balance: 0,
       lastFetched: "nodata",
+      connected: today, // Set connected date to today for new connections
     });
 
     return NextResponse.json(

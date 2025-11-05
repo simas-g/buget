@@ -1,6 +1,7 @@
 'use client'
 import CategoryPage from "./CategoryPage";
 import QueryWrapper from "@/app/lib/QueryWrapper";
+import ClientLayoutWrapper from "@/app/lib/ClientLayoutWrapper";
 import { getClientUser } from "@/app/util/http";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
@@ -9,7 +10,7 @@ import { summaryActions, userActions } from "@/components/Dashboard/userStore";
 export default function Page() {
   const dispatch = useDispatch();
   useEffect(() => {
-    async function getUser() {
+    const getUser = async () => {
       const userObject = await getClientUser();
       const { user, sessionId } = userObject;
       if (!user || !sessionId) return;
@@ -18,10 +19,10 @@ export default function Page() {
     getUser();
   }, []);
   return (
-    <div className="bg-dark-backgroud min-h-screen w-full">
-      <QueryWrapper>
+    <QueryWrapper>
+      <ClientLayoutWrapper>
         <CategoryPage />
-      </QueryWrapper>
-    </div>
+      </ClientLayoutWrapper>
+    </QueryWrapper>
   );
 }

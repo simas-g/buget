@@ -18,14 +18,44 @@ export async function POST(req) {
   try {
     await connect();
 
+    const existingTransaction = await Transaction.findOne({ transactionId });
+    
+    if (existingTransaction?.type === "categorized" && existingTransaction?.categoryName) {
+      const oldCategoryField = `categories.${existingTransaction.categoryName}`;
+      const oldUpdates = {
+        $inc: {
+          [oldCategoryField]: -amount,
+        },
+      };
+
+      if (amount > 0) {
+        oldUpdates.$inc.inflow = -amount;
+      } else if (amount < 0) {
+        oldUpdates.$inc.outflow = -amount;
+      }
+
+      await MonthSummary.updateOne(
+        { month, userId },
+        oldUpdates
+      );
+    }
+
     const updateField = `categories.${name}`;
+    const updates = {
+      $inc: {
+        [updateField]: amount,
+      },
+    };
+
+    if (amount > 0) {
+      updates.$inc.inflow = amount;
+    } else if (amount < 0) {
+      updates.$inc.outflow = amount;
+    }
+
     const result = await MonthSummary.updateOne(
       { month, userId },
-      {
-        $inc: {
-          [updateField]: amount,
-        },
-      },
+      updates,
       {
         upsert: true,
       }

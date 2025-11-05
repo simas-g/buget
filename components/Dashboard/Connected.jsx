@@ -8,7 +8,12 @@ import { useSelector } from "react-redux";
 import { useFetch } from "@/app/hooks/useFetch";
 import BoxWrapper from "./BoxWrapper";
 import Loading from "../UI/Loading";
+import { useTheme } from "@/app/lib/ThemeContext";
+import { themes } from "@/app/lib/themes";
+
 export default function Connected() {
+  const { theme } = useTheme();
+  const currentTheme = themes[theme] || themes.dark;
   const router = useRouter();
   const navigateToAddConnection = () => {
     router.push("/skydelis/nauja-saskaita");
@@ -24,9 +29,40 @@ export default function Connected() {
         return;
       } else if (ref) {
         const tempBank = sessionStorage.getItem("temp_bank");
+        // Check if this is a revalidation - use stored bank info if available
+        const revalidateBankName = sessionStorage.getItem("revalidate_bank_name");
+        if (revalidateBankName && !tempBank) {
+          // Use the revalidating bank info
+          const revalidateBankLogo = sessionStorage.getItem("revalidate_bank_logo");
+          sessionStorage.setItem("temp_bank", JSON.stringify({
+            name: revalidateBankName,
+            logo: revalidateBankLogo
+          }));
+        }
+        
+        // Get encrypted account data from sessionStorage
+        const encryptedDataStr = sessionStorage.getItem("data");
+        if (!encryptedDataStr) {
+          console.error("No account data found in sessionStorage for bank connection");
+          // Clear any revalidation flags if data is missing
+          sessionStorage.removeItem("revalidate_bank_id");
+          sessionStorage.removeItem("revalidate_account_id");
+          sessionStorage.removeItem("revalidate_bank_name");
+          sessionStorage.removeItem("revalidate_bank_logo");
+          return;
+        }
+        
+        let encryptedData;
+        try {
+          encryptedData = JSON.parse(encryptedDataStr);
+        } catch (parseError) {
+          console.error("Failed to parse encrypted data from sessionStorage:", parseError);
+          return;
+        }
+        
         const res = await initializeBankConnection(
-          JSON.parse(sessionStorage.getItem("data")),
-          tempBank,
+          encryptedData,
+          tempBank || sessionStorage.getItem("temp_bank"),
           userState.sessionId
         );
         if (res.ok) {
@@ -44,16 +80,19 @@ export default function Connected() {
 
   const { data: banks, isLoading } = useFetch(fetchBanks, shouldFetch);
   return (
-    <BoxWrapper className={'p-5'}>
-      <div className="lg:col-span-2">
+    <BoxWrapper className={'p-6 overflow-hidden relative'}>
+      <div className={`absolute top-0 right-0 w-40 h-40 bg-gradient-to-br ${currentTheme.orbAccent} to-transparent rounded-full blur-3xl -mr-20 -mt-20`} />
+      <div className="lg:col-span-2 relative z-10">
         <div className="flex items-center justify-between mb-6">
-          <h3 className="text-xl font-semibold text-white flex items-center space-x-2">
-            <CreditCard size={24} className="text-[#2563EB]" />
+          <h3 className={`text-xl font-bold ${currentTheme.textPrimary} flex items-center gap-3`}>
+            <div className={`p-2 rounded-lg ${currentTheme.iconBg}`}>
+              <CreditCard size={24} className="text-[#2563EB]" />
+            </div>
             <span>Sąskaitos</span>
           </h3>
           <button
             onClick={() => navigateToAddConnection()}
-            className="flex items-center space-x-2 rounded-lg bg-secondary px-4 py-2 text-white font-medium transition-all cursor-pointer duration-300"
+            className={`flex items-center space-x-2 rounded-lg ${currentTheme.buttonPrimary} px-5 py-2.5 text-white font-medium transition-all cursor-pointer duration-300 hover:shadow-lg hover:shadow-secondary/30`}
           >
             <Plus className="h-4 w-4" />
             <span>Pridėti</span>
@@ -63,7 +102,7 @@ export default function Connected() {
           {isLoading === true ? (
             <Loading />
           ) : (
-            banks?.data.map((account) => (
+            Array.isArray(banks?.data) && banks.data.map((account) => (
               <li key={account.name}>
                 <BankConnection
                   bank={account.name}
@@ -73,6 +112,7 @@ export default function Connected() {
                   id={account._id}
                   accountId={account.accountId}
                   connected={account.connected}
+                  validUntil={account.validUntil}
                 />
               </li>
             ))

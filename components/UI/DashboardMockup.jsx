@@ -1,16 +1,14 @@
+"use client";
+
 import { motion } from "framer-motion";
 import { BarChart2, PieChart, TrendingUp } from "lucide-react";
-import { useState } from "react";
 import { Sun, Moon } from "lucide-react";
 import { themes } from "@/app/lib/themes";
+import { useTheme } from "@/app/lib/ThemeContext";
 
 export default function DashboardMockup() {
-  const [theme, setTheme] = useState("dark");
-  const currentTheme = themes[theme];
-
-  const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"));
-  };
+  const { theme, toggleTheme } = useTheme();
+  const currentTheme = themes[theme] || themes.dark;
 
   return (
     <div
@@ -19,7 +17,7 @@ export default function DashboardMockup() {
     >
       <div className="rounded-xl overflow-hidden">
         {/* Header */}
-        <div className="bg-gradient-to-r from-secondary to-accent p-4 rounded-t-xl">
+        <div className="bg-gradient-to-r from-[#2563EB] to-[#EB2563] p-4 rounded-t-xl">
           <div className="flex items-center justify-between">
             <h3 className="text-lg font-medium text-white">Analitika</h3>
             <button

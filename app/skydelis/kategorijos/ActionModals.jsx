@@ -12,7 +12,7 @@ export function CreationModal({ ref, onCreate, ...props }) {
         />
         <button
           onClick={onCreate}
-          className="w-fit border px-4 py-2 rounded-lg cursor-pointer bg-primary"
+          className="w-fit border px-4 py-2 rounded-lg cursor-pointer bg-[#63EB25]"
         >
           Pridėti
         </button>
@@ -34,7 +34,7 @@ export function DeletionModal({ open, onClose, onDelete }) {
         </Button>
         <Button
           onClick={async () => onDelete()}
-          className="bg-primary border px-3 py-1"
+          className="bg-[#63EB25] border px-3 py-1"
         >
           Taip
         </Button>

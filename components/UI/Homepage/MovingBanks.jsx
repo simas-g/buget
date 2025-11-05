@@ -1,8 +1,11 @@
 "use client";
 import Image from "next/image";
 import { useEffect } from "react";
-import Button from "../Button";
+import Link from "next/link";
+import { useTheme } from "@/app/lib/ThemeContext";
+
 export default function MovingBanks() {
+  const { theme } = useTheme();
   const size = { width: 120, height: 120 };
   const banks = [
     { src: "/banks/swedbank.png", alt: "Swedbank" },
@@ -16,17 +19,21 @@ useEffect(() => {
   const container = document.querySelector('.scrolling-banks');
   if (container) {
     console.log('Container width:', container.scrollWidth);
-    console.log('First set should be:', (120 * 6) + (120 * 5)); // 1320px
+    console.log('First set should be:', (120 * 6) + (120 * 5));
   }
 }, []);
   return (
-    <section className="text-white scroll-mt-24 flex flex-col items-center justify-center py-16">
+    <section className={`scroll-mt-24 flex flex-col items-center justify-center py-16 ${
+      theme === "dark" ? "text-white" : "text-slate-900"
+    }`}>
       <div className="flex flex-col items-center justify-center gap-y-4 mb-12 px-4">
         <h3 className="text-4xl font-bold mb-2">Bankų sąrašas</h3>
-        <p className="text-gray-400 text-center max-w-2xl">
+        <p className={`text-center max-w-2xl ${
+          theme === "dark" ? "text-gray-400" : "text-slate-600"
+        }`}>
           Šiuo metu palaikome šias bankų sąskaitas. Jei tavo banko nėra, susisiek su mumis.
         </p>
-      <Button className="px-4 py-2" variant="basic">Peržiūrėti visus</Button>
+      <Link href="/bankai" className="px-4 py-2" variant="basic">Peržiūrėti visus</Link>
 
       </div>
       
