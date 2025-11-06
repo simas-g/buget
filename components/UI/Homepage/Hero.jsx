@@ -172,7 +172,11 @@ export default function Hero() {
               }`}>
                 <span>DEMO</span>
                 <div
-                  style={{ transform: "rotateX(180deg)", rotate: "90deg" }}
+                  style={{ 
+                    transform: "rotateX(180deg)", 
+                    rotate: "90deg",
+                    filter: theme === "light" ? "brightness(0)" : "none"
+                  }}
                   className=" w-12 lg:w-20 h-12 lg:h-20  left-0 top-10"
                 >
                   <Image alt="buget.lt" src={"/arrow.svg"} fill />

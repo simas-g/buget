@@ -249,29 +249,6 @@ export async function fetchMonthlySummary(userId, month) {
   }
 }
 
-export const recalculateMonthlySummaries = async (userId) => {
-  if (!userId) {
-    throw new Error("userId is required");
-  }
-  try {
-    const res = await fetch("/api/summaries/recalculate", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ userId }),
-    });
-    if (!res.ok) {
-      throw new Error("Failed to recalculate summaries");
-    }
-    const data = await res.json();
-    return data;
-  } catch (error) {
-    console.error("Error recalculating summaries:", error);
-    throw error;
-  }
-};
-
 export async function fetchCategorizedTransactions(userId, limit) {
   if (!userId) {
     return [];

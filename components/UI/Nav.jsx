@@ -32,7 +32,7 @@ export default function Navigation({
     );
   } else {
     buttons = (
-      <div className="flex items-center justify-center space-x-4">
+      <div className="flex items-center justify-center flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4">
         <Link href="/test-mode">
           <Button variant="" className="px-4 py-2 w-full">
             Išbandyti testiniame režime
@@ -113,13 +113,13 @@ export default function Navigation({
               </li>
             ))}
           </ul>
-          <ThemeToggle />
+          {actions && <ThemeToggle />}
           {loginButtons === true && buttons}
         </div>
 
         {/* Mobile Theme Toggle & Menu Button */}
         <div className="md:hidden flex items-center space-x-2">
-          <ThemeToggle />
+          {actions && <ThemeToggle />}
           <button
             className="z-50 w-10 h-10 relative focus:outline-none cursor-pointer"
             onClick={() => setIsOpen(!isOpen)}
@@ -152,11 +152,11 @@ export default function Navigation({
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: "100%" }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
-              className={`fixed inset-0 h-screen backdrop-blur-lg flex flex-col justify-center items-center z-40 md:hidden ${
+              className={`fixed inset-0 h-screen backdrop-blur-lg flex flex-col justify-center items-center z-40 md:hidden px-6 ${
                 theme === "dark" ? "bg-[#0A0A20]/95" : "bg-white/95"
               }`}
             >
-              <ul className="flex flex-col space-y-8 text-center">
+              <ul className="flex flex-col space-y-8 text-center w-full">
                 {navLinks.map((link) => (
                   <motion.li
                     key={link.href}
@@ -183,7 +183,7 @@ export default function Navigation({
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: 0.3 }}
-                className="flex flex-col mt-8"
+                className="flex flex-col mt-12 w-full"
               >
                 {buttons}
               </motion.div>

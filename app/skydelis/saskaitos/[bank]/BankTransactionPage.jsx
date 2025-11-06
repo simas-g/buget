@@ -8,14 +8,28 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { RefreshCw } from "lucide-react";
 import Loading from "@/components/UI/Loading";
 import { useState } from "react";
+import { useTheme } from "@/app/lib/ThemeContext";
+import { themes } from "@/app/lib/themes";
+import DashboardBackground from "@/components/Dashboard/DashboardBackground";
+import SharedNav from "@/components/Dashboard/SharedNav";
 const BankTransactionPage = ({ id }) => {
   const queryClient = useQueryClient();
+  const { theme } = useTheme();
+  const currentTheme = themes[theme] || themes.dark;
 
   let token;
   const [loadingNewT, setLoadingNewT] = useState(false);
   const [error, setError] = useState({});
   if (typeof window !== "undefined") {
-    token = JSON.parse(sessionStorage.getItem("access_token")).data.access;
+    const tokenData = sessionStorage.getItem("access_token");
+    if (tokenData) {
+      try {
+        const parsed = JSON.parse(tokenData);
+        token = parsed?.data?.access;
+      } catch (e) {
+        console.error("Failed to parse access token:", e);
+      }
+    }
   }
   async function getTransactions() {
     if (!token) {
@@ -83,63 +97,69 @@ const BankTransactionPage = ({ id }) => {
   };
 
   return (
-    <section className="h-full pb-4 min-h-screen w-full bg-[#0A0A20]">
-      <div className="text-white text-xl flex border-b p-4 max-w-5xl m-auto gap-4 flex-col sm:flex-row">
-        <div className="flex items-center gap-4 w-full ">
-          <img className="w-20 h-20" src={bank?.logo} alt="" />
-          <h1 className="text-4xl font-bold">{bank?.name}</h1>
-        </div>
-        <div className=" w-full relative flex flex-col justify-center sm:items-end gap-2">
-          <Button
-            onClick={async () => handleRefresh()}
-            variant="outline"
-            className="px-4 py-2 w-fit flex gap-3"
-          >
-            Atnaujinti
-            <RefreshCw
-              className={`${loadingNewT === true && "animate-spin"}`}
-              size={28}
-              stroke="var(--color-secondary)"
-            />
-          </Button>
-          <span className="text-xs text-[#EB2563] sm:absolute -bottom-2">
-            {error?.refreshError || dataT === "Rate limit exceeded"
-              ? "Per dieną galima atnaujinti 4 kartus"
-              : ""}
-          </span>
-        </div>
-      </div>
-      <div className="flex gap-2 max-w-5xl m-auto flex-col">
-        <div className="flex text-white gap-2 p-4">
-          <p className="text-sm text-whites">Paskutinį kartą atnaujinta: </p>
-          <span className="text-sm text-gray-400">
-            {bank && formatDate(bank?.lastFetched)}
-          </span>
-        </div>
+    <DashboardBackground>
+      <div className="min-h-screen relative">
+        <SharedNav />
+        <section className="h-full pb-4 min-h-screen w-full relative z-10">
+          <div className={`${currentTheme.textPrimary} text-xl flex border-b ${currentTheme.navBorder} p-4 max-w-5xl m-auto gap-4 flex-col sm:flex-row`}>
+            <div className="flex items-center gap-4 w-full ">
+              <img className="w-20 h-20 rounded-xl" src={bank?.logo} alt="" />
+              <h1 className={`text-4xl font-bold ${currentTheme.textHeading}`}>{bank?.name}</h1>
+            </div>
+            <div className=" w-full relative flex flex-col justify-center sm:items-end gap-2">
+              <Button
+                onClick={async () => handleRefresh()}
+                variant="outline"
+                className="px-4 py-2 w-fit flex gap-3"
+              >
+                Atnaujinti
+                <RefreshCw
+                  className={`${loadingNewT === true && "animate-spin"}`}
+                  size={28}
+                  stroke="var(--color-secondary)"
+                />
+              </Button>
+              <span className="text-xs text-[#EB2563] sm:absolute -bottom-2">
+                {error?.refreshError || dataT === "Rate limit exceeded"
+                  ? "Per dieną galima atnaujinti 4 kartus"
+                  : ""}
+              </span>
+            </div>
+          </div>
+          <div className="flex gap-2 max-w-5xl m-auto flex-col">
+            <div className={`flex ${currentTheme.textPrimary} gap-2 p-4`}>
+              <p className={`text-sm ${currentTheme.textSecondary}`}>Paskutinį kartą atnaujinta: </p>
+              <span className={`text-sm ${currentTheme.textMuted}`}>
+                {bank && formatDate(bank?.lastFetched)}
+              </span>
+            </div>
 
-        <ul className="space-y-3 text-white px-4 m-auto w-full">
-          {isLoadingT === true ? (
-            <Loading />
-          ) : (
-            transactions?.map((t) => (
-              <Transaction
-                refetch={refetch}
-                id={bank?.userId}
-                operation={t}
-                type="uncategorized"
-              />
-            ))
-          )}
-        </ul>
-        {!isLoadingT &&
-          typeof window !== "undefined" &&
-          transactions?.length === 0 && (
-            <p className="text-white w-full text-center">
-              Naujų operacijų nėra
-            </p>
-          )}
+            <ul className={`space-y-3 ${currentTheme.textPrimary} px-4 m-auto w-full`}>
+              {isLoadingT === true ? (
+                <Loading />
+              ) : (
+                transactions?.map((t) => (
+                  <Transaction
+                    key={t._id}
+                    refetch={refetch}
+                    id={bank?.userId}
+                    operation={t}
+                    type="uncategorized"
+                  />
+                ))
+              )}
+            </ul>
+            {!isLoadingT &&
+              typeof window !== "undefined" &&
+              transactions?.length === 0 && (
+                <p className={`${currentTheme.textPrimary} w-full text-center`}>
+                  Naujų operacijų nėra
+                </p>
+              )}
+          </div>
+        </section>
       </div>
-    </section>
+    </DashboardBackground>
   );
 };
 

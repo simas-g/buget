@@ -8,6 +8,16 @@ export async function middleware(request) {
   const sessionId = request.cookies.get("SESSION_KEY")?.value;
   const testModeId = request.cookies.get("TEST_MODE")?.value;
   
+  const isTestModeAllowedPath = pathname.startsWith("/test-mode") || 
+                                pathname.startsWith("/skydelis") ||
+                                pathname.startsWith("/api/");
+  
+  if (testModeId && !isTestModeAllowedPath) {
+    const response = NextResponse.redirect(new URL("/test-mode", request.url));
+    response.cookies.delete("TEST_MODE");
+    return response;
+  }
+  
   if (isAuthPage && (sessionId || testModeId)) {
     return NextResponse.redirect(new URL("/skydelis", request.url));
   }
@@ -29,3 +39,9 @@ export async function middleware(request) {
   }
   return NextResponse.next();
 }
+
+export const config = {
+  matcher: [
+    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
+  ],
+};

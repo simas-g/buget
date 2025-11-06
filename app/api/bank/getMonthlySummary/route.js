@@ -25,6 +25,20 @@ export async function GET(req) {
       acc += bank.balance;
       return acc;
     }, 0);
+    const allSummaries = await MonthSummary.find(
+      { userId },
+      { categories: 1, _id: 0 }
+    ).lean();
+    
+    let allDefinedCategories = new Set();
+    allSummaries.forEach((prevSummary) => {
+      if (prevSummary?.categories) {
+        Object.keys(prevSummary.categories).forEach((key) => {
+          allDefinedCategories.add(key);
+        });
+      }
+    });
+
     let summary = await MonthSummary.findOne(
       {
         month,
@@ -32,37 +46,14 @@ export async function GET(req) {
       },
       { inflow: 1, outflow: 1, closingBalance: 1, categories: 1, _id: 0 }
     ).lean();
-    if (summary?.closingBalance !== totalNet) {
-      await MonthSummary.updateOne(
-        {
-          userId,
-          month,
-        },
-        {
-          $set: {
-            closingBalance: totalNet,
-          },
-        }
-      );
-      summary.closingBalance = totalNet;
-    }
+    
     if (!summary) {
-      const previousMonth = getPreviousMonthDate();
-      const previousSummary = await MonthSummary.findOne(
-        {
-          month: previousMonth,
-          userId,
-        },
-        { categories: 1, _id: 0 }
-      );
       let categories = new Map();
-      if (previousSummary?.categories) {
-        for (const key of previousSummary.categories.keys()) {
-          categories.set(key, 0);
-        }
-      }
-      console.log(categories, "categories");
-      summary = await MonthSummary.create({
+      allDefinedCategories.forEach((categoryName) => {
+        categories.set(categoryName, 0);
+      });
+      
+      await MonthSummary.create({
         month,
         userId,
         inflow: 0,
@@ -70,6 +61,49 @@ export async function GET(req) {
         closingBalance: totalNet,
         categories,
       });
+      
+      summary = await MonthSummary.findOne(
+        {
+          month,
+          userId,
+        },
+        { inflow: 1, outflow: 1, closingBalance: 1, categories: 1, _id: 0 }
+      ).lean();
+    } else {
+      const missingCategories = {};
+      let hasMissingCategories = false;
+      
+      allDefinedCategories.forEach((categoryName) => {
+        if (!summary.categories || !(categoryName in summary.categories)) {
+          missingCategories[`categories.${categoryName}`] = 0;
+          hasMissingCategories = true;
+        }
+      });
+      
+      if (hasMissingCategories || summary.closingBalance !== totalNet) {
+        const updateFields = { ...missingCategories };
+        if (summary.closingBalance !== totalNet) {
+          updateFields.closingBalance = totalNet;
+        }
+        
+        await MonthSummary.updateOne(
+          {
+            userId,
+            month,
+          },
+          {
+            $set: updateFields,
+          }
+        );
+        
+        summary = await MonthSummary.findOne(
+          {
+            month,
+            userId,
+          },
+          { inflow: 1, outflow: 1, closingBalance: 1, categories: 1, _id: 0 }
+        ).lean();
+      }
     }
 
     return NextResponse.json({ summary }, { status: 200 });

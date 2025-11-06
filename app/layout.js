@@ -2,6 +2,7 @@ import { Inter, Roboto } from 'next/font/google'
 import "./globals.css";
 import Footer from '@/components/UI/Footer';
 import ClientLayoutWrapper from './lib/ClientLayoutWrapper';
+import { TestModeGuard } from '@/components/TestModeGuard';
 
 const inter = Inter({
   subsets: ['latin', 'latin-ext'], 
@@ -21,9 +22,24 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="lt">
-      <head><link rel="icon" href="/favicon.svg"></link></head>
+      <head>
+        <link rel="icon" href="/favicon.svg"></link>
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            (function() {
+              try {
+                const theme = localStorage.getItem('theme') || 'dark';
+                if (theme === 'dark') {
+                  document.documentElement.classList.add('dark');
+                }
+              } catch (e) {}
+            })();
+          `
+        }} />
+      </head>
       <body id='appBody' className={`${inter.variable} ${roboto.variable} font-sans antialiased`}>
       <ClientLayoutWrapper>
+        <TestModeGuard />
         {children}
 
       </ClientLayoutWrapper>

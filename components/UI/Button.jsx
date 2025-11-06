@@ -1,3 +1,5 @@
+"use client";
+
 import { useTheme } from "@/app/lib/ThemeContext";
 
 export default ({ children, variant, className, ...props }) => {

@@ -9,11 +9,13 @@ import Link from "next/link";
 const TestModeBanner = () => {
   const [inTestMode, setInTestMode] = useState(false);
   const [testUser, setTestUser] = useState(null);
+  const [mounted, setMounted] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
     setInTestMode(isTestMode());
     setTestUser(getTestUser());
+    setMounted(true);
   }, []);
 
   const handleExit = () => {
@@ -22,7 +24,7 @@ const TestModeBanner = () => {
     router.push("/");
   };
 
-  if (!inTestMode) return null;
+  if (!mounted || !inTestMode) return null;
 
   return (
     <div className="mx-auto z-10 px-4 sm:px-6 lg:px-8 w-full border-b border-white/20 bg-gradient-to-r from-[#2563EB] to-[#EB2563]">

@@ -1,11 +1,11 @@
 "use client";
 import { formatCurrency, getCurrentMonthDate } from "@/app/util/format";
-import { fetchMonthlySummary, recalculateMonthlySummaries } from "@/app/util/http";
+import { fetchMonthlySummary } from "@/app/util/http";
 import { exportMonthlyReportToPDF } from "@/app/util/pdfExport";
 import SharedNav from "@/components/Dashboard/SharedNav";
 import Button from "@/components/UI/Button";
 import { useQuery } from "@tanstack/react-query";
-import { Trash2, Plus, TrendingUp, Calendar, PieChartIcon, Box, ChevronLeft, ChevronRight, Loader2, Download, RefreshCw } from "lucide-react";
+import { Trash2, Plus, TrendingUp, Calendar, PieChartIcon, Box, ChevronLeft, ChevronRight, Loader2, Download } from "lucide-react";
 import { CreationModal, DeletionModal } from "./ActionModals";
 import { useMemo, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -27,7 +27,6 @@ export default function CategoryPage() {
   });
   const [isOpenCreation, setIsOpenCreation] = useState(false);
   const [isExporting, setIsExporting] = useState(false);
-  const [isRecalculating, setIsRecalculating] = useState(false);
   const newCategory = useRef();
   const pieChartRef = useRef();
   const { data, isLoading, refetch } = useQuery({
@@ -166,23 +165,6 @@ export default function CategoryPage() {
     }
   };
 
-  const handleRecalculate = async () => {
-    if (!userId) return;
-    
-    setIsRecalculating(true);
-    try {
-      const result = await recalculateMonthlySummaries(userId);
-      console.log('Recalculation result:', result);
-      await refetch();
-      alert(`Sėkmingai perskaičiuota! Atnaujinta ${result.monthsUpdated} mėn., apdorota ${result.transactionsProcessed} operacijų.`);
-    } catch (error) {
-      console.error('Error recalculating:', error);
-      alert('Klaida perskaičiuojant. Patikrinkite konsolę.');
-    } finally {
-      setIsRecalculating(false);
-    }
-  };
-
   return (
     <DashboardBackground>
       <div className="min-h-screen relative">
@@ -227,22 +209,6 @@ export default function CategoryPage() {
                     <ChevronRight className="w-5 h-5" />
                   </button>
                 </div>
-                
-                <button
-                  onClick={handleRecalculate}
-                  disabled={isRecalculating}
-                  className={`flex items-center gap-2 px-4 py-2 ${currentTheme.card} backdrop-blur-md rounded-2xl border ${currentTheme.cardBorder} shadow-lg ${currentTheme.buttonHover} transition-all duration-200 hover:scale-105 active:scale-95 ${isRecalculating ? 'opacity-50 cursor-not-allowed' : ''}`}
-                  title="Perskaičiuoti visas suvestines"
-                >
-                  {isRecalculating ? (
-                    <Loader2 className="w-5 h-5 animate-spin" stroke="var(--color-secondary)" />
-                  ) : (
-                    <RefreshCw className="w-5 h-5" stroke="var(--color-secondary)" />
-                  )}
-                  <span className={`font-semibold ${currentTheme.textPrimary}`}>
-                    {isRecalculating ? 'Skaičiuojama...' : 'Perskaičiuoti'}
-                  </span>
-                </button>
                 
                 <button
                   onClick={handleExportPDF}

@@ -75,7 +75,7 @@ export default function Dashboard() {
             <Summary type="month-out" />
           </div>
         </section>
-        <div className="flex w-full gap-6 flex-wrap lg:flex-nowrap">
+        <div className="flex w-full gap-6 flex-wrap lg:flex-nowrap lg:items-start">
           <Categories />
           <CategorizedTransactions />
         </div>

@@ -24,6 +24,7 @@ export default function Categorized() {
     enabled: !!user.userId,
   });
   console.log(cTransactions, "ttt");
+  
   return (
     <BoxWrapper className="flex flex-col p-6 w-full overflow-hidden relative">
       <div className={`absolute top-0 right-0 w-40 h-40 bg-gradient-to-br ${currentTheme.orbPrimary} to-transparent rounded-full blur-3xl -mr-20 -mt-20`} />

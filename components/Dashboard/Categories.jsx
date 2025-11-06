@@ -50,8 +50,9 @@ export default function Categories() {
     (a, b) => Math.abs(b[1]) - Math.abs(a[1])
   );
   console.log(sortedCategories, "soreteds");
+  
   return (
-    <BoxWrapper className={"relative flex flex-col w-full p-6 overflow-hidden"}>
+    <BoxWrapper className={"relative flex flex-col w-full lg:h-full p-6 overflow-hidden"}>
       <div className={`absolute top-0 right-0 w-40 h-40 bg-gradient-to-br ${currentTheme.orbSecondary} to-transparent rounded-full blur-3xl -mr-20 -mt-20`} />
       <div className="flex w-full justify-between items-center mb-6 relative z-10">
         <h5 className={`flex items-center gap-3 text-xl font-bold ${currentTheme.textPrimary}`}>
@@ -73,7 +74,7 @@ export default function Categories() {
         <p className={`${currentTheme.textMuted} text-sm relative z-10`}>Sukurtų kategorijų nėra</p>
       )}
       <ul className="space-y-4 relative z-10">
-        {sortedCategories.map(([name, amount]) => (
+        {sortedCategories.slice(0, 5).map(([name, amount]) => (
           <li className="flex flex-col gap-3 group" key={name}>
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
