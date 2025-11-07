@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import DialogWrapper from "../UI/Dialog";
 import Button from "../UI/Button";
-import Select from "../UI/Select";
+import Select from "../UI/StyledSelect";
 import { Plus, Trash2, AlertCircle } from "lucide-react";
 import { useTheme } from "@/app/lib/ThemeContext";
 import { themes } from "@/app/lib/themes";

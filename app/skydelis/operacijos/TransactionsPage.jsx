@@ -13,7 +13,7 @@ import { useTheme } from "@/app/lib/ThemeContext";
 import { themes } from "@/app/lib/themes";
 import Dialog from "@/components/UI/Dialog";
 import SplitTransactionModal from "@/components/Dashboard/SplitTransactionModal";
-import Select from "@/components/UI/Select";
+import Select from "@/components/UI/StyledSelect";
 
 export default () => {
   const { theme } = useTheme();
