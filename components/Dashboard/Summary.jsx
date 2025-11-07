@@ -88,13 +88,13 @@ export default function Summary({
       } ${type == "main" ? "p-6" : "p-5"} ${box?.width} relative overflow-hidden`}
     >
       {type === "main" && (
-        <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${currentTheme.orbSecondary} to-transparent rounded-full blur-2xl -mr-16 -mt-16`} />
+        <div className={`absolute top-0 right-0 w-24 h-24 bg-gradient-to-br ${currentTheme.orbSecondary} to-transparent rounded-full blur-lg -mr-12 -mt-12`} style={{ transform: 'translate3d(0,0,0)', willChange: 'transform' }} />
       )}
       {type === "month-in" && (
-        <div className={`absolute top-0 right-0 w-24 h-24 bg-gradient-to-br ${currentTheme.orbPrimary} to-transparent rounded-full blur-xl -mr-12 -mt-12`} />
+        <div className={`absolute top-0 right-0 w-20 h-20 bg-gradient-to-br ${currentTheme.orbPrimary} to-transparent rounded-full blur-md -mr-10 -mt-10`} style={{ transform: 'translate3d(0,0,0)', willChange: 'transform' }} />
       )}
       {type === "month-out" && (
-        <div className={`absolute top-0 right-0 w-24 h-24 bg-gradient-to-br ${currentTheme.orbAccent} to-transparent rounded-full blur-xl -mr-12 -mt-12`} />
+        <div className={`absolute top-0 right-0 w-20 h-20 bg-gradient-to-br ${currentTheme.orbAccent} to-transparent rounded-full blur-md -mr-10 -mt-10`} style={{ transform: 'translate3d(0,0,0)', willChange: 'transform' }} />
       )}
       <h5 className={`flex items-center gap-3 ${box.heading} relative z-10`}>
         <div className={`p-2 rounded-lg ${

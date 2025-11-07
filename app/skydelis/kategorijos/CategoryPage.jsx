@@ -1,6 +1,6 @@
 "use client";
 import { formatCurrency, getCurrentMonthDate } from "@/app/util/format";
-import { fetchMonthlySummary } from "@/app/util/http";
+import { fetchMonthlySummary, createCategory, deleteCategory } from "@/app/util/http";
 import { exportMonthlyReportToPDF } from "@/app/util/pdfExport";
 import SharedNav from "@/components/Dashboard/SharedNav";
 import Button from "@/components/UI/Button";
@@ -17,7 +17,7 @@ import DashboardBackground from "@/components/Dashboard/DashboardBackground";
 
 export default function CategoryPage() {
   const dispatch = useDispatch();
-  const { userId } = useSelector((state) => state.user);
+  const { userId, sessionId } = useSelector((state) => state.user);
   const { theme } = useTheme();
   const currentTheme = themes[theme] || themes.dark;
   const [selectedMonth, setSelectedMonth] = useState(getCurrentMonthDate());
@@ -142,13 +142,38 @@ export default function CategoryPage() {
     setIsOpenConfirmDeletion({ isOpen: false, name: "" });
   };
 
-  const handleCategoryCreation = () => {
-    // Logic for category creation
+  const handleCloseCreation = () => {
     setIsOpenCreation(false);
   };
 
-  const handleDeleteCategory = () => {
-    // Logic for category deletion
+  const handleCategoryCreation = async () => {
+    const categoryName = newCategory.current?.value?.trim();
+    if (!categoryName) {
+      return;
+    }
+    
+    const result = await createCategory(categoryName, userId, selectedMonth, sessionId);
+    if (result.ok) {
+      refetch();
+      newCategory.current.value = "";
+    } else {
+      alert("Nepavyko sukurti kategorijos");
+    }
+    setIsOpenCreation(false);
+  };
+
+  const handleDeleteCategory = async () => {
+    const result = await deleteCategory(
+      isOpenConfirmDeletion.name,
+      userId,
+      selectedMonth,
+      sessionId
+    );
+    if (result.ok) {
+      refetch();
+    } else {
+      alert(result.data?.message || "Nepavyko ištrinti kategorijos");
+    }
     setIsOpenConfirmDeletion({ isOpen: false, name: "" });
   };
 
@@ -235,7 +260,7 @@ export default function CategoryPage() {
             <div className="grid lg:grid-cols-3 gap-6">
               <div className="lg:col-span-2 space-y-6">
                 <BoxWrapper className="p-6 relative overflow-hidden">
-                  <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${currentTheme.orbSecondary} to-transparent rounded-full blur-2xl -mr-16 -mt-16`} />
+                  <div className={`absolute top-0 right-0 w-24 h-24 bg-gradient-to-br ${currentTheme.orbSecondary} to-transparent rounded-full blur-lg -mr-12 -mt-12`} style={{ transform: 'translate3d(0,0,0)', willChange: 'transform' }} />
                   <div className="flex items-center justify-between mb-6 relative z-10">
                     <div className="space-y-2">
                       <h2 className={`text-2xl font-bold ${currentTheme.textPrimary}`}>
@@ -292,7 +317,7 @@ export default function CategoryPage() {
                 </BoxWrapper>
 
                 <BoxWrapper className="p-6 relative overflow-hidden">
-                  <div className={`absolute top-0 right-0 w-40 h-40 bg-gradient-to-br ${currentTheme.orbSecondary} to-transparent rounded-full blur-3xl -mr-20 -mt-20`} />
+                  <div className={`absolute top-0 right-0 w-28 h-28 bg-gradient-to-br ${currentTheme.orbSecondary} to-transparent rounded-full blur-lg -mr-14 -mt-14`} style={{ transform: 'translate3d(0,0,0)', willChange: 'transform' }} />
                   <div className="flex items-center justify-between mb-6 relative z-10">
                     <h3 className={`text-xl font-bold ${currentTheme.textPrimary}`}>
                       Kategorijos
@@ -309,7 +334,7 @@ export default function CategoryPage() {
                   ) : categories.length === 0 ? (
                     <p className={`${currentTheme.textMuted} text-sm relative z-10`}>Nėra kategorijų šiam mėnesiui</p>
                   ) : (
-                    <ul className="space-y-4 relative z-10">
+                    <ul className="space-y-4 relative z-10" style={{ contentVisibility: 'auto', containIntrinsicSize: 'auto 500px' }}>
                       {categories
                         ?.sort((a, b) => Math.abs(b[1]) - Math.abs(a[1]))
                         .map(([category, amount]) => {
@@ -319,7 +344,7 @@ export default function CategoryPage() {
                             <li className="flex flex-col gap-3 group" key={category}>
                               <div className="flex items-center justify-between">
                                 <div className="flex items-center gap-2">
-                                  <div className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: color }} />
+                                  <div className="w-2 h-2 rounded-full" style={{ backgroundColor: color }} />
                                   <span className={`${currentTheme.textPrimary} font-medium`}>{category}</span>
                                 </div>
                                 <div className="flex items-center gap-2">
@@ -331,7 +356,9 @@ export default function CategoryPage() {
                                   </span>
                                   <button
                                     onClick={() => handleTrashConfirm(category)}
-                                    className={`p-2 rounded-lg ${currentTheme.buttonHover} transition-all duration-200 hover:scale-110 active:scale-95 group`}
+                                    disabled={!isExactCurrentMonth}
+                                    className={`p-2 rounded-lg ${currentTheme.buttonHover} transition-all duration-200 ${isExactCurrentMonth ? 'hover:scale-110 active:scale-95' : 'opacity-30 cursor-not-allowed'} group`}
+                                    title={!isExactCurrentMonth ? 'Kategorijas galima trinti tik einamajam mėnesiui' : ''}
                                   >
                                     <Trash2 className="w-4 h-4 text-[#EB2563]" />
                                   </button>
@@ -357,7 +384,7 @@ export default function CategoryPage() {
 
               <div className="lg:col-span-1">
                 <BoxWrapper className="p-6 relative overflow-hidden sticky top-6">
-                  <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${currentTheme.orbSecondary} to-transparent rounded-full blur-2xl -mr-16 -mt-16`} />
+                  <div className={`absolute top-0 right-0 w-24 h-24 bg-gradient-to-br ${currentTheme.orbSecondary} to-transparent rounded-full blur-lg -mr-12 -mt-12`} style={{ transform: 'translate3d(0,0,0)', willChange: 'transform' }} />
                   <div className="flex items-center gap-2 mb-6 relative z-10">
                     <div className={`p-2 rounded-lg ${currentTheme.iconBg}`}>
                       <PieChartIcon stroke="var(--color-secondary)" className="w-5 h-5" />
@@ -416,14 +443,14 @@ export default function CategoryPage() {
       {isOpenCreation && (
         <CreationModal
           open={isOpenCreation}
-          onClose={handleTrashCancel}
+          onClose={handleCloseCreation}
           ref={newCategory}
           onCreate={handleCategoryCreation}
         />
       )}
       {isOpenConfirmDeletion.isOpen && (
         <DeletionModal
-          open={isOpenConfirmDeletion}
+          open={isOpenConfirmDeletion.isOpen}
           onClose={handleTrashCancel}
           onDelete={handleDeleteCategory}
         />

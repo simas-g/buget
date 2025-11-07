@@ -20,7 +20,7 @@ export async function GET(req) {
   try {
     const transactions = await Transaction.find({
       userId,
-      type: "categorized",
+      type: { $in: ["categorized", "manual", "split"] },
     })
       .limit(limit)
       .sort({ bookingDate: -1 })

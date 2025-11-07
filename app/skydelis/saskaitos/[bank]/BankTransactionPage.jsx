@@ -7,7 +7,7 @@ import Button from "@/components/UI/Button";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { RefreshCw } from "lucide-react";
 import Loading from "@/components/UI/Loading";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTheme } from "@/app/lib/ThemeContext";
 import { themes } from "@/app/lib/themes";
 import DashboardBackground from "@/components/Dashboard/DashboardBackground";
@@ -17,29 +17,50 @@ const BankTransactionPage = ({ id }) => {
   const { theme } = useTheme();
   const currentTheme = themes[theme] || themes.dark;
 
-  let token;
+  const [token, setToken] = useState(null);
   const [loadingNewT, setLoadingNewT] = useState(false);
   const [error, setError] = useState({});
-  if (typeof window !== "undefined") {
+  
+  const getGoCardlessToken = async () => {
     const tokenData = sessionStorage.getItem("access_token");
     if (tokenData) {
       try {
         const parsed = JSON.parse(tokenData);
-        token = parsed?.data?.access;
+        return parsed?.data?.access;
       } catch (e) {
         console.error("Failed to parse access token:", e);
       }
     }
-  }
+    
+    try {
+      const res = await fetch("/api/go/goCardLessToken");
+      if (!res.ok) throw new Error("Failed to fetch token");
+      const data = await res.json();
+      sessionStorage.setItem("access_token", JSON.stringify(data));
+      return data?.data?.access;
+    } catch (error) {
+      console.error("Error fetching GoCardless token:", error);
+      return null;
+    }
+  };
+  useEffect(() => {
+    const initializeToken = async () => {
+      const goCardlessToken = await getGoCardlessToken();
+      setToken(goCardlessToken);
+    };
+    initializeToken();
+  }, []);
+
   async function getTransactions() {
-    if (!token) {
+    const currentToken = token || await getGoCardlessToken();
+    if (!currentToken) {
       return;
     }
     const res = await fetch(
       `/api/transactions/getInitialTransactions?id=${id}`,
       {
         headers: {
-          "Banking-Token": token,
+          "Banking-Token": currentToken,
         },
       }
     );
@@ -68,25 +89,37 @@ const BankTransactionPage = ({ id }) => {
   const transactions = dataT?.availableTransactions || [];
   const handleRefresh = async () => {
     setLoadingNewT(true);
+    setError({});
     try {
+      const currentToken = token || await getGoCardlessToken();
+      if (!currentToken) {
+        setError((prev) => ({
+          ...prev,
+          refreshError: "Nepavyko gauti prieigos rakto",
+        }));
+        return;
+      }
+      
       const res = await fetchBankDetails(
         bank._id,
         bank.accountId,
-        token,
+        currentToken,
         bank.userId
       );
       if (res === null) {
-        throw new Error();
+        throw new Error("Failed to fetch bank details");
       }
       if (res === "Rate limit exceeded") {
         setError((prev) => ({
           ...prev,
           refreshError: "Per dieną galima atnaujinti 4 kartus",
         }));
+        return;
       }
       queryClient.invalidateQueries({ queryKey: ["transactions", id] });
       queryClient.invalidateQueries({ queryKey: ["bankId", id] });
     } catch (error) {
+      console.error("Error refreshing transactions:", error);
       setError((prev) => ({
         ...prev,
         refreshError: "Nepavyko atnaujinti",
@@ -134,7 +167,7 @@ const BankTransactionPage = ({ id }) => {
               </span>
             </div>
 
-            <ul className={`space-y-3 ${currentTheme.textPrimary} px-4 m-auto w-full`}>
+            <ul className={`space-y-3 ${currentTheme.textPrimary} px-4 m-auto w-full`} style={{ contentVisibility: 'auto', containIntrinsicSize: 'auto 500px' }}>
               {isLoadingT === true ? (
                 <Loading />
               ) : (
@@ -148,6 +181,17 @@ const BankTransactionPage = ({ id }) => {
                   />
                 ))
               )}
+              {/**test transaction */}
+              <Transaction
+                    operation={{
+                      transactionId: "test_user_001_000_000",
+                      amount: 100.00,
+                      bookingDate: "2025-01-01",
+                      type: "uncategorized",
+                      categoryName: "Pajamos",
+                    }}
+                    type="uncategorized"
+                  />
             </ul>
             {!isLoadingT &&
               typeof window !== "undefined" &&

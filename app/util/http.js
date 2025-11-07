@@ -187,8 +187,17 @@ export async function getBankData(bankId) {
   }
 }
 
-///fetch bank transactions/balance
 export async function fetchBankDetails(bankId, accountId, access_token, userId) {
+  if (!bankId || !accountId || !access_token || !userId) {
+    console.error("fetchBankDetails: Missing required parameters", {
+      bankId,
+      accountId,
+      hasAccessToken: !!access_token,
+      userId,
+    });
+    return null;
+  }
+
   try {
     const res = await fetch("/api/transactions/bankDetails", {
       method: "POST",
@@ -205,6 +214,7 @@ export async function fetchBankDetails(bankId, accountId, access_token, userId) 
     const data = await res.json();
     console.log(data, "our darta");
     if (data.status_code == 429) return "Rate limit exceeded";
+    return data;
   } catch (error) {
     console.log("Error fetching bank details:", error);
     return null;
@@ -289,3 +299,39 @@ export async function getClientUser() {
     console.log(error, "error");
   }
 }
+
+export const createCategory = async (name, userId, date, sessionId) => {
+  try {
+    const res = await fetch("/api/category/create", {
+      method: "POST",
+      headers: {
+        Authorization: "Bearer " + sessionId,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name, userId, date }),
+    });
+    const data = await res.json();
+    return { ok: res.ok, data };
+  } catch (error) {
+    console.error("Error creating category:", error);
+    return { ok: false, data: null };
+  }
+};
+
+export const deleteCategory = async (name, userId, date, sessionId) => {
+  try {
+    const res = await fetch("/api/category/delete", {
+      method: "DELETE",
+      headers: {
+        Authorization: "Bearer " + sessionId,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name, userId, date }),
+    });
+    const data = await res.json();
+    return { ok: res.ok, data };
+  } catch (error) {
+    console.error("Error deleting category:", error);
+    return { ok: false, data: null };
+  }
+};

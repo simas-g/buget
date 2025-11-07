@@ -73,7 +73,7 @@ export default function DashboardMockup() {
           {/* Stat cards */}
           <div className="mb-6 grid sm:grid-cols-3 grid-cols-2 gap-4">
             <div
-              className={`rounded-lg p-4 backdrop-blur-sm border transition-all duration-500 ${currentTheme.card}`}
+              className={`rounded-lg p-4 backdrop-blur-sm border transition-all duration-500 ${currentTheme.cardBorder}`}
             >
               <BarChart2 className="mb-2 h-6 w-6 text-[#2563EB]" />
               <p
@@ -90,7 +90,7 @@ export default function DashboardMockup() {
             </div>
 
             <div
-              className={`rounded-lg p-4 backdrop-blur-sm border transition-all duration-500 ${currentTheme.card}`}
+              className={`rounded-lg p-4 backdrop-blur-sm border transition-all duration-500 ${currentTheme.cardBorder}`}
             >
               <PieChart className="mb-2 h-6 w-6 text-[#EB2563]" />
               <p
@@ -107,7 +107,7 @@ export default function DashboardMockup() {
             </div>
 
             <div
-              className={`rounded-lg p-4 col-span-2 sm:col-span-1 backdrop-blur-sm border transition-all duration-500 ${currentTheme.card}`}
+              className={`rounded-lg p-4 col-span-2 sm:col-span-1 backdrop-blur-sm border transition-all duration-500 ${currentTheme.cardBorder}`}
             >
               <TrendingUp className="mb-2 h-6 w-6 text-[#63EB25]" />
               <p
@@ -127,7 +127,7 @@ export default function DashboardMockup() {
           {/* Recent transactions */}
           <div className="space-y-4">
             <div
-              className={`rounded-lg p-4 backdrop-blur-sm border transition-all duration-500 ${currentTheme.card}`}
+              className={`rounded-lg p-4 backdrop-blur-sm border transition-all duration-500 ${currentTheme.cardBorder}`}
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
@@ -167,7 +167,7 @@ export default function DashboardMockup() {
             </div>
 
             <div
-              className={`rounded-lg p-4 backdrop-blur-sm border transition-all duration-500 ${currentTheme.card}`}
+              className={`rounded-lg p-4 backdrop-blur-sm border transition-all duration-500 ${currentTheme.cardBorder}`}
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center">

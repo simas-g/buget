@@ -27,7 +27,7 @@ export default function Categorized() {
   
   return (
     <BoxWrapper className="flex flex-col p-6 w-full overflow-hidden relative">
-      <div className={`absolute top-0 right-0 w-40 h-40 bg-gradient-to-br ${currentTheme.orbPrimary} to-transparent rounded-full blur-3xl -mr-20 -mt-20`} />
+      <div className={`absolute top-0 right-0 w-28 h-28 bg-gradient-to-br ${currentTheme.orbPrimary} to-transparent rounded-full blur-lg -mr-14 -mt-14`} style={{ transform: 'translate3d(0,0,0)', willChange: 'transform' }} />
       <div className="flex flex-wrap gap-4 justify-between items-center mb-6 relative z-10">
         <h5 className={`text-xl font-bold flex items-center gap-3 ${currentTheme.textPrimary}`}>
           <div className={`p-2 rounded-lg ${currentTheme.iconBg}`}>

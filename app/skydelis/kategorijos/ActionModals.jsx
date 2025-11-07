@@ -1,6 +1,8 @@
 import Button from "@/components/UI/Button";
 import DialogWrapper from "@/components/UI/Dialog";
-export function CreationModal({ ref, onCreate, ...props }) {
+import { forwardRef } from "react";
+
+export const CreationModal = forwardRef(({ onCreate, ...props }, ref) => {
   return (
     <DialogWrapper {...props}>
       <div className="flex flex-col gap-2 items-end">
@@ -8,7 +10,7 @@ export function CreationModal({ ref, onCreate, ...props }) {
           ref={ref}
           type="text"
           placeholder="kategorija"
-          className="border outline-none px-4 py-2 rounded-lg placeholder:text-sm placeholder:text-gray-400"
+          className="border bg-white outline-none px-4 py-2 rounded-lg placeholder:text-sm placeholder:text-gray-400"
         />
         <button
           onClick={onCreate}
@@ -19,7 +21,7 @@ export function CreationModal({ ref, onCreate, ...props }) {
       </div>
     </DialogWrapper>
   );
-}
+});
 export function DeletionModal({ open, onClose, onDelete }) {
   return (
     <DialogWrapper

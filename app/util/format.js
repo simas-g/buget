@@ -42,7 +42,14 @@ export function getCurrentMonthDate() {
 }
 
 /// e.g, '2025-04' if its may
-export function getPreviousMonthDate() {
+export function getPreviousMonthDate(monthStr) {
+  if (monthStr) {
+    const [year, month] = monthStr.split('-').map(Number);
+    const previousMonth = new Date(year, month - 2);
+    const prevYear = previousMonth.getFullYear();
+    const prevMonth = String(previousMonth.getMonth() + 1).padStart(2, "0");
+    return `${prevYear}-${prevMonth}`;
+  }
   const now = new Date();
   const previousMonth = new Date(now.getFullYear(), now.getMonth() - 1);
   const year = previousMonth.getFullYear();

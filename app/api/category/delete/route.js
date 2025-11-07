@@ -3,6 +3,8 @@ import MonthSummary from "@/app/lib/models/monthSummary";
 import Transaction from "@/app/lib/models/transaction";
 import connect from "@/app/lib/connectToDB";
 import { NextResponse } from "next/server";
+import { getCurrentMonthDate } from "@/app/util/format";
+
 export async function DELETE(req) {
   const isValidRequest = await validateToken(req.headers);
   if (!isValidRequest) {
@@ -12,6 +14,11 @@ export async function DELETE(req) {
   const { name, userId, date } = body;
   if (!name || !userId || !date) {
     return NextResponse.json({ message: "missing data" }, { status: 400 });
+  }
+
+  const currentMonth = getCurrentMonthDate();
+  if (date !== currentMonth) {
+    return NextResponse.json({ message: "Can only delete categories from the current month" }, { status: 403 });
   }
 
   try {

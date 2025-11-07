@@ -53,7 +53,7 @@ export default function Categories() {
   
   return (
     <BoxWrapper className={"relative flex flex-col w-full lg:h-full p-6 overflow-hidden"}>
-      <div className={`absolute top-0 right-0 w-40 h-40 bg-gradient-to-br ${currentTheme.orbSecondary} to-transparent rounded-full blur-3xl -mr-20 -mt-20`} />
+      <div className={`absolute top-0 right-0 w-28 h-28 bg-gradient-to-br ${currentTheme.orbSecondary} to-transparent rounded-full blur-lg -mr-14 -mt-14`} style={{ transform: 'translate3d(0,0,0)', willChange: 'transform' }} />
       <div className="flex w-full justify-between items-center mb-6 relative z-10">
         <h5 className={`flex items-center gap-3 text-xl font-bold ${currentTheme.textPrimary}`}>
           <div className={`p-2 rounded-lg ${currentTheme.iconBg}`}>
@@ -78,7 +78,7 @@ export default function Categories() {
           <li className="flex flex-col gap-3 group" key={name}>
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <div className={`w-2 h-2 rounded-full bg-[#2563EB] animate-pulse`} />
+                <div className={`w-2 h-2 rounded-full bg-[#2563EB]`} />
                 <span className={`${currentTheme.textPrimary} font-medium`}>{name}</span>
               </div>
               <div className="flex items-center gap-2">

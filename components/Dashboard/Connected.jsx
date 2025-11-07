@@ -81,7 +81,7 @@ export default function Connected() {
   const { data: banks, isLoading } = useFetch(fetchBanks, shouldFetch);
   return (
     <BoxWrapper className={'p-6 overflow-hidden relative'}>
-      <div className={`absolute top-0 right-0 w-40 h-40 bg-gradient-to-br ${currentTheme.orbAccent} to-transparent rounded-full blur-3xl -mr-20 -mt-20`} />
+      <div className={`absolute top-0 right-0 w-28 h-28 bg-gradient-to-br ${currentTheme.orbAccent} to-transparent rounded-full blur-lg -mr-14 -mt-14`} style={{ transform: 'translate3d(0,0,0)', willChange: 'transform' }} />
       <div className="lg:col-span-2 relative z-10">
         <div className="flex items-center justify-between mb-6">
           <h3 className={`text-xl font-bold ${currentTheme.textPrimary} flex items-center gap-3`}>
@@ -92,7 +92,7 @@ export default function Connected() {
           </h3>
           <button
             onClick={() => navigateToAddConnection()}
-            className={`flex items-center space-x-2 rounded-lg ${currentTheme.buttonPrimary} px-5 py-2.5 text-white font-medium transition-all cursor-pointer duration-300 hover:shadow-lg hover:shadow-secondary/30`}
+            className={`flex items-center space-x-2 rounded-lg ${currentTheme.buttonPrimary} px-5 py-2.5 text-white font-medium transition-all cursor-pointer duration-150 hover:shadow-lg hover:shadow-secondary/30`}
           >
             <Plus className="h-4 w-4" />
             <span>Pridėti</span>

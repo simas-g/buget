@@ -7,7 +7,7 @@ const TransactionSchema = new Schema({
   bookingDate: { type: Date, required: true },
   bankId: { type: mongoose.Schema.ObjectId, required: true },
   transactionId: { type: String, required: true, unique: true },
-  type: { type: String, enum: ["fetched", "categorized"], required: true },
+  type: { type: String, enum: ["fetched", "categorized", "split", "manual"], required: true },
   ///only fetched
   creditorName: { type: Schema.Types.Mixed, required: false },
   ///only categorized

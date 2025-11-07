@@ -11,6 +11,15 @@ export async function GET(req) {
   if (!validToken) {
     return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
   }
+  
+  if (!process.env.GO_CARDLESS_SECRET_ID || !process.env.GO_CARDLESS_SECRET_KEY) {
+    console.error("GoCardless credentials are not configured");
+    return NextResponse.json(
+      { error: "GoCardless credentials not configured" },
+      { status: 500 }
+    );
+  }
+  
   try {
     const response = await fetch(
       "https://bankaccountdata.gocardless.com/api/v2/token/new/",
@@ -28,8 +37,18 @@ export async function GET(req) {
     );
 
     if (!response.ok) {
-      throw new Error(
-        `Failed to fetch token: ${response.status} ${response.statusText}`
+      const errorData = await response.json().catch(() => ({}));
+      console.error("GoCardless API error:", {
+        status: response.status,
+        statusText: response.statusText,
+        error: errorData
+      });
+      return NextResponse.json(
+        { 
+          error: "Failed to fetch GoCardless token",
+          details: errorData 
+        },
+        { status: response.status }
       );
     }
 
@@ -37,6 +56,9 @@ export async function GET(req) {
     return NextResponse.json({data}, {status: 200}); 
   } catch (error) {
     console.error("Error fetching access token:", error);
-    return NextResponse.json({error: error}, {status: 400})
+    return NextResponse.json(
+      { error: "Internal server error" },
+      { status: 500 }
+    );
   }
 }

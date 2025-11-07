@@ -49,7 +49,7 @@ export default function BankConnection({
   };
 
   return (
-    <div className={`flex items-center justify-between p-5 rounded-xl ${currentTheme.card} ${currentTheme.cardBorder} ${currentTheme.cardHover} transition-all duration-300 shadow-md hover:shadow-lg`}>
+    <div className={`flex items-center justify-between p-5 rounded-xl ${currentTheme.card} ${currentTheme.cardBorder} ${currentTheme.cardHover} transition-all duration-150 shadow-md hover:shadow-lg`}>
       {/* Left side: logo + bank info */}
       <div className="flex items-center space-x-4">
         <div className={`h-14 w-14 overflow-hidden rounded-xl flex items-center justify-center bg-gradient-to-br ${theme === 'dark' ? 'from-white/10 to-white/5' : 'from-gray-100 to-gray-50'} border ${currentTheme.cardBorder} shadow-inner`}>
@@ -70,7 +70,7 @@ export default function BankConnection({
           </h4>
 
           <div className="flex items-center space-x-2">
-            <div className={`h-2 w-2 ${requiresUpdate ? 'bg-red-400' : 'bg-[#63EB25]'} rounded-full ${!requiresUpdate ? 'animate-pulse' : ''} shadow-sm ${!requiresUpdate ? 'shadow-[#63EB25]/50' : 'shadow-red-400/50'}`} />
+            <div className={`h-2 w-2 ${requiresUpdate ? 'bg-red-400' : 'bg-[#63EB25]'} rounded-full shadow-sm ${!requiresUpdate ? 'shadow-[#63EB25]/50' : 'shadow-red-400/50'}`} />
             <p className={`text-sm ${currentTheme.textSecondary} font-medium`}>
               Balansas: <span className={currentTheme.textPrimary}>{formatCurrency(currentBalance) || "neatnaujinta"}</span>
             </p>

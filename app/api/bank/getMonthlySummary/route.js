@@ -25,33 +25,28 @@ export async function GET(req) {
       acc += bank.balance;
       return acc;
     }, 0);
-    const allSummaries = await MonthSummary.find(
-      { userId },
-      { categories: 1, _id: 0 }
-    ).lean();
-    
-    let allDefinedCategories = new Set();
-    allSummaries.forEach((prevSummary) => {
-      if (prevSummary?.categories) {
-        Object.keys(prevSummary.categories).forEach((key) => {
-          allDefinedCategories.add(key);
-        });
-      }
-    });
 
     let summary = await MonthSummary.findOne(
       {
         month,
         userId,
       },
-      { inflow: 1, outflow: 1, closingBalance: 1, categories: 1, _id: 0 }
+      { inflow: 1, outflow: 1, closingBalance: 1, categories: 1, categoriesInitialized: 1, _id: 0 }
     ).lean();
     
     if (!summary) {
+      const previousMonth = getPreviousMonthDate(month);
+      const previousMonthSummary = await MonthSummary.findOne(
+        { userId, month: previousMonth },
+        { categories: 1, _id: 0 }
+      ).lean();
+      
       let categories = new Map();
-      allDefinedCategories.forEach((categoryName) => {
-        categories.set(categoryName, 0);
-      });
+      if (previousMonthSummary?.categories) {
+        Object.keys(previousMonthSummary.categories).forEach((categoryName) => {
+          categories.set(categoryName, 0);
+        });
+      }
       
       await MonthSummary.create({
         month,
@@ -60,6 +55,7 @@ export async function GET(req) {
         outflow: 0,
         closingBalance: totalNet,
         categories,
+        categoriesInitialized: true,
       });
       
       summary = await MonthSummary.findOne(
@@ -67,25 +63,23 @@ export async function GET(req) {
           month,
           userId,
         },
-        { inflow: 1, outflow: 1, closingBalance: 1, categories: 1, _id: 0 }
+        { inflow: 1, outflow: 1, closingBalance: 1, categories: 1, categoriesInitialized: 1, _id: 0 }
       ).lean();
     } else {
-      const missingCategories = {};
-      let hasMissingCategories = false;
-      
-      allDefinedCategories.forEach((categoryName) => {
-        if (!summary.categories || !(categoryName in summary.categories)) {
-          missingCategories[`categories.${categoryName}`] = 0;
-          hasMissingCategories = true;
-        }
-      });
-      
-      if (hasMissingCategories || summary.closingBalance !== totalNet) {
-        const updateFields = { ...missingCategories };
-        if (summary.closingBalance !== totalNet) {
-          updateFields.closingBalance = totalNet;
-        }
-        
+      const updateFields = {};
+      let needsUpdate = false;
+
+      if (summary.closingBalance !== totalNet) {
+        updateFields.closingBalance = totalNet;
+        needsUpdate = true;
+      }
+
+      if (!summary.categoriesInitialized) {
+        updateFields.categoriesInitialized = true;
+        needsUpdate = true;
+      }
+
+      if (needsUpdate) {
         await MonthSummary.updateOne(
           {
             userId,
@@ -101,7 +95,7 @@ export async function GET(req) {
             month,
             userId,
           },
-          { inflow: 1, outflow: 1, closingBalance: 1, categories: 1, _id: 0 }
+          { inflow: 1, outflow: 1, closingBalance: 1, categories: 1, categoriesInitialized: 1, _id: 0 }
         ).lean();
       }
     }
