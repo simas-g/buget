@@ -181,17 +181,6 @@ const BankTransactionPage = ({ id }) => {
                   />
                 ))
               )}
-              {/**test transaction */}
-              <Transaction
-                    operation={{
-                      transactionId: "test_user_001_000_000",
-                      amount: 100.00,
-                      bookingDate: "2025-01-01",
-                      type: "uncategorized",
-                      categoryName: "Pajamos",
-                    }}
-                    type="uncategorized"
-                  />
             </ul>
             {!isLoadingT &&
               typeof window !== "undefined" &&
