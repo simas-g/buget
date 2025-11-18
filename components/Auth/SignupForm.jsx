@@ -114,7 +114,6 @@ export default function SignUpForm() {
     email: "",
     password: "",
     confirmPassword: "",
-    agreeToTerms: false,
   });
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({});
@@ -141,10 +140,6 @@ export default function SignUpForm() {
 
     if (formData.password !== formData.confirmPassword) {
       newErrors.confirmPassword = "Slaptažodžiai nesutampa";
-    }
-
-    if (!formData.agreeToTerms) {
-      newErrors.agreeToTerms = "Turite sutikti su naudojimo sąlygomis";
     }
 
     console.log(newErrors);
